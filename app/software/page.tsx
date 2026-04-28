@@ -1,5 +1,25 @@
 import Link from 'next/link';
 import { Code, Database, MonitorSmartphone, Cloud, Shield, Rocket } from 'lucide-react';
+import type { Metadata } from 'next';
+
+// Page‑specific metadata (overrides root layout)
+export const metadata: Metadata = {
+  title: 'Software Development – Custom Web & Mobile Apps | Maogast Softworks',
+  description: 'Expert software development in Next.js, React, and Node.js. From enterprise systems to mobile apps – we build scalable, secure solutions.',
+  openGraph: {
+    title: 'Software Development Services | Maogast Softworks',
+    description: 'Custom web & mobile apps, cloud integration, IT consulting – tailored to your business.',
+    url: 'https://maogast-softworks.vercel.app/software',
+    siteName: 'Maogast Softworks',
+    images: [{ url: 'https://maogast-softworks.vercel.app/og-software.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Software Development | Maogast Softworks',
+    description: 'Build fast, secure web and mobile apps with a modern tech stack.',
+    images: ['https://maogast-softworks.vercel.app/og-software.jpg'],
+  },
+};
 
 export default function SoftwarePage() {
   return (
@@ -22,7 +42,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Services Grid – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -79,7 +99,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Tech Stack */}
+      {/* Tech Stack, Process, CTA – unchanged */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Technologies We Master</h2>
@@ -101,7 +121,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Process Steps */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -129,7 +148,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to build your next software project?</h2>

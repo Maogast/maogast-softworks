@@ -1,5 +1,24 @@
 import Link from 'next/link';
-import { Shirt, Coffee, Printer, Megaphone, Brush, Package, CheckCircle, Truck, HeartHandshake } from 'lucide-react';
+import { Shirt, Coffee, Printer, Megaphone, Brush, Package, CheckCircle, HeartHandshake } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Printing & Branding – Custom Apparel, Merchandise & Signage | Maogast Softworks',
+  description: 'Premium printing services: T‑shirts, mugs, banners, business stationery, and shop branding. Fast turnaround, high quality, and professional design support.',
+  openGraph: {
+    title: 'Printing & Branding | Maogast Softworks',
+    description: 'From custom T‑shirts to complete storefront branding – we bring your brand to life.',
+    url: 'https://maogast-softworks.vercel.app/printing',
+    siteName: 'Maogast Softworks',
+    images: [{ url: 'https://maogast-softworks.vercel.app/og-printing.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Printing & Branding | Maogast Softworks',
+    description: 'High‑quality custom prints, promotional products, and professional branding services.',
+    images: ['https://maogast-softworks.vercel.app/og-printing.jpg'],
+  },
+};
 
 export default function PrintingPage() {
   return (
@@ -22,7 +41,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Products & Services Grid */}
+      {/* Products & Services Grid – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">

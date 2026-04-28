@@ -1,5 +1,24 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Portfolio – Software, E‑commerce & Branding Projects | Maogast Softworks',
+  description: 'See real projects we’ve delivered: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, and more.',
+  openGraph: {
+    title: 'Maogast Softworks Portfolio',
+    description: 'Explore our work – from full‑stack applications to custom branding.',
+    url: 'https://maogast-softworks.vercel.app/portfolio',
+    siteName: 'Maogast Softworks',
+    images: [{ url: 'https://maogast-softworks.vercel.app/og-portfolio.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Maogast Softworks Portfolio',
+    description: 'Real‑world projects that showcase our expertise.',
+    images: ['https://maogast-softworks.vercel.app/og-portfolio.jpg'],
+  },
+};
 
 const projects = [
   {
@@ -22,7 +41,6 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <div className="container mx-auto px-4 py-16 max-w-7xl">
-        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Our Work</h1>
           <p className="mt-4 text-gray-600 dark:text-gray-400">
@@ -30,7 +48,6 @@ export default function PortfolioPage() {
           </p>
         </div>
 
-        {/* Projects grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <div
@@ -75,7 +92,6 @@ export default function PortfolioPage() {
           ))}
         </div>
 
-        {/* Back to home (optional) */}
         <div className="text-center mt-12">
           <Link
             href="/"

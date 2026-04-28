@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://maogast-softworks.vercel.app/sitemap.xml

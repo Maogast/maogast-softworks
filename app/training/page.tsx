@@ -1,7 +1,24 @@
-'use client';
-
 import Link from 'next/link';
-import { GraduationCap, Briefcase, Users, Award, Clock, CreditCard, CheckCircle, Laptop, Palette, Megaphone, Brain, Zap, Target } from 'lucide-react';
+import { GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, Palette, Megaphone, Brain, Zap, Target } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Training & Webinars – Upskill with Maogast Softworks',
+  description: 'Join our software bootcamp, printing workshop, digital marketing course, or AI design training. Hands‑on projects, certificates, and flexible payment plans.',
+  openGraph: {
+    title: 'Training & Webinars | Maogast Softworks',
+    description: 'Gain industry‑ready skills in software, branding, marketing, and AI design. Real‑world projects and expert instructors.',
+    url: 'https://maogast-softworks.vercel.app/training',
+    siteName: 'Maogast Softworks',
+    images: [{ url: 'https://maogast-softworks.vercel.app/og-training.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Training & Webinars | Maogast Softworks',
+    description: 'Practical, career‑focused courses – from software development to prompt engineering.',
+    images: ['https://maogast-softworks.vercel.app/og-training.jpg'],
+  },
+};
 
 const courses = [
   {
@@ -121,7 +138,7 @@ export default function TrainingPage() {
                   <div className="mt-4 flex justify-between items-center text-sm">
                     <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
                       <Clock className="w-4 h-4" /> {course.duration}
-                    </span>
+                     </span>
                     <span className="font-bold text-orange-600">{course.price}</span>
                   </div>
                 </div>
@@ -188,11 +205,11 @@ export default function TrainingPage() {
           </p>
           <div className="mt-8">
             <Link
-  href="/quote"
-  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 transition"
->
-  Register Your Interest
-</Link>
+              href="/quote"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 transition"
+            >
+              Register Your Interest
+            </Link>
           </div>
           <p className="mt-4 text-sm text-gray-500">Early bird discount ends 3rd May.</p>
         </div>
@@ -207,8 +224,8 @@ export default function TrainingPage() {
           </p>
           <div className="mt-8">
             <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition">
-                Request a Quote
-              </Link>
+              Request a Quote
+            </Link>
           </div>
         </div>
       </section>
