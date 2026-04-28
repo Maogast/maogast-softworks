@@ -1,26 +1,128 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 24.6 95% 53%;
+    --primary-foreground: 0 0% 100%;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
+
+/* Smooth floating with slight rotation */
+@keyframes float3d {
+  0% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateX(2deg) rotateY(2deg);
+  }
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* Staggered variant for middle icon */
+@keyframes float3d-delayed {
+  0% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotateX(-2deg) rotateY(-2deg);
+  }
+  100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+}
+
+/* Glowing pulse with shadow and scale */
+@keyframes glow-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgba(249, 115, 22, 0);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+  }
+}
+
+/* Subtle hover effect for each icon container */
+.hero-icon {
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.hero-icon:hover {
+  transform: translateY(-6px) scale(1.02);
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
+}
+
+/* Apply animations */
+.animate-float-3d {
+  animation: float3d 5s ease-in-out infinite;
+}
+
+.animate-float-3d-delayed {
+  animation: float3d-delayed 5s ease-in-out infinite 0.7s;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+/* 3D tilt effect + float for gallery items */
+.gallery-item {
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px) scale(1.02) rotateX(2deg) rotateY(2deg);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
+}
+
+.gallery-image {
+  transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.gallery-item:hover .gallery-image {
+  transform: scale(1.05);
+}
+
+/* Subtle floating animation for gallery items (staggered) */
+@keyframes gentle-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.gallery-item {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+/* Stagger delays for each item – we'll add inline style or nth-child */
