@@ -24,7 +24,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section
+      id="services"                      // 👈 makes the Explore button scroll to this section
+      className="py-20 bg-gray-50 dark:bg-gray-900 scroll-mt-16"   // scroll-mt-16 avoids hiding under fixed header
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What We Do</h2>
@@ -36,9 +39,9 @@ export default function ServicesSection() {
           {services.map((service) => (
             <div
               key={service.title}
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-md transition"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 mb-4">
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-orange-100 dark:bg-orange-900/30 text-orange-600 mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
                 <service.icon className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -49,7 +52,7 @@ export default function ServicesSection() {
               </p>
               <Link
                 href={service.link}
-                className="text-orange-600 hover:text-orange-700 font-medium inline-flex items-center gap-1"
+                className="text-orange-600 hover:text-orange-700 font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all"
               >
                 Learn more →
               </Link>

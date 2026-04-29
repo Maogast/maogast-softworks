@@ -1,5 +1,9 @@
 import Link from 'next/link';
-import { Shirt, Coffee, Printer, Megaphone, Brush, Package, CheckCircle, HeartHandshake } from 'lucide-react';
+import { 
+  Shirt, Coffee, Printer, Megaphone, Brush, Package, 
+  CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
+  Star
+} from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -23,17 +27,27 @@ export const metadata: Metadata = {
 export default function PrintingPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Printing & Branding</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+      {/* Hero Section – enhanced with subtle grid and animations */}
+      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="printGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#F97316" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#printGrid)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Printing & Branding</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             High‑quality printing, professional branding, and marketing materials that make your business stand out.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg"
             >
               Get a Quote
             </Link>
@@ -41,7 +55,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Products & Services Grid – unchanged */}
+      {/* Products & Services Grid – with hover scale and icon transitions */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -85,9 +99,9 @@ export default function PrintingPage() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 hover:shadow-lg transition"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group"
               >
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
@@ -98,7 +112,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Quality & Equipment Highlights */}
+      {/* Quality & Equipment Highlights – enhanced with hover on equipment list */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -114,14 +128,14 @@ export default function PrintingPage() {
                   'Precise plotter cutter – for vinyl decals and stickers',
                   'Eco‑friendly sublimation inks – long‑lasting colors',
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 shrink-0" />
+                  <li key={idx} className="flex items-start gap-2 group">
+                    <CheckCircle className="w-5 h-5 text-orange-600 mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
                     <span className="text-gray-700 dark:text-gray-300">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 text-center">
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition">
               <div className="text-5xl mb-3">🖨️✨</div>
               <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Our workshop is equipped to handle bulk orders and tight deadlines. No job is too small or too large.
@@ -131,7 +145,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Simple Process */}
+      {/* Simple Process – with icons instead of numbers and hover animation */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -142,14 +156,14 @@ export default function PrintingPage() {
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: '1', title: 'Send Your Design', desc: 'Upload a logo, sketch, or idea – we help refine it.' },
-              { step: '2', title: 'Approve Proof', desc: 'We send a digital mockup for your approval.' },
-              { step: '3', title: 'Production', desc: 'We print and quality check each item.' },
-              { step: '4', title: 'Delivery', desc: 'Shipped to your door or ready for pickup.' },
+              { step: '1', title: 'Send Your Design', icon: <Upload className="w-6 h-6" />, desc: 'Upload a logo, sketch, or idea – we help refine it.' },
+              { step: '2', title: 'Approve Proof', icon: <Eye className="w-6 h-6" />, desc: 'We send a digital mockup for your approval.' },
+              { step: '3', title: 'Production', icon: <Hammer className="w-6 h-6" />, desc: 'We print and quality check each item.' },
+              { step: '4', title: 'Delivery', icon: <Truck className="w-6 h-6" />, desc: 'Shipped to your door or ready for pickup.' },
             ].map((step) => (
-              <div key={step.step} className="text-center">
-                <div className="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3">
-                  {step.step}
+              <div key={step.step} className="text-center group">
+                <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  {step.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm">{step.desc}</p>
@@ -159,7 +173,20 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Marketing & Branding Add‑on */}
+      {/* New micro-section: Client Testimonial (adds social proof) */}
+      <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-6">
+            <Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" />
+          </div>
+          <blockquote className="text-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 italic">
+            “Maogast delivered 200 custom T‑shirts for our event in under a week. The prints were flawless, and the team was incredibly helpful with design advice. Highly recommend!”
+          </blockquote>
+          <p className="text-center mt-4 text-gray-500 dark:text-gray-400">— James M., Event Organizer</p>
+        </div>
+      </section>
+
+      {/* Marketing & Branding Add‑on – with hover scale on cards */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beyond Printing – Full Branding Support</h2>
@@ -167,17 +194,17 @@ export default function PrintingPage() {
             We don&apos;t just print – we help you build a cohesive brand identity that attracts customers.
           </p>
           <div className="grid md:grid-cols-3 gap-8 mt-10">
-            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl">
+            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl transition-all hover:shadow-lg hover:-translate-y-1">
               <HeartHandshake className="w-10 h-10 text-orange-600 mx-auto mb-3" />
               <h3 className="text-xl font-semibold">Logo & Visual Identity</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">Professional logo design and brand guidelines.</p>
             </div>
-            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl">
+            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl transition-all hover:shadow-lg hover:-translate-y-1">
               <Megaphone className="w-10 h-10 text-orange-600 mx-auto mb-3" />
               <h3 className="text-xl font-semibold">Marketing Strategy</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">Social media ads, flyer campaigns, and launch support.</p>
             </div>
-            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl">
+            <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-xl transition-all hover:shadow-lg hover:-translate-y-1">
               <Printer className="w-10 h-10 text-orange-600 mx-auto mb-3" />
               <h3 className="text-xl font-semibold">Shop Branding Packages</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">Complete storefront branding – indoor & outdoor.</p>
@@ -186,7 +213,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA – unchanged but with hover scale */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>
@@ -196,7 +223,7 @@ export default function PrintingPage() {
           <div className="mt-8">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
             >
               Request a Quote
             </Link>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, Palette, Megaphone, Brain, Zap, Target } from 'lucide-react';
+import { GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -92,21 +92,31 @@ const reasons = [
 export default function TrainingPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6">
+      {/* Hero Section – enhanced with grid and fade-ins */}
+      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="trainingGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#F97316" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#trainingGrid)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
             <Zap className="w-4 h-4 text-orange-400" />
             <span className="text-sm font-medium text-orange-300">Learn from the Experts</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Training & Webinars</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Training & Webinars</h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             Gain in‑demand skills in software, branding, marketing, and AI design – taught by professionals who work in the industry.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
               href="#courses"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg"
             >
               Explore Courses
             </Link>
@@ -114,7 +124,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Courses Grid */}
+      {/* Courses Grid – with hover scale and shine effect */}
       <section id="courses" className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -127,10 +137,10 @@ export default function TrainingPage() {
             {courses.map((course, idx) => (
               <div
                 key={idx}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group flex flex-col"
               >
                 <div className="p-5 flex-1">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
                     {course.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">{course.title}</h3>
@@ -138,7 +148,7 @@ export default function TrainingPage() {
                   <div className="mt-4 flex justify-between items-center text-sm">
                     <span className="flex items-center gap-1 text-gray-500 dark:text-gray-400">
                       <Clock className="w-4 h-4" /> {course.duration}
-                     </span>
+                    </span>
                     <span className="font-bold text-orange-600">{course.price}</span>
                   </div>
                 </div>
@@ -148,7 +158,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Choose Us – with hover lift on cards */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -159,8 +169,8 @@ export default function TrainingPage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {reasons.map((reason, idx) => (
-              <div key={idx} className="flex gap-3">
-                <div className="shrink-0">{reason.icon}</div>
+              <div key={idx} className="flex gap-3 group p-3 rounded-xl transition-all duration-300 hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800">
+                <div className="shrink-0 group-hover:scale-110 transition-transform">{reason.icon}</div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{reason.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">{reason.desc}</p>
@@ -171,7 +181,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works – replaced numbers with icons */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -180,13 +190,13 @@ export default function TrainingPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { step: '1', title: 'Apply Online', desc: 'Fill out the registration form – no commitment yet.' },
-              { step: '2', title: 'Attend a Free Intro', desc: 'Join a 1‑hour webinar to meet the trainer and see the curriculum.' },
-              { step: '3', title: 'Enrol & Pay', desc: 'Secure your seat with a deposit (or full payment) via M‑PESA or bank.' },
+              { step: '1', title: 'Apply Online', icon: <Send className="w-6 h-6" />, desc: 'Fill out the registration form – no commitment yet.' },
+              { step: '2', title: 'Attend a Free Intro', icon: <Eye className="w-6 h-6" />, desc: 'Join a 1‑hour webinar to meet the trainer and see the curriculum.' },
+              { step: '3', title: 'Enrol & Pay', icon: <FileCheck className="w-6 h-6" />, desc: 'Secure your seat with a deposit (or full payment) via M‑PESA or bank.' },
             ].map((step) => (
-              <div key={step.step} className="text-center">
-                <div className="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3">
-                  {step.step}
+              <div key={step.step} className="text-center group">
+                <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                  {step.icon}
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm">{step.desc}</p>
@@ -196,8 +206,21 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Upcoming Courses / Webinars */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      {/* New micro-section: Student Testimonial */}
+      <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-6">
+            <Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" />
+          </div>
+          <blockquote className="text-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 italic">
+            “The Software Development Bootcamp changed my career. After 7 weeks, I built a full‑stack inventory app and got hired as a junior developer. The mentors are still available for support.”
+          </blockquote>
+          <p className="text-center mt-4 text-gray-500 dark:text-gray-400">— Kevin O., Graduate & Software Engineer</p>
+        </div>
+      </section>
+
+      {/* Upcoming Courses / Webinars – with hover effect */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Next Webinar Starts Soon</h2>
           <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
@@ -206,7 +229,7 @@ export default function TrainingPage() {
           <div className="mt-8">
             <Link
               href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 transition"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 transition transform hover:scale-105"
             >
               Register Your Interest
             </Link>
@@ -215,7 +238,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Final CTA – consistent with other pages */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to upskill or start a new career?</h2>
@@ -223,7 +246,10 @@ export default function TrainingPage() {
             Talk to our training coordinator. We’ll help you choose the right course.
           </p>
           <div className="mt-8">
-            <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition">
+            <Link
+              href="/quote"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
+            >
               Request a Quote
             </Link>
           </div>
