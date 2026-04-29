@@ -6,7 +6,6 @@ import {
   Cloud,
   Shield,
   Rocket,
-  ChevronRight,
   Search,
   Layout,
   CheckCircle,

@@ -61,7 +61,7 @@ export default function ContactPage() {
                   <Clock className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition" />
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300">Office Hours</p>
-                    <p className="text-gray-600 dark:text-gray-400">Mon – Fri: 9am – 5pm</p>
+                    <p className="text-gray-600 dark:text-gray-400">Mon – Fri: 8am – 5pm</p>
                   </div>
                 </div>
               </div>

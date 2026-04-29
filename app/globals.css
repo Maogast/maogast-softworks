@@ -87,12 +87,14 @@ body {
 .animate-glow-pulse {
   animation: glow-pulse 4s ease-in-out infinite;
 }
+
 /* 3D tilt effect + float for gallery items */
 .gallery-item {
   transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1000px;
   will-change: transform;
+  animation: gentle-float 4s ease-in-out infinite;
 }
 
 .gallery-item:hover {
@@ -121,18 +123,7 @@ body {
   }
 }
 
-.gallery-item {
-  animation: gentle-float 4s ease-in-out infinite;
-}
-
-/* Stagger delays for each item – we'll add inline style or nth-child */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in-up { animation: fade-in-up 0.6s ease forwards; }
-.animation-delay-200 { animation-delay: 0.2s; }
-.animation-delay-400 { animation-delay: 0.4s; }
+/* Fade-in-up animation */
 @keyframes fade-in-up {
   from {
     opacity: 0;
