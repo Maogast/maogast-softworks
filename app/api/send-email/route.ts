@@ -2,24 +2,23 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 
-// ---------- Initialize Resend ----------
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromDomain = process.env.FROM_DOMAIN || 'maogastsoftworks.com';
-const fromEmail = `Maogast Softworks <info@${fromDomain}>`;
-const toEmail = process.env.TO_EMAIL || 'maogastdevhub@gmail.com';
+// ---------- Gmail SMTP Configuration (Fallback) – only if credentials exist ----------
+const gmailTransporter = (() => {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.warn('Gmail credentials missing – fallback disabled');
+    return null;
+  }
+  return nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+})();
 
-// ---------- Gmail SMTP Configuration (Fallback) ----------
-const gmailTransporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
-  },
-});
-
-// ---------- Helper to send via Gmail ----------
 async function sendViaGmail({
   to,
   subject,
@@ -31,6 +30,7 @@ async function sendViaGmail({
   html: string;
   text: string;
 }) {
+  if (!gmailTransporter) throw new Error('Gmail not configured');
   return gmailTransporter.sendMail({
     from: `"Maogast Softworks" <${process.env.GMAIL_USER}>`,
     to,
@@ -45,16 +45,22 @@ export async function POST(request: NextRequest) {
     const { name, email, service, message } = await request.json();
 
     if (!name || !email || !service) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
+    // ---------- Initialize Resend only at runtime (fixes build error) ----------
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is missing');
+      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
+    }
+    const resend = new Resend(apiKey);
+    const fromDomain = process.env.FROM_DOMAIN || 'maogastsoftworks.com';
+    const fromEmail = `Maogast Softworks <info@${fromDomain}>`;
+    const toEmail = process.env.TO_EMAIL || 'maogastdevhub@gmail.com';
+
     const messageText = message || 'No message provided';
-    const messageHtml = message
-      ? message.replace(/\n/g, '<br/>')
-      : 'No message provided';
+    const messageHtml = message ? message.replace(/\n/g, '<br/>') : 'No message provided';
 
     // 1. Admin email (to you)
     const adminSubject = `New Quote Request: ${service} from ${name}`;
@@ -80,13 +86,12 @@ export async function POST(request: NextRequest) {
     `;
     const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will review your inquiry and get back to you within 24 hours.\n\nBest regards,\nThe Maogast Softworks Team`;
 
-    // ---------- Try sending with Resend first ----------
     let adminSent = false;
     let clientSent = false;
     let errorDetails = null;
 
+    // ---------- Try sending with Resend first ----------
     try {
-      // Admin email via Resend
       await resend.emails.send({
         from: fromEmail,
         to: toEmail,
@@ -101,7 +106,6 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      // Client auto‑reply via Resend
       await resend.emails.send({
         from: fromEmail,
         to: email,
@@ -115,11 +119,10 @@ export async function POST(request: NextRequest) {
       errorDetails = error;
     }
 
-    // ---------- Fallback to Gmail if either email failed ----------
-    if (!adminSent || !clientSent) {
+    // ---------- Fallback to Gmail if either email failed and Gmail is configured ----------
+    if ((!adminSent || !clientSent) && gmailTransporter) {
       console.log('Falling back to Gmail SMTP...');
       try {
-        // Admin email via Gmail
         if (!adminSent) {
           await sendViaGmail({
             to: toEmail,
@@ -129,8 +132,6 @@ export async function POST(request: NextRequest) {
           });
           adminSent = true;
         }
-
-        // Client auto‑reply via Gmail
         if (!clientSent) {
           await sendViaGmail({
             to: email,
@@ -149,12 +150,16 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    if (!adminSent || !clientSent) {
+      return NextResponse.json(
+        { error: 'Failed to send one or more emails', details: errorDetails },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Email error:', error);
-    return NextResponse.json(
-      { error: 'Failed to send email' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
   }
 }
