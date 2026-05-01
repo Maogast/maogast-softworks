@@ -1,6 +1,8 @@
 {
   "name": "Maogast Softworks",
   "short_name": "Maogast",
+  "description": "Professional Software Development & Branding in Nairobi",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

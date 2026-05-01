@@ -29,6 +29,7 @@ export default function QuotePage() {
         const error = await response.json();
         alert(error.error || 'Something went wrong. Please try again.');
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       alert('Network error. Please try again later.');
     } finally {
@@ -36,15 +37,13 @@ export default function QuotePage() {
     }
   };
 
-  // ... rest of the component (same JSX) but with submit button disabled while submitting
   return (
     <>
-      {/* Hero section unchanged */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-16">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4">Request a Quote</h1>
+          <h1 className="text-4xl font-bold mb-4">Request a Quote in Nairobi</h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Tell us what you need, and we’ll get back to you with a custom quote.
+            Tell us what you need, and we’ll get back to you with a custom quote tailored for the Kenyan market.
           </p>
         </div>
       </section>
@@ -100,7 +99,6 @@ export default function QuotePage() {
             </form>
           </div>
         ) : (
-          // Payment details section (unchanged)
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">

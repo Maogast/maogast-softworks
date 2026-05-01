@@ -2,9 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Sparkles, Brain, Church, Image as ImageIcon, FileText, Palette, Zap, Star, Send, Eye, Edit3, Layout } from 'lucide-react';
+import Script from 'next/script';
+import { 
+  Sparkles, Brain, Church, Image as ImageIcon, FileText, 
+  Palette, Zap, Star, Send, Eye, Edit3, Layout 
+} from 'lucide-react';
 
-export default function AIDesignPage() {
+export default function AIDesignClient() {
   const portfolioItems = [
     { title: 'Church Poster Series', img: '/powered_design/church-poster.webp', category: 'Church Branding' },
     { title: 'Product Ad Mockup', img: '/powered_design/product-ad.webp', category: 'Social Media' },
@@ -13,9 +17,33 @@ export default function AIDesignPage() {
     { title: 'Prompt Art 2', img: '/powered_design/prompt-art1.webp', category: 'AI Art' },
   ];
 
+  // Service Schema for AI and Design Services
+  const aiDesignJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI-Powered Design & Prompt Engineering",
+    "serviceType": "Graphic Design and AI Consulting",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Maogast Softworks",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      }
+    },
+    "description": "Professional design services utilizing AI prompt engineering for church branding, social media, and marketing materials."
+  };
+
   return (
     <>
-      {/* Hero Section – with background pattern and fade animations */}
+      <Script
+        id="ai-design-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aiDesignJsonLd) }}
+      />
+
+      {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -30,11 +58,11 @@ export default function AIDesignPage() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-orange-400" />
-            <span className="text-sm font-medium text-orange-300">AI‑Powered Creativity</span>
+            <span className="text-sm font-medium text-orange-300">AI‑Powered Creativity in Nairobi</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">AI‑Powered Design</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Stunning posters, church branding, social media graphics – and the prompt engineering that makes it all possible.
+            Stunning posters, church branding, and product visuals – crafted with the precision of professional prompt engineering.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
@@ -47,13 +75,13 @@ export default function AIDesignPage() {
         </div>
       </section>
 
-      {/* Services Section – with hover effects and group */}
+      {/* Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Design Services</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Design Expertise</h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              From prompt to pixel – I create visuals that communicate, inspire, and convert.
+              From initial prompt to final pixel, we create visuals that resonate with your audience and reflect your brand identity.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -61,32 +89,32 @@ export default function AIDesignPage() {
               {
                 icon: <Church className="w-8 h-8 text-orange-600" />,
                 title: 'Church Branding',
-                desc: 'Sermon series posters, event flyers, prayer meeting graphics, and complete church visual identity.',
+                desc: 'Sermon series posters, event flyers, and complete visual identities for ministries in Kenya.',
               },
               {
                 icon: <ImageIcon className="w-8 h-8 text-orange-600" />,
                 title: 'Social Media Graphics',
-                desc: 'Carousels, story templates, quote posts, and ad creatives for all platforms.',
+                desc: 'Engaging carousels, story templates, and ad creatives optimized for conversion.',
               },
               {
                 icon: <Palette className="w-8 h-8 text-orange-600" />,
                 title: 'Poster & Flyer Design',
-                desc: 'High‑resolution print‑ready posters for events, concerts, campaigns, and announcements.',
+                desc: 'High‑resolution, print‑ready designs for community announcements and commercial events.',
               },
               {
                 icon: <Brain className="w-8 h-8 text-orange-600" />,
                 title: 'Prompt Engineering',
-                desc: 'Expert prompts to generate consistent, high‑quality AI art – also available as a standalone service.',
+                desc: 'Expertly written prompts for Midjourney and DALL·E to generate high‑quality, consistent brand assets.',
               },
               {
                 icon: <FileText className="w-8 h-8 text-orange-600" />,
                 title: 'Print Layout & Editorial',
-                desc: 'Brochures, newsletters, magazines, and book covers – print and digital ready.',
+                desc: 'Professional brochures, newsletters, and book covers tailored for both print and digital use.',
               },
               {
                 icon: <Zap className="w-8 h-8 text-orange-600" />,
                 title: 'Rapid Prototyping',
-                desc: 'Turnaround in 24–48 hours for urgent projects. Fast, professional, and high‑impact.',
+                desc: 'Urgent design projects delivered within 24–48 hours without compromising on craftsmanship.',
               },
             ].map((service, idx) => (
               <div
@@ -104,21 +132,21 @@ export default function AIDesignPage() {
         </div>
       </section>
 
-      {/* Process Section – new, with icons */}
+      {/* Process Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How We Create</h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              A smooth, collaborative process from brief to final delivery.
+              A collaborative workflow combining human creativity with AI efficiency.
             </p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: '1', title: 'Share Your Vision', icon: <Send className="w-6 h-6" />, desc: 'Tell us about your brand, audience, and message.' },
-              { step: '2', title: 'Craft Prompts', icon: <Edit3 className="w-6 h-6" />, desc: 'We write prompts and generate initial concepts.' },
-              { step: '3', title: 'Refine & Approve', icon: <Eye className="w-6 h-6" />, desc: 'Review, tweak, and finalise the design.' },
-              { step: '4', title: 'Deliver Files', icon: <Layout className="w-6 h-6" />, desc: 'Print‑ready or digital files delivered fast.' },
+              { step: '1', title: 'Share Your Vision', icon: <Send className="w-6 h-6" />, desc: 'Brief us on your brand goals and target audience.' },
+              { step: '2', title: 'Craft Prompts', icon: <Edit3 className="w-6 h-6" />, desc: 'We engineer precise prompts to generate concepts.' },
+              { step: '3', title: 'Refine & Approve', icon: <Eye className="w-6 h-6" />, desc: 'We fine-tune the art to match your exact standards.' },
+              { step: '4', title: 'Deliver Files', icon: <Layout className="w-6 h-6" />, desc: 'Receive high-res, print-ready files ready for use.' },
             ].map((step) => (
               <div key={step.step} className="text-center group">
                 <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
@@ -132,13 +160,13 @@ export default function AIDesignPage() {
         </div>
       </section>
 
-      {/* Portfolio Gallery with 3D motion (improved hover scale + shadow) */}
+      {/* Portfolio Gallery */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Recent Designs</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Recent Work</h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Hover over any image to see the 3D tilt effect – a glimpse of the motion you can expect.
+              A showcase of AI-enhanced visuals and custom graphic designs.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -155,16 +183,6 @@ export default function AIDesignPage() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        const fallback = document.createElement('div');
-                        fallback.className = 'w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900/30 dark:to-orange-800/20';
-                        fallback.innerHTML = `<span class="text-4xl">🎨</span>`;
-                        parent.appendChild(fallback);
-                      }
-                    }}
                   />
                 </div>
                 <div className="p-4">
@@ -185,32 +203,30 @@ export default function AIDesignPage() {
         </div>
       </section>
 
-      {/* Prompt Engineering Highlight – enhanced with hover and badge */}
+      {/* Prompt Engineering Highlight */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-orange-600/10 rounded-full px-3 py-1 mb-4">
                 <Brain className="w-4 h-4 text-orange-600" />
-                <span className="text-xs font-medium text-orange-700 dark:text-orange-400">Expertise</span>
+                <span className="text-xs font-medium text-orange-700 dark:text-orange-400">Strategic Expertise</span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Prompt Engineering</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Expert Prompt Engineering</h2>
               <p className="mt-4 text-gray-600 dark:text-gray-400">
-                Behind every great AI design is a well‑crafted prompt. I specialise in writing prompts that produce consistent, brand‑aligned, and stunning visuals – saving you time and frustration.
+                Behind every great AI design is a well‑crafted prompt. We specialize in engineering inputs that produce consistent, brand‑aligned visuals – specifically optimized for marketing and community engagement.
               </p>
               <ul className="mt-6 space-y-2">
-                <li className="flex items-start gap-2 group">
-                  <Star className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-700 dark:text-gray-300">Midjourney, DALL·E, Gemini, and Leonardo.ai expert</span>
-                </li>
-                <li className="flex items-start gap-2 group">
-                  <Star className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-700 dark:text-gray-300">Custom prompt libraries for your brand</span>
-                </li>
-                <li className="flex items-start gap-2 group">
-                  <Star className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span className="text-gray-700 dark:text-gray-300">Workshops and training for your team</span>
-                </li>
+                {[
+                  'Midjourney, DALL·E, and Gemini expertise',
+                  'Custom prompt libraries for consistent branding',
+                  'Workshops and training for organizational teams'
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2 group">
+                    <Star className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition-transform" />
+                    <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                  </li>
+                ))}
               </ul>
               <div className="mt-8">
                 <Link
@@ -221,36 +237,23 @@ export default function AIDesignPage() {
                 </Link>
               </div>
             </div>
-            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition text-center">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-8 shadow-md hover:shadow-lg transition text-center border border-gray-100 dark:border-gray-700">
               <div className="text-5xl mb-4">✨🤖</div>
-              <p className="text-gray-600 dark:text-gray-400 italic">
-                “I can generate exactly what you envision – or help you craft the prompts to do it yourself.”
+              <p className="text-gray-600 dark:text-gray-400 italic text-lg">
+                &ldquo;We translate your abstract ideas into precise technical prompts to generate the exact aesthetic your brand requires.&rdquo;
               </p>
-              <p className="mt-3 text-sm text-gray-500 dark:text-gray-500">— Stephen Magare, AI Prompt Engineer</p>
+              <p className="mt-4 text-sm font-semibold text-gray-500">— Maogast Design Team</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* New micro-section: Client Testimonial */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="text-center mb-6">
-            <Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" />
-          </div>
-          <blockquote className="text-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 italic">
-            “The church branding posters Stephen designed for our revival series were stunning. He translated our vision perfectly and delivered ahead of schedule.”
-          </blockquote>
-          <p className="text-center mt-4 text-gray-500 dark:text-gray-400">— Pastor David K., Nairobi</p>
-        </div>
-      </section>
-
-      {/* CTA */}
+      {/* CTA Section */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white">Ready to stand out with AI‑powered visuals?</h2>
+          <h2 className="text-3xl font-bold text-white">Elevate your brand with AI‑powered visuals</h2>
           <p className="mt-4 text-orange-100 max-w-xl mx-auto">
-            Whether it&apos;s a single poster or a full campaign – let&apos;s bring your vision to life.
+            From church posters to product ad mockups – let’s build a visual identity that stands out in the Nairobi market.
           </p>
           <div className="mt-8">
             <Link

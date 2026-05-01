@@ -58,6 +58,7 @@ export async function POST(request: NextRequest) {
     const fromDomain = process.env.FROM_DOMAIN || 'maogastsoftworks.com';
     const fromEmail = `Maogast Softworks <info@${fromDomain}>`;
     const toEmail = process.env.TO_EMAIL || 'maogastdevhub@gmail.com';
+    const websiteUrl = `https://${fromDomain}`;
 
     const messageText = message || 'No message provided';
     const messageHtml = message ? message.replace(/\n/g, '<br/>') : 'No message provided';
@@ -74,17 +75,31 @@ export async function POST(request: NextRequest) {
     `;
     const adminText = `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${messageText}`;
 
-    // 2. Client auto‑reply email
+    // 2. Client auto‑reply email – enhanced
     const clientSubject = `Thank you for your quote request – Maogast Softworks`;
     const clientHtml = `
-      <h2>Hello ${name},</h2>
-      <p>Thank you for reaching out to Maogast Softworks. We have received your request for <strong>${service}</strong>.</p>
-      <p>Our team will review your inquiry and get back to you within 24 hours.</p>
-      <p>In the meantime, feel free to check our website for more information about our services.</p>
-      <br/>
-      <p>Best regards,<br/>The Maogast Softworks Team</p>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #F97316;">Hello ${name},</h2>
+        <p>Thank you for reaching out to <strong>Maogast Softworks</strong>. We have received your request for <strong>${service}</strong>.</p>
+        <p>Our team will review your inquiry and get back to you within <strong>24 hours</strong>.</p>
+        <p>In the meantime, feel free to explore our website to learn more about our services and past projects:</p>
+        <div style="text-align: center; margin: 25px 0;">
+          <a href="${websiteUrl}" style="background-color: #F97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block;">Visit Maogast Softworks →</a>
+        </div>
+        <p>You can also browse specific services directly:</p>
+        <ul>
+          <li><a href="${websiteUrl}/software">Software Development</a></li>
+          <li><a href="${websiteUrl}/printing">Printing & Branding</a></li>
+          <li><a href="${websiteUrl}/ai-design">AI‑Powered Design</a></li>
+          <li><a href="${websiteUrl}/training">Training & Webinars</a></li>
+        </ul>
+        <br/>
+        <p>Best regards,<br/><strong>The Maogast Softworks Team</strong></p>
+        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
+        <p style="font-size: 12px; color: #888;">${websiteUrl} | +254 768 564 533 | info@${fromDomain}</p>
+      </div>
     `;
-    const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will review your inquiry and get back to you within 24 hours.\n\nBest regards,\nThe Maogast Softworks Team`;
+    const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will review your inquiry and get back to you within 24 hours.\n\nIn the meantime, visit our website: ${websiteUrl}\n\nYou can also check our services:\n- Software Development: ${websiteUrl}/software\n- Printing & Branding: ${websiteUrl}/printing\n- AI Design: ${websiteUrl}/ai-design\n- Training: ${websiteUrl}/training\n\nBest regards,\nThe Maogast Softworks Team\n\n${websiteUrl} | +254 768 564 533 | info@${fromDomain}`;
 
     let adminSent = false;
     let clientSent = false;

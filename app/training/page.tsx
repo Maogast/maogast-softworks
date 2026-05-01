@@ -1,22 +1,30 @@
 import Link from 'next/link';
-import { GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star } from 'lucide-react';
+import Script from 'next/script';
+import { 
+  GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, 
+  Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star,
+  ChevronDown
+} from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Training & Webinars – Upskill with Maogast Softworks',
-  description: 'Join our software bootcamp, printing workshop, digital marketing course, or AI design training. Hands‑on projects, certificates, and flexible payment plans.',
+  title: 'Training & Webinars in Nairobi – Upskill with Maogast Softworks',
+  description: 'Join our software bootcamp, printing workshop, digital marketing course, or AI design training in Nairobi. Hands‑on projects, certificates, and flexible payment plans.',
+  alternates: {
+    canonical: 'https://maogastsoftworks.com/training',
+  },
   openGraph: {
-    title: 'Training & Webinars | Maogast Softworks',
-    description: 'Gain industry‑ready skills in software, branding, marketing, and AI design. Real‑world projects and expert instructors.',
-    url: 'https://maogast-softworks.vercel.app/training',
+    title: 'Training & Webinars in Nairobi | Maogast Softworks',
+    description: 'Gain industry‑ready skills in software, branding, marketing, and AI design. Real‑world projects and expert instructors in Kenya.',
+    url: 'https://maogastsoftworks.com/training',
     siteName: 'Maogast Softworks',
-    images: [{ url: 'https://maogast-softworks.vercel.app/og-training.jpg', width: 1200, height: 630 }],
+    images: [{ url: 'https://maogastsoftworks.com/og-training.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Training & Webinars | Maogast Softworks',
+    title: 'Training & Webinars | Maogast Softworks Nairobi',
     description: 'Practical, career‑focused courses – from software development to prompt engineering.',
-    images: ['https://maogast-softworks.vercel.app/og-training.jpg'],
+    images: ['https://maogastsoftworks.com/og-training.jpg'],
   },
 };
 
@@ -90,9 +98,62 @@ const reasons = [
 ];
 
 export default function TrainingPage() {
+  // Breadcrumb schema
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maogastsoftworks.com" },
+      { "@type": "ListItem", "position": 2, "name": "Training & Webinars", "item": "https://maogastsoftworks.com/training" }
+    ]
+  };
+
+  // FAQ schema
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you offer online or in‑person training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We offer both. Our training is hybrid – you can attend physically at our Nairobi centre or join live via Zoom. Recordings are also available for later revision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What certificates do I receive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upon successful completion, you receive a certificate of completion from Maogast Softworks Limited, recognised by various local businesses and churches."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there payment plans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can pay 50% upfront and the remaining 50% halfway through the course. Group discounts and early‑bird offers are also available."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need prior experience for the software bootcamp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Basic computer literacy is enough. The bootcamp starts with fundamentals and builds up to advanced topics. We support beginners."
+        }
+      }
+    ]
+  };
+
   return (
     <>
-      {/* Hero Section – enhanced with grid and fade-ins */}
+      <Script id="training-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <Script id="training-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+      {/* Hero Section – enhanced with Nairobi focus */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -109,7 +170,9 @@ export default function TrainingPage() {
             <Zap className="w-4 h-4 text-orange-400" />
             <span className="text-sm font-medium text-orange-300">Learn from the Experts</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Training & Webinars</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+            Training & Webinars in Nairobi
+          </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             Gain in‑demand skills in software, branding, marketing, and AI design – taught by professionals who work in the industry.
           </p>
@@ -124,7 +187,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Courses Grid – with hover scale and shine effect */}
+      {/* Courses Grid – unchanged */}
       <section id="courses" className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -158,7 +221,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Why Choose Us – with hover lift on cards */}
+      {/* Why Choose Us – unchanged */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -181,7 +244,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* How It Works – replaced numbers with icons */}
+      {/* How It Works – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -206,7 +269,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* New micro-section: Student Testimonial */}
+      {/* Student Testimonial – unchanged */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-6">
@@ -219,7 +282,54 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Upcoming Courses / Webinars – with hover effect */}
+      {/* NEW: FAQ Section (visible + structured) */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-4">
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">Do you offer online or in‑person training?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                We offer both. Our training is hybrid – you can attend physically at our Nairobi centre or join live via Zoom. Recordings are also available for later revision.
+              </p>
+            </details>
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">What certificates do I receive?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                Upon successful completion, you receive a certificate of completion from Maogast Softworks Limited, recognised by various local businesses and churches.
+              </p>
+            </details>
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">Are there payment plans?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                Yes. You can pay 50% upfront and the remaining 50% halfway through the course. Group discounts and early‑bird offers are also available.
+              </p>
+            </details>
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">Do I need prior experience for the software bootcamp?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                Basic computer literacy is enough. The bootcamp starts with fundamentals and builds up to advanced topics. We support beginners.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Webinar – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Next Webinar Starts Soon</h2>
@@ -238,7 +348,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Final CTA – consistent with other pages */}
+      {/* Final CTA – unchanged */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to upskill or start a new career?</h2>

@@ -1,38 +1,77 @@
 import TeamSection from '@/components/TeamSection';
+import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Maogast Softworks – Team, Mission & Values',
-  description: 'We are a registered Kenyan company specialising in software, printing, and AI design. Meet our team and learn what drives us.',
+  title: 'About Maogast Softworks – Software, Printing & AI Design in Nairobi',
+  description: 'We are a registered Kenyan company specialising in software development, premium printing, and AI-powered design. Meet our team and learn what drives us in Nairobi, Kenya.',
+  alternates: {
+    canonical: 'https://maogastsoftworks.com/about',
+  },
   openGraph: {
-    title: 'About Maogast Softworks',
-    description: 'A team of developers, designers, and creatives dedicated to exceptional solutions.',
-    url: 'https://maogast-softworks.vercel.app/about',
+    title: 'About Maogast Softworks | Nairobi, Kenya',
+    description: 'A team of developers, designers, and creatives dedicated to exceptional solutions for Kenyan businesses.',
+    url: 'https://maogastsoftworks.com/about',
     siteName: 'Maogast Softworks',
-    images: [{ url: 'https://maogast-softworks.vercel.app/og-about.jpg', width: 1200, height: 630 }],
+    images: [{ url: 'https://maogastsoftworks.com/og-about.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Maogast Softworks',
-    description: 'Meet the people behind the code, prints, and designs.',
-    images: ['https://maogast-softworks.vercel.app/og-about.jpg'],
+    title: 'About Maogast Softworks | Nairobi',
+    description: 'Meet the people behind the code, prints, and designs in Kenya.',
+    images: ['https://maogastsoftworks.com/og-about.jpg'],
   },
 };
 
 export default function AboutPage() {
+  // Breadcrumb schema
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maogastsoftworks.com" },
+      { "@type": "ListItem", "position": 2, "name": "About", "item": "https://maogastsoftworks.com/about" }
+    ]
+  };
+
+  // Organization schema (optional but good for local SEO)
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Maogast Softworks",
+    "url": "https://maogastsoftworks.com",
+    "logo": "https://maogastsoftworks.com/logo.png",
+    "sameAs": [
+      "https://wa.me/254768564533",
+      "https://twitter.com/maogast",
+      "https://linkedin.com/company/maogast-softworks",
+      "https://instagram.com/maogastsoftworks"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+254768564533",
+      "contactType": "customer service",
+      "areaServed": "KE",
+      "availableLanguage": "English"
+    }
+  };
+
   return (
     <>
-      {/* Hero section – unchanged */}
+      <Script id="about-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+
+      {/* Hero section – updated H1 for local SEO */}
       <section className="py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl font-bold">About Maogast Softworks</h1>
+          <h1 className="text-4xl font-bold">About Maogast Softworks – Based in Nairobi</h1>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
             We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, and AI-powered design.
           </p>
         </div>
       </section>
 
-      {/* New: Our Story section */}
+      {/* Our Story section – unchanged */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
@@ -55,13 +94,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* New: Our Values section */}
+      {/* Our Values section – unchanged */}
       <section className="py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What Drives Us</h2>
             <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Five core principles that guide every project we touch.
+              Six core principles that guide every project we touch.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -87,7 +126,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* New: Why Choose Us – stats bar */}
+      {/* Stats bar – unchanged */}
       <section className="py-16 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -107,10 +146,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Original TeamSection – unchanged */}
+      {/* TeamSection – unchanged */}
       <TeamSection />
 
-      {/* Optional CTA */}
+      {/* Final CTA – unchanged */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 text-center">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Ready to work together?</h3>

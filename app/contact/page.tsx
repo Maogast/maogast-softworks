@@ -1,11 +1,46 @@
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Script from 'next/script';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Contact Us – Software, Printing & AI Design in Nairobi | Maogast Softworks',
+  description: 'Get in touch with Maogast Softworks in Nairobi, Kenya. Call, email, WhatsApp, or visit our office. We’re ready to help with your project.',
+  alternates: {
+    canonical: 'https://maogastsoftworks.com/contact',
+  },
+  openGraph: {
+    title: 'Contact Maogast Softworks | Nairobi, Kenya',
+    description: 'Reach out for software development, printing, branding, AI design, or training inquiries.',
+    url: 'https://maogastsoftworks.com/contact',
+    siteName: 'Maogast Softworks',
+    images: [{ url: 'https://maogastsoftworks.com/og-contact.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Maogast Softworks',
+    description: 'Get in touch with our team in Nairobi, Kenya.',
+    images: ['https://maogastsoftworks.com/og-contact.jpg'],
+  },
+};
 
 export default function ContactPage() {
+  // Breadcrumb schema
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://maogastsoftworks.com" },
+      { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": "https://maogastsoftworks.com/contact" }
+    ]
+  };
+
   return (
     <>
-      {/* Hero Section */}
+      <Script id="contact-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+
+      {/* Hero Section – enhanced H1 */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +53,9 @@ export default function ContactPage() {
           </svg>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Contact Us</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+            Contact Our Nairobi Office
+          </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             Ready to start a project? Have a question? We’d love to hear from you.
           </p>
@@ -27,7 +64,7 @@ export default function ContactPage() {
 
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Contact Info – unchanged */}
           <div className="space-y-6">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
@@ -61,7 +98,7 @@ export default function ContactPage() {
                   <Clock className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition" />
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300">Office Hours</p>
-                    <p className="text-gray-600 dark:text-gray-400">Mon – Fri: 8am – 5pm</p>
+                    <p className="text-gray-600 dark:text-gray-400">Sun – Fri: 8am – 5pm</p>
                   </div>
                 </div>
               </div>
@@ -78,7 +115,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links – unchanged (placeholders) */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center hover:shadow-md transition">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Follow Us</h3>
               <div className="flex justify-center gap-4">
