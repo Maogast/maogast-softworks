@@ -6,6 +6,7 @@ import {
   Star, ChevronDown
 } from 'lucide-react';
 import type { Metadata } from 'next';
+import WhatsAppShareButton from '@/components/WhatsAppShareButton';
 
 export const metadata: Metadata = {
   title: 'Printing & Branding Nairobi – Custom Apparel, Merchandise & Signage | Maogast Softworks',
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
 };
 
 export default function PrintingPage() {
-  // 1. Service Schema (unchanged)
   const printingServiceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -56,7 +56,6 @@ export default function PrintingPage() {
     }
   };
 
-  // 2. Breadcrumb schema for this page
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -66,7 +65,6 @@ export default function PrintingPage() {
     ]
   };
 
-  // 3. FAQ schema (based on visible FAQ below)
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,29 +72,27 @@ export default function PrintingPage() {
       {
         "@type": "Question",
         "name": "What printing methods do you use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity." }
       },
       {
         "@type": "Question",
         "name": "How long does a typical order take?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us." }
       },
       {
         "@type": "Question",
         "name": "Do you deliver outside Nairobi?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi." }
       }
     ]
   };
+
+  const priceTiers = [
+    { range: '1 – 4 (Standard)', discount: '0%', round: 650, polo: 800 },
+    { range: '5 – 10', discount: '5%', round: 617.5, polo: 760 },
+    { range: '11 – 20', discount: '10%', round: 585, polo: 720 },
+    { range: '21 – 300+', discount: '15%', round: 552.5, polo: 680 },
+  ];
 
   return (
     <>
@@ -104,7 +100,7 @@ export default function PrintingPage() {
       <Script id="printing-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="printing-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* Hero Section – localized H1 */}
+      {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -131,14 +127,12 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Products & Services Grid – unchanged */}
+      {/* Products & Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What We Print & Brand</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">
-              From merchandise to storefront signage – everything you need to build a memorable brand in Nairobi.
-            </p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">From merchandise to storefront signage – everything you need to build a memorable brand in Nairobi.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -161,7 +155,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Quality & Equipment Highlights – unchanged */}
+      {/* Quality & Equipment Highlights */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -190,7 +184,40 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Simple Process – unchanged */}
+      {/* T‑Shirt Bulk Pricing Table */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">👕 T‑Shirt Bulk Pricing</h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400">The more you order, the more you save. Prices are per shirt (KES).</p>
+          </div>
+          <div className="overflow-x-auto rounded-xl shadow">
+            <table className="min-w-full bg-white dark:bg-gray-800">
+              <thead>
+                <tr className="bg-orange-600 text-white">
+                  <th className="px-6 py-3 text-left">Quantity</th>
+                  <th className="px-6 py-3 text-left">Discount</th>
+                  <th className="px-6 py-3 text-left">Round Neck (KES)</th>
+                  <th className="px-6 py-3 text-left">Polo (KES)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                {priceTiers.map((tier, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-gray-700/50">
+                    <td className="px-6 py-4 font-medium">{tier.range}</td>
+                    <td className="px-6 py-4">{tier.discount}</td>
+                    <td className="px-6 py-4">{tier.round.toFixed(2)}</td>
+                    <td className="px-6 py-4">{tier.polo.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-gray-500 text-center mt-4">* Prices include design & setup fee. *</p>
+        </div>
+      </section>
+
+      {/* Simple Process */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -216,7 +243,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Client Testimonial – unchanged */}
+      {/* Client Testimonial */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-6"><Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" /></div>
@@ -227,7 +254,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Marketing & Branding Add‑on – unchanged */}
+      {/* Marketing & Branding Add‑on */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beyond Printing – Full Branding Support</h2>
@@ -252,53 +279,43 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* NEW: FAQ Section (visible + structured) */}
+      {/* FAQ Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
             Frequently Asked Questions
           </h2>
           <div className="space-y-4">
-            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
-              <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-semibold text-gray-900 dark:text-white">What printing methods do you use?</span>
-                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
-              </summary>
-              <p className="mt-3 text-gray-600 dark:text-gray-400">
-                We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity.
-              </p>
-            </details>
-            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
-              <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-semibold text-gray-900 dark:text-white">How long does a typical order take?</span>
-                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
-              </summary>
-              <p className="mt-3 text-gray-600 dark:text-gray-400">
-                Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us.
-              </p>
-            </details>
-            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
-              <summary className="flex justify-between items-center cursor-pointer list-none">
-                <span className="font-semibold text-gray-900 dark:text-white">Do you deliver outside Nairobi?</span>
-                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
-              </summary>
-              <p className="mt-3 text-gray-600 dark:text-gray-400">
-                Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi.
-              </p>
-            </details>
+            {[
+              { q: 'What printing methods do you use?', a: 'We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity.' },
+              { q: 'How long does a typical order take?', a: 'Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us.' },
+              { q: 'Do you deliver outside Nairobi?', a: 'Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi.' }
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+                <summary className="flex justify-between items-center cursor-pointer list-none">
+                  <span className="font-semibold text-gray-900 dark:text-white">{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+                </summary>
+                <p className="mt-3 text-gray-600 dark:text-gray-400">{faq.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA – unchanged */}
+      {/* CTA Section with WhatsApp Share Button */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>
           <p className="mt-4 text-orange-100 max-w-xl mx-auto">Let&apos;s discuss your project – whether it&apos;s a single T‑shirt order or a complete shop branding.</p>
-          <div className="mt-8">
-            <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/quote"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
+            >
               Request a Quote
             </Link>
+            <WhatsAppShareButton />
           </div>
         </div>
       </section>
