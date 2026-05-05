@@ -42,6 +42,18 @@ const team = [
       twitter: 'https://twitter.com/johnorechi',
     },
   },
+  {
+    name: 'Peterson Kiiru',
+    role: 'Brand Designer',
+    description: 'Creative brand designer at Pemwaki De Arts, shaping visual identity and creative direction. Skilled in modern design principles and brand strategy, transforming ideas into compelling visuals that resonate with target audiences. Proficient in Adobe Photoshop, Illustrator, InDesign, and Lightroom.',
+    image: '', // No image provided – will show initial letter "P"
+    email: '', // Email not provided – omit or leave empty (email icon won't appear)
+    social: {
+      linkedin: '#',
+      github: '#',
+      twitter: '#',
+    },
+  },
 ];
 
 export default function TeamSection() {
@@ -94,7 +106,7 @@ export default function TeamSection() {
 
                 <div className="flex items-center justify-between mt-4">
                   <div className="flex gap-3">
-                    {member.social.linkedin && (
+                    {member.social.linkedin && member.social.linkedin !== '#' && (
                       <a
                         href={member.social.linkedin}
                         target="_blank"
@@ -105,7 +117,7 @@ export default function TeamSection() {
                         <FaLinkedin className="w-5 h-5" />
                       </a>
                     )}
-                    {member.social.github && (
+                    {member.social.github && member.social.github !== '#' && (
                       <a
                         href={member.social.github}
                         target="_blank"
@@ -116,7 +128,7 @@ export default function TeamSection() {
                         <FaGithub className="w-5 h-5" />
                       </a>
                     )}
-                    {member.social.twitter && (
+                    {member.social.twitter && member.social.twitter !== '#' && (
                       <a
                         href={member.social.twitter}
                         target="_blank"
