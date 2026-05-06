@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { 
   Sparkles, Brain, Church, Image as ImageIcon, FileText, 
-  Palette, Zap, Star, Send, Eye, Edit3, Layout 
+  Palette, Zap, Star, Send, Eye, Edit3, Layout, Gift, Printer, Camera
 } from 'lucide-react';
 
 export default function AIDesignClient() {
@@ -15,6 +15,9 @@ export default function AIDesignClient() {
     { title: 'Event Flyer', img: '/powered_design/event-flyer.webp', category: 'Poster Design' },
     { title: 'Prompt Art', img: '/powered_design/prompt-art.webp', category: 'AI Art' },
     { title: 'Prompt Art 2', img: '/powered_design/prompt-art1.webp', category: 'AI Art' },
+    { title: 'Birthday Gallery Wish', img: '/powered_design/birthday1.webp', category: 'Personalized Design' },
+    { title: 'Birthday Gallery Wish', img: '/powered_design/sylvester.webp', category: 'Personalized Design' },
+    { title: 'Schools Branding', img: '/powered_design/training.webp', category: 'Education Branding' },
   ];
 
   // Service Schema for AI and Design Services
@@ -244,6 +247,62 @@ export default function AIDesignClient() {
               </p>
               <p className="mt-4 text-sm font-semibold text-gray-500">— Maogast Design Team</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: Birthday & Event Keepsakes */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+              <Gift className="w-4 h-4 text-orange-600" />
+              <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Celebrate Life’s Milestones</span>
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Birthday Wishes & Photo Keepsakes</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Turn memories into art. We design custom birthday posters, print them on premium materials, and mount photos for lasting gifts.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 1: Custom Birthday Posters */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+              <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Gift className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Birthday Gallery Posters</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                We design personalized birthday posters – with poetic captions, photo collages, and elegant layouts. Perfect for family and friends.
+              </p>
+            </div>
+            {/* Card 2: High‑Quality Printing */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+              <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Printer className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Premium Print Services</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                We print your custom designs on high‑quality paper, canvas, or fabric using our modern large‑format printer – ready for framing or gifting.
+              </p>
+            </div>
+            {/* Card 3: Photo Mounting */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+              <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Camera className="w-8 h-8 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Photo Mounting & Framing</h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                Preserve your favorite memories with professional photo mounting – we attach photos to durable backings and offer framing options.
+              </p>
+            </div>
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/quote"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition transform hover:scale-105"
+            >
+              Order a Birthday Poster <Gift className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>

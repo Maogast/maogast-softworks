@@ -86,6 +86,8 @@ export default function QuotePage() {
                   <option value="Printing & Branding">Printing & Branding</option>
                   <option value="AI Design">AI‑Powered Design</option>
                   <option value="Training & Webinars">Training & Webinars</option>
+                  <option value="Birthday Gallery Posters & Printing">Birthday Gallery Posters & Printing</option>
+                  <option value="Photo Mounting & Framing">Photo Mounting & Framing</option>
                   <option value="Other">Other / Not sure</option>
                 </select>
               </div>
