@@ -1,6 +1,6 @@
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
@@ -115,10 +115,10 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Social Links – unchanged (placeholders) */}
+            {/* Social Links – updated with TikTok & WhatsApp Channel */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center hover:shadow-md transition">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Follow Us</h3>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-4 flex-wrap">
                 <a
                   href="#"
                   className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
@@ -146,6 +146,24 @@ export default function ContactPage() {
                   aria-label="LinkedIn"
                 >
                   <FaLinkedin className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/@maogast.softworks"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
+                  aria-label="TikTok"
+                >
+                  <FaTiktok className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://whatsapp.com/channel/0029VbD0Mmp60eBnYmHz4p0f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
+                  aria-label="WhatsApp Channel"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
                 </a>
               </div>
             </div>
