@@ -43,6 +43,7 @@ export default function ContactForm() {
       } else {
         setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again.' });
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setStatus({ type: 'error', message: 'Network error. Please try again later.' });
     } finally {
@@ -82,7 +83,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white transition"
-            placeholder="John Doe"
+            placeholder="Sylvester Okeno"
           />
         </div>
 
@@ -118,6 +119,9 @@ export default function ContactForm() {
             <option value="Software Development">Software Development</option>
             <option value="Printing & Branding">Printing & Branding</option>
             <option value="AI Design">AI‑Powered Design</option>
+             <option value="Training & Webinars">Training & Webinars</option>
+            <option value="Birthday Gallery Posters & Printing">Birthday Gallery Posters & Printing</option>
+            <option value="Photo Mounting & Framing">Photo Mounting & Framing</option>
             <option value="Other">Other / Not sure</option>
           </select>
         </div>
