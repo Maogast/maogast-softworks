@@ -11,20 +11,21 @@ import {
   Layout,
   CheckCircle,
   ChevronDown,
+  GraduationCap, // new icon
 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Software Development Nairobi – Custom Web & Mobile Apps | Maogast Softworks",
   description:
-    "Expert software development in Nairobi, Kenya. We specialize in Next.js, React, and Node.js to build scalable enterprise systems and mobile apps for modern businesses.",
+    "Expert software development in Nairobi, Kenya. We specialize in Next.js, React, and Node.js to build scalable enterprise systems, mobile apps, and academic projects for students.",
   alternates: {
     canonical: "https://maogastsoftworks.com/software",
   },
   openGraph: {
     title: "Software Development Services in Nairobi | Maogast Softworks",
     description:
-      "Custom web & mobile apps, cloud integration, and IT consulting tailored for the Kenyan market. Build scalable solutions with Maogast Softworks.",
+      "Custom web & mobile apps, cloud integration, IT consulting, and academic research projects – tailored for the Kenyan market.",
     url: "https://maogastsoftworks.com/software",
     siteName: "Maogast Softworks",
     images: [
@@ -45,12 +46,12 @@ export const metadata: Metadata = {
 };
 
 export default function SoftwarePage() {
-  // 1. Service Structured Data (unchanged)
+  // 1. Service Structured Data (updated with academic offering)
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Software Development Services",
-    serviceType: "Custom Software, Web & Mobile App Development",
+    serviceType: "Custom Software, Web & Mobile App Development, Academic Projects",
     provider: {
       "@type": "LocalBusiness",
       name: "Maogast Softworks",
@@ -68,31 +69,22 @@ export default function SoftwarePage() {
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Application Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Enterprise Resource Planning (ERP) Systems" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Academic & Research Projects" } },
       ],
     },
   };
 
-  // 2. BreadcrumbList schema for this page
+  // 2. BreadcrumbList schema (unchanged)
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://maogastsoftworks.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Software Development",
-        item: "https://maogastsoftworks.com/software",
-      },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://maogastsoftworks.com" },
+      { "@type": "ListItem", position: 2, name: "Software Development", item: "https://maogastsoftworks.com/software" },
     ],
   };
 
-  // 3. FAQ schema (based on the visible FAQ section below)
+  // 3. FAQ schema (added one more Q&A about academic projects)
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -119,6 +111,14 @@ export default function SoftwarePage() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, and cloud platforms like AWS and Vercel.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you help me with my university or postgraduate software project?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely. We assist undergraduate, master's, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support.",
         },
       },
     ],
@@ -160,7 +160,7 @@ export default function SoftwarePage() {
             Software Development in Nairobi
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Empowering Kenyan businesses with custom web & mobile apps, enterprise systems, and IT consulting.
+            Empowering Kenyan businesses, startups, and students with custom web & mobile apps, enterprise systems, and academic research projects.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
@@ -173,7 +173,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Services Grid – unchanged */}
+      {/* Services Grid – added new service card */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -181,7 +181,7 @@ export default function SoftwarePage() {
               What We Build
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              End‑to‑end software solutions for modern businesses.
+              End‑to‑end software solutions for businesses, organizations, and academic researchers.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -215,6 +215,12 @@ export default function SoftwarePage() {
                 icon: <Rocket className="w-8 h-8 text-orange-600" />,
                 title: "IT Consulting",
                 desc: "Technology audits, stack recommendations, and project planning for Nairobi startups.",
+              },
+              // New service: Academic & Research Projects
+              {
+                icon: <GraduationCap className="w-8 h-8 text-orange-600" />,
+                title: "Academic & Research Projects",
+                desc: "Custom software solutions for undergraduate, master's, and PhD students – system design, development, and documentation support.",
               },
             ].map((service, idx) => (
               <div
@@ -341,7 +347,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* NEW: FAQ Section (both visible and structured) */}
+      {/* FAQ Section – added one more visible question */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -373,6 +379,16 @@ export default function SoftwarePage() {
               </summary>
               <p className="mt-3 text-gray-600 dark:text-gray-400">
                 Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, and cloud platforms like AWS and Vercel.
+              </p>
+            </details>
+            {/* New FAQ for academic projects */}
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">Can you help me with my university or postgraduate software project?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                Absolutely. We assist undergraduate, master&apos;s, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support.
               </p>
             </details>
           </div>
