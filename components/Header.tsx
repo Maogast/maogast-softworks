@@ -55,11 +55,17 @@ const NavIcon = ({ name }: { name: string }) => {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const pathname = usePathname();
+
+  const aboutItems = [
+    { name: 'Overview', href: '/about' },
+    { name: 'Our Foundation', href: '/about/our-foundation' },
+  ];
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
+    { name: 'About', href: '/about', hasDropdown: true },
     { name: 'Software', href: '/software' },
     { name: 'Printing', href: '/printing' },
     { name: 'AI Design', href: '/ai-design' },
@@ -68,7 +74,13 @@ export default function Header() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const isActive = (path: string) => pathname === path;
+  // Check if the current path is active for a given link
+  const isActive = (path: string) => {
+    // Exact match OR for About, if path starts with /about
+    if (pathname === path) return true;
+    if (path === '/about' && pathname?.startsWith('/about/')) return true;
+    return false;
+  };
 
   return (
     <>
@@ -91,7 +103,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main header – unchanged */}
+      {/* Main header */}
       <header className="sticky top-0 z-50 bg-white/90 dark:bg-[#0A192F]/90 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -101,10 +113,61 @@ export default function Header() {
               <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
             </Link>
 
-            {/* Desktop Navigation with icons + active highlighting */}
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-1 lg:gap-2">
               {navItems.map((item) => {
                 const active = isActive(item.href);
+                
+                // Special handling for About dropdown
+                if (item.hasDropdown) {
+                  return (
+                    <div key={item.name} className="relative">
+                      <button
+                        onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
+                        onBlur={() => setTimeout(() => setAboutDropdownOpen(false), 200)}
+                        className={`
+                          relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
+                          flex items-center gap-2 cursor-pointer
+                          ${active
+                            ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30'
+                            : 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50'
+                          }
+                        `}
+                      >
+                        <NavIcon name={item.name} />
+                        <span>{item.name}</span>
+                        <svg className={`w-3 h-3 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                        {active && (
+                          <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-orange-500 rounded-full" />
+                        )}
+                      </button>
+
+                      {aboutDropdownOpen && (
+                        <div className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-[#112240] rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 py-1 z-50">
+                          {aboutItems.map((subItem) => {
+                            const subActive = isActive(subItem.href);
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                onClick={() => setAboutDropdownOpen(false)}
+                                className={`
+                                  block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-orange-600 dark:hover:text-orange-400
+                                  ${subActive ? 'bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400' : ''}
+                                `}
+                              >
+                                {subItem.name}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={item.name}
@@ -116,7 +179,6 @@ export default function Header() {
                         ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30'
                         : 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50'
                       }
-                      group
                     `}
                   >
                     <NavIcon name={item.name} />
@@ -142,6 +204,28 @@ export default function Header() {
           {mobileMenuOpen && (
             <nav className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800 space-y-1">
               {navItems.map((item) => {
+                if (item.hasDropdown) {
+                  return (
+                    <div key={item.name}>
+                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200">
+                        <NavIcon name={item.name} />
+                        {item.name}
+                      </div>
+                      <div className="pl-10 space-y-1">
+                        {aboutItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
                 const active = isActive(item.href);
                 return (
                   <Link

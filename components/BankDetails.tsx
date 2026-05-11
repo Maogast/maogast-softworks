@@ -12,7 +12,7 @@ export default function BankDetails() {
       <div className="space-y-3 text-gray-700 dark:text-gray-300">
         <div className="flex justify-between border-b border-gray-100 dark:border-gray-700 pb-2">
           <span className="font-medium">Bank Name:</span>
-          <span>Equity Bank Kenya</span>
+          <span>KCB Bank of Kenya</span>
         </div>
         <div className="flex justify-between border-b border-gray-100 dark:border-gray-700 pb-2">
           <span className="font-medium">Account Name:</span>
@@ -20,7 +20,7 @@ export default function BankDetails() {
         </div>
         <div className="flex justify-between border-b border-gray-100 dark:border-gray-700 pb-2">
           <span className="font-medium">Account Number:</span>
-          <span>1234567890</span>
+          <span>1352136236</span>
         </div>
         <div className="flex justify-between">
           <span className="font-medium">Branch:</span>
