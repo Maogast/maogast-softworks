@@ -16,7 +16,7 @@ export default function BankDetails() {
         </div>
         <div className="flex justify-between border-b border-gray-100 dark:border-gray-700 pb-2">
           <span className="font-medium">Account Name:</span>
-          <span>Maogast Softworks Limited</span>
+          <span>MAOGAST SOFTWORKS LIMITED</span>
         </div>
         <div className="flex justify-between border-b border-gray-100 dark:border-gray-700 pb-2">
           <span className="font-medium">Account Number:</span>
