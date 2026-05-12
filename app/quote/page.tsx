@@ -121,9 +121,9 @@ export default function QuotePage() {
                 If you’re ready to proceed, you can make a deposit via bank transfer. Use the details below:
               </p>
               <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg space-y-2 text-sm">
-                <div className="flex justify-between"><span className="font-medium">Bank:</span><span>Equity Bank Kenya</span></div>
-                <div className="flex justify-between"><span className="font-medium">Account Name:</span><span>Maogast Softworks Limited</span></div>
-                <div className="flex justify-between"><span className="font-medium">Account Number:</span><span>1234567890</span></div>
+                <div className="flex justify-between"><span className="font-medium">Bank:</span><span>KCB Bank of Kenya</span></div>
+                <div className="flex justify-between"><span className="font-medium">Account Name:</span><span>MAOGAST SOFTWORKS LIMITED</span></div>
+                <div className="flex justify-between"><span className="font-medium">Account Number:</span><span>1352136236</span></div>
                 <div className="flex justify-between"><span className="font-medium">Branch:</span><span>Moi Avenue, Nairobi</span></div>
               </div>
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 flex items-center gap-1">
