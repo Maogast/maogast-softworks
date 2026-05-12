@@ -148,7 +148,7 @@ export default function ContactPage() {
                   <FaLinkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://vt.tiktok.com/ZS9bAwstK/"
+                  href="https://vt.tiktok.com/ZS9KyRwBw/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
