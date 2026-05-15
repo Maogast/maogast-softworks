@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Banknote, Landmark, CreditCard } from 'lucide-react';
+import BankDetails from '@/components/BankDetails';
+import MpesaDetails from '@/components/MpesaDetails';
 
 export default function QuotePage() {
   const [step, setStep] = useState<'select' | 'details'>('select');
@@ -84,11 +86,11 @@ export default function QuotePage() {
                   <option value="">Select a service</option>
                   <option value="Software Development">Software Development</option>
                   <option value="Printing & Branding">Printing & Branding</option>
-                  <option value="AI Design">AI‑Powered Design</option>
+                  <option value="AI‑Powered Design">AI‑Powered Design</option>
                   <option value="Training & Webinars">Training & Webinars</option>
                   <option value="Birthday Gallery Posters & Printing">Birthday Gallery Posters & Printing</option>
                   <option value="Photo Mounting & Framing">Photo Mounting & Framing</option>
-                   <option value="Academic & Research Projects">Academic & Research Projects</option>
+                  <option value="Academic & Research Projects">Academic & Research Projects</option>
                   <option value="Other">Other / Not sure</option>
                 </select>
               </div>
@@ -118,15 +120,15 @@ export default function QuotePage() {
                 <Landmark className="w-5 h-5 text-orange-600" /> Payment Information
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                If you’re ready to proceed, you can make a deposit via bank transfer. Use the details below:
+                If you’re ready to proceed, you can make a deposit using either of the methods below:
               </p>
-              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-lg space-y-2 text-sm">
-                <div className="flex justify-between"><span className="font-medium">Bank:</span><span>KCB Bank of Kenya</span></div>
-                <div className="flex justify-between"><span className="font-medium">Account Name:</span><span>MAOGAST SOFTWORKS LIMITED</span></div>
-                <div className="flex justify-between"><span className="font-medium">Account Number:</span><span>1352136236</span></div>
-                <div className="flex justify-between"><span className="font-medium">Branch:</span><span>Moi Avenue, Nairobi</span></div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <BankDetails />
+                <MpesaDetails />
               </div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-3 flex items-center gap-1">
+
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 flex items-center gap-1">
                 <CreditCard className="w-3 h-3" /> A 50% deposit is required to start work. Balance payable upon completion.
               </p>
             </div>
