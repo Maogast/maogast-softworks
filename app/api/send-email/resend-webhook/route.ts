@@ -3,23 +3,30 @@ import { Resend } from 'resend';
 
 export async function POST(request: Request) {
   try {
-    // 1. Parse the webhook payload from Resend
+    // 1. Parse the webhook payload
     const payload = await request.json();
-    console.log('Incoming webhook from Resend:', payload);
+    console.log('✅ Webhook received:', JSON.stringify(payload, null, 2));
 
-    // 2. Extract email data (Resend sends 'email.received' events inside 'data')
-    const emailData = payload.data || payload;
+    // 2. Validate that this is an email.received event
+    if (payload.type !== 'email.received') {
+      console.log(`Ignoring webhook event: ${payload.type}`);
+      return NextResponse.json({ status: 'ignored' });
+    }
+
+    // 3. Extract email data
+    const emailData = payload.data;
     const { from, to, subject, text, html } = emailData;
 
     if (!from || !to) {
-      return NextResponse.json({ error: 'Missing email fields' }, { status: 400 });
+      console.warn('Missing from/to in email data');
+      return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    // 3. Forward the email to your Gmail using Resend's own API
+    // 4. Forward using Resend
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       console.error('RESEND_API_KEY is missing');
-      return NextResponse.json({ error: 'Email service not configured' }, { status: 500 });
+      return NextResponse.json({ error: 'Config missing' }, { status: 500 });
     }
 
     const resend = new Resend(apiKey);
@@ -27,16 +34,16 @@ export async function POST(request: Request) {
 
     await resend.emails.send({
       from: `"Maogast Forwarder" <info@${fromDomain}>`,
-      to: ['maogastdevhub@gmail.com'], // Your personal Gmail
+      to: ['maogastdevhub@gmail.com'],
       subject: `[FORWARDED] ${subject || 'No Subject'}`,
       text: `From: ${from}\nTo: ${to}\n\n${text || '(No text content)'}`,
       html: html ? `<div>From: ${from}<br>To: ${to}<br><br>${html}</div>` : undefined,
     });
 
-    // 4. Acknowledge receipt to Resend
+    console.log('✅ Successfully forwarded to maogastdevhub@gmail.com');
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Webhook error:', error);
-    return NextResponse.json({ error: 'Failed to process webhook' }, { status: 500 });
+    console.error('❌ Webhook error:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

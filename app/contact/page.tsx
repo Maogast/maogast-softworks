@@ -82,7 +82,11 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition" />
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300">Email</p>
-                    <a href="mailto:info@maogastsoftworks.com" className="text-gray-600 dark:text-gray-400 hover:text-orange-600">
+                    {/* UPDATED: Added auto-fill template to mailto link */}
+                    <a
+                      href="mailto:info@maogastsoftworks.com?subject=Project Inquiry - Maogast Softworks&body=Greetings Maogast Softworks,%0A%0AMy Name: [Enter Your Name]%0AService I need: [e.g., Software Development, Printing, AI Design, Training]%0ADetails of my request: [Describe your needs]%0ABudget (Optional): [Enter budget]%0A%0AThank you."
+                      className="text-gray-600 dark:text-gray-400 hover:text-orange-600"
+                    >
                       info@maogastsoftworks.com
                     </a>
                   </div>
@@ -104,8 +108,9 @@ export default function ContactPage() {
               </div>
               <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <p className="font-medium text-gray-700 dark:text-gray-300 mb-2">Quick Chat</p>
+                {/* UPDATED: Added auto-fill message to WhatsApp link */}
                 <a
-                  href="https://wa.me/254768564533"
+                  href="https://wa.me/254768564533?text=Greetings Maogast Softworks, I would like to inquire about your services."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
