@@ -2,8 +2,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { 
   Shirt, Heart, Image as ImageIcon, Flag, BookOpen, 
-  CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown, Users, Calendar, Phone, Mail
+  CheckCircle, Upload, Eye, Truck, ChevronDown, Users, Calendar, Phone, Mail
 } from 'lucide-react';
 import type { Metadata } from 'next';
 import WhatsAppShareButton from '@/components/WhatsAppShareButton';
