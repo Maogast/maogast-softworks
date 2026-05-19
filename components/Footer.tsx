@@ -19,7 +19,6 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-medium text-white">Company</h4>
-            
             <ul className="mt-2 space-y-1 text-sm">
               <li><Link href="/training" className="hover:text-orange-400">Training</Link></li>
               <li><Link href="/about" className="hover:text-orange-400">About</Link></li>
@@ -30,7 +29,13 @@ export default function Footer() {
           <div>
             <h4 className="font-medium text-white">Contact</h4>
             <p className="mt-2 text-sm">📞 +254 768 564 533</p>
-            <p className="text-sm">✉️ info@maogastsoftworks.com</p>
+            {/* UPDATED: Email is now clickable with auto-fill */}
+            <a 
+              href="mailto:info@maogastsoftworks.com?subject=Project Inquiry - Maogast Softworks&body=Greetings Maogast Softworks,%0A%0AMy Name: [Enter Your Name]%0AService I need: [e.g., Software Development, Printing, AI Design, Training]%0ADetails of my request: [Describe your needs]%0ABudget (Optional): [Enter budget]%0A%0AThank you."
+              className="text-sm hover:text-orange-400 transition inline-block mt-1"
+            >
+              ✉️ info@maogastsoftworks.com
+            </a>
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
