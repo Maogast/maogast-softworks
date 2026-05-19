@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown
+  Star, ChevronDown, Heart
 } from 'lucide-react';
 import type { Metadata } from 'next';
 import WhatsAppShareButton from '@/components/WhatsAppShareButton';
@@ -141,14 +141,29 @@ export default function PrintingPage() {
               { icon: <Printer className="w-8 h-8 text-orange-600" />, title: 'Business Stationery', desc: 'Letterheads, envelopes, business cards, and notepads with your logo.' },
               { icon: <Megaphone className="w-8 h-8 text-orange-600" />, title: 'Marketing Collateral', desc: 'Flyers, brochures, posters, banners, and roll‑up stands for advertising.' },
               { icon: <Brush className="w-8 h-8 text-orange-600" />, title: 'Shop & Firm Branding', desc: 'Storefront signage, window decals, vehicle wraps, and interior branding.' },
-              { icon: <Package className="w-8 h-8 text-orange-600" />, title: 'Labels & Packaging', desc: 'Custom stickers, product labels, and branded packaging boxes.' }
+              { icon: <Package className="w-8 h-8 text-orange-600" />, title: 'Labels & Packaging', desc: 'Custom stickers, product labels, and branded packaging boxes.' },
+              { icon: <Heart className="w-8 h-8 text-rose-600" />, title: 'Memorial & Funeral Printing', desc: 'Compassionate, dignified printing for remembrance services – T‑shirts, banners, photo framing, and keepsakes.', link: '/printing/eventuality' }
             ].map((item, idx) => (
               <div key={idx} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
+                {item.link ? (
+                  <Link href={item.link} className="block w-full h-full">
+                    <div className="flex flex-col items-center">
+                      <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
+                        {item.icon}
+                      </div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <>
+                    <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
+                  </>
+                )}
               </div>
             ))}
           </div>
