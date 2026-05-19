@@ -6,7 +6,6 @@ import {
   Star, ChevronDown, Heart
 } from 'lucide-react';
 import type { Metadata } from 'next';
-import WhatsAppShareButton from '@/components/WhatsAppShareButton';
 
 export const metadata: Metadata = {
   title: 'Printing & Branding Nairobi – Custom Apparel, Merchandise & Signage | Maogast Softworks',
@@ -142,17 +141,42 @@ export default function PrintingPage() {
               { icon: <Megaphone className="w-8 h-8 text-orange-600" />, title: 'Marketing Collateral', desc: 'Flyers, brochures, posters, banners, and roll‑up stands for advertising.' },
               { icon: <Brush className="w-8 h-8 text-orange-600" />, title: 'Shop & Firm Branding', desc: 'Storefront signage, window decals, vehicle wraps, and interior branding.' },
               { icon: <Package className="w-8 h-8 text-orange-600" />, title: 'Labels & Packaging', desc: 'Custom stickers, product labels, and branded packaging boxes.' },
-              { icon: <Heart className="w-8 h-8 text-rose-600" />, title: 'Memorial & Funeral Printing', desc: 'Compassionate, dignified printing for remembrance services – T‑shirts, banners, photo framing, and keepsakes.', link: '/printing/eventuality' }
+              { 
+                icon: <Heart className="w-8 h-8 text-rose-600" />, 
+                title: 'Memorial & Funeral Printing', 
+                desc: 'Compassionate, dignified printing for remembrance services – T‑shirts, banners, photo framing, and keepsakes.', 
+                link: '/printing/eventuality',
+                highlight: true
+              }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
+              <div 
+                key={idx} 
+                className={`bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group ${
+                  item.highlight ? 'ring-2 ring-rose-400 dark:ring-rose-500 shadow-md shadow-rose-200/30 dark:shadow-rose-900/20 relative overflow-hidden' : ''
+                }`}
+              >
+                {item.highlight && (
+                  <div className="absolute top-0 right-0 bg-rose-600 text-white text-[10px] uppercase tracking-wider font-bold px-3 py-1 rounded-bl-lg">
+                    New
+                  </div>
+                )}
                 {item.link ? (
                   <Link href={item.link} className="block w-full h-full">
                     <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${
+                        item.highlight 
+                          ? 'bg-rose-100 dark:bg-rose-900/30 group-hover:bg-rose-200 dark:group-hover:bg-rose-900/50' 
+                          : 'bg-orange-100 dark:bg-orange-900/30 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50'
+                      }`}>
                         {item.icon}
                       </div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
                       <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
+                      {item.highlight && (
+                        <span className="mt-3 text-xs font-medium text-rose-600 dark:text-rose-400 inline-flex items-center gap-1">
+                          Learn more →
+                        </span>
+                      )}
                     </div>
                   </Link>
                 ) : (
@@ -318,19 +342,18 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* CTA Section with WhatsApp Share Button */}
+      {/* CTA Section */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>
           <p className="mt-4 text-orange-100 max-w-xl mx-auto">Let&apos;s discuss your project – whether it&apos;s a single T‑shirt order or a complete shop branding.</p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+          <div className="mt-8">
             <Link
               href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
             >
               Request a Quote
             </Link>
-            <WhatsAppShareButton />
           </div>
         </div>
       </section>

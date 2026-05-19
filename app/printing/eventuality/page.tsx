@@ -5,7 +5,6 @@ import {
   CheckCircle, Upload, Eye, Truck, ChevronDown, Users, Calendar, Phone, Mail
 } from 'lucide-react';
 import type { Metadata } from 'next';
-import WhatsAppShareButton from '@/components/WhatsAppShareButton';
 
 export const metadata: Metadata = {
   title: 'Memorial & Funeral Printing Services – T‑Shirts, Banners, Photo Framing | Maogast Softworks',
@@ -240,19 +239,18 @@ export default function EventualityPage() {
         </div>
       </section>
 
-      {/* CTA Section with WhatsApp */}
+      {/* CTA Section */}
       <section className="py-20 bg-rose-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">In the time of grief, let us serve you</h2>
           <p className="mt-4 text-rose-100 max-w-xl mx-auto">We are here to help you honor your loved one with dignity. Reach out anytime – we respond fast.</p>
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+          <div className="mt-8">
             <Link
               href="/quote"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-rose-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
             >
               Request a Quote
             </Link>
-            <WhatsAppShareButton />
           </div>
         </div>
       </section>
