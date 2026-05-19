@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Code, Printer, Sparkles } from 'lucide-react';
+import { Code, Printer, Sparkles, Globe, GraduationCap } from 'lucide-react';
 
 const services = [
   {
@@ -19,6 +19,18 @@ const services = [
     description: 'Poster design, church branding, social media graphics, and prompt engineering.',
     icon: Sparkles,
     link: '/ai-design',
+  },
+  {
+    title: 'Content Management',
+    description: 'Website updates, social media content, blog posts, and strategic digital calendars.',
+    icon: Globe,
+    link: '/content-management',
+  },
+  {
+    title: 'Training & Webinars',
+    description: 'Upskill your team with expert training sessions, webinars, and hands-on tech workshops.',
+    icon: GraduationCap,
+    link: '/training',
   },
 ];
 

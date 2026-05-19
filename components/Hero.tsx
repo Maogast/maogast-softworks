@@ -6,7 +6,13 @@ import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const [serviceIndex, setServiceIndex] = useState(0);
-  const services = ['Software', 'Print', 'AI'];
+  const services = [
+    'Software',
+    'Print',
+    'AI',
+    'Content',
+    'Training',
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,7 +50,7 @@ export default function Hero() {
               </span>
             </h1>
             <p className="mt-4 text-lg text-gray-300 max-w-lg">
-              Custom software, premium printing, and AI‑powered design – under one roof.
+              Custom software, premium printing, AI‑powered design, content strategy, expert training, and a portfolio that proves it — all under one roof.
             </p>
             <div className="mt-8 flex gap-4 items-center">
               <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-orange-500/30">
@@ -64,34 +70,68 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right side – icons with hover */}
-          <div className="flex justify-center gap-8 md:justify-end">
-            <div className="hero-icon bg-white/10 backdrop-blur-sm p-5 rounded-2xl animate-float-3d hover:scale-110 hover:rotate-3 transition-all duration-300">
+          {/* Right side – 6 icons in a 2x3 grid */}
+          <div className="grid grid-cols-3 gap-4 md:gap-6">
+            {/* Software */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-3d hover:scale-110 hover:rotate-3 transition-all duration-300">
               <Image
                 src="/images/code-icon.webp"
                 alt="Software Development"
-                width={120}
-                height={120}
-                className="w-24 h-24 md:w-32 md:h-32 object-contain"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto"
               />
             </div>
-            <div className="hero-icon bg-white/10 backdrop-blur-sm p-5 rounded-2xl animate-float-3d-delayed hover:scale-110 hover:-rotate-3 transition-all duration-300">
+            {/* Print */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-3d-delayed hover:scale-110 hover:-rotate-3 transition-all duration-300">
               <Image
                 src="/images/printing-icon.webp"
                 alt="Printing & Branding"
-                width={120}
-                height={120}
-                className="w-24 h-24 md:w-32 md:h-32 object-contain"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto"
               />
             </div>
-            <div className="hero-icon bg-white/10 backdrop-blur-sm p-5 rounded-2xl animate-glow-pulse hover:scale-110 transition-all duration-300 relative">
+            {/* AI */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-glow-pulse hover:scale-110 transition-all duration-300 relative">
               <div className="absolute inset-0 rounded-2xl bg-orange-500/30 animate-ping pointer-events-none" />
               <Image
                 src="/images/ai-icon.webp"
                 alt="AI Design"
-                width={120}
-                height={120}
-                className="w-24 h-24 md:w-32 md:h-32 object-contain relative z-10"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto relative z-10"
+              />
+            </div>
+
+            {/* Content Management */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
+              <Image
+                src="/images/content-icon.webp" // You can replace with your own icon
+                alt="Content Management"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            {/* Training */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
+              <Image
+                src="/images/training-icon.webp" // You can replace with your own icon
+                alt="Training & Webinars"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            {/* Portfolio */}
+            <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
+              <Image
+                src="/images/portfolio-icon.webp" // You can replace with your own icon
+                alt="Portfolio"
+                width={100}
+                height={100}
+                className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"
               />
             </div>
           </div>
