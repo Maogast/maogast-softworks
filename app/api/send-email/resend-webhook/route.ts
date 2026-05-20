@@ -40,12 +40,13 @@ export async function POST(request: Request) {
       html: html ? `<div>From: ${from}<br>To: ${to}<br><br>${html}</div>` : undefined,
     });
 
-    console.log('✅ Forwarded email ID:', forwardedEmail.id);
+    // ✅ FIX: Access id via data.id
+    const emailId = forwardedEmail.data?.id || 'unknown';
+    console.log('✅ Forwarded email ID:', emailId);
     console.log('✅ Successfully forwarded to maogastdevhub@gmail.com');
 
-    // ✅ Return a valid JSON response with 200 status
     return NextResponse.json(
-      { success: true, forwardedId: forwardedEmail.id },
+      { success: true, forwardedId: emailId },
       { status: 200 }
     );
   } catch (error) {
