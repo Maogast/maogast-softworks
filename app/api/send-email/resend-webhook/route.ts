@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     const resend = new Resend(apiKey);
     const fromDomain = process.env.FROM_DOMAIN || 'maogastsoftworks.com';
 
-    await resend.emails.send({
+    const forwardedEmail = await resend.emails.send({
       from: `"Maogast Forwarder" <info@${fromDomain}>`,
       to: ['maogastdevhub@gmail.com'],
       subject: `[FORWARDED] ${subject || 'No Subject'}`,
@@ -40,10 +40,19 @@ export async function POST(request: Request) {
       html: html ? `<div>From: ${from}<br>To: ${to}<br><br>${html}</div>` : undefined,
     });
 
+    console.log('✅ Forwarded email ID:', forwardedEmail.id);
     console.log('✅ Successfully forwarded to maogastdevhub@gmail.com');
-    return NextResponse.json({ success: true });
+
+    // ✅ Return a valid JSON response with 200 status
+    return NextResponse.json(
+      { success: true, forwardedId: forwardedEmail.id },
+      { status: 200 }
+    );
   } catch (error) {
     console.error('❌ Webhook error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal server error', details: String(error) },
+      { status: 500 }
+    );
   }
 }

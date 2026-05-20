@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown, Heart
+  Star, ChevronDown, Heart, Scissors
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -136,6 +136,7 @@ export default function PrintingPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: <Shirt className="w-8 h-8 text-orange-600" />, title: 'Custom Apparel', desc: 'T‑shirts, hoodies, caps, and uniforms with screen print or heat transfer.' },
+              { icon: <Scissors className="w-8 h-8 text-orange-600" />, title: 'Embroidery Services', desc: 'Professional embroidery for uniforms, caps, jackets, and promotional apparel – adding a touch of elegance to your brand.' },
               { icon: <Coffee className="w-8 h-8 text-orange-600" />, title: 'Promotional Products', desc: 'Mugs, water bottles, pens, bags, keychains – perfect for giveaways and events.' },
               { icon: <Printer className="w-8 h-8 text-orange-600" />, title: 'Business Stationery', desc: 'Letterheads, envelopes, business cards, and notepads with your logo.' },
               { icon: <Megaphone className="w-8 h-8 text-orange-600" />, title: 'Marketing Collateral', desc: 'Flyers, brochures, posters, banners, and roll‑up stands for advertising.' },
