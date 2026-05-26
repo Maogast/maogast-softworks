@@ -75,6 +75,7 @@ export default function Header() {
     { name: 'Printing', href: '/printing' },
     { name: 'AI Design', href: '/ai-design' },
     { name: 'Content Management', href: '/content-management' }, // NEW
+     { name: 'Products', href: '/products' }, // <-- ADD THIS
     { name: 'Training', href: '/training' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
