@@ -79,6 +79,7 @@ export default async function ProductPage({ params }: Props) {
               src={product.image}
               alt={product.name}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-contain"
               priority
             />
