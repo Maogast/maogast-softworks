@@ -6,13 +6,13 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Portfolio – Software, E‑commerce & Branding Projects in Nairobi | Maogast Softworks',
-  description: 'See real projects we’ve delivered in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, and more.',
+  description: 'See real projects we’ve delivered in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, Parkle Hub content management, and more.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/portfolio',
   },
   openGraph: {
     title: 'Maogast Softworks Portfolio – Nairobi Kenya',
-    description: 'Explore our work – from full‑stack applications to custom branding for local and international clients.',
+    description: 'Explore our work – from full‑stack applications and content management to custom branding for local and international clients.',
     url: 'https://maogastsoftworks.com/portfolio',
     siteName: 'Maogast Softworks',
     images: [{ url: 'https://maogastsoftworks.com/og-portfolio.jpg', width: 1200, height: 630 }],
@@ -43,6 +43,17 @@ const projects = [
     demoUrl: 'https://nkmm.co.ke/',
     features: ['Product catalog with filters', 'M‑Pesa Paybill checkout', 'Order tracking & SMS alerts', 'Admin dashboard for inventory'],
     color: 'from-emerald-600 to-teal-700',
+  },
+  
+  // NEW PROJECT: Printing & Branding
+  {
+    title: 'Powerhub Electronics Poster & Branding',
+    description: 'Professional retail poster design and branding materials for an electronics shop in Nairobi. Included product showcase, contact details, and urban aesthetic.',
+    image: '/powered_design/powerhub-poster-example.jpg',
+    tech: ['Poster Design', 'AI Prompt Engineering', 'Print Production'],
+    demoUrl: '#',
+    features: ['Retail poster design', 'Product showcase layout', 'Branding consistency', 'Print-ready files'],
+    color: 'from-orange-600 to-red-700',
   },
 ];
 
@@ -82,7 +93,7 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* Projects Grid – unchanged */}
+        {/* Projects Grid */}
         <div className="container mx-auto px-4 py-16 max-w-7xl">
           <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12">
             {projects.map((project) => (
@@ -138,7 +149,7 @@ export default function PortfolioPage() {
           </div>
         </div>
 
-        {/* Testimonial – unchanged */}
+        {/* Testimonial */}
         <section className="bg-white dark:bg-gray-900 py-12 border-t border-gray-200 dark:border-gray-800">
           <div className="container mx-auto px-4 text-center max-w-2xl">
             <Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500 mb-2" />

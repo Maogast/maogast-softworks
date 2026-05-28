@@ -18,6 +18,15 @@ const projects = [
     demoUrl: 'https://nkmm.co.ke/',
     codeUrl: '#',
   },
+  // NEW PROJECT: Printing & Branding
+  {
+    title: 'Powerhub Electronics Poster & Branding',
+    description: 'Professional retail poster design and branding materials for an electronics shop in Nairobi. Included product showcase, contact details, and urban aesthetic.',
+    image: '/powered_design/powerhub-poster-example.jpg',
+    tech: ['Poster Design', 'AI Prompt Engineering', 'Print Production'],
+    demoUrl: '#',
+    codeUrl: '#',
+  },
 ];
 
 export default function PortfolioSection() {

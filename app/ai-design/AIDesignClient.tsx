@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { 
   Sparkles, Brain, Church, Image as ImageIcon, FileText, 
-  Palette, Zap, Star, Send, Eye, Edit3, Layout, Gift, Printer, Camera
+  Palette, Zap, Star, Send, Eye, Edit3, Layout, Gift, Printer, Camera,
+  Store, Calendar, Megaphone, Users, Info
 } from 'lucide-react';
 
 export default function AIDesignClient() {
@@ -37,6 +38,46 @@ export default function AIDesignClient() {
     },
     "description": "Professional design services utilizing AI prompt engineering for church branding, social media, and marketing materials."
   };
+
+  // Poster Types Data
+  const posterTypes = [
+    {
+      category: "Shop & Retail",
+      description: "Promotional posters for supermarkets, boutiques, and electronics (e.g., the Powerhub example).",
+      priceRange: "Ksh 500 – 800",
+      icon: Store,
+    },
+    {
+      category: "Event & Concert",
+      description: "High-impact posters for birthdays, concerts, weddings, and festivals.",
+      priceRange: "Ksh 700 – 1,200",
+      icon: Calendar,
+    },
+    {
+      category: "Advertisement & Marketing",
+      description: "Eye-catching flyers, brochures, and digital ad visuals for campaigns.",
+      priceRange: "Ksh 500 – 1,000",
+      icon: Megaphone,
+    },
+    {
+      category: "Church & Religious",
+      description: "Respectful and inspiring designs for conferences, retreats, and weekly services.",
+      priceRange: "Ksh 500 – 900",
+      icon: Church,
+    },
+    {
+      category: "Product & Restaurant",
+      description: "Menu posters, product launch visuals, and restaurant branding.",
+      priceRange: "Ksh 600 – 1,200",
+      icon: Users,
+    },
+    {
+      category: "Custom & Premium",
+      description: "Unique, large-format designs for special campaigns or high-end branding.",
+      priceRange: "Ksh 1,000 – 2,500",
+      icon: Star,
+    },
+  ];
 
   return (
     <>
@@ -131,6 +172,108 @@ export default function AIDesignClient() {
                 <p className="text-gray-600 dark:text-gray-400">{service.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Poster & Flyer Design Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+              <Palette className="w-4 h-4 text-orange-600" />
+              <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Poster & Flyer Design</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              Capture Attention with Stunning Posters
+            </h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              From shop promotions and event flyers to church services and marketing ads – we design it all.
+            </p>
+          </div>
+
+          {/* Pricing Table */}
+          <div className="overflow-x-auto bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+            <table className="w-full text-left">
+              <thead className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                <tr>
+                  <th className="px-6 py-4 font-semibold">Category</th>
+                  <th className="px-6 py-4 font-semibold hidden md:table-cell">Description</th>
+                  <th className="px-6 py-4 font-semibold text-right">Price (Ksh)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                {posterTypes.map((poster, index) => (
+                  <tr key={index} className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                    <td className="px-6 py-4 flex items-center gap-3">
+                      <div className="p-2 bg-orange-100 dark:bg-orange-900/30 rounded-lg text-orange-600">
+                        <poster.icon className="w-5 h-5" />
+                      </div>
+                      <span className="font-medium text-gray-900 dark:text-white">{poster.category}</span>
+                    </td>
+                    <td className="px-6 py-4 text-gray-600 dark:text-gray-400 hidden md:table-cell">
+                      {poster.description}
+                    </td>
+                    <td className="px-6 py-4 text-right font-bold text-orange-600">
+                      {poster.priceRange}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center">
+            * Prices are estimates. Final cost depends on complexity, size, and printing requirements.
+          </p>
+
+          {/* Visual Example (Powerhub Poster) */}
+          <div className="mt-16 grid md:grid-cols-2 gap-8 items-center">
+            <div className="order-2 md:order-1">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                A Real Example: Your Powerhub Poster
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                We recently created this highly professional poster for an electronics shop in Nairobi. 
+                It showcases products clearly, includes contact information, and uses a city skyline 
+                background to evoke an urban, trustworthy feel. All for just <strong>Ksh 500</strong>.
+              </p>
+              <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+                <li className="flex items-start gap-2">
+                  <Info className="w-5 h-5 text-orange-600 mt-1" /> 
+                  <span><strong>Type:</strong> Retail Shop Poster (Electronics)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Info className="w-5 h-5 text-orange-600 mt-1" /> 
+                  <span><strong>Size:</strong> A2 / A1 Custom</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Info className="w-5 h-5 text-orange-600 mt-1" /> 
+                  <span><strong>Price:</strong> Ksh 500 (for the design)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Info className="w-5 h-5 text-orange-600 mt-1" /> 
+                  <span><strong>Client:</strong> Powerhub (Electronics Hub – O.J)</span>
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Link
+                  href="/quote"
+                  className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition"
+                >
+                  Request a Poster Design <Sparkles className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+            {/* FIXED: Replaced <img> with Next.js <Image /> */}
+            <div className="order-1 md:order-2 bg-gray-100 dark:bg-gray-700 rounded-xl overflow-hidden shadow-sm">
+              <Image
+                src="/powered_design/powerhub-poster-example.jpg"
+                alt="Powerhub Electronics Poster Example"
+                width={600}
+                height={800}
+                className="w-full h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -251,7 +394,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* NEW SECTION: Birthday & Event Keepsakes */}
+      {/* Birthday & Event Keepsakes */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -265,7 +408,6 @@ export default function AIDesignClient() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Card 1: Custom Birthday Posters */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Gift className="w-8 h-8 text-orange-600" />
@@ -275,7 +417,6 @@ export default function AIDesignClient() {
                 We design personalized birthday posters – with poetic captions, photo collages, and elegant layouts. Perfect for family and friends.
               </p>
             </div>
-            {/* Card 2: High‑Quality Printing */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Printer className="w-8 h-8 text-orange-600" />
@@ -285,7 +426,6 @@ export default function AIDesignClient() {
                 We print your custom designs on high‑quality paper, canvas, or fabric using our modern large‑format printer – ready for framing or gifting.
               </p>
             </div>
-            {/* Card 3: Photo Mounting */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Camera className="w-8 h-8 text-orange-600" />
