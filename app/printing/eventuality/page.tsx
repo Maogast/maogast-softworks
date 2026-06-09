@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { 
   Shirt, Heart, Image as ImageIcon, Flag, BookOpen, 
-  CheckCircle, Upload, Eye, Truck, ChevronDown, Users, Calendar, Phone, Mail
+  CheckCircle, Upload, Eye, Truck, ChevronDown, Users, Calendar, Phone, Mail, MapPin
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -83,11 +83,16 @@ export default function EventualityPage() {
           </svg>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
+          {/* NEW: Location badge */}
+          <div className="inline-flex items-center gap-2 bg-rose-600/20 border border-rose-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
+            <MapPin className="w-4 h-4 text-rose-400" />
+            <span className="text-sm font-medium text-rose-300">📍 Based in Nairobi, Kenya – Serving Families Nationwide</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
-            Memorial & Funeral Printing
+            Memorial & Funeral Printing in Nairobi
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            With compassion and care, we create printed memorial items that honor your loved ones and comfort those who mourn.
+            With compassion and care, we create printed memorial items that honor your loved ones and comfort those who mourn – delivered anywhere in Kenya.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-rose-600 hover:bg-rose-700 transition transform hover:scale-105 hover:shadow-lg">
