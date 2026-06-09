@@ -6,18 +6,25 @@ export default function Footer() {
     <footer className="bg-[#0A192F] text-gray-300 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
-          {/* Column 1: Brand */}
+          {/* Column 1: Brand & Social */}
           <div>
             <h3 className="text-white font-semibold text-lg">Maogast Softworks</h3>
             <p className="mt-2 text-sm">Software, Printing & AI Design</p>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-4 flex gap-4 flex-wrap">
               <a href="https://wa.me/254768564533" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaWhatsapp className="w-5 h-5" />
               </a>
               <a href="https://vt.tiktok.com/ZS9KyRwBw/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaTiktok className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-orange-400 transition">
+              <a href="https://www.facebook.com/share/1CXxFEVetp/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
+                <FaFacebook className="w-5 h-5" />
+              </a>
+              {/* Twitter – link provided */}
+              <a href="https://x.com/MaogastSoftworks" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
+                <FaTwitter className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/maogastsoftworks" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaInstagram className="w-5 h-5" />
               </a>
             </div>
@@ -36,7 +43,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company (Updated with Our Foundation) */}
+          {/* Column 3: Company */}
           <div>
             <h4 className="font-medium text-white">Company</h4>
             <ul className="mt-2 space-y-1 text-sm">

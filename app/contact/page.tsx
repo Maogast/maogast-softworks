@@ -132,21 +132,21 @@ export default function ContactPage() {
                   <FaFacebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.facebook.com/share/1CXxFEVetp/"
                   className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
                   aria-label="Twitter"
                 >
                   <FaTwitter className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/MaogastSoftworks"
                   className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
                   aria-label="Instagram"
                 >
                   <FaInstagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/maogastsoftworks?igsh=MWNsODU2aG8zcjRlYg=="
                   className="w-10 h-10 bg-orange-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white transition"
                   aria-label="LinkedIn"
                 >
