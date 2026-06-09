@@ -112,6 +112,11 @@ export default function PrintingPage() {
           </svg>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
+          {/* NEW: Location badge */}
+          <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
+            <MapPin className="w-4 h-4 text-orange-400" />
+            <span className="text-sm font-medium text-orange-300">📍 Based in Nairobi, Kenya</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
             Printing & Branding in Nairobi
           </h1>
@@ -126,7 +131,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* NEW: Why Choose Maogast for Printing in Nairobi? */}
+      {/* Why Nairobi Businesses Trust Our Printing Services */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -163,7 +168,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Products & Services Grid (unchanged) */}
+      {/* Products & Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -232,7 +237,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Quality & Equipment Highlights (unchanged) */}
+      {/* Quality & Equipment Highlights */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -261,7 +266,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* T‑Shirt Bulk Pricing Table (unchanged) */}
+      {/* T‑Shirt Bulk Pricing Table */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
@@ -294,7 +299,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Simple Process (unchanged) */}
+      {/* Simple Process */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -320,7 +325,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Client Testimonial (unchanged) */}
+      {/* Client Testimonial */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-6"><Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" /></div>
@@ -331,7 +336,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Marketing & Branding Add‑on (unchanged) */}
+      {/* Marketing & Branding Add‑on */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beyond Printing – Full Branding Support</h2>
@@ -356,7 +361,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* FAQ Section (unchanged) */}
+      {/* FAQ Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -380,7 +385,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* CTA Section (unchanged) */}
+      {/* CTA Section */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>
