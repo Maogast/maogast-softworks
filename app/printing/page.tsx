@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown, Heart, Scissors
+  Star, ChevronDown, Heart, Scissors, MapPin
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -126,7 +126,44 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Products & Services Grid */}
+      {/* NEW: Why Choose Maogast for Printing in Nairobi? */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Why Nairobi Businesses Trust Our Printing Services
+            </h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              We combine modern equipment, fast turnaround, and local expertise to deliver branding that stands out across Kenya.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Nairobi‑Based Studio</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Order online or visit our Kasarani studio. Same‑city support and quick pick‑up.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Printer className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Modern Equipment</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Heat press, large‑format printer, plotter cutter – vivid, durable prints every time.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Truck className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Nationwide Delivery</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">We ship across Kenya – from Mombasa to Kisumu – so you get your order wherever you are.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products & Services Grid (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -195,7 +232,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Quality & Equipment Highlights */}
+      {/* Quality & Equipment Highlights (unchanged) */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -224,7 +261,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* T‑Shirt Bulk Pricing Table */}
+      {/* T‑Shirt Bulk Pricing Table (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
@@ -257,7 +294,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Simple Process */}
+      {/* Simple Process (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -283,7 +320,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Client Testimonial */}
+      {/* Client Testimonial (unchanged) */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-6"><Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" /></div>
@@ -294,7 +331,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* Marketing & Branding Add‑on */}
+      {/* Marketing & Branding Add‑on (unchanged) */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beyond Printing – Full Branding Support</h2>
@@ -319,7 +356,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -343,7 +380,7 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section (unchanged) */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>

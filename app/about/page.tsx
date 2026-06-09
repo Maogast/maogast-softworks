@@ -24,7 +24,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  // Breadcrumb schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -34,7 +33,6 @@ export default function AboutPage() {
     ]
   };
 
-  // Organization schema (optional but good for local SEO)
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -61,17 +59,20 @@ export default function AboutPage() {
       <Script id="about-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      {/* Hero section – updated H1 for local SEO */}
+      {/* Hero section – added location badge */}
       <section className="py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-4xl font-bold">About Maogast Softworks – Based in Nairobi</h1>
+          <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+            <span className="text-sm font-medium text-orange-700 dark:text-orange-300">📍 Based in Nairobi, Kenya</span>
+          </div>
+          <h1 className="text-4xl font-bold">About Maogast Softworks</h1>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
             We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, and AI-powered design.
           </p>
         </div>
       </section>
 
-      {/* Our Story section – unchanged */}
+      {/* Our Story section – added Nairobi sentence */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
@@ -80,12 +81,12 @@ export default function AboutPage() {
           </div>
           <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
             <p>
-              Founded in Nairobi, <strong>Maogast Softworks</strong> started with a simple belief: businesses shouldn’t have to juggle multiple vendors for their digital and physical branding needs. 
+              Founded in <strong>Nairobi, Kenya</strong>, <strong>Maogast Softworks</strong> started with a simple belief: businesses shouldn’t have to juggle multiple vendors for their digital and physical branding needs. 
               We bring together <strong>custom software development, premium printing, and AI‑powered design</strong> under one roof – saving you time, money, and headaches.
             </p>
             <p>
               What makes us different? We don’t just build; we partner. From the first wireframe to the final printed t‑shirt, our team stays obsessed with quality, speed, and your unique vision. 
-              Over the years, we’ve helped dozens of startups, churches, and enterprises scale their ideas into reality.
+              Over the years, we’ve helped dozens of startups, churches, and enterprises scale their ideas into reality – right here in Nairobi and across Kenya.
             </p>
             <p className="italic border-l-4 border-orange-500 pl-5 py-2 mt-6 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
               “Your success is our blueprint. Whether it’s code, ink, or imagination – we make it happen.”
@@ -130,37 +131,21 @@ export default function AboutPage() {
       <section className="py-16 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold">50+</div>
-              <div className="mt-2 text-orange-100">Projects Delivered</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold">100%</div>
-              <div className="mt-2 text-orange-100">Client Commitment</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold">24/7</div>
-              <div className="mt-2 text-orange-100">Support & Consultation</div>
-            </div>
+            <div><div className="text-4xl font-bold">50+</div><div className="mt-2 text-orange-100">Projects Delivered</div></div>
+            <div><div className="text-4xl font-bold">100%</div><div className="mt-2 text-orange-100">Client Commitment</div></div>
+            <div><div className="text-4xl font-bold">24/7</div><div className="mt-2 text-orange-100">Support & Consultation</div></div>
           </div>
         </div>
       </section>
 
-      {/* TeamSection – unchanged */}
       <TeamSection />
 
-      {/* Final CTA – unchanged */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 text-center">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Ready to work together?</h3>
           <p className="mt-2 text-gray-600 dark:text-gray-400">Let’s turn your ideas into reality.</p>
           <div className="mt-6">
-            <a
-              href="/quote"
-              className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
-            >
-              Request a Quote →
-            </a>
+            <a href="/quote" className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">Request a Quote →</a>
           </div>
         </div>
       </section>

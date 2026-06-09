@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ExternalLink, CheckCircle, Star } from 'lucide-react';
+import { ExternalLink, CheckCircle, Star, MapPin } from 'lucide-react';
 import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Portfolio – Software, E‑commerce & Branding Projects in Nairobi | Maogast Softworks',
-  description: 'See real projects we’ve delivered in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, Parkle Hub content management, and more.',
+  description: 'See real projects we’ve delivered in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, Powerhub poster design, and more.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/portfolio',
   },
@@ -44,8 +44,6 @@ const projects = [
     features: ['Product catalog with filters', 'M‑Pesa Paybill checkout', 'Order tracking & SMS alerts', 'Admin dashboard for inventory'],
     color: 'from-emerald-600 to-teal-700',
   },
-  
-  // NEW PROJECT: Printing & Branding
   {
     title: 'Powerhub Electronics Poster & Branding',
     description: 'Professional retail poster design and branding materials for an electronics shop in Nairobi. Included product showcase, contact details, and urban aesthetic.',
@@ -58,7 +56,6 @@ const projects = [
 ];
 
 export default function PortfolioPage() {
-  // Breadcrumb schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -88,10 +85,22 @@ export default function PortfolioPage() {
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Our Work</h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-              A collection of projects we’ve built for our clients in Nairobi and beyond – real solutions that deliver real results.
+              A collection of projects we’ve built for our clients in <strong className="text-orange-400">Nairobi and across Kenya</strong> – real solutions that deliver real results.
             </p>
           </div>
         </section>
+
+        {/* NEW: Local value section */}
+        <div className="container mx-auto px-4 pt-8 pb-4 max-w-4xl text-center">
+          <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+            <MapPin className="w-4 h-4 text-orange-600" />
+            <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Proudly Delivered in Nairobi</span>
+          </div>
+          <p className="text-gray-600 dark:text-gray-400">
+            Every project you see here was conceptualized, developed, and supported right here in Kenya – 
+            from inventory systems for local retailers to e‑commerce platforms serving nationwide customers.
+          </p>
+        </div>
 
         {/* Projects Grid */}
         <div className="container mx-auto px-4 py-16 max-w-7xl">
@@ -127,9 +136,15 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                   <div className="mt-8">
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition transform hover:scale-105">
-                      Live Demo <ExternalLink className="w-4 h-4" />
-                    </a>
+                    {project.demoUrl !== '#' ? (
+                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition transform hover:scale-105">
+                        Live Demo <ExternalLink className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-400 text-white rounded-lg cursor-not-allowed">
+                        Coming Soon
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

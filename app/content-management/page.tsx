@@ -12,6 +12,7 @@ import {
   Layout,
   Rocket,
   ChevronDown,
+  MapPin,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -46,7 +47,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContentManagementPage() {
-  // 1. Service Structured Data
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -73,7 +73,6 @@ export default function ContentManagementPage() {
     },
   };
 
-  // 2. BreadcrumbList schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -83,7 +82,6 @@ export default function ContentManagementPage() {
     ],
   };
 
-  // 3. FAQ schema
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -91,56 +89,31 @@ export default function ContentManagementPage() {
       {
         "@type": "Question",
         name: "What is included in content management?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We manage your website updates, blog posts, social media content (daily posts, stories, replies), and provide a content calendar to ensure consistent engagement.",
-        },
+        acceptedAnswer: { "@type": "Answer", text: "We manage your website updates, blog posts, social media content (daily posts, stories, replies), and provide a content calendar to ensure consistent engagement." },
       },
       {
         "@type": "Question",
         name: "Do you handle social media for my business?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. We can manage your Facebook, Instagram, TikTok, LinkedIn, and Twitter accounts – from posting content to engaging with your audience.",
-        },
+        acceptedAnswer: { "@type": "Answer", text: "Yes. We can manage your Facebook, Instagram, TikTok, LinkedIn, and Twitter accounts – from posting content to engaging with your audience." },
       },
       {
         "@type": "Question",
         name: "How much does content management cost in Nairobi?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Our plans start from KSh 10,000 per month for small businesses. We offer custom packages for institutions and larger enterprises. Contact us for a quote.",
-        },
+        acceptedAnswer: { "@type": "Answer", text: "Our plans start from KSh 10,000 per month for small businesses. We offer custom packages for institutions and larger enterprises. Contact us for a quote." },
       },
       {
         "@type": "Question",
         name: "Can you help me update my existing website content?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Absolutely. We can audit your current content, update product listings, fix outdated information, and keep your site fresh for visitors and search engines.",
-        },
+        acceptedAnswer: { "@type": "Answer", text: "Absolutely. We can audit your current content, update product listings, fix outdated information, and keep your site fresh for visitors and search engines." },
       },
     ],
   };
 
   return (
     <>
-      {/* Structured Data Scripts */}
-      <Script
-        id="content-management-service-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
-      <Script
-        id="content-management-breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <Script
-        id="content-management-faq-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <Script id="content-management-service-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <Script id="content-management-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      <Script id="content-management-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
@@ -162,17 +135,51 @@ export default function ContentManagementPage() {
             We manage your online presence so you can run your business. Website updates, social media content, and digital strategy – all in one place.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg"
-            >
+            <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg">
               Get a Content Plan
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* NEW: Why Choose Maogast for Content Management in Nairobi? */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Why Nairobi Businesses Trust Us with Their Content
+            </h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Consistent, high‑quality content builds trust and drives growth. We deliver both – with local expertise.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Local Market Understanding</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">We know the Kenyan audience – culturally relevant content that truly engages.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Globe className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Multi‑Platform Expertise</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">From Facebook to TikTok, we manage all your channels seamlessly.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <BarChart className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Data‑Driven Strategy</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">We track what works, then double down – monthly analytics included.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -235,7 +242,7 @@ export default function ContentManagementPage() {
         </div>
       </section>
 
-      {/* Tools & Platforms */}
+      {/* Tools & Platforms (unchanged) */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -256,7 +263,7 @@ export default function ContentManagementPage() {
         </div>
       </section>
 
-      {/* Our Process */}
+      {/* Our Process (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -282,7 +289,7 @@ export default function ContentManagementPage() {
         </div>
       </section>
 
-      {/* Case Study */}
+      {/* Case Study (unchanged) */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
@@ -309,7 +316,7 @@ export default function ContentManagementPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -356,7 +363,7 @@ export default function ContentManagementPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA (unchanged) */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to grow your audience?</h2>

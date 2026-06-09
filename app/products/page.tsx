@@ -5,21 +5,13 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Our Products | Premium Branding & Gifts | Maogast Softworks',
   description: 'Explore our collection of premium mugs, thermal flasks, executive gift sets, and awards. Perfect for corporate branding, events, and gifting in Nairobi, Kenya.',
-  alternates: {
-    canonical: 'https://maogastsoftworks.com/products',
-  },
+  alternates: { canonical: 'https://maogastsoftworks.com/products' },
   openGraph: {
     title: 'Our Products | Premium Branding & Gifts | Maogast Softworks',
     description: 'Browse our full catalogue of branded mugs, flasks, gift sets, and awards in Nairobi.',
     url: 'https://maogastsoftworks.com/products',
     siteName: 'Maogast Softworks',
-    images: [
-      {
-        url: 'https://maogastsoftworks.com/og-products.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
+    images: [{ url: 'https://maogastsoftworks.com/og-products.jpg', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
@@ -40,16 +32,19 @@ export default function ProductsPage() {
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-        Our Product Catalogue
-      </h1>
+      <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">Our Product Catalogue</h1>
+      
+      {/* NEW: Local value section */}
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <p className="text-lg text-gray-600 dark:text-gray-400">
+          Premium branding and gift items sourced and printed in <strong className="text-orange-600">Nairobi, Kenya</strong>. 
+          Perfect for corporate gifts, events, and promotional giveaways.
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {categories.map((cat) => (
-          <Link
-            key={cat.slug}
-            href={`/products/${cat.slug}`}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all p-8 text-center group"
-          >
+          <Link key={cat.slug} href={`/products/${cat.slug}`} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all p-8 text-center group">
             <div className="text-4xl mb-4">{cat.icon}</div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{cat.name}</h3>
             <p className="text-gray-600 dark:text-gray-400">{cat.count} products</p>

@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { 
   GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, 
   Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star,
-  ChevronDown
+  ChevronDown, MapPin
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -98,7 +98,6 @@ const reasons = [
 ];
 
 export default function TrainingPage() {
-  // Breadcrumb schema
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -108,7 +107,6 @@ export default function TrainingPage() {
     ]
   };
 
-  // FAQ schema
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -116,34 +114,22 @@ export default function TrainingPage() {
       {
         "@type": "Question",
         "name": "Do you offer online or in‑person training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We offer both. Our training is hybrid – you can attend physically at our Nairobi centre or join live via Zoom. Recordings are also available for later revision."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "We offer both. Our training is hybrid – you can attend physically at our Nairobi centre or join live via Zoom. Recordings are also available for later revision." }
       },
       {
         "@type": "Question",
         "name": "What certificates do I receive?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Upon successful completion, you receive a certificate of completion from Maogast Softworks Limited, recognised by various local businesses and churches."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Upon successful completion, you receive a certificate of completion from Maogast Softworks Limited, recognised by various local businesses and churches." }
       },
       {
         "@type": "Question",
         "name": "Are there payment plans?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. You can pay 50% upfront and the remaining 50% halfway through the course. Group discounts and early‑bird offers are also available."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can pay 50% upfront and the remaining 50% halfway through the course. Group discounts and early‑bird offers are also available." }
       },
       {
         "@type": "Question",
         "name": "Do I need prior experience for the software bootcamp?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Basic computer literacy is enough. The bootcamp starts with fundamentals and builds up to advanced topics. We support beginners."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Basic computer literacy is enough. The bootcamp starts with fundamentals and builds up to advanced topics. We support beginners." }
       }
     ]
   };
@@ -153,7 +139,7 @@ export default function TrainingPage() {
       <Script id="training-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="training-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* Hero Section – enhanced with Nairobi focus */}
+      {/* Hero Section */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +173,44 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Courses Grid – unchanged */}
+      {/* NEW: Why Train with Maogast in Nairobi? */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Why Choose Maogast for Your Training in Nairobi?
+            </h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              We don’t just teach theory – we equip you with practical skills that the Kenyan job market urgently needs.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Hybrid Classes in Nairobi</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Attend physically at our centre or join live online – whichever works for you.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Briefcase className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Real Client Projects</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Build a portfolio with actual briefs from local businesses – not fake exercises.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Users className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Industry Expert Trainers</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Learn from professionals who are currently working in tech and design fields.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Courses Grid (unchanged) */}
       <section id="courses" className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -221,7 +244,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Why Choose Us – unchanged */}
+      {/* Why Choose Us (unchanged) */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -244,7 +267,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* How It Works – unchanged */}
+      {/* How It Works (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -269,12 +292,10 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Student Testimonial – unchanged */}
+      {/* Student Testimonial (unchanged) */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-3xl">
-          <div className="text-center mb-6">
-            <Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" />
-          </div>
+          <div className="text-center mb-6"><Star className="w-8 h-8 text-orange-500 mx-auto fill-orange-500" /></div>
           <blockquote className="text-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 italic">
             “The Software Development Bootcamp changed my career. After 7 weeks, I built a full‑stack inventory app and got hired as a junior developer. The mentors are still available for support.”
           </blockquote>
@@ -282,7 +303,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* NEW: FAQ Section (visible + structured) */}
+      {/* FAQ Section (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -329,7 +350,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Upcoming Webinar – unchanged */}
+      {/* Upcoming Webinar (unchanged) */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Next Webinar Starts Soon</h2>
@@ -348,7 +369,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Final CTA – unchanged */}
+      {/* Final CTA (unchanged) */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to upskill or start a new career?</h2>

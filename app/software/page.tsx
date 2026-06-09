@@ -11,7 +11,8 @@ import {
   Layout,
   CheckCircle,
   ChevronDown,
-  GraduationCap, // new icon
+  GraduationCap,
+  MapPin,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -46,7 +47,6 @@ export const metadata: Metadata = {
 };
 
 export default function SoftwarePage() {
-  // 1. Service Structured Data (updated with academic offering)
   const serviceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -74,7 +74,6 @@ export default function SoftwarePage() {
     },
   };
 
-  // 2. BreadcrumbList schema (unchanged)
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -84,7 +83,6 @@ export default function SoftwarePage() {
     ],
   };
 
-  // 3. FAQ schema (added one more Q&A about academic projects)
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -126,7 +124,6 @@ export default function SoftwarePage() {
 
   return (
     <>
-      {/* Structured Data Scripts */}
       <Script
         id="software-service-schema"
         type="application/ld+json"
@@ -143,7 +140,6 @@ export default function SoftwarePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero Section – unchanged */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +169,43 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Services Grid – added new service card */}
+      {/* NEW: Why Choose Local Software Development in Nairobi section */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Why Nairobi Businesses Trust Maogast Softworks
+            </h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              We understand the local market – from M‑Pesa integrations to high‑performance apps for Kenyan retail, logistics, and service industries.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Nairobi‑Based Team</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Same time zone, fast communication, and on‑site meetings when needed.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Code className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Modern Tech Stack</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Next.js, React, Node.js, Supabase – built for performance and scale.</p>
+            </div>
+            <div className="text-center p-5">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Shield className="w-7 h-7 text-orange-600" />
+              </div>
+              <h3 className="text-xl font-semibold">Secure & Compliant</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">Data protection and role‑based access for Kenyan enterprises.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -181,7 +213,7 @@ export default function SoftwarePage() {
               What We Build
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              End‑to‑end software solutions for businesses, organizations, and academic researchers.
+              End‑to‑end software solutions for businesses, organizations, and academic researchers in Nairobi.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -216,7 +248,6 @@ export default function SoftwarePage() {
                 title: "IT Consulting",
                 desc: "Technology audits, stack recommendations, and project planning for Nairobi startups.",
               },
-              // New service: Academic & Research Projects
               {
                 icon: <GraduationCap className="w-8 h-8 text-orange-600" />,
                 title: "Academic & Research Projects",
@@ -242,7 +273,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Tech Stack – unchanged */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -294,7 +324,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Our Process – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -320,7 +349,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Case Study – unchanged */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
@@ -347,7 +375,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* FAQ Section – added one more visible question */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -381,7 +408,6 @@ export default function SoftwarePage() {
                 Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, and cloud platforms like AWS and Vercel.
               </p>
             </details>
-            {/* New FAQ for academic projects */}
             <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
               <summary className="flex justify-between items-center cursor-pointer list-none">
                 <span className="font-semibold text-gray-900 dark:text-white">Can you help me with my university or postgraduate software project?</span>
@@ -395,7 +421,6 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Final CTA – unchanged */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to build your next software project?</h2>
