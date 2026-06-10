@@ -23,7 +23,12 @@ export default function Hero() {
 
   return (
     <section className="bg-[#0A192F] min-h-[90vh] flex items-center relative overflow-hidden">
-      {/* Subtle grid/circuit background (unchanged) */}
+      {/* Visually hidden H1 for SEO (targets primary keyword) */}
+      <h1 className="sr-only">
+        Maogast Softworks – Software Development, Printing & AI Design in Nairobi, Kenya
+      </h1>
+
+      {/* Subtle grid/circuit background */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -43,14 +48,14 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side – text with typewriter */}
           <div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Build. Print. Create.<br />
               <span className="text-orange-500 inline-block border-r-2 border-orange-500 pr-1 animate-blink">
                 — One Partner, All {services[serviceIndex]}.
               </span>
-            </h1>
+            </h2>
             <p className="mt-4 text-lg text-gray-300 max-w-lg">
-              Custom software, premium printing, AI‑powered design, content strategy, expert training, and a portfolio that proves it — all under one roof.
+              Custom software, premium printing, AI‑powered design, content strategy, expert training, and a portfolio that proves it — all under one roof in <strong className="text-orange-400">Nairobi, Kenya</strong>.
             </p>
             <div className="mt-8 flex gap-4 items-center">
               <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-orange-500/30">
@@ -76,7 +81,7 @@ export default function Hero() {
             <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-3d hover:scale-110 hover:rotate-3 transition-all duration-300">
               <Image
                 src="/images/code-icon.webp"
-                alt="Software Development"
+                alt="Software Development in Nairobi"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto"
@@ -86,7 +91,7 @@ export default function Hero() {
             <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl animate-float-3d-delayed hover:scale-110 hover:-rotate-3 transition-all duration-300">
               <Image
                 src="/images/printing-icon.webp"
-                alt="Printing & Branding"
+                alt="Printing & Branding Services"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto"
@@ -97,7 +102,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-2xl bg-orange-500/30 animate-ping pointer-events-none" />
               <Image
                 src="/images/ai-icon.webp"
-                alt="AI Design"
+                alt="AI-Powered Design Kenya"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto relative z-10"
@@ -107,8 +112,8 @@ export default function Hero() {
             {/* Content Management */}
             <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
               <Image
-                src="/images/content-icon.webp" // You can replace with your own icon
-                alt="Content Management"
+                src="/images/content-icon.webp"
+                alt="Content Management Nairobi"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"
@@ -117,8 +122,8 @@ export default function Hero() {
             {/* Training */}
             <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
               <Image
-                src="/images/training-icon.webp" // You can replace with your own icon
-                alt="Training & Webinars"
+                src="/images/training-icon.webp"
+                alt="Tech Training & Webinars Kenya"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"
@@ -127,8 +132,8 @@ export default function Hero() {
             {/* Portfolio */}
             <div className="hero-icon bg-white/10 backdrop-blur-sm p-4 rounded-2xl hover:scale-110 transition-all duration-300">
               <Image
-                src="/images/portfolio-icon.webp" // You can replace with your own icon
-                alt="Portfolio"
+                src="/images/portfolio-icon.webp"
+                alt="Maogast Softworks Portfolio"
                 width={100}
                 height={100}
                 className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto opacity-90 hover:opacity-100 transition-opacity"

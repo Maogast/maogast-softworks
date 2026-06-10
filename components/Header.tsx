@@ -37,6 +37,11 @@ const NavIcon = ({ name }: { name: string }) => {
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
       </svg>
     ),
+    Products: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+      </svg>
+    ),
     Training: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -52,6 +57,11 @@ const NavIcon = ({ name }: { name: string }) => {
     Contact: (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    Blog: (
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
       </svg>
     ),
   };
@@ -74,16 +84,15 @@ export default function Header() {
     { name: 'Software', href: '/software' },
     { name: 'Printing', href: '/printing' },
     { name: 'AI Design', href: '/ai-design' },
-    { name: 'Content Management', href: '/content-management' }, // NEW
-     { name: 'Products', href: '/products' }, // <-- ADD THIS
+    { name: 'Content Management', href: '/content-management' },
+    { name: 'Products', href: '/products' },
     { name: 'Training', href: '/training' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Blog', href: '/blog' },
   ];
 
-  // Check if the current path is active for a given link
   const isActive = (path: string) => {
-    // Exact match OR for About, if path starts with /about
     if (pathname === path) return true;
     if (path === '/about' && pathname?.startsWith('/about/')) return true;
     return false;
@@ -100,7 +109,6 @@ export default function Header() {
             rel="noopener noreferrer"
             className="hover:text-orange-400 transition flex items-center gap-1"
           >
-            {/* WhatsApp icon */}
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.298-.495.099-.198.05-.371-.025-.52-.074-.149-.67-1.614-.918-2.21-.242-.58-.488-.5-.67-.51-.173-.01-.371-.01-.57-.01-.198 0-.52.074-.792.371-.273.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.075 4.487.708.306 1.26.489 1.69.625.71.227 1.357.195 1.868.118.57-.086 1.758-.72 2.006-1.415.247-.695.247-1.29.173-1.414-.074-.124-.272-.198-.57-.347Z" fill="currentColor"/>
               <path d="M12 2C6.477 2 2 6.477 2 12c0 1.98.579 3.827 1.585 5.42L2.5 21.5l4.08-1.085A9.97 9.97 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2Zm0 18c-1.766 0-3.4-.555-4.764-1.5l-.68-.405-2.52.651.674-2.45-.415-.68C3.57 14.59 3 13.34 3 12c0-4.963 4.037-9 9-9s9 4.037 9 9-4.037 9-9 9Z" fill="currentColor"/>
@@ -125,7 +133,6 @@ export default function Header() {
               {navItems.map((item) => {
                 const active = isActive(item.href);
                 
-                // Special handling for About dropdown
                 if (item.hasDropdown) {
                   return (
                     <div key={item.name} className="relative">

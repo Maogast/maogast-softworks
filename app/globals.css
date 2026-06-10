@@ -146,3 +146,40 @@ body {
 .animation-delay-400 {
   animation-delay: 0.4s;
 }
+
+/* ========== BLOG CONTENT STYLES (Tables & Prose) ========== */
+/* Apply to any element with class "prose" (from @tailwindcss/typography) */
+.prose {
+  max-width: 100%;
+}
+
+/* Table styling for markdown tables inside prose */
+.prose table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.prose thead {
+  @apply bg-orange-600 text-white;
+}
+.prose th {
+  @apply px-4 py-3 text-left font-semibold;
+}
+.prose td {
+  @apply px-4 py-3 border-b border-gray-200 dark:border-gray-700;
+}
+.prose tr:last-child td {
+  @apply border-b-0;
+}
+.prose tbody tr:hover {
+  @apply bg-gray-50 dark:bg-gray-800/50 transition-colors;
+}
+
+/* Optional: Add spacing for images inside prose */
+.prose img {
+  @apply rounded-lg shadow-md my-4;
+}

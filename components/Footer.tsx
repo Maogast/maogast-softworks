@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -21,7 +21,7 @@ export default function Footer() {
                 <FaFacebook className="w-5 h-5" />
               </a>
               {/* Twitter – link provided */}
-              <a href="https://x.com/MaogastSoftworks" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
+              <a href="https://x.com/MaogastSoftwork" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaTwitter className="w-5 h-5" />
               </a>
               <a href="https://www.instagram.com/maogastsoftworks" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
@@ -40,6 +40,7 @@ export default function Footer() {
               <li><Link href="/content-management" className="hover:text-orange-400">Content Management</Link></li>
               <li><Link href="/products" className="hover:text-orange-400">Products</Link></li>
               <li><Link href="/training" className="hover:text-orange-400">Training</Link></li>
+              
             </ul>
           </div>
 
@@ -51,6 +52,7 @@ export default function Footer() {
               <li><Link href="/about/our-foundation" className="hover:text-orange-400">Our Foundation</Link></li>
               <li><Link href="/portfolio" className="hover:text-orange-400">Portfolio</Link></li>
               <li><Link href="/contact" className="hover:text-orange-400">Contact</Link></li>
+              <li><Link href="/blog" className="hover:text-orange-400">Blog</Link></li>
             </ul>
           </div>
 
