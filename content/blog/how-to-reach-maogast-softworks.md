@@ -2,7 +2,7 @@
 title: 'Let’s Talk About Your Next Project – How to Reach Maogast Softworks'
 date: '2026-06-09'
 description: 'Get in touch with Maogast Softworks – contact us via WhatsApp, email, phone, or our website. We’re based in Nairobi and ready to help with your software, printing, AI design, training, or content needs.'
-author: 'Dancun @maogast team'
+author: 'Ian Cena'
 image: '/images/blog/contact-us.jpg'
 ---
 

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
-import { Mail } from 'lucide-react'; // keep Mail if needed
+import { Mail } from 'lucide-react';
 
 const team = [
   {
@@ -46,8 +46,17 @@ const team = [
     name: 'Peterson Kiiru',
     role: 'Brand Designer',
     description: 'Creative brand designer at Pemwaki De Arts, shaping visual identity and creative direction. Skilled in modern design principles and brand strategy, transforming ideas into compelling visuals that resonate with target audiences. Proficient in Adobe Photoshop, Illustrator, InDesign, and Lightroom.',
-    image: '', // No image provided – will show initial letter "P"
-    email: '', // Email not provided – omit or leave empty (email icon won't appear)
+    image: '/team/peterson.jpeg',
+    email: '',
+    social: { linkedin: '#', github: '#', twitter: '#' },
+  },
+  // NEW: Ian Cena – Team Lead for Content Management & Branding/Printing
+  {
+    name: 'Ian Cena',
+    role: 'Team Lead – Content Management & Branding',
+    description: 'Strategic lead for content management, digital branding, and print production. Brings a wealth of experience in developing cohesive brand narratives across web, social media, and physical merchandise. Passionate about helping businesses tell their story and ensuring every piece of content – from a blog post to a printed T‑shirt – reflects excellence and consistency.',
+    image: '/team/ian.jpeg',
+    email: 'ian@maogastsoftworks.com',
     social: {
       linkedin: '#',
       github: '#',
@@ -68,7 +77,7 @@ export default function TeamSection() {
             A group of passionate creators building solutions that matter.
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, idx) => (
             <div
               key={member.name}
