@@ -2,7 +2,7 @@
 title: 'The Ultimate Guide to Bulk T‑Shirt Printing in Nairobi: Quality, Pricing & Turnaround'
 date: '2026-06-09'
 description: 'Everything you need to know about bulk T‑shirt printing in Nairobi – prices, turnaround times, and how to get the best quality for your event or brand.'
-author: 'Stephen Magare'
+author: 'Maogast Team'
 image: '/images/blog/bulk-tshirt-printing.jpg'
 ---
 

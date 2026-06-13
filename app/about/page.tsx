@@ -1,6 +1,7 @@
 import TeamSection from '@/components/TeamSection';
 import Script from 'next/script';
 import type { Metadata } from 'next';
+import { Award, Heart, Zap, Eye, Sparkles, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'About Maogast Softworks – Software, Printing & AI Design in Nairobi',
@@ -59,22 +60,59 @@ export default function AboutPage() {
       <Script id="about-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      {/* Hero section – added location badge */}
-      <section className="py-16 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
-            <span className="text-sm font-medium text-orange-700 dark:text-orange-300">📍 Based in Nairobi, Kenya</span>
+      {/* Hero section – added visual illustration */}
+      <section className="py-16 bg-white dark:bg-gray-950 relative overflow-hidden">
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="text-center md:text-left flex-1">
+              <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+                <span className="text-sm font-medium text-orange-700 dark:text-orange-300">📍 Based in Nairobi, Kenya</span>
+              </div>
+              <h1 className="text-4xl font-bold">About Maogast Softworks</h1>
+              <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl">
+                We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, and AI-powered design.
+              </p>
+            </div>
+            {/* Hero Illustration – SVG */}
+            <div className="flex-1 flex justify-center">
+              <div className="relative w-48 h-48 md:w-64 md:h-64 animate-float-3d">
+                <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="100" cy="100" r="90" stroke="#F97316" strokeWidth="2" strokeDasharray="8 8" fill="none" className="opacity-30" />
+                  <circle cx="100" cy="100" r="70" fill="#F97316" fillOpacity="0.1" />
+                  {/* Code symbol */}
+                  <path d="M70 85 L85 100 L70 115" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
+                  <path d="M130 85 L115 100 L130 115" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
+                  {/* Gear / Print symbol */}
+                  <circle cx="100" cy="100" r="15" stroke="#F97316" strokeWidth="3" fill="none" />
+                  <circle cx="100" cy="100" r="8" fill="#F97316" fillOpacity="0.5" />
+                  {/* AI star */}
+                  <path d="M160 60 L165 70 L175 72 L167 80 L170 90 L160 85 L150 90 L153 80 L145 72 L155 70 Z" fill="#F97316" fillOpacity="0.8" />
+                  {/* Cross */}
+                  <path d="M40 60 L50 60 L50 50" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
+                  <path d="M50 50 L50 60 L60 60" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
+                  {/* Camera */}
+                  <rect x="30" y="130" width="24" height="18" rx="3" stroke="#F97316" strokeWidth="2" fill="none" />
+                  <circle cx="42" cy="139" r="5" stroke="#F97316" strokeWidth="2" fill="none" />
+                </svg>
+              </div>
+            </div>
           </div>
-          <h1 className="text-4xl font-bold">About Maogast Softworks</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
-            We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, and AI-powered design.
-          </p>
         </div>
       </section>
 
-      {/* Our Story section – added Nairobi sentence */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4 max-w-4xl">
+      {/* Our Story section – added subtle background pattern */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900 relative">
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="storyPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="2" fill="#F97316" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#storyPattern)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 max-w-4xl relative z-10">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Story</h2>
             <div className="w-16 h-1 bg-orange-500 mx-auto mt-3 rounded-full" />
@@ -95,7 +133,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values section – unchanged */}
+      {/* Our Values section – with distinct icons */}
       <section className="py-16 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
@@ -106,18 +144,16 @@ export default function AboutPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Quality First', desc: 'We never compromise on code, ink, or creativity. Every pixel and print is double‑checked.' },
-              { title: 'Customer Obsession', desc: 'Your goals become our goals. We listen, then deliver solutions that truly fit.' },
-              { title: 'Speed & Agility', desc: 'Tight deadlines? No problem. We work fast without cutting corners.' },
-              { title: 'Transparency', desc: 'Clear pricing, honest timelines, and open communication – always.' },
-              { title: 'Innovation', desc: 'AI, modern frameworks, eco‑friendly inks – we constantly upgrade our tools.' },
-              { title: 'Local Roots, Global Reach', desc: 'Proudly Kenyan, but our work speaks worldwide.' },
-            ].map((value) => (
-              <div key={value.title} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition">
-                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+              { icon: <Award className="w-6 h-6 text-orange-600" />, title: 'Quality First', desc: 'We never compromise on code, ink, or creativity. Every pixel and print is double‑checked.' },
+              { icon: <Heart className="w-6 h-6 text-orange-600" />, title: 'Customer Obsession', desc: 'Your goals become our goals. We listen, then deliver solutions that truly fit.' },
+              { icon: <Zap className="w-6 h-6 text-orange-600" />, title: 'Speed & Agility', desc: 'Tight deadlines? No problem. We work fast without cutting corners.' },
+              { icon: <Eye className="w-6 h-6 text-orange-600" />, title: 'Transparency', desc: 'Clear pricing, honest timelines, and open communication – always.' },
+              { icon: <Sparkles className="w-6 h-6 text-orange-600" />, title: 'Innovation', desc: 'AI, modern frameworks, eco‑friendly inks – we constantly upgrade our tools.' },
+              { icon: <Globe className="w-6 h-6 text-orange-600" />, title: 'Local Roots, Global Reach', desc: 'Proudly Kenyan, but our work speaks worldwide.' },
+            ].map((value, idx) => (
+              <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 duration-300">
+                <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  {value.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{value.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{value.desc}</p>

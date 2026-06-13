@@ -2,7 +2,7 @@
 title: 'Why Your Nairobi Business Needs a Custom Software Solution, Not Off‑the‑Shelf'
 date: '2026-06-09'
 description: 'Learn why off‑the‑shelf software often fails Nairobi businesses and how custom software can transform your operations. Real case studies included.'
-author: 'Stephen Magare'
+author: 'Maogast Team'
 image: '/images/blog/custom-software-nairobi.jpg'
 ---
 

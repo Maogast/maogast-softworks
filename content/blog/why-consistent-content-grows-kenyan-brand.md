@@ -2,7 +2,7 @@
 title: 'Why Consistent Content is the Secret to Growing Your Kenyan Brand (and How We Do It for You)'
 date: '2026-06-09'
 description: 'Learn why consistent website and social media content is essential for Kenyan brands, and how Maogast Softworks can manage it all for you.'
-author: 'Stephen Magare'
+author: 'Maogast Team'
 image: '/images/blog/content-management.jpg'
 ---
 

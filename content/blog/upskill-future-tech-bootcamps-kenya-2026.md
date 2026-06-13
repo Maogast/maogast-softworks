@@ -2,7 +2,7 @@
 title: 'Upskill for the Future: Why Nairobi Professionals Are Joining Tech Bootcamps in 2026'
 date: '2026-06-09'
 description: 'Find out why tech bootcamps are the fastest way to gain practical skills in software, AI design, and digital marketing in Nairobi.'
-author: 'Stephen Magare'
+author: 'Sacalivin Mocha'
 image: '/images/blog/tech-bootcamp.jpg'
 ---
 
