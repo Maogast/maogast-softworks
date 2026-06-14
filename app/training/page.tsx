@@ -3,7 +3,7 @@ import Script from 'next/script';
 import { 
   GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, 
   Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star,
-  ChevronDown, MapPin
+  ChevronDown, MapPin, Download, ThumbsUp, TrendingUp, Calendar
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -173,7 +173,31 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* NEW: Why Train with Maogast in Nairobi? */}
+      {/* NEW: Success Stats Bar */}
+      <section className="py-12 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <div className="text-3xl font-bold text-orange-600">150+</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Students Trained</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600">92%</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Satisfaction Rate</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600">4.9⭐</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Average Rating</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-orange-600">12+</div>
+              <div className="text-sm text-gray-500 dark:text-gray-400">Cohorts Completed</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Train with Maogast in Nairobi? */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -210,7 +234,7 @@ export default function TrainingPage() {
         </div>
       </section>
 
-      {/* Courses Grid (unchanged) */}
+      {/* Courses Grid */}
       <section id="courses" className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -238,13 +262,21 @@ export default function TrainingPage() {
                     <span className="font-bold text-orange-600">{course.price}</span>
                   </div>
                 </div>
+                <div className="px-5 pb-5">
+                  <Link
+                    href="/quote"
+                    className="block text-center text-sm bg-orange-50 dark:bg-orange-900/30 text-orange-600 hover:bg-orange-100 dark:hover:bg-orange-900/50 py-2 rounded-md transition"
+                  >
+                    Enquire Now
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us (unchanged) */}
+      {/* Why Learn with Maogast? (unchanged) */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -289,6 +321,31 @@ export default function TrainingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* NEW: Download Course Brochure */}
+      <section className="py-12 bg-orange-50 dark:bg-orange-950/20">
+        <div className="container mx-auto px-4 text-center">
+          <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+            <Download className="w-4 h-4 text-orange-600" />
+            <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Free Resource</span>
+          </div>
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Download Our Full Course Brochure</h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
+            Get detailed syllabi, instructor profiles, and pricing in one PDF.
+          </p>
+          <div className="mt-4">
+            <a
+              href="/brochure.pdf"
+              className="inline-flex items-center gap-2 px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Download className="w-4 h-4" /> Download Brochure (PDF)
+            </a>
+          </div>
+          <p className="text-xs text-gray-400 mt-2">No email required – instant download</p>
         </div>
       </section>
 
