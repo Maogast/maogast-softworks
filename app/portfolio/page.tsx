@@ -90,7 +90,7 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* NEW: Local value section */}
+        {/* Local value section */}
         <div className="container mx-auto px-4 pt-8 pb-4 max-w-4xl text-center">
           <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
             <MapPin className="w-4 h-4 text-orange-600" />
@@ -108,7 +108,13 @@ export default function PortfolioPage() {
             {projects.map((project) => (
               <div key={project.title} className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                 <div className={`relative h-64 w-full bg-gradient-to-r ${project.color} flex items-center justify-center`}>
-                  <Image src={project.image} alt={project.title} fill className="object-cover mix-blend-overlay opacity-90 group-hover:opacity-100 transition-opacity" />
+                  <Image 
+                    src={project.image} 
+                    alt={project.title} 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover mix-blend-overlay opacity-90 group-hover:opacity-100 transition-opacity" 
+                  />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
                   <div className="relative z-10 text-white text-center p-4">
                     <h2 className="text-2xl font-bold">{project.title}</h2>
