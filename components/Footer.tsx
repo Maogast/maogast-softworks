@@ -10,6 +10,10 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg">Maogast Softworks</h3>
             <p className="mt-2 text-sm">Software, Printing & AI Design</p>
+            {/* ✦ New motto line ✦ */}
+            <p className="mt-1 text-xs text-orange-400/80 flex items-center gap-1">
+              <span className="text-orange-500">✦</span> Built on Code, Grounded in Faith
+            </p>
             <div className="mt-4 flex gap-4 flex-wrap">
               <a href="https://wa.me/254768564533" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaWhatsapp className="w-5 h-5" />
@@ -20,7 +24,6 @@ export default function Footer() {
               <a href="https://www.facebook.com/share/1CXxFEVetp/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaFacebook className="w-5 h-5" />
               </a>
-              {/* Twitter – link provided */}
               <a href="https://x.com/MaogastSoftwork" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
                 <FaTwitter className="w-5 h-5" />
               </a>
@@ -30,7 +33,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Services (Split into two columns) */}
+          {/* Column 2: Services */}
           <div>
             <h4 className="font-medium text-white">Services</h4>
             <ul className="grid grid-cols-2 gap-x-4 mt-2 text-sm">
@@ -40,7 +43,6 @@ export default function Footer() {
               <li><Link href="/content-management" className="hover:text-orange-400">Content Management</Link></li>
               <li><Link href="/products" className="hover:text-orange-400">Products</Link></li>
               <li><Link href="/training" className="hover:text-orange-400">Training</Link></li>
-              
             </ul>
           </div>
 

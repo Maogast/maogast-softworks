@@ -13,20 +13,25 @@ import {
   ChevronDown,
   GraduationCap,
   MapPin,
+  Globe,
+  ShoppingCart,
+  FileText,
+  Wrench,
+  PenTool,
 } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Software Development Nairobi – Custom Web & Mobile Apps | Maogast Softworks",
+  title: "Software Development Nairobi – Custom Web, Mobile & CMS | Maogast Softworks",
   description:
-    "Expert software development in Nairobi, Kenya. We specialize in Next.js, React, and Node.js to build scalable enterprise systems, mobile apps, and academic projects for students.",
+    "Full‑service software development in Nairobi, Kenya. We build custom web apps, mobile apps, CMS (WordPress, Shopify), enterprise systems, and academic projects for students.",
   alternates: {
     canonical: "https://maogastsoftworks.com/software",
   },
   openGraph: {
     title: "Software Development Services in Nairobi | Maogast Softworks",
     description:
-      "Custom web & mobile apps, cloud integration, IT consulting, and academic research projects – tailored for the Kenyan market.",
+      "Custom web & mobile apps, CMS development (WordPress, Shopify), cloud integration, IT consulting, and academic research projects – tailored for the Kenyan market.",
     url: "https://maogastsoftworks.com/software",
     siteName: "Maogast Softworks",
     images: [
@@ -41,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Software Development | Maogast Softworks Nairobi",
     description:
-      "Build fast, secure web and mobile apps with a modern tech stack in Kenya.",
+      "Build fast, secure web and mobile apps with a modern tech stack in Kenya. Plus WordPress, Shopify, and CMS solutions.",
     images: ["https://maogastsoftworks.com/og-software.jpg"],
   },
 };
@@ -51,7 +56,8 @@ export default function SoftwarePage() {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "Software Development Services",
-    serviceType: "Custom Software, Web & Mobile App Development, Academic Projects",
+    serviceType:
+      "Custom Software, Web & Mobile App Development, CMS, E‑commerce, Academic Projects",
     provider: {
       "@type": "LocalBusiness",
       name: "Maogast Softworks",
@@ -68,8 +74,11 @@ export default function SoftwarePage() {
       itemListElement: [
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Application Development" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "CMS Development (WordPress, Shopify)" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Enterprise Resource Planning (ERP) Systems" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Academic & Research Projects" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design & Prototyping" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Software Maintenance & Support" } },
       ],
     },
   };
@@ -108,7 +117,7 @@ export default function SoftwarePage() {
         name: "What technologies do you specialize in?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, and cloud platforms like AWS and Vercel.",
+          text: "Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, WordPress, Shopify, and cloud platforms like AWS and Vercel.",
         },
       },
       {
@@ -117,6 +126,14 @@ export default function SoftwarePage() {
         acceptedAnswer: {
           "@type": "Answer",
           text: "Absolutely. We assist undergraduate, master's, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you build WordPress or Shopify websites?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. We develop custom WordPress themes and plugins, and build Shopify stores with custom integrations. We can also migrate existing sites to modern platforms.",
         },
       },
     ],
@@ -156,7 +173,7 @@ export default function SoftwarePage() {
             Software Development in Nairobi
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Empowering Kenyan businesses, startups, and students with custom web & mobile apps, enterprise systems, and academic research projects.
+            Empowering Kenyan businesses, startups, and students with custom web & mobile apps, CMS solutions, enterprise systems, and academic research projects.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
@@ -169,7 +186,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* NEW: Why Choose Local Software Development in Nairobi section */}
+      {/* Why Choose Local Software Development in Nairobi section */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -177,7 +194,7 @@ export default function SoftwarePage() {
               Why Nairobi Businesses Trust Maogast Softworks
             </h2>
             <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              We understand the local market – from M‑Pesa integrations to high‑performance apps for Kenyan retail, logistics, and service industries.
+              We understand the local market – from M‑Pesa integrations to high‑performance apps, CMS, and e‑commerce for Kenyan businesses.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -206,6 +223,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* Services Grid – expanded with more services */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -220,13 +238,28 @@ export default function SoftwarePage() {
             {[
               {
                 icon: <Code className="w-8 h-8 text-orange-600" />,
-                title: "Web Applications",
+                title: "Custom Web Applications",
                 desc: "Responsive, fast, and scalable web apps using Next.js, React, and modern frameworks.",
               },
               {
                 icon: <MonitorSmartphone className="w-8 h-8 text-orange-600" />,
                 title: "Mobile Apps",
                 desc: "Cross‑platform mobile apps (iOS & Android) built with React Native and Expo.",
+              },
+              {
+                icon: <Globe className="w-8 h-8 text-orange-600" />,
+                title: "CMS & WordPress Development",
+                desc: "Custom WordPress themes, plugins, and headless CMS solutions for blogs, corporate sites, and media platforms.",
+              },
+              {
+                icon: <ShoppingCart className="w-8 h-8 text-orange-600" />,
+                title: "E‑commerce & Shopify Stores",
+                desc: "Full‑featured online stores with Shopify, WooCommerce, and custom checkout integrations – including M‑Pesa Paybill.",
+              },
+              {
+                icon: <FileText className="w-8 h-8 text-orange-600" />,
+                title: "Content Management Systems",
+                desc: "Build custom CMS platforms for managing digital content, news, and media – tailored to your workflow.",
               },
               {
                 icon: <Database className="w-8 h-8 text-orange-600" />,
@@ -253,6 +286,16 @@ export default function SoftwarePage() {
                 title: "Academic & Research Projects",
                 desc: "Custom software solutions for undergraduate, master's, and PhD students – system design, development, and documentation support.",
               },
+              {
+                icon: <PenTool className="w-8 h-8 text-orange-600" />,
+                title: "UI/UX Design & Prototyping",
+                desc: "User‑centred design, wireframing, and interactive prototypes before development begins.",
+              },
+              {
+                icon: <Wrench className="w-8 h-8 text-orange-600" />,
+                title: "Software Maintenance & Support",
+                desc: "Ongoing maintenance, bug fixes, performance optimisation, and 24/7 support for your software systems.",
+              },
             ].map((service, idx) => (
               <div
                 key={idx}
@@ -273,6 +316,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* Technologies We Master – expanded */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -281,6 +325,8 @@ export default function SoftwarePage() {
           <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Modern, battle‑tested tools to deliver high‑quality software.
           </p>
+
+          {/* Frontend & Mobile */}
           <div className="mt-8">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Frontend & Mobile</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -291,6 +337,8 @@ export default function SoftwarePage() {
               ))}
             </div>
           </div>
+
+          {/* Backend & Databases */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Backend & Databases</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -301,6 +349,20 @@ export default function SoftwarePage() {
               ))}
             </div>
           </div>
+
+          {/* CMS & E‑commerce */}
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">CMS & E‑commerce</h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["WordPress", "Shopify", "WooCommerce", "Contentful", "Strapi", "Sanity", "BigCommerce"].map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* DevOps & Cloud */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">DevOps & Cloud</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -311,6 +373,8 @@ export default function SoftwarePage() {
               ))}
             </div>
           </div>
+
+          {/* Other Essentials */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Other Essentials</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -324,6 +388,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* Our Process – unchanged */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -349,6 +414,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* Case Study – unchanged */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-8">
@@ -375,6 +441,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+      {/* FAQ Section – added one more Q&A */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -405,7 +472,7 @@ export default function SoftwarePage() {
                 <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
               </summary>
               <p className="mt-3 text-gray-600 dark:text-gray-400">
-                Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, and cloud platforms like AWS and Vercel.
+                Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, WordPress, Shopify, and cloud platforms like AWS and Vercel.
               </p>
             </details>
             <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
@@ -417,10 +484,20 @@ export default function SoftwarePage() {
                 Absolutely. We assist undergraduate, master&apos;s, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support.
               </p>
             </details>
+            <details className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
+              <summary className="flex justify-between items-center cursor-pointer list-none">
+                <span className="font-semibold text-gray-900 dark:text-white">Do you build WordPress or Shopify websites?</span>
+                <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p className="mt-3 text-gray-600 dark:text-gray-400">
+                Yes. We develop custom WordPress themes and plugins, and build Shopify stores with custom integrations. We can also migrate existing sites to modern platforms.
+              </p>
+            </details>
           </div>
         </div>
       </section>
 
+      {/* Final CTA – unchanged */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to build your next software project?</h2>
