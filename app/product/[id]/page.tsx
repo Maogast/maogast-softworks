@@ -1,3 +1,4 @@
+// app/product/[id]/page.tsx
 import { products } from '@/data/products';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -43,6 +44,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [`${baseUrl}${product.image}`],
     },
   };
+}
+
+// Pre‑render all product pages at build time
+export async function generateStaticParams() {
+  return products.map((product) => ({
+    id: product.id,
+  }));
 }
 
 export default async function ProductPage({ params }: Props) {
