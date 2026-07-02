@@ -46,7 +46,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company */}
+          {/* Column 3: Company (Updated with Terms) */}
           <div>
             <h4 className="font-medium text-white">Company</h4>
             <ul className="mt-2 space-y-1 text-sm">
@@ -55,6 +55,7 @@ export default function Footer() {
               <li><Link href="/portfolio" className="hover:text-orange-400">Portfolio</Link></li>
               <li><Link href="/contact" className="hover:text-orange-400">Contact</Link></li>
               <li><Link href="/blog" className="hover:text-orange-400">Blog</Link></li>
+              <li><Link href="/terms" className="hover:text-orange-400">Terms & Conditions</Link></li>
             </ul>
           </div>
 

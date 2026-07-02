@@ -87,7 +87,9 @@ export default function QuotePage() {
                   <option value="Software Development">Software Development</option>
                   <option value="Printing & Branding">Printing & Branding</option>
                   <option value="AI‑Powered Design">AI‑Powered Design</option>
-                  <option value="Content Management">Content Management</option> {/* NEW */}
+                  <option value="Content Management">Content Management</option>
+                  <option value="3D Signage & Lettering">3D Signage & Lettering (MGST~Works)</option>
+                  <option value="Products (Catalogue & Branding)">Products (Catalogue & Branding)</option>
                   <option value="Training & Webinars">Training & Webinars</option>
                   <option value="Birthday Gallery Posters & Printing">Birthday Gallery Posters & Printing</option>
                   <option value="Photo Mounting & Framing">Photo Mounting & Framing</option>

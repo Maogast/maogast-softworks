@@ -71,6 +71,7 @@ const NavIcon = ({ name }: { name: string }) => {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [printingDropdownOpen, setPrintingDropdownOpen] = useState(false);
   const pathname = usePathname();
 
   const aboutItems = [
@@ -78,11 +79,16 @@ export default function Header() {
     { name: 'Our Foundation', href: '/about/our-foundation' },
   ];
 
+  const printingItems = [
+    { name: 'Overview', href: '/printing' },
+    { name: '3D Signage', href: '/3d-signage' }, // NEW PAGE ADDED HERE
+  ];
+
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about', hasDropdown: true },
     { name: 'Software', href: '/software' },
-    { name: 'Printing', href: '/printing' },
+    { name: 'Printing', href: '/printing', hasDropdown: true }, // UPDATED TO DROPDOWN
     { name: 'AI Design', href: '/ai-design' },
     { name: 'Content Management', href: '/content-management' },
     { name: 'Products', href: '/products' },
@@ -95,12 +101,12 @@ export default function Header() {
   const isActive = (path: string) => {
     if (pathname === path) return true;
     if (path === '/about' && pathname?.startsWith('/about/')) return true;
+    if (path === '/printing' && pathname?.startsWith('/printing/')) return true; // HANDLE PRINTING SUBPATHS
     return false;
   };
 
   return (
     <>
-      {/* Top contact bar – only WhatsApp now */}
       <div className="bg-[#0A192F] text-white text-sm py-2 px-4 border-b border-gray-800">
         <div className="container mx-auto flex justify-end items-center">
           <a
@@ -134,11 +140,15 @@ export default function Header() {
                 const active = isActive(item.href);
                 
                 if (item.hasDropdown) {
+                  const items = item.name === 'About' ? aboutItems : printingItems;
+                  const isOpen = item.name === 'About' ? aboutDropdownOpen : printingDropdownOpen;
+                  const setIsOpen = item.name === 'About' ? setAboutDropdownOpen : setPrintingDropdownOpen;
+
                   return (
                     <div key={item.name} className="relative">
                       <button
-                        onClick={() => setAboutDropdownOpen(!aboutDropdownOpen)}
-                        onBlur={() => setTimeout(() => setAboutDropdownOpen(false), 200)}
+                        onClick={() => setIsOpen(!isOpen)}
+                        onBlur={() => setTimeout(() => setIsOpen(false), 200)}
                         className={`
                           relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
                           flex items-center gap-2 cursor-pointer
@@ -150,7 +160,7 @@ export default function Header() {
                       >
                         <NavIcon name={item.name} />
                         <span>{item.name}</span>
-                        <svg className={`w-3 h-3 transition-transform ${aboutDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                         {active && (
@@ -158,15 +168,15 @@ export default function Header() {
                         )}
                       </button>
 
-                      {aboutDropdownOpen && (
+                      {isOpen && (
                         <div className="absolute top-full left-0 mt-1 w-48 bg-white dark:bg-[#112240] rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 py-1 z-50">
-                          {aboutItems.map((subItem) => {
+                          {items.map((subItem) => {
                             const subActive = isActive(subItem.href);
                             return (
                               <Link
                                 key={subItem.name}
                                 href={subItem.href}
-                                onClick={() => setAboutDropdownOpen(false)}
+                                onClick={() => setIsOpen(false)}
                                 className={`
                                   block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-orange-600 dark:hover:text-orange-400
                                   ${subActive ? 'bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400' : ''}
@@ -219,6 +229,7 @@ export default function Header() {
             <nav className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800 space-y-1">
               {navItems.map((item) => {
                 if (item.hasDropdown) {
+                  const items = item.name === 'About' ? aboutItems : printingItems;
                   return (
                     <div key={item.name}>
                       <div className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200">
@@ -226,7 +237,7 @@ export default function Header() {
                         {item.name}
                       </div>
                       <div className="pl-10 space-y-1">
-                        {aboutItems.map((subItem) => (
+                        {items.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
