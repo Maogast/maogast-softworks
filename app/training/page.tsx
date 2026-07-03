@@ -3,26 +3,25 @@ import Script from 'next/script';
 import { 
   GraduationCap, Briefcase, Users, Award, Clock, CreditCard, Laptop, 
   Palette, Megaphone, Brain, Zap, Target, Send, Eye, FileCheck, Star,
-  ChevronDown, MapPin, Download, ThumbsUp, TrendingUp, Calendar
-} from 'lucide-react';
+  ChevronDown, MapPin, Download} from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Training & Webinars in Nairobi – Upskill with Maogast Softworks',
-  description: 'Join our software bootcamp, printing workshop, digital marketing course, or AI design training in Nairobi. Hands‑on projects, certificates, and flexible payment plans.',
+  title: 'Training & Webinars in Nairobi – Upskill with Mgst (Maogast Softworks)',
+  description: 'Join our software bootcamp, printing workshop, digital marketing course, or AI design training in Nairobi. Hands‑on projects, certificates, and flexible payment plans by Mgst.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/training',
   },
   openGraph: {
-    title: 'Training & Webinars in Nairobi | Maogast Softworks',
+    title: 'Training & Webinars in Nairobi | Mgst Softworks',
     description: 'Gain industry‑ready skills in software, branding, marketing, and AI design. Real‑world projects and expert instructors in Kenya.',
     url: 'https://maogastsoftworks.com/training',
-    siteName: 'Maogast Softworks',
+    siteName: 'Mgst (Maogast Softworks)',
     images: [{ url: 'https://maogastsoftworks.com/og-training.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Training & Webinars | Maogast Softworks Nairobi',
+    title: 'Training & Webinars | Mgst Softworks Nairobi',
     description: 'Practical, career‑focused courses – from software development to prompt engineering.',
     images: ['https://maogastsoftworks.com/og-training.jpg'],
   },

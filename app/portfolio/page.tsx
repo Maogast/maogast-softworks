@@ -5,21 +5,21 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Portfolio – Software, E‑commerce & Branding Projects in Nairobi | Maogast Softworks',
-  description: 'See real projects we’ve delivered in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, Powerhub poster design, and more.',
+  title: 'Portfolio – Software, E‑commerce & Branding Projects in Nairobi | Mgst (Maogast Softworks)',
+  description: 'See real projects delivered by Mgst in Kenya: BrightSpark Electronics inventory system, NK Medical Missionaries e‑commerce, Powerhub poster design, and more.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/portfolio',
   },
   openGraph: {
-    title: 'Maogast Softworks Portfolio – Nairobi Kenya',
+    title: 'Mgst Softworks Portfolio – Nairobi Kenya',
     description: 'Explore our work – from full‑stack applications and content management to custom branding for local and international clients.',
     url: 'https://maogastsoftworks.com/portfolio',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-portfolio.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Maogast Softworks Portfolio',
+    title: 'Mgst Softworks Portfolio',
     description: 'Real‑world projects that showcase our expertise in Nairobi.',
     images: ['https://maogastsoftworks.com/og-portfolio.jpg'],
   },

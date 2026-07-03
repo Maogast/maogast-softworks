@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!categoryName) return { title: 'Category Not Found' };
   
   return {
-    title: `${categoryName} | Premium Branding & Gifts | Maogast Softworks`,
+    title: `${categoryName} | Premium Branding & Gifts | Mgst (Maogast Softworks)`,
     description: `Explore our premium collection of ${categoryName.toLowerCase()}. Perfect for corporate branding, gifts, and events.`,
   };
 }

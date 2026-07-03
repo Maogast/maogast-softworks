@@ -8,26 +8,25 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Printing & Branding Nairobi – Custom Apparel, Merchandise & Signage | Maogast Softworks',
-  description: 'Top-tier printing services in Nairobi, Kenya. We specialize in custom T‑shirts, mugs, banners, business stationery, and shop branding with fast turnaround.',
+  title: 'Printing & Branding Nairobi – Custom Apparel, Merchandise & Signage | Mgst (Maogast Softworks)',
+  description: 'Top-tier printing services in Nairobi, Kenya by Mgst. We specialize in custom T‑shirts, mugs, banners, business stationery, and shop branding with fast turnaround.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/printing',
   },
   openGraph: {
-    title: 'Printing & Branding Services in Nairobi | Maogast Softworks',
-    description: 'From custom T‑shirts to complete storefront branding in Kenya – we bring your brand to life with premium quality.',
+    title: 'Printing & Branding Services in Nairobi | Mgst Softworks',
+    description: 'From custom T‑shirts to complete storefront branding in Kenya – Mgst brings your brand to life with premium quality.',
     url: 'https://maogastsoftworks.com/printing',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-printing.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Custom Printing & Branding Nairobi | Maogast Softworks',
-    description: 'High‑quality custom prints, promotional products, and professional shop branding in Kenya.',
+    title: 'Custom Printing & Branding Nairobi | Mgst Softworks',
+    description: 'High‑quality custom prints, promotional products, and professional shop branding by Mgst in Kenya.',
     images: ['https://maogastsoftworks.com/og-printing.jpg'],
   },
 };
-
 export default function PrintingPage() {
   const printingServiceJsonLd = {
     "@context": "https://schema.org",

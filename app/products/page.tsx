@@ -3,20 +3,20 @@ import { products } from '@/data/products';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Products | Premium Branding & Gifts | Maogast Softworks',
+  title: 'Our Products | Premium Branding & Gifts | Mgst (Maogast Softworks)',
   description: 'Explore our collection of premium mugs, thermal flasks, executive gift sets, and awards. Perfect for corporate branding, events, and gifting in Nairobi, Kenya.',
   alternates: { canonical: 'https://maogastsoftworks.com/products' },
   openGraph: {
-    title: 'Our Products | Premium Branding & Gifts | Maogast Softworks',
+    title: 'Our Products | Premium Branding & Gifts | Mgst Softworks',
     description: 'Browse our full catalogue of branded mugs, flasks, gift sets, and awards in Nairobi.',
     url: 'https://maogastsoftworks.com/products',
-    siteName: 'Maogast Softworks',
+    siteName: 'Mgst (Maogast Softworks)',
     images: [{ url: 'https://maogastsoftworks.com/og-products.jpg', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Products | Maogast Softworks',
+    title: 'Our Products | Mgst Softworks',
     description: 'Premium branding and gifts in Nairobi.',
     images: ['https://maogastsoftworks.com/og-products.jpg'],
   },

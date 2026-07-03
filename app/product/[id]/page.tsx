@@ -22,10 +22,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = 'https://maogastsoftworks.com';
 
   return {
-    title: `${product.name} | Ksh ${product.price.toLocaleString()} | Maogast Softworks`,
+    title: `${product.name} | Ksh ${product.price.toLocaleString()} | Mgst (Maogast Softworks)`,
     description: product.description,
     openGraph: {
-      title: `${product.name} - Ksh ${product.price.toLocaleString()}`,
+      title: `${product.name} - Ksh ${product.price.toLocaleString()} - Mgst Softworks`,
       description: product.description,
       images: [
         {
@@ -34,12 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           height: 630,
         },
       ],
-      siteName: 'Maogast Softworks',
+      siteName: 'Maogast Softworks (MGST~Works)',
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${product.name} - Ksh ${product.price.toLocaleString()}`,
+      title: `${product.name} | Mgst Softworks`,
       description: product.description,
       images: [`${baseUrl}${product.image}`],
     },

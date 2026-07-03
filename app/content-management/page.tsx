@@ -17,18 +17,18 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Content Management Services – Social Media & Website | Maogast Softworks",
+  title: "Content Management Services – Social Media & Website | Mgst (Maogast Softworks)",
   description:
-    "Professional content management for Kenyan businesses. We handle your website updates, social media posts, and digital strategy so you can focus on running your business.",
+    "Professional content management for Kenyan businesses from Mgst. We handle your website updates, social media posts, and digital strategy so you can focus on running your business.",
   alternates: {
     canonical: "https://maogastsoftworks.com/content-management",
   },
   openGraph: {
-    title: "Content Management Services in Nairobi | Maogast Softworks",
+    title: "Content Management Services in Nairobi | Mgst Softworks",
     description:
       "Scale your online presence with expert content management. Daily social media posts, website updates, and content strategy tailored for businesses, institutions, and startups.",
     url: "https://maogastsoftworks.com/content-management",
-    siteName: "Maogast Softworks",
+    siteName: "Maogast Softworks (MGST~Works)",
     images: [
       {
         url: "https://maogastsoftworks.com/og-content-management.jpg",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Content Management | Maogast Softworks Nairobi",
+    title: "Content Management | Mgst (Maogast Softworks)",
     description:
-      "Expert social media & website content management for Kenyan businesses.",
+      "Expert social media & website content management for Kenyan businesses by Mgst.",
     images: ["https://maogastsoftworks.com/og-content-management.jpg"],
   },
 };

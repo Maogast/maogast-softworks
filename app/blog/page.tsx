@@ -4,13 +4,25 @@ import { getAllPosts } from '@/lib/blog';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog – Insights on Software, Printing & AI in Nairobi | Maogast Softworks',
-  description: 'Read articles about custom software development, printing tips, AI design, and business growth – written for the Kenyan market.',
+  title: 'Blog – Insights on Software, Printing & AI in Nairobi | Mgst (Maogast Softworks)',
+  description: 'Read articles about custom software development, printing tips, AI design, and business growth – written for the Kenyan market by the Mgst team.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/blog',
   },
+  openGraph: {
+    title: 'Blog – Insights on Tech & Branding | Mgst Softworks',
+    description: 'Practical insights for Kenyan businesses – from software to printing and AI, shared by the Mgst (Maogast Softworks) team.',
+    url: 'https://maogastsoftworks.com/blog',
+    siteName: 'Maogast Softworks (MGST~Works)',
+    images: [{ url: 'https://maogastsoftworks.com/og-blog.jpg', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Mgst (Maogast Softworks)',
+    description: 'Insights on software, printing, and AI for the Kenyan market.',
+    images: ['https://maogastsoftworks.com/og-blog.jpg'],
+  },
 };
-
 export default async function BlogPage() {
   const posts = getAllPosts();
 

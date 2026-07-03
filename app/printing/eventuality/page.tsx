@@ -7,22 +7,22 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Memorial & Funeral Printing Services – T‑Shirts, Banners, Photo Framing | Maogast Softworks',
-  description: 'Respectful, high-quality printing for memorial services: custom T‑shirts, large banners, photo framing, condolence books, and remembrance cards. Fast turnaround in Nairobi, Kenya.',
+  title: 'Memorial & Funeral Printing Services – T‑Shirts, Banners, Photo Framing | Mgst (Maogast Softworks)',
+  description: 'Respectful, high-quality printing for memorial services by Mgst: custom T‑shirts, large banners, photo framing, condolence books, and remembrance cards. Fast turnaround in Nairobi, Kenya.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/printing/eventuality',
   },
   openGraph: {
-    title: 'Memorial & Funeral Printing Services in Nairobi | Maogast Softworks',
-    description: 'Honor your loved ones with custom memorial T‑shirts, banners, framed photos, and remembrance materials – printed with care and delivered on time.',
+    title: 'Memorial & Funeral Printing Services in Nairobi | Mgst Softworks',
+    description: 'Honor your loved ones with custom memorial T‑shirts, banners, framed photos, and remembrance materials – printed with care by Mgst.',
     url: 'https://maogastsoftworks.com/printing/eventuality',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-eventuality.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Memorial & Funeral Printing | Maogast Softworks',
-    description: 'Custom memorial T‑shirts, banners, photo framing, and condolence books in Kenya.',
+    title: 'Memorial & Funeral Printing | Mgst Softworks',
+    description: 'Custom memorial T‑shirts, banners, photo framing, and condolence books in Kenya by Mgst.',
     images: ['https://maogastsoftworks.com/og-eventuality.jpg'],
   },
 };

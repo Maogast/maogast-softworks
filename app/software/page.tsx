@@ -22,18 +22,18 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Software Development Nairobi – Custom Web, Mobile & CMS | Maogast Softworks",
+  title: "Software Development Nairobi – Custom Web, Mobile & CMS | Mgst (Maogast Softworks)",
   description:
-    "Full‑service software development in Nairobi, Kenya. We build custom web apps, mobile apps, CMS (WordPress, Shopify), enterprise systems, and academic projects for students.",
+    "Full‑service software development in Nairobi, Kenya by Mgst. We build custom web apps, mobile apps, CMS (WordPress, Shopify), enterprise systems, and academic projects for students.",
   alternates: {
     canonical: "https://maogastsoftworks.com/software",
   },
   openGraph: {
-    title: "Software Development Services in Nairobi | Maogast Softworks",
+    title: "Software Development Services in Nairobi | Mgst Softworks",
     description:
       "Custom web & mobile apps, CMS development (WordPress, Shopify), cloud integration, IT consulting, and academic research projects – tailored for the Kenyan market.",
     url: "https://maogastsoftworks.com/software",
-    siteName: "Maogast Softworks",
+    siteName: "Mgst (Maogast Softworks)",
     images: [
       {
         url: "https://maogastsoftworks.com/og-software.jpg",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Software Development | Maogast Softworks Nairobi",
+    title: "Software Development | Mgst Softworks Nairobi",
     description:
       "Build fast, secure web and mobile apps with a modern tech stack in Kenya. Plus WordPress, Shopify, and CMS solutions.",
     images: ["https://maogastsoftworks.com/og-software.jpg"],

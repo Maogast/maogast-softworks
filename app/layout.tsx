@@ -9,11 +9,11 @@ import Script from 'next/script';
 export const metadata: Metadata = {
   metadataBase: new URL('https://maogastsoftworks.com'),
   title: {
-    default: 'Maogast Softworks – Software, Printing & AI Design in Nairobi',
-    template: '%s | Maogast Softworks'
+    default: 'Mgst (Maogast Softworks) – Software, Printing & AI Design in Nairobi',
+    template: '%s | Mgst (Maogast Softworks)'
   },
-  description: 'Premier software development, high-quality printing, and AI-driven design services in Nairobi, Kenya. We build scalable digital solutions for modern businesses.',
-  keywords: ['Software Development Nairobi', 'Printing Services Kenya', 'AI Design Nairobi', 'Next.js Developer Kenya', 'Maogast Softworks'],
+  description: 'Premier software development, high-quality printing, and AI-driven design services in Nairobi, Kenya. Mgst builds scalable digital solutions for modern businesses.',
+  keywords: ['Mgst', 'Software Development Nairobi', 'Printing Services Kenya', 'AI Design Nairobi', 'Next.js Developer Kenya', 'Maogast Softworks'],
   alternates: {
     canonical: '/',
   },
@@ -35,11 +35,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // 1. Local Business Schema (updated with real data)
+  // 1. Local Business Schema (updated with Mgst branding)
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    'name': 'Maogast Softworks',
+    'name': 'Mgst (Maogast Softworks)',
     'image': 'https://maogastsoftworks.com/og-image.jpg',
     '@id': 'https://maogastsoftworks.com',
     'url': 'https://maogastsoftworks.com',
@@ -82,8 +82,6 @@ export default function RootLayout({
         'name': 'Home',
         'item': 'https://maogastsoftworks.com'
       }
-      // More items will be added dynamically on page‑level
-      // But this provides a fallback for the homepage
     ]
   };
 

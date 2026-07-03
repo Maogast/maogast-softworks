@@ -5,26 +5,25 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Us – Software, Printing & AI Design in Nairobi | Maogast Softworks',
-  description: 'Get in touch with Maogast Softworks in Nairobi, Kenya. Call, email, WhatsApp, or visit our office. We’re ready to help with your project.',
+  title: 'Contact Mgst – Software, Printing & AI Design in Nairobi',
+  description: 'Contact Mgst (Maogast Softworks) at info@maogastsoftworks.com or +254 768 564 533. Visit our office in Nairobi, Kenya. We offer custom software, printing, AI design, and content management.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/contact',
   },
   openGraph: {
-    title: 'Contact Maogast Softworks | Nairobi, Kenya',
-    description: 'Reach out for software development, printing, branding, AI design, or training inquiries.',
+    title: 'Contact Mgst (Maogast Softworks) | Nairobi, Kenya',
+    description: 'Reach out for software development, printing, branding, AI design, or training inquiries. We are located in Nairobi, Kenya.',
     url: 'https://maogastsoftworks.com/contact',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-contact.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Maogast Softworks',
-    description: 'Get in touch with our team in Nairobi, Kenya.',
+    title: 'Contact Mgst Softworks',
+    description: 'Get in touch with our team in Nairobi, Kenya for all your software and branding needs.',
     images: ['https://maogastsoftworks.com/og-contact.jpg'],
   },
 };
-
 export default function ContactPage() {
   // Breadcrumb schema
   const breadcrumbJsonLd = {

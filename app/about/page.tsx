@@ -4,26 +4,25 @@ import type { Metadata } from 'next';
 import { Award, Heart, Zap, Eye, Sparkles, Globe } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Maogast Softworks – Software, Printing & AI Design in Nairobi',
-  description: 'We are a registered Kenyan company specialising in software development, premium printing, and AI-powered design. Meet our team and learn what drives us in Nairobi, Kenya.',
+  title: 'About Mgst (Maogast Softworks) – Software, Printing & AI Design in Nairobi',
+  description: 'Meet Mgst (Maogast Softworks), a registered Kenyan company in Nairobi specializing in custom software, premium printing, and AI-powered design. We are a team of developers and creatives dedicated to helping Kenyan businesses grow.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/about',
   },
   openGraph: {
-    title: 'About Maogast Softworks | Nairobi, Kenya',
-    description: 'A team of developers, designers, and creatives dedicated to exceptional solutions for Kenyan businesses.',
+    title: 'About Mgst (Maogast Softworks) | Nairobi, Kenya',
+    description: 'A Kenyan team of developers, designers, and creatives dedicated to exceptional software, printing, and AI solutions for local businesses.',
     url: 'https://maogastsoftworks.com/about',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-about.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Maogast Softworks | Nairobi',
-    description: 'Meet the people behind the code, prints, and designs in Kenya.',
+    title: 'About Mgst | Maogast Softworks Nairobi',
+    description: 'Meet the local team behind the code, prints, and AI-powered designs in Kenya.',
     images: ['https://maogastsoftworks.com/og-about.jpg'],
   },
 };
-
 export default function AboutPage() {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

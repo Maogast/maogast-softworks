@@ -3,22 +3,22 @@ import Script from 'next/script';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Foundation – Built on Code, Grounded in Faith | Maogast Softworks',
-  description: 'Learn about the motto, vision, mission, and values that drive Maogast Softworks: Code, Faith, Innovation, and Community. We are grounded in Nairobi, Kenya.',
+  title: 'Our Foundation – Built on Code, Grounded in Faith | Mgst (Maogast Softworks)',
+  description: 'Discover the motto, vision, mission, and values driving Mgst (Maogast Softworks) in Nairobi, Kenya: Code, Faith, Innovation, and Community. We are grounded in faith and built for the future.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/about/our-foundation',
   },
   openGraph: {
-    title: 'Our Foundation | Built on Code, Grounded in Faith',
-    description: 'Discover the 4 pillars of Maogast Softworks: Code, Faith, Innovation, and Community.',
+    title: 'Our Foundation | Built on Code, Grounded in Faith | Mgst',
+    description: 'Discover the 4 pillars of Mgst Softworks: Code, Faith, Innovation, and Community. Serving Kenya with purpose.',
     url: 'https://maogastsoftworks.com/about/our-foundation',
-    siteName: 'Maogast Softworks',
+    siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-our-foundation.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Foundation – Built on Code, Grounded in Faith',
-    description: 'The heart of Maogast Softworks: Vision, Mission, and Values.',
+    title: 'Our Foundation – Built on Code, Grounded in Faith | Mgst',
+    description: 'The heart of Mgst (Maogast Softworks): Vision, Mission, and Values grounded in Nairobi.',
     images: ['https://maogastsoftworks.com/og-our-foundation.jpg'],
   },
 };
