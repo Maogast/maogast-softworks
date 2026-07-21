@@ -3,19 +3,19 @@ import Script from 'next/script';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown, Heart, Scissors, MapPin
+  Star, ChevronDown, Heart, Scissors, MapPin, ImageIcon
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Printing & Branding Nairobi – Custom Apparel, Merchandise & Signage | Mgst (Maogast Softworks)',
-  description: 'Top-tier printing services in Nairobi, Kenya by Mgst. We specialize in custom T‑shirts, mugs, banners, business stationery, and shop branding with fast turnaround.',
+  title: 'Printing & Branding Nairobi – Custom Apparel, Large Format Canvases & Signage | Mgst (Maogast Softworks)',
+  description: 'Top-tier printing services in Nairobi, Kenya by Mgst. We specialize in custom T‑shirts, mugs, large format event canvases, banners, business stationery, and shop branding with fast turnaround.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/printing',
   },
   openGraph: {
     title: 'Printing & Branding Services in Nairobi | Mgst Softworks',
-    description: 'From custom T‑shirts to complete storefront branding in Kenya – Mgst brings your brand to life with premium quality.',
+    description: 'From custom T‑shirts to large format event canvases and complete storefront branding in Kenya – Mgst brings your brand to life with premium quality.',
     url: 'https://maogastsoftworks.com/printing',
     siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-printing.jpg', width: 1200, height: 630 }],
@@ -23,16 +23,17 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Custom Printing & Branding Nairobi | Mgst Softworks',
-    description: 'High‑quality custom prints, promotional products, and professional shop branding by Mgst in Kenya.',
+    description: 'High‑quality custom prints, large format banners, promotional products, and professional shop branding by Mgst in Kenya.',
     images: ['https://maogastsoftworks.com/og-printing.jpg'],
   },
 };
+
 export default function PrintingPage() {
   const printingServiceJsonLd = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Printing and Branding Services",
-    "serviceType": "Custom Merchandise and Signage",
+    "serviceType": "Custom Merchandise, Large Format Signage, and Event Branding",
     "provider": {
       "@type": "LocalBusiness",
       "name": "Maogast Softworks",
@@ -49,7 +50,8 @@ export default function PrintingPage() {
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Apparel Printing" } },
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Merchandise Branding" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large Format Banner Printing" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large Format Banner & Canvas Printing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Signage & Camp Meeting Canvases" } }
       ]
     }
   };
@@ -71,6 +73,11 @@ export default function PrintingPage() {
         "@type": "Question",
         "name": "What printing methods do you use?",
         "acceptedAnswer": { "@type": "Answer", "text": "We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you print large banners and event canvases?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! We specialize in high‑resolution large‑format banners, outdoor canvases, and roll‑up stands. Perfect for church camp meetings, conferences, and storefronts." }
       },
       {
         "@type": "Question",
@@ -111,7 +118,6 @@ export default function PrintingPage() {
           </svg>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          {/* NEW: Location badge */}
           <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
             <MapPin className="w-4 h-4 text-orange-400" />
             <span className="text-sm font-medium text-orange-300">📍 Based in Nairobi, Kenya</span>
@@ -120,7 +126,7 @@ export default function PrintingPage() {
             Printing & Branding in Nairobi
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            High‑quality printing, professional branding, and marketing materials tailored for the Kenyan market.
+            High‑quality printing, professional branding, and large format canvases tailored for the Kenyan market.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg">
@@ -181,6 +187,7 @@ export default function PrintingPage() {
               { icon: <Coffee className="w-8 h-8 text-orange-600" />, title: 'Promotional Products', desc: 'Mugs, water bottles, pens, bags, keychains – perfect for giveaways and events.' },
               { icon: <Printer className="w-8 h-8 text-orange-600" />, title: 'Business Stationery', desc: 'Letterheads, envelopes, business cards, and notepads with your logo.' },
               { icon: <Megaphone className="w-8 h-8 text-orange-600" />, title: 'Marketing Collateral', desc: 'Flyers, brochures, posters, banners, and roll‑up stands for advertising.' },
+              { icon: <ImageIcon className="w-8 h-8 text-orange-600" />, title: 'Large Format & Event Banners', desc: 'High‑resolution outdoor and indoor canvases for church meetings, conferences, and storefronts. Durable, weather‑resistant, and made to impress. Perfect for Camp Meetings!' },
               { icon: <Brush className="w-8 h-8 text-orange-600" />, title: 'Shop & Firm Branding', desc: 'Storefront signage, window decals, vehicle wraps, and interior branding.' },
               { icon: <Package className="w-8 h-8 text-orange-600" />, title: 'Labels & Packaging', desc: 'Custom stickers, product labels, and branded packaging boxes.' },
               { 
@@ -246,7 +253,7 @@ export default function PrintingPage() {
               <ul className="mt-6 space-y-3">
                 {[
                   '8‑in‑1 heat press – for flawless T‑shirts, mugs, and more',
-                  'High‑resolution large‑format printer – for banners and posters',
+                  'High‑resolution large‑format printer – for banners and event canvases',
                   'Precise plotter cutter – for vinyl decals and stickers',
                   'Eco‑friendly sublimation inks – long‑lasting colors',
                 ].map((item, idx) => (
@@ -369,6 +376,7 @@ export default function PrintingPage() {
           <div className="space-y-4">
             {[
               { q: 'What printing methods do you use?', a: 'We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity.' },
+              { q: 'Do you print large banners and event canvases?', a: 'Yes! We specialize in high‑resolution large‑format banners, outdoor canvases, and roll‑up stands. Perfect for church camp meetings, conferences, and storefronts.' },
               { q: 'How long does a typical order take?', a: 'Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us.' },
               { q: 'Do you deliver outside Nairobi?', a: 'Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi.' }
             ].map((faq, i) => (

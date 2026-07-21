@@ -19,7 +19,16 @@ export default function AIDesignClient() {
     { title: 'Birthday Gallery Wish', img: '/powered_design/birthday1.webp', category: 'Personalized Design' },
     { title: 'Birthday Gallery Wish', img: '/powered_design/sylvester.webp', category: 'Personalized Design' },
     { title: 'Schools Branding', img: '/powered_design/training.webp', category: 'Education Branding' },
+    // ✨ CINEMATIC & PHOTO MOUNTING IMAGES
+    { title: 'Cinematic Portrait - Hoodie', img: '/images/cinematic/cinematic.jpg', category: 'Photo Mounting & Cinematic' },
+    { title: 'Cinematic Portrait - Birthday', img: '/images/cinematic/cinematic1.jpg', category: 'Photo Mounting & Cinematic' },
+    { title: 'Cinematic Portrait - Strength', img: '/images/cinematic/cinematic2.jpg', category: 'Photo Mounting & Cinematic' },
+    { title: 'Cinematic Portrait - Woman', img: '/images/cinematic/cinematic3.jpg', category: 'Photo Mounting & Cinematic' },
   ];
+
+  // Separate the cinematic images from the rest
+  const generalPortfolio = portfolioItems.filter(item => item.category !== 'Photo Mounting & Cinematic');
+  const cinematicPortfolio = portfolioItems.filter(item => item.category === 'Photo Mounting & Cinematic');
 
   const aiDesignJsonLd = {
     "@context": "https://schema.org",
@@ -66,11 +75,11 @@ export default function AIDesignClient() {
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
             <Sparkles className="w-4 h-4 text-orange-400" />
-            <span className="text-sm font-medium text-orange-300">AI‑Powered Creativity in Nairobi</span>
+            <span className="text-sm font-medium text-orange-300">AI-Powered Creativity & Cinematic Art in Nairobi</span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">AI‑Powered Design in Nairobi</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">AI-Powered Design & Cinematic Art</h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            Stunning posters, church branding, and product visuals – crafted with the precision of professional prompt engineering.
+            Stunning posters, church branding, cinematic photo mounting, and product visuals – crafted with the precision of professional prompt engineering and artistic care.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg">
@@ -80,7 +89,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* NEW: Why Choose Maogast for AI Design in Nairobi? */}
+      {/* Why Choose Maogast for AI Design in Nairobi? */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -117,7 +126,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* Services Grid (unchanged) */}
+      {/* Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -145,7 +154,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* Poster & Flyer Design Section (unchanged) */}
+      {/* Poster & Flyer Design Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -197,7 +206,53 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* Process Section (unchanged) */}
+      {/* ✨ NEW SECTION: Photo Mounting & Cinematic Art Pricing */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mb-4">
+              <Camera className="w-4 h-4 text-orange-600" />
+              <span className="text-sm font-medium text-orange-700 dark:text-orange-300">Photo Mounting & Cinematic Art</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Premium Framing & Mounting Sizes</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              We don’t just design stunning visuals – we print and mount them on high-quality materials so they are ready for display.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto bg-gray-50 dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+            <table className="w-full text-left">
+              <thead className="bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-200">
+                <tr>
+                  <th className="px-6 py-4 font-semibold">Print Size</th>
+                  <th className="px-6 py-4 font-semibold text-right">Price (Ksh)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr className="hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                  <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">A2 Size</td>
+                  <td className="px-6 py-4 text-right font-bold text-orange-600">Ksh 3,000</td>
+                </tr>
+                <tr className="hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                  <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">A3 Size</td>
+                  <td className="px-6 py-4 text-right font-bold text-orange-600">Ksh 2,200</td>
+                </tr>
+                <tr className="hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                  <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">A4 Size</td>
+                  <td className="px-6 py-4 text-right font-bold text-orange-600">Ksh 1,800</td>
+                </tr>
+                <tr className="hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                  <td className="px-6 py-4 font-medium text-gray-900 dark:text-white">A5 Size</td>
+                  <td className="px-6 py-4 text-right font-bold text-orange-600">Ksh 1,200</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center">* Prices include the mounting/backing board and high-resolution printing. Additional costs apply for custom framing or lamination.</p>
+        </div>
+      </section>
+
+      {/* Process Section */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -223,17 +278,20 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* Portfolio Gallery (unchanged) */}
+      {/* 💡 UPDATED PORTFOLIO GALLERY SECTION */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Recent Work</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">A showcase of AI-enhanced visuals and custom graphic designs.</p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">A showcase of AI-enhanced visuals, custom graphic designs, and cinematic art.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {portfolioItems.map((item, idx) => (
+
+          {/* General Portfolio Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {generalPortfolio.map((item, idx) => (
               <div key={idx} className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:rotate-1" style={{ animationDelay: `${idx * 0.1}s` }}>
-                <div className="aspect-square relative overflow-hidden">
+                {/* FIX: Added w-full, min-h-[150px], and bg-gray-100 to force height before aspect-ratio loads */}
+                <div className="w-full aspect-square relative overflow-hidden bg-gray-100 dark:bg-gray-700 min-h-[150px]">
                   <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
                 </div>
                 <div className="p-4">
@@ -243,13 +301,36 @@ export default function AIDesignClient() {
               </div>
             ))}
           </div>
+
+          {/* ✨ SEPARATED CINEMATIC PORTFOLIO GRID */}
+          <div className="border-t-2 border-orange-300 dark:border-orange-800 pt-10 mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <Camera className="w-6 h-6 text-orange-600" />
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Photo Mounting & Cinematic Art</h3>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {cinematicPortfolio.map((item, idx) => (
+                <div key={idx} className="group relative bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:rotate-1" style={{ animationDelay: `${idx * 0.1}s` }}>
+                  {/* FIX: Added w-full, min-h-[150px], and bg-gray-100 to force height before aspect-ratio loads */}
+                  <div className="w-full aspect-[3/4] relative overflow-hidden bg-gray-100 dark:bg-gray-700 min-h-[150px]">
+                    <Image src={item.img} alt={item.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw" />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-xs text-orange-600 uppercase font-semibold">{item.category}</p>
+                    <h3 className="text-sm font-medium text-gray-800 dark:text-gray-200 mt-1">{item.title}</h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="text-center mt-10">
             <Link href="/portfolio" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-orange-700 bg-orange-100 hover:bg-orange-200 transition transform hover:scale-105">View Full Portfolio</Link>
           </div>
         </div>
       </section>
 
-      {/* Prompt Engineering Highlight (unchanged) */}
+      {/* Prompt Engineering Highlight */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -273,7 +354,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* Birthday & Event Keepsakes (unchanged) */}
+      {/* Birthday & Event Keepsakes */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -302,7 +383,7 @@ export default function AIDesignClient() {
         </div>
       </section>
 
-      {/* CTA Section (unchanged) */}
+      {/* CTA Section */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Elevate your brand with AI‑powered visuals</h2>
