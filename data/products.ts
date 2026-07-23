@@ -27,7 +27,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/patch-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // was 100 -> min 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'magic-mug',
@@ -36,7 +36,7 @@ export const products: Product[] = [
     price: adjustPrice(210),
     image: '/images/products/magic-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'conical-big-mug',
@@ -45,7 +45,7 @@ export const products: Product[] = [
     price: adjustPrice(300),
     image: '/images/products/conical-big-mug.jpg',
     category: 'mugs',
-    brandingCost: 200, // 150 -> +50 = 200
+    brandingCost: 200, // Min 200
   },
   {
     id: 'two-tone-mug',
@@ -54,7 +54,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/two-tone-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'king-size-mug',
@@ -63,7 +63,7 @@ export const products: Product[] = [
     price: adjustPrice(600),
     image: '/images/products/king-size-mug.jpg',
     category: 'mugs',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'big-mug',
@@ -72,7 +72,7 @@ export const products: Product[] = [
     price: adjustPrice(250),
     image: '/images/products/big-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'magic-two-tone-mug',
@@ -81,7 +81,7 @@ export const products: Product[] = [
     price: adjustPrice(230),
     image: '/images/products/magic-two-tone-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'big-enamel-mug',
@@ -90,7 +90,7 @@ export const products: Product[] = [
     price: adjustPrice(430),
     image: '/images/products/big-enamel-mug.jpg',
     category: 'mugs',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'love-mug-300ml',
@@ -99,7 +99,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/love-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'coloured-frost-mug',
@@ -108,7 +108,7 @@ export const products: Product[] = [
     price: adjustPrice(380),
     image: '/images/products/coloured-frost-mug.jpg',
     category: 'mugs',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'magic-love-handle-mug',
@@ -117,7 +117,7 @@ export const products: Product[] = [
     price: adjustPrice(250),
     image: '/images/products/magic-love-handle-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'silver-mug',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/silver-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'blue-love-handle-mug',
@@ -135,7 +135,7 @@ export const products: Product[] = [
     price: adjustPrice(250),
     image: '/images/products/blue-love-handle-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'normal-white-mug-325ml',
@@ -153,7 +153,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/square-kids-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'clear-sublimation-mug',
@@ -171,7 +171,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/small-conical-mug.jpg',
     category: 'mugs',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'gold-mug-325ml',
@@ -180,7 +180,7 @@ export const products: Product[] = [
     price: adjustPrice(180),
     image: '/images/products/gold-mug.jpg',
     category: 'mugs',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'frost-mug-443ml',
@@ -189,7 +189,7 @@ export const products: Product[] = [
     price: adjustPrice(380),
     image: '/images/products/frost-mug.jpg',
     category: 'mugs',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'two-tone-big-mug',
@@ -198,7 +198,7 @@ export const products: Product[] = [
     price: adjustPrice(250),
     image: '/images/products/two-tone-big-mug.jpg',
     category: 'mugs',
-    brandingCost: 400, // 350 -> +50
+    brandingCost: 400, // Already above 200
   },
   {
     id: 'love-handle-red-mug',
@@ -227,7 +227,7 @@ export const products: Product[] = [
     price: adjustPrice(600),
     image: '/images/products/white-thermal-mug.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'silver-thermal-mug-500ml',
@@ -236,7 +236,7 @@ export const products: Product[] = [
     price: adjustPrice(600),
     image: '/images/products/silver-thermal-mug.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'led-tumbler-510ml',
@@ -245,7 +245,7 @@ export const products: Product[] = [
     price: adjustPrice(850),
     image: '/images/products/led-tumbler.jpg',
     category: 'flasks',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'jug-flask-500ml',
@@ -263,7 +263,7 @@ export const products: Product[] = [
     price: adjustPrice(830),
     image: '/images/products/black-short-tumbler-flask.jpg',
     category: 'flasks',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'white-tumbler-500ml',
@@ -272,7 +272,7 @@ export const products: Product[] = [
     price: adjustPrice(850),
     image: '/images/products/white-tumbler-sublimation.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'black-tumbler-500ml',
@@ -290,7 +290,7 @@ export const products: Product[] = [
     price: adjustPrice(900),
     image: '/images/products/insulated-travel-mug.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'mason-jar',
@@ -308,7 +308,7 @@ export const products: Product[] = [
     price: adjustPrice(900),
     image: '/images/products/cream-matte-flask.jpg',
     category: 'flasks',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'thermal-flask-with-sieve',
@@ -326,7 +326,7 @@ export const products: Product[] = [
     price: adjustPrice(900),
     image: '/images/products/black-matte-flask.jpg',
     category: 'flasks',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'cola-can-500ml',
@@ -335,7 +335,7 @@ export const products: Product[] = [
     price: adjustPrice(700),
     image: '/images/products/cola-can.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'white-string-flask-620ml',
@@ -362,7 +362,7 @@ export const products: Product[] = [
     price: adjustPrice(800),
     image: '/images/products/black-straw-flask.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'cola-flask-silver-lid',
@@ -371,7 +371,7 @@ export const products: Product[] = [
     price: adjustPrice(800),
     image: '/images/products/cola-flask-silver-lid.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'double-wall-flask',
@@ -380,7 +380,7 @@ export const products: Product[] = [
     price: adjustPrice(1000),
     image: '/images/products/double-wall-flask.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'magnetic-flask-750ml',
@@ -389,7 +389,7 @@ export const products: Product[] = [
     price: adjustPrice(1200),
     image: '/images/products/magnetic-flask.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'travel-tumbler-500ml',
@@ -425,7 +425,7 @@ export const products: Product[] = [
     price: adjustPrice(830),
     image: '/images/products/gold-short-tumbler-flask.jpg',
     category: 'flasks',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'non-led-510ml-tumbler',
@@ -443,7 +443,7 @@ export const products: Product[] = [
     price: adjustPrice(1200),
     image: '/images/products/stanley-mug.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'matte-finish-500ml-flask',
@@ -452,7 +452,7 @@ export const products: Product[] = [
     price: adjustPrice(900),
     image: '/images/products/matte-finish-flask.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: '800ml-black-flask',
@@ -461,7 +461,7 @@ export const products: Product[] = [
     price: adjustPrice(1000),
     image: '/images/products/800ml-black-flask.jpg',
     category: 'flasks',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'skin-feel-flask-750ml',
@@ -470,7 +470,7 @@ export const products: Product[] = [
     price: adjustPrice(1000),
     image: '/images/products/750ml-skin-feel-flask.jpg',
     category: 'flasks',
-    brandingCost: 250, // 200 -> +50
+    brandingCost: 250, // Already above 200
   },
   {
     id: 'red-flask-800ml',
@@ -479,7 +479,7 @@ export const products: Product[] = [
     price: adjustPrice(1000),
     image: '/images/products/red-flask.jpg',
     category: 'flasks',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: '500ml-flask-metallic',
@@ -544,7 +544,7 @@ export const products: Product[] = [
     price: adjustPrice(3700),
     image: '/images/products/black-led-flash-gift-set.jpg',
     category: 'gift-sets',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'white-gift-set-a5',
@@ -553,7 +553,7 @@ export const products: Product[] = [
     price: adjustPrice(2700),
     image: '/images/products/white-gift-set-a5.jpg',
     category: 'gift-sets',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'red-gift-set-executive',
@@ -571,7 +571,7 @@ export const products: Product[] = [
     price: adjustPrice(3700),
     image: '/images/products/blue-gift-set.jpg',
     category: 'gift-sets',
-    brandingCost: 200, // 150 -> +50
+    brandingCost: 200, // Min 200
   },
   {
     id: 'executive-organiser-a5',
@@ -580,7 +580,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/executive-organiser-a5.jpg',
     category: 'gift-sets',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'executive-set-umbrella',
@@ -607,7 +607,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/white-executive-gift-set.jpg',
     category: 'gift-sets',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'executive-notebook-set',
@@ -634,7 +634,7 @@ export const products: Product[] = [
     price: adjustPrice(5000),
     image: '/images/products/black-flask-notebook-set.jpg',
     category: 'gift-sets',
-    brandingCost: 150, // 100 -> 150
+    brandingCost: 200, // Base min 200
   },
   {
     id: 'blue-executive-notebook-set',
@@ -663,7 +663,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/square-executive-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'dome-award-18x14cm',
@@ -690,7 +690,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/trophy-red-touch.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'v-shape-executive-award',
@@ -753,7 +753,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/slashed-award.jpg',
     category: 'awards',
-    brandingCost: 1050, // 1000 -> +50
+    brandingCost: 1050, // Already above 200
   },
   {
     id: 'a3-executive-award',
@@ -771,7 +771,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/velvet-blue-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'classic-coffee-wood-award',
@@ -789,7 +789,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/aluminium-trophy-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'octagon-gold-award',
@@ -807,7 +807,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/engraving-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'kite-top-glass-award',
@@ -834,7 +834,7 @@ export const products: Product[] = [
     price: adjustPrice(2800),
     image: '/images/products/trophy-269d.jpg',
     category: 'awards',
-    brandingCost: 3350, // 3300 -> +50
+    brandingCost: 3350, // Already above 200
   },
   {
     id: 'trophy-sl-223-43cm',
@@ -843,7 +843,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/trophy-sl-223.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'sharp-pointed-award',
@@ -861,7 +861,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/octagon-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'trophy-sl-265b-25cm',
@@ -870,7 +870,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/trophy-sl-265b.jpg',
     category: 'awards',
-    brandingCost: 3050, // 3000 -> +50
+    brandingCost: 3050, // Already above 200
   },
   {
     id: 'velvet-red-award',
@@ -879,7 +879,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/velvet-red-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'trophy-053-32cm',
@@ -888,7 +888,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/trophy-053.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'm-top-trophy-37cm',
@@ -933,7 +933,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/sl-272.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'golden-trophy-28cm',
@@ -942,7 +942,7 @@ export const products: Product[] = [
     price: adjustPrice(5000),
     image: '/images/products/golden-trophy-28cm.jpg',
     category: 'awards',
-    brandingCost: 5550, // 5500 -> +50
+    brandingCost: 5550, // Already above 200
   },
   {
     id: 'sl-219-29.5cm',
@@ -951,7 +951,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/sl-219.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'executive-trophy-sl-2279',
@@ -960,7 +960,7 @@ export const products: Product[] = [
     price: adjustPrice(6500),
     image: '/images/products/executive-trophy-sl-2279.jpg',
     category: 'awards',
-    brandingCost: 7050, // 7000 -> +50
+    brandingCost: 7050, // Already above 200
   },
   {
     id: 'glass-wooden-base-award',
@@ -969,7 +969,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/glass-wooden-base-award.jpg',
     category: 'awards',
-    brandingCost: 850, // 800 -> +50
+    brandingCost: 850, // Already above 200
   },
   {
     id: 's-sublimation-award',
@@ -978,7 +978,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/s-sublimation-award.jpg',
     category: 'awards',
-    brandingCost: 3050, // 3000 -> +50
+    brandingCost: 3050, // Already above 200
   },
   {
     id: 'booklet-wooden-award',
@@ -987,7 +987,7 @@ export const products: Product[] = [
     price: adjustPrice(5000),
     image: '/images/products/booklet-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'wooden-base-award-sharp',
@@ -996,7 +996,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/wooden-base-award-sharp.jpg',
     category: 'awards',
-    brandingCost: 850, // 800 -> +50
+    brandingCost: 850, // Already above 200
   },
   {
     id: 'glass-wooden-award',
@@ -1014,7 +1014,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/new-trophy-25cm.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'long-glass-award',
@@ -1023,7 +1023,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/long-glass-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'rectangular-krystal-award',
@@ -1032,7 +1032,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/rectangular-krystal-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'booklet-wooden-award-new',
@@ -1086,7 +1086,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/spiral-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'pointed-glass-award',
@@ -1095,7 +1095,7 @@ export const products: Product[] = [
     price: adjustPrice(4200),
     image: '/images/products/pointed-glass-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'glass-award-sublimation',
@@ -1113,7 +1113,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/star-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'glass-award-13x18cm',
@@ -1122,7 +1122,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/glass-award-13x18cm.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'fancy-glass-award-18x10cm',
@@ -1140,7 +1140,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/metallic-rectangular-award.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'golden-trophy-sl-229',
@@ -1149,7 +1149,7 @@ export const products: Product[] = [
     price: adjustPrice(5500),
     image: '/images/products/golden-trophy-sl-229.jpg',
     category: 'awards',
-    brandingCost: 6050, // 6000 -> +50
+    brandingCost: 6050, // Already above 200
   },
   {
     id: 'executive-glass-award-new',
@@ -1158,7 +1158,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/executive-glass-award-new.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'square-award-printing',
@@ -1176,7 +1176,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/long-glass-executive-award.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'rectangular-wooden-award',
@@ -1194,7 +1194,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/classic-award-gold-silver.jpg',
     category: 'awards',
-    brandingCost: 3050, // 3000 -> +50
+    brandingCost: 3050, // Already above 200
   },
   {
     id: 'trophy-sl-067-33cm',
@@ -1203,7 +1203,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/trophy-sl-067.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'dome-award-black',
@@ -1230,7 +1230,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/wooden-shield-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'self-sitting-award',
@@ -1275,7 +1275,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/trophy-sl-094.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'octagon-glass-award',
@@ -1302,7 +1302,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/sl-268.jpg',
     category: 'awards',
-    brandingCost: 3050, // 3000 -> +50
+    brandingCost: 3050, // Already above 200
   },
   {
     id: 'sl-243',
@@ -1311,7 +1311,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/sl-243.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'classy-wooden-award',
@@ -1320,7 +1320,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/classy-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'new-wooden-award',
@@ -1329,7 +1329,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/new-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'heavy-wooden-award',
@@ -1338,7 +1338,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/heavy-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'square-fancy-award',
@@ -1365,7 +1365,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/wooden-shield-award-regular.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'executive-wooden-award',
@@ -1374,7 +1374,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/executive-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'trophy-sl-045',
@@ -1383,7 +1383,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/trophy-sl-045.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'rose-award-black',
@@ -1401,7 +1401,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/silver-shield-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'butterfly-award-a4',
@@ -1410,7 +1410,7 @@ export const products: Product[] = [
     price: adjustPrice(5000),
     image: '/images/products/butterfly-award.jpg',
     category: 'awards',
-    brandingCost: 5550, // 5500 -> +50
+    brandingCost: 5550, // Already above 200
   },
   {
     id: 'patterned-circular-wooden-award',
@@ -1419,7 +1419,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/patterned-circular-wooden-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'self-sitting-silver-award',
@@ -1446,7 +1446,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/circular-silver-executive-award.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'fancy-circular-award',
@@ -1464,7 +1464,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/wooden-glass-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'love-award',
@@ -1473,7 +1473,7 @@ export const products: Product[] = [
     price: adjustPrice(2500),
     image: '/images/products/love-award.jpg',
     category: 'awards',
-    brandingCost: 1050, // 1000 -> +50
+    brandingCost: 1050, // Already above 200
   },
   {
     id: 'slashed-award-clear',
@@ -1491,7 +1491,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/trophy-sl-0649.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'patterned-top-glass-award',
@@ -1509,7 +1509,7 @@ export const products: Product[] = [
     price: adjustPrice(5000),
     image: '/images/products/new-booklet-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'executive-wooden-leather-award',
@@ -1518,7 +1518,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/executive-wooden-leather-award.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'long-octagon-award',
@@ -1572,7 +1572,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/round-award.jpg',
     category: 'awards',
-    brandingCost: 4050, // 4000 -> +50
+    brandingCost: 4050, // Already above 200
   },
   {
     id: 'foldable-manchester-award',
@@ -1581,7 +1581,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/foldable-manchester-award.jpg',
     category: 'awards',
-    brandingCost: 550, // 500 -> +50
+    brandingCost: 550, // Already above 200
   },
   {
     id: 'spiral-gold-trophy-26cm',
@@ -1590,7 +1590,7 @@ export const products: Product[] = [
     price: adjustPrice(4500),
     image: '/images/products/spiral-gold-trophy.jpg',
     category: 'awards',
-    brandingCost: 5050, // 5000 -> +50
+    brandingCost: 5050, // Already above 200
   },
   {
     id: 'trophy-sl-076-43cm',
@@ -1599,7 +1599,7 @@ export const products: Product[] = [
     price: adjustPrice(5500),
     image: '/images/products/trophy-sl-076.jpg',
     category: 'awards',
-    brandingCost: 6050, // 6000 -> +50
+    brandingCost: 6050, // Already above 200
   },
   {
     id: 'a4-coffee-wood-award',
@@ -1617,7 +1617,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/sharp-pointed-glass-award.jpg',
     category: 'awards',
-    brandingCost: 4050, // 4000 -> +50
+    brandingCost: 4050, // Already above 200
   },
   {
     id: 'red-pattern-trophy',
@@ -1626,7 +1626,7 @@ export const products: Product[] = [
     price: adjustPrice(3000),
     image: '/images/products/red-pattern-trophy.jpg',
     category: 'awards',
-    brandingCost: 3550, // 3500 -> +50
+    brandingCost: 3550, // Already above 200
   },
   {
     id: 'new-oval-executive-award',
@@ -1644,7 +1644,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/sharp-pointed-trophy-38cm.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'gold-metallic-base-award',
@@ -1653,7 +1653,7 @@ export const products: Product[] = [
     price: adjustPrice(3500),
     image: '/images/products/gold-metallic-base-award.jpg',
     category: 'awards',
-    brandingCost: 4050, // 4000 -> +50
+    brandingCost: 4050, // Already above 200
   },
   {
     id: 'oval-top-trophy-32cm',
@@ -1662,7 +1662,7 @@ export const products: Product[] = [
     price: adjustPrice(4000),
     image: '/images/products/oval-top-trophy.jpg',
     category: 'awards',
-    brandingCost: 4550, // 4500 -> +50
+    brandingCost: 4550, // Already above 200
   },
   {
     id: 'sliced-glass-award',
