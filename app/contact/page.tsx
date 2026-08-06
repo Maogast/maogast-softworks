@@ -6,13 +6,13 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contact Mgst – Software, Printing & AI Design in Nairobi',
-  description: 'Contact Mgst (Maogast Softworks) at info@maogastsoftworks.com or +254 768 564 533. Visit our office in Nairobi, Kenya. We offer custom software, printing, AI design, and content management.',
+  description: 'Contact Mgst (Maogast Softworks) at info@maogastsoftworks.com or +254 768 564 533. Visit our office in Kasarani, Nairobi, Kenya. We offer custom software, printing, AI design, and content management.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/contact',
   },
   openGraph: {
     title: 'Contact Mgst (Maogast Softworks) | Nairobi, Kenya',
-    description: 'Reach out for software development, printing, branding, AI design, or training inquiries. We are located in Nairobi, Kenya.',
+    description: 'Reach out for software development, printing, branding, AI design, or training inquiries. We are located in Kasarani, Nairobi, Kenya.',
     url: 'https://maogastsoftworks.com/contact',
     siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-contact.jpg', width: 1200, height: 630 }],
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     images: ['https://maogastsoftworks.com/og-contact.jpg'],
   },
 };
+
 export default function ContactPage() {
   // Breadcrumb schema
   const breadcrumbJsonLd = {
@@ -63,7 +64,7 @@ export default function ContactPage() {
 
       <div className="container mx-auto px-4 py-16 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info – unchanged */}
+          {/* Contact Info */}
           <div className="space-y-6">
             <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 hover:shadow-lg transition">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h2>
@@ -81,7 +82,6 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition" />
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300">Email</p>
-                    {/* UPDATED: Added auto-fill template to mailto link */}
                     <a
                       href="mailto:info@maogastsoftworks.com?subject=Project Inquiry - Maogast Softworks&body=Greetings Maogast Softworks,%0A%0AMy Name: [Enter Your Name]%0AService I need: [e.g., Software Development, Printing, AI Design, Training]%0ADetails of my request: [Describe your needs]%0ABudget (Optional): [Enter budget]%0A%0AThank you."
                       className="text-gray-600 dark:text-gray-400 hover:text-orange-600"
@@ -94,7 +94,9 @@ export default function ContactPage() {
                   <MapPin className="w-5 h-5 text-orange-600 mt-0.5 group-hover:scale-110 transition" />
                   <div>
                     <p className="font-medium text-gray-700 dark:text-gray-300">Location</p>
-                    <p className="text-gray-600 dark:text-gray-400">Nairobi, Kenya</p>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      Kasarani Sunton 9th Street, Nairobi, Kenya
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 group">
@@ -107,7 +109,6 @@ export default function ContactPage() {
               </div>
               <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <p className="font-medium text-gray-700 dark:text-gray-300 mb-2">Quick Chat</p>
-                {/* UPDATED: Added auto-fill message to WhatsApp link */}
                 <a
                   href="https://wa.me/254768564533?text=Greetings Maogast Softworks, I would like to inquire about your services."
                   target="_blank"
@@ -119,7 +120,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Social Links – updated with TikTok & WhatsApp Channel */}
+            {/* Social Links */}
             <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 text-center hover:shadow-md transition">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Follow Us</h3>
               <div className="flex justify-center gap-4 flex-wrap">
@@ -182,10 +183,21 @@ export default function ContactPage() {
       <section className="py-12 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Visit Our Office</h2>
-          <div className="max-w-3xl mx-auto h-64 bg-gray-300 dark:bg-gray-700 rounded-xl flex items-center justify-center text-gray-500">
-            <MapPin className="w-8 h-8 mr-2" /> Interactive map coming soon
+          <div className="max-w-3xl mx-auto w-full rounded-xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://maps.google.com/maps?q=Kasarani+Sunton+9th+Street+Nairobi&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-64 md:h-80 rounded-xl"
+            ></iframe>
           </div>
-          <p className="mt-2 text-sm text-gray-500">Nairobi, Kenya – by appointment only</p>
+          <p className="mt-2 text-sm text-gray-500">
+            Kasarani Sunton 9th Street, Nairobi, Kenya
+          </p>
         </div>
       </section>
     </>
