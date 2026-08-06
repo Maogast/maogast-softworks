@@ -3,16 +3,13 @@ import Script from "next/script";
 import Image from "next/image";
 import {
   Cuboid,
-  Layout,
   CheckCircle,
   ChevronDown,
-  Rocket,
   Paintbrush,
-  Pickaxe,
-  Settings,
   Target,
 } from "lucide-react";
 import type { Metadata } from "next";
+import ProjectsGallery from "@/components/3d-signage/ProjectsGallery";
 
 export const metadata: Metadata = {
   title: "3D Signage & Lettering in Nairobi | MGST~Works by Maogast Softworks",
@@ -171,7 +168,7 @@ export default function ThreeDSignagePage() {
         </div>
       </section>
 
-      {/* Why Choose MGST~Works in Nairobi */}
+      {/* Why Choose MGST~Works */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -208,7 +205,7 @@ export default function ThreeDSignagePage() {
         </div>
       </section>
 
-      {/* Services Grid - CORRECTED WITH UNIQUE IMAGES */}
+      {/* Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -323,29 +320,19 @@ export default function ThreeDSignagePage() {
         </div>
       </section>
 
-      {/* Our Process */}
+      {/* Projects Gallery - Using the Client Component */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Process</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">From the first design sketch to the final wall mount – we handle everything.</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Recent & In-Progress Installations
+            </h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Fresh from our workshop. Tap any image or video to preview it in full resolution — perfect for sharing on social media.
+            </p>
           </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "Consult & Design", icon: <Layout className="w-6 h-6" />, desc: "On-site consultation, measurement, and 3D render previews of your brand." },
-              { step: "2", title: "Material & Cutting", icon: <Pickaxe className="w-6 h-6" />, desc: "We select the best material and laser-cut every letter to perfection." },
-              { step: "3", title: "Craft & Assemble", icon: <Settings className="w-6 h-6" />, desc: "Hand-finished assembly, LED wiring, and rigorous quality checks." },
-              { step: "4", title: "Install & Illuminate", icon: <Rocket className="w-6 h-6" />, desc: "Professional delivery and on-site mounting, with lighting tested for brilliance." },
-            ].map((step) => (
-              <div key={step.step} className="text-center group">
-                <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  {step.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
-                <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm">{step.desc}</p>
-              </div>
-            ))}
-          </div>
+          {/* Component imported and rendered here */}
+          <ProjectsGallery />
         </div>
       </section>
 

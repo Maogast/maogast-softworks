@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Code, Printer, Sparkles, Globe, GraduationCap } from 'lucide-react';
+import { Code, Printer, Sparkles, Globe, GraduationCap, Cuboid, Gift } from 'lucide-react';
 
 const services = [
   {
@@ -15,6 +15,12 @@ const services = [
     link: '/printing',
   },
   {
+    title: '3D Signage & Installation',
+    description: 'Custom 3D acrylic, metal, and LED backlit wall logos. Fabricated and installed for offices, hotels, and retail stores.',
+    icon: Cuboid,
+    link: '/3d-signage',
+  },
+  {
     title: 'AI‑Powered Design',
     description: 'Poster design, church branding, social media graphics, and prompt engineering.',
     icon: Sparkles,
@@ -25,6 +31,12 @@ const services = [
     description: 'Website updates, social media content, blog posts, and strategic digital calendars.',
     icon: Globe,
     link: '/content-management',
+  },
+  {
+    title: 'Custom Products',
+    description: 'Branded mugs, flasks, gift sets, and corporate awards. Perfect for employee recognition and client appreciation.',
+    icon: Gift,
+    link: '/products',
   },
   {
     title: 'Training & Webinars',

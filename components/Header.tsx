@@ -34,7 +34,7 @@ const NavIcon = ({ name }: { name: string }) => {
     ),
     'Content Management': (
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9-3-9m-9 9a9 9 0 019-9" />
       </svg>
     ),
     Products: (
@@ -68,30 +68,45 @@ const NavIcon = ({ name }: { name: string }) => {
   return icons[name] || null;
 };
 
+// Define a type for dropdown menu items
+interface DropdownItem {
+  name: string;
+  href: string;
+}
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [printingDropdownOpen, setPrintingDropdownOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const pathname = usePathname();
 
-  const aboutItems = [
+  const aboutItems: DropdownItem[] = [
     { name: 'Overview', href: '/about' },
     { name: 'Our Foundation', href: '/about/our-foundation' },
   ];
 
-  const printingItems = [
+  const printingItems: DropdownItem[] = [
     { name: 'Overview', href: '/printing' },
-    { name: '3D Signage', href: '/3d-signage' }, // NEW PAGE ADDED HERE
+    { name: '3D Signage', href: '/3d-signage' },
+  ];
+
+  const productsItems: DropdownItem[] = [
+    { name: 'Overview', href: '/products' },
+    { name: 'Mugs', href: '/products/mugs' },
+    { name: 'Flasks', href: '/products/flasks' },
+    { name: 'Gift Sets', href: '/products/gift-sets' },
+    { name: 'Awards', href: '/products/awards' },
   ];
 
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about', hasDropdown: true },
     { name: 'Software', href: '/software' },
-    { name: 'Printing', href: '/printing', hasDropdown: true }, // UPDATED TO DROPDOWN
+    { name: 'Printing', href: '/printing', hasDropdown: true },
     { name: 'AI Design', href: '/ai-design' },
     { name: 'Content Management', href: '/content-management' },
-    { name: 'Products', href: '/products' },
+    { name: 'Products', href: '/products', hasDropdown: true },
     { name: 'Training', href: '/training' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
@@ -101,7 +116,8 @@ export default function Header() {
   const isActive = (path: string) => {
     if (pathname === path) return true;
     if (path === '/about' && pathname?.startsWith('/about/')) return true;
-    if (path === '/printing' && pathname?.startsWith('/printing/')) return true; // HANDLE PRINTING SUBPATHS
+    if (path === '/printing' && pathname?.startsWith('/printing/')) return true;
+    if (path === '/products' && pathname?.startsWith('/products/')) return true;
     return false;
   };
 
@@ -140,15 +156,29 @@ export default function Header() {
                 const active = isActive(item.href);
                 
                 if (item.hasDropdown) {
-                  const items = item.name === 'About' ? aboutItems : printingItems;
-                  const isOpen = item.name === 'About' ? aboutDropdownOpen : printingDropdownOpen;
-                  const setIsOpen = item.name === 'About' ? setAboutDropdownOpen : setPrintingDropdownOpen;
+                  let items: DropdownItem[] = [];
+                  let isOpen = false;
+                  let setIsOpen = () => {};
+
+                  if (item.name === 'About') {
+                    items = aboutItems;
+                    isOpen = aboutDropdownOpen;
+                    setIsOpen = () => setAboutDropdownOpen(!aboutDropdownOpen);
+                  } else if (item.name === 'Printing') {
+                    items = printingItems;
+                    isOpen = printingDropdownOpen;
+                    setIsOpen = () => setPrintingDropdownOpen(!printingDropdownOpen);
+                  } else if (item.name === 'Products') {
+                    items = productsItems;
+                    isOpen = productsDropdownOpen;
+                    setIsOpen = () => setProductsDropdownOpen(!productsDropdownOpen);
+                  }
 
                   return (
                     <div key={item.name} className="relative">
                       <button
-                        onClick={() => setIsOpen(!isOpen)}
-                        onBlur={() => setTimeout(() => setIsOpen(false), 200)}
+                        onClick={() => setIsOpen()}
+                        onBlur={() => setTimeout(() => setIsOpen(), 200)}
                         className={`
                           relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200
                           flex items-center gap-2 cursor-pointer
@@ -176,7 +206,7 @@ export default function Header() {
                               <Link
                                 key={subItem.name}
                                 href={subItem.href}
-                                onClick={() => setIsOpen(false)}
+                                onClick={() => setIsOpen()}
                                 className={`
                                   block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-orange-600 dark:hover:text-orange-400
                                   ${subActive ? 'bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400' : ''}
@@ -229,7 +259,11 @@ export default function Header() {
             <nav className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800 space-y-1">
               {navItems.map((item) => {
                 if (item.hasDropdown) {
-                  const items = item.name === 'About' ? aboutItems : printingItems;
+                  let items: DropdownItem[] = [];
+                  if (item.name === 'About') items = aboutItems;
+                  else if (item.name === 'Printing') items = printingItems;
+                  else if (item.name === 'Products') items = productsItems;
+
                   return (
                     <div key={item.name}>
                       <div className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200">
