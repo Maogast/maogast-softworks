@@ -79,6 +79,8 @@ export default function Header() {
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
   const [printingDropdownOpen, setPrintingDropdownOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  // State for mobile collapsible submenus
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname();
 
   const aboutItems: DropdownItem[] = [
@@ -119,6 +121,12 @@ export default function Header() {
     if (path === '/printing' && pathname?.startsWith('/printing/')) return true;
     if (path === '/products' && pathname?.startsWith('/products/')) return true;
     return false;
+  };
+
+  // Helper to close mobile menu and collapse sub-menus
+  const closeMobileNav = () => {
+    setMobileMenuOpen(false);
+    setMobileExpanded(null);
   };
 
   return (
@@ -253,46 +261,91 @@ export default function Header() {
               {mobileMenuOpen ? '✕' : '☰'}
             </button>
           </div>
+        </div>
+      </header>
 
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <nav className="md:hidden py-4 border-t border-gray-100 dark:border-gray-800 space-y-1">
+      {/* MOBILE NAVIGATION DRAWER (Floating overlay) */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden animate-fade-in-up"
+          onClick={closeMobileNav}
+        >
+          <div
+            className="fixed top-0 right-0 h-full w-full max-w-[85%] sm:max-w-sm bg-white dark:bg-[#0A192F] shadow-2xl overflow-y-auto transform transition-transform duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Drawer Header */}
+            <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-200 dark:border-gray-800">
+              <Link href="/" className="flex items-center gap-2" onClick={closeMobileNav}>
+                <Image src="/logo3.png" alt="Maogast Softworks" width={32} height={32} style={{ width: 'auto', height: 'auto' }} />
+                <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
+              </Link>
+              <button
+                onClick={closeMobileNav}
+                className="p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+
+            {/* Drawer Nav Items */}
+            <nav className="px-4 py-4 space-y-1">
               {navItems.map((item) => {
+                const active = isActive(item.href);
                 if (item.hasDropdown) {
                   let items: DropdownItem[] = [];
                   if (item.name === 'About') items = aboutItems;
                   else if (item.name === 'Printing') items = printingItems;
                   else if (item.name === 'Products') items = productsItems;
 
+                  const isExpanded = mobileExpanded === item.name;
+
                   return (
-                    <div key={item.name}>
-                      <div className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200">
-                        <NavIcon name={item.name} />
-                        {item.name}
-                      </div>
-                      <div className="pl-10 space-y-1">
-                        {items.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block px-3 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg"
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
+                    <div key={item.name} className="border-b border-gray-100 dark:border-gray-800 last:border-0">
+                      <button
+                        onClick={() => setMobileExpanded(isExpanded ? null : item.name)}
+                        className="w-full flex items-center justify-between px-3 py-3 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <NavIcon name={item.name} />
+                          <span>{item.name}</span>
+                        </div>
+                        <svg className={`w-3 h-3 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {isExpanded && (
+                        <div className="pl-11 pb-3 space-y-1">
+                          {items.map((subItem) => {
+                            const subActive = isActive(subItem.href);
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                onClick={closeMobileNav}
+                                className={`
+                                  block px-3 py-2 text-sm rounded-lg text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors
+                                  ${subActive ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30' : ''}
+                                `}
+                              >
+                                {subItem.name}
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
                     </div>
                   );
                 }
-                const active = isActive(item.href);
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={closeMobileNav}
                     className={`
-                      flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition
+                      flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors
                       ${active
                         ? 'text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30'
                         : 'text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 hover:bg-gray-100 dark:hover:bg-gray-800/50'
@@ -305,9 +358,9 @@ export default function Header() {
                 );
               })}
             </nav>
-          )}
+          </div>
         </div>
-      </header>
+      )}
     </>
   );
 }
