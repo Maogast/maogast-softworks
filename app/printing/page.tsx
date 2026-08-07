@@ -3,19 +3,20 @@ import Script from 'next/script';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
-  Star, ChevronDown, Heart, Scissors, MapPin, ImageIcon
+  Star, ChevronDown, Heart, Scissors, MapPin, ImageIcon,
+  Activity, Briefcase
 } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Printing & Branding Nairobi – Custom Apparel, Large Format Canvases & Signage | Mgst (Maogast Softworks)',
-  description: 'Top-tier printing services in Nairobi, Kenya by Mgst. We specialize in custom T‑shirts, mugs, large format event canvases, banners, business stationery, and shop branding with fast turnaround.',
+  title: 'Printing & Branding Nairobi – Custom Apparel, Uniforms & Signage | Mgst (Maogast Softworks)',
+  description: 'Top-tier printing services in Nairobi, Kenya by Mgst. We specialize in custom T‑shirts, hoodies, corporate uniforms, school wear, football jerseys, mugs, large format canvases, banners, and shop branding.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/printing',
   },
   openGraph: {
     title: 'Printing & Branding Services in Nairobi | Mgst Softworks',
-    description: 'From custom T‑shirts to large format event canvases and complete storefront branding in Kenya – Mgst brings your brand to life with premium quality.',
+    description: 'From custom team jerseys and school uniforms to large format event canvases and storefront branding in Kenya – Mgst brings your brand to life with premium quality.',
     url: 'https://maogastsoftworks.com/printing',
     siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-printing.jpg', width: 1200, height: 630 }],
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Custom Printing & Branding Nairobi | Mgst Softworks',
-    description: 'High‑quality custom prints, large format banners, promotional products, and professional shop branding by Mgst in Kenya.',
+    description: 'High‑quality custom prints, uniforms, jerseys, and professional shop branding by Mgst in Kenya.',
     images: ['https://maogastsoftworks.com/og-printing.jpg'],
   },
 };
@@ -49,9 +50,9 @@ export default function PrintingPage() {
       "name": "Printing Catalog",
       "itemListElement": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Apparel Printing" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Merchandise Branding" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large Format Banner & Canvas Printing" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Event Signage & Camp Meeting Canvases" } }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Teamwear & Jerseys" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate & School Uniforms" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Large Format Banner & Canvas Printing" } }
       ]
     }
   };
@@ -73,6 +74,11 @@ export default function PrintingPage() {
         "@type": "Question",
         "name": "What printing methods do you use?",
         "acceptedAnswer": { "@type": "Answer", "text": "We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you print custom football jerseys and hoodies?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes! We specialize in sublimated football kits, custom hoodies, and athletic wear. We use durable materials and vibrant ink that stays bright after many washes." }
       },
       {
         "@type": "Question",
@@ -126,7 +132,7 @@ export default function PrintingPage() {
             Printing & Branding in Nairobi
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
-            High‑quality printing, professional branding, and large format canvases tailored for the Kenyan market.
+            High‑quality printing, professional branding, custom uniforms, team jerseys, and large format canvases tailored for the Kenyan market.
           </p>
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 transition transform hover:scale-105 hover:shadow-lg">
@@ -178,12 +184,14 @@ export default function PrintingPage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What We Print & Brand</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">From merchandise to storefront signage – everything you need to build a memorable brand in Nairobi.</p>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">From custom football jerseys and corporate uniforms to storefront signage – everything you need to build a memorable brand in Nairobi.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: <Shirt className="w-8 h-8 text-orange-600" />, title: 'Custom Apparel', desc: 'T‑shirts, hoodies, caps, and uniforms with screen print or heat transfer.' },
-              { icon: <Scissors className="w-8 h-8 text-orange-600" />, title: 'Embroidery Services', desc: 'Professional embroidery for uniforms, caps, jackets, and promotional apparel – adding a touch of elegance to your brand.' },
+              { icon: <Shirt className="w-8 h-8 text-orange-600" />, title: 'Custom Apparel', desc: 'T‑shirts, hoodies, caps, and custom event merchandise with screen print or heat transfer.' },
+              { icon: <Activity className="w-8 h-8 text-orange-600" />, title: 'Teamwear & Jerseys', desc: 'Custom football kits, sports jerseys, and athletic hoodies. Vibrant sublimated designs built to last through intense wear and washing.' },
+              { icon: <Briefcase className="w-8 h-8 text-orange-600" />, title: 'Corporate & School Uniforms', desc: 'Distinct, professional staff uniforms, school wear, and institutional polos. We brand them from scratch with your logo.' },
+              { icon: <Scissors className="w-8 h-8 text-orange-600" />, title: 'Embroidery Services', desc: 'Professional embroidery for uniforms, caps, jackets, and promotional apparel – adding a touch of elegance.' },
               { icon: <Coffee className="w-8 h-8 text-orange-600" />, title: 'Promotional Products', desc: 'Mugs, water bottles, pens, bags, keychains – perfect for giveaways and events.' },
               { icon: <Printer className="w-8 h-8 text-orange-600" />, title: 'Business Stationery', desc: 'Letterheads, envelopes, business cards, and notepads with your logo.' },
               { icon: <Megaphone className="w-8 h-8 text-orange-600" />, title: 'Marketing Collateral', desc: 'Flyers, brochures, posters, banners, and roll‑up stands for advertising.' },
@@ -376,6 +384,7 @@ export default function PrintingPage() {
           <div className="space-y-4">
             {[
               { q: 'What printing methods do you use?', a: 'We use screen printing, heat transfer (DTF/sublimation), large‑format inkjet, and vinyl cutting – depending on the material and design complexity.' },
+              { q: 'Can you print custom football jerseys and hoodies?', a: 'Yes! We specialize in sublimated football kits, custom hoodies, and athletic wear. We use durable materials and vibrant ink that stays bright after many washes.' },
               { q: 'Do you print large banners and event canvases?', a: 'Yes! We specialize in high‑resolution large‑format banners, outdoor canvases, and roll‑up stands. Perfect for church camp meetings, conferences, and storefronts.' },
               { q: 'How long does a typical order take?', a: 'Small orders (e.g., 20‑50 T‑shirts) are ready in 2‑3 days. Larger bulk orders or complex signage may take 5‑7 days. Rush orders may be possible – ask us.' },
               { q: 'Do you deliver outside Nairobi?', a: 'Yes. We ship nationwide via courier. Delivery charges vary by location, and we can also arrange pick‑up from our studio in Kasarani, Nairobi.' }
@@ -396,7 +405,7 @@ export default function PrintingPage() {
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to bring your brand to life?</h2>
-          <p className="mt-4 text-orange-100 max-w-xl mx-auto">Let&apos;s discuss your project – whether it&apos;s a single T‑shirt order or a complete shop branding.</p>
+          <p className="mt-4 text-orange-100 max-w-xl mx-auto">Let&apos;s discuss your project – whether it&apos;s a custom football jersey, school uniform, or a complete shop branding.</p>
           <div className="mt-8">
             <Link
               href="/quote"
