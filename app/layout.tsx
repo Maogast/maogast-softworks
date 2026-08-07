@@ -12,8 +12,20 @@ export const metadata: Metadata = {
     default: 'Mgst (Maogast Softworks) – Software, Printing & AI Design in Nairobi',
     template: '%s | Mgst (Maogast Softworks)'
   },
-  description: 'Premier software development, high-quality printing, and AI-driven design services in Nairobi, Kenya. Mgst builds scalable digital solutions for modern businesses.',
-  keywords: ['Mgst', 'Software Development Nairobi', 'Printing Services Kenya', 'AI Design Nairobi', 'Next.js Developer Kenya', 'Maogast Softworks'],
+  description: 'Premier software development, high-quality printing, AI-driven design, 3D signage, corporate gifts, content management, and expert training services in Nairobi, Kenya. Mgst delivers scalable digital and creative solutions for modern businesses.',
+  keywords: [
+    'Mgst', 
+    'Maogast Softworks', 
+    'Software Development Nairobi', 
+    'Printing Services Kenya', 
+    'AI Design Nairobi', 
+    '3D Signage Nairobi', 
+    'Corporate Gifts Kenya', 
+    'Content Management Services', 
+    'Training & Webinars Nairobi', 
+    'Photo Mounting Framing', 
+    'Next.js Developer Kenya'
+  ],
   alternates: {
     canonical: '/',
   },
@@ -35,7 +47,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // 1. Local Business Schema (updated with Mgst branding)
+  // 1. Local Business Schema (updated with full social profiles)
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -67,7 +79,9 @@ export default function RootLayout({
       'https://wa.me/254768564533',
       'https://twitter.com/maogast',
       'https://linkedin.com/company/maogast-softworks',
-      'https://instagram.com/maogastsoftworks'
+      'https://instagram.com/maogastsoftworks',
+      'https://www.facebook.com/share/1CXxFEVetp/',
+      'https://www.tiktok.com/@maogastsoftworks'
     ]
   };
 
