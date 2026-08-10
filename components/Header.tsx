@@ -154,7 +154,15 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo3.png" alt="Maogast Softworks" width={40} height={40} style={{ width: 'auto', height: 'auto' }} />
+              {/* ✅ FIXED: Added style={{ width: 'auto', height: 'auto' }} to silence Next.js warnings */}
+              <Image 
+                src="/logo3.jpg" 
+                alt="Maogast Softworks" 
+                width={40} 
+                height={40} 
+                className="h-10 w-auto object-contain" 
+                style={{ width: 'auto', height: 'auto' }} 
+              />
               <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
             </Link>
 
@@ -277,7 +285,15 @@ export default function Header() {
             {/* Drawer Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-200 dark:border-gray-800">
               <Link href="/" className="flex items-center gap-2" onClick={closeMobileNav}>
-                <Image src="/logo3.png" alt="Maogast Softworks" width={32} height={32} style={{ width: 'auto', height: 'auto' }} />
+                {/* ✅ FIXED: Added style={{ width: 'auto', height: 'auto' }} to silence Next.js warnings */}
+                <Image 
+                  src="/logo3.jpg" 
+                  alt="Maogast Softworks" 
+                  width={32} 
+                  height={32} 
+                  className="h-8 w-auto object-contain" 
+                  style={{ width: 'auto', height: 'auto' }} 
+                />
                 <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
               </Link>
               <button

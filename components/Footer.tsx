@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaFacebook, FaTwitter, FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import FooterQuoteRotator from './FooterQuoteRotator';
 
 export default function Footer() {
   return (
@@ -10,7 +12,6 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold text-lg">Maogast Softworks</h3>
             <p className="mt-2 text-sm">Software, Printing & AI Design</p>
-            {/* ✦ New motto line ✦ */}
             <p className="mt-1 text-xs text-orange-400/80 flex items-center gap-1">
               <span className="text-orange-500">✦</span> Built on Code, Grounded in Faith
             </p>
@@ -46,7 +47,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Company (Updated with Terms) */}
+          {/* Column 3: Company */}
           <div>
             <h4 className="font-medium text-white">Company</h4>
             <ul className="mt-2 space-y-1 text-sm">
@@ -73,8 +74,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
-          &copy; {new Date().getFullYear()} Maogast Softworks Limited. All rights reserved.
+        {/* ✨ Rotating Quote Component */}
+        <FooterQuoteRotator />
+
+        {/* ✨ Bottom Row: Copyright Left, Image Right (BEAUTIFULLY DISPLAYED) */}
+        <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-800 mt-2 pt-4 text-sm">
+          <div className="text-center md:text-left mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Maogast Softworks Limited. All rights reserved.
+          </div>
+          {/* Increased size slightly, added a subtle branded border, and changed to object-cover for a polished look */}
+          <div className="relative w-16 md:w-20 h-auto shadow-md rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm p-0.5 border border-orange-500/30">
+            <Image 
+              src="/images/footer/logophoto.jpg" 
+              alt="Mgst (Maogast Softworks) 3D Signage Installation" 
+              width={200} 
+              height={300}
+              className="w-full h-auto object-cover rounded-sm"
+            />
+          </div>
         </div>
       </div>
     </footer>
