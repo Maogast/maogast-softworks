@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Script from 'next/script';
+import Image from 'next/image';
 import { 
   Shirt, Coffee, Printer, Megaphone, Brush, Package, 
   CheckCircle, HeartHandshake, Upload, Eye, Hammer, Truck,
@@ -7,6 +8,7 @@ import {
   Activity, Briefcase
 } from 'lucide-react';
 import type { Metadata } from 'next';
+import { printingProjects } from '@/data/printing-portfolio'; // <-- ADDED THIS
 
 export const metadata: Metadata = {
   title: 'Printing & Branding Nairobi – Custom Apparel, Uniforms & Signage | Mgst (Maogast Softworks)',
@@ -371,6 +373,43 @@ export default function PrintingPage() {
               <h3 className="text-xl font-semibold">Shop Branding Packages</h3>
               <p className="text-gray-600 dark:text-gray-400 mt-1">Complete storefront branding – indoor & outdoor.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ✨ NEW SECTION: Recent Work Portfolio Gallery */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-950 border-t border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Recent Work</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Real projects crafted for real clients. Tap on any image to view details and share on WhatsApp or social media.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {printingProjects.map((project) => (
+              <Link 
+                key={project.id} 
+                href={`/printing/portfolio/${project.id}`}
+                className="group relative aspect-square bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <span className="text-[10px] uppercase tracking-wider text-orange-400 font-semibold">{project.category}</span>
+                  <h4 className="text-white text-sm font-bold line-clamp-1">{project.title}</h4>
+                  {project.client && (
+                    <p className="text-gray-300 text-xs">{project.client}</p>
+                  )}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
