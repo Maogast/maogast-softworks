@@ -6,6 +6,7 @@ export interface PrintingProject {
   description?: string;
   price?: string;
   image: string;
+  video?: string; // NEW: Video file path (optional)
 }
 
 export const printingProjects: PrintingProject[] = [
@@ -346,5 +347,23 @@ export const printingProjects: PrintingProject[] = [
     category: '3D Signage & Decor',
     description: "We crafted this sleek, minimalistic freestanding countertop sign for a client's personal kitchen coffee station. The piece features 5mm thick matte black acrylic letters spelling out 'COFFEE BAR', precisely mounted using 10mm clear acrylic support stands on a sturdy 20mm matte black acrylic base. Measuring approximately 35cm in width and 18cm in height, the sign offers a modern luxury aesthetic perfect for countertops or floating shelves. The client's vision was brought to life through our precise in-house design, digital mockups, and laser-cutting processes. The final product boasts a premium, lightweight design with a flawless matte finish and no-glare surface, completely transforming the look of their home coffee station.",
     image: '/images/printing-branding/coffee-bar-freestanding-acrylic-sign.jpg',
+  },
+    {
+    id: 'ri-grandma-memorial-tshirts',
+    title: 'R.I.P. Grandma Memorial T-Shirts',
+    client: 'Bereaved Family',
+    category: 'Eventuality & Memorial Printing',
+    description: "A truly meaningful project honoring a beloved grandmother. We received a rush order for 30 custom black t-shirts printed with a dignified 'R.I.P. Grandma' design in subtle gold lettering set against a soft circular motif. This video captures the moment our client held the final product for the first time—a testament to our ability to handle urgent, emotionally sensitive orders with the utmost care, compassion, and precision. We ensured every shirt was flawlessly heat-pressed and packaged, ready to serve as a lasting tribute at the memorial service. It's moments like these that remind us why we do what we do—delivering quality and dignity to every single order, no matter the occasion.",
+    image: '/images/printing-branding/ri-grandma-memorial-tshirts.jpg',
+    video: '/videos/printing-branding/ri-grandma-memorial-tshirts.mp4',
+  },
+  {
+    id: 'custom-birthday-water-bottle-gift',
+    title: 'Personalized Birthday Water Bottle Gift',
+    client: 'Esteemed Client @maogast',
+    category: 'Promotional Products & Gifts',
+    description: "At Maogast Softworks, we believe in celebrating our clients. To honor one of our esteemed partners, we designed and customized a premium white string flask water bottle. The design features an elegant typography layout reading 'Wishing you a year filled with nothing but endless happiness and laughter,' accompanied by a beautiful, soft floral accent to make the gift truly special. This video showcases the final gift ready for delivery, embodying our commitment to going above and beyond for our clients. It's not just about branding—it's about building relationships and adding a deeply personal touch to every interaction. Giving back to those who trust us is at the core of 'Built on Code, Grounded in Faith.'",
+    image: '/images/printing-branding/custom-birthday-water-bottle-gift.jpg',
+    video: '/videos/printing-branding/custom-birthday-water-bottle-gift.mp4',
   },
 ];
