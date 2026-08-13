@@ -331,4 +331,20 @@ export const printingProjects: PrintingProject[] = [
     description: 'Custom branded stanley mug with uv coating.',
     image: '/images/printing-branding/stanley-mug-1.2L.jpg',
   },
+    {
+    id: 'camp-meeting-tshirt-heat-press',
+    title: 'Camp Meeting Custom T-Shirt Production',
+    client: 'Janet',
+    category: 'Custom Apparel',
+    description: "Behind the scenes of a powerful custom apparel project for Janet's camp meeting. The navy blue t-shirt features a bold, thought-provoking theme: 'Obey & live or Disobey & perish. The choice is yours.' Printed in vibrant, lasting yellow text, this design calls for deep reflection. The photo captures the heat pressing process in our studio, ensuring precise temperature and pressure application so that the ink permanently bonds with the fabric. This durable, high-quality print is built to withstand washing and wear, prepared for a massive event attended by hundreds of faithful attendees. Every shirt is carefully handcrafted with precision to ensure a flawless finish.",
+    image: '/images/printing-branding/camp-meeting-tshirt-heat-press.jpg',
+  },
+  {
+    id: 'coffee-bar-freestanding-acrylic-sign',
+    title: 'Premium Acrylic Coffee Bar Signage',
+    client: 'Monica',
+    category: '3D Signage & Decor',
+    description: "We crafted this sleek, minimalistic freestanding countertop sign for a client's personal kitchen coffee station. The piece features 5mm thick matte black acrylic letters spelling out 'COFFEE BAR', precisely mounted using 10mm clear acrylic support stands on a sturdy 20mm matte black acrylic base. Measuring approximately 35cm in width and 18cm in height, the sign offers a modern luxury aesthetic perfect for countertops or floating shelves. The client's vision was brought to life through our precise in-house design, digital mockups, and laser-cutting processes. The final product boasts a premium, lightweight design with a flawless matte finish and no-glare surface, completely transforming the look of their home coffee station.",
+    image: '/images/printing-branding/coffee-bar-freestanding-acrylic-sign.jpg',
+  },
 ];
