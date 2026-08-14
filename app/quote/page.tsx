@@ -11,18 +11,21 @@ export default function QuotePage() {
   const [selectedService, setSelectedService] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [contact, setContact] = useState(''); // NEW STATE
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleServiceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedService || !name || !email) return;
+    // Added validation for contact
+    if (!selectedService || !name || !email || !contact) return;
 
     setIsSubmitting(true);
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, service: selectedService, message: 'Quote request from website' }),
+        // Added contact to the body
+        body: JSON.stringify({ name, email, contact, service: selectedService, message: 'Quote request from website' }),
       });
 
       if (response.ok) {
@@ -72,6 +75,18 @@ export default function QuotePage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
+                />
+              </div>
+              {/* NEW CONTACT FIELD */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number *</label>
+                <input
+                  type="tel"
+                  value={contact}
+                  onChange={(e) => setContact(e.target.value)}
+                  required
+                  placeholder="e.g. 0768 564 533"
                   className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
                 />
               </div>
@@ -132,7 +147,7 @@ export default function QuotePage() {
               </div>
 
               <p className="text-xs text-gray-500 dark:text-gray-400 mt-4 flex items-center gap-1">
-                <CreditCard className="w-3 h-3" /> A 50% deposit is required to start work. Balance payable upon completion.
+                <CreditCard className="w-3 h-3" /> A 65% deposit is required to start work. Balance payable upon completion.
               </p>
             </div>
 

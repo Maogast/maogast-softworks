@@ -5,6 +5,7 @@ import { useState } from 'react';
 interface FormData {
   name: string;
   email: string;
+  contact: string; // Added contact
   service: string;
   message: string;
 }
@@ -13,6 +14,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    contact: '', // Initialized contact
     service: '',
     message: '',
   });
@@ -39,7 +41,7 @@ export default function ContactForm() {
       const data = await response.json();
       if (response.ok) {
         setStatus({ type: 'success', message: 'Message sent successfully! We’ll get back to you soon.' });
-        setFormData({ name: '', email: '', service: '', message: '' });
+        setFormData({ name: '', email: '', contact: '', service: '', message: '' });
       } else {
         setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again.' });
       }
@@ -103,6 +105,23 @@ export default function ContactForm() {
           />
         </div>
 
+        {/* NEW: Phone Number Field */}
+        <div>
+          <label htmlFor="contact" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            Phone Number *
+          </label>
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            value={formData.contact}
+            onChange={handleChange}
+            required
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white transition"
+            placeholder="e.g. 0768 564 533"
+          />
+        </div>
+
         <div>
           <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Service Interested In *
@@ -119,11 +138,14 @@ export default function ContactForm() {
             <option value="Software Development">Software Development</option>
             <option value="Printing & Branding">Printing & Branding</option>
             <option value="AI Design">AI‑Powered Design</option>
-            <option value="Content Management">Content Management</option> {/* NEW */}
-             <option value="Training & Webinars">Training & Webinars</option>
+            <option value="Content Management">Content Management</option>
+            {/* NEW: 3D Signage & Products */}
+            <option value="3D Signage & Lettering">3D Signage & Lettering (MGST~Works)</option>
+            <option value="Products (Catalogue & Branding)">Products (Catalogue & Branding)</option>
+            <option value="Training & Webinars">Training & Webinars</option>
             <option value="Birthday Gallery Posters & Printing">Birthday Gallery Posters & Printing</option>
             <option value="Photo Mounting & Framing">Photo Mounting & Framing</option>
-             <option value="Academic & Research Projects">Academic & Research Projects</option>
+            <option value="Academic & Research Projects">Academic & Research Projects</option>
             <option value="Other">Other / Not sure</option>
           </select>
         </div>

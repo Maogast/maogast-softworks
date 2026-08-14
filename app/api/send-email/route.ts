@@ -42,9 +42,11 @@ async function sendViaGmail({
 
 export async function POST(request: NextRequest) {
   try {
-    const { name, email, service, message } = await request.json();
+    // ✅ Added 'contact' to destructuring
+    const { name, email, contact, service, message } = await request.json();
 
-    if (!name || !email || !service) {
+    // ✅ Added 'contact' to required fields validation
+    if (!name || !email || !contact || !service) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 },
@@ -71,19 +73,20 @@ export async function POST(request: NextRequest) {
       ? message.replace(/\n/g, "<br/>")
       : "No message provided";
 
-    // 1. Admin email (to you)
+    // 1. Admin email (to you) - Updated with Contact and 65% deposit
     const adminSubject = `New Quote Request: ${service} from ${name}`;
     const adminHtml = `
       <h2>New Quote Request</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Contact:</strong> ${contact}</p>
       <p><strong>Service:</strong> ${service}</p>
       <p><strong>Message:</strong></p>
       <p>${messageHtml}</p>
     `;
-    const adminText = `Name: ${name}\nEmail: ${email}\nService: ${service}\nMessage: ${messageText}`;
+    const adminText = `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nService: ${service}\nMessage: ${messageText}`;
 
-    // 2. Client auto‑reply email – includes payment options
+    // 2. Client auto‑reply email – includes payment options (M-Pesa first, 65% deposit)
     const clientSubject = `Your quote request – Maogast Softworks`;
     const clientHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -93,22 +96,23 @@ export async function POST(request: NextRequest) {
         
            <div style="margin: 20px 0; padding: 16px; background: #f8f9fa; border-radius: 8px;">
           <h4 style="margin-top: 0; color: #0A192F;">💳 Payment Information</h4>
-          <p><strong>Bank Transfer</strong></p>
+          
+          <p><strong>M‑Pesa</strong></p>
+          <p style="margin-left: 8px;">
+            Paybill: <strong>522533</strong><br/>
+            Account: <strong>8091774</strong>
+          </p>
+          
+          <p style="margin-top: 12px;"><strong>Bank Transfer</strong></p>
           <p style="margin-left: 8px;">
             <strong>Bank:</strong> KCB Bank of Kenya<br/>
             <strong>Account Name:</strong> MAOGAST SOFTWORKS LIMITED<br/>
             <strong>Account Number:</strong> 1352136236<br/>
             <strong>Branch:</strong> Moi Avenue, Nairobi
           </p>
-          
-          <p style="margin-top: 12px;"><strong>M‑Pesa</strong></p>
-          <p style="margin-left: 8px;">
-            Paybill: <strong>522533</strong><br/>
-            Account: <strong>8091774</strong>
-          </p>
         </div>
 
-        <p>A <strong>50% deposit</strong> is required to start work. Balance due upon completion.</p>
+        <p>A <strong>65% deposit</strong> is required to start work. Balance due upon completion.</p>
         
         <div style="text-align: center; margin: 25px 0;">
           <a href="${websiteUrl}" style="background-color: #F97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block;">Visit Maogast Softworks →</a>
@@ -119,7 +123,7 @@ export async function POST(request: NextRequest) {
         <p style="font-size: 12px; color: #888;">${websiteUrl} | +254 768 564 533 | info@${fromDomain}</p>
       </div>
     `;
-    const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will get back to you within 24 hours.\n\nPayment Information:\n\nBank Transfer:\n- Bank: KCB Bank of Kenya\n- Account Name: MAOGAST SOFTWORKS LIMITED\n- Account Number: 1352136236\n- Branch: Moi Avenue, Nairobi\n\nM-Pesa:\n- Paybill: 522533\n- Account: 8091774\n\nA 50% deposit is required to start work. Balance due upon completion.\n\nVisit us: ${websiteUrl}\n\nBest regards,\nThe Maogast Softworks Team\n\n${websiteUrl} | +254 768 564 533 | info@${fromDomain}`;
+    const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will get back to you within 24 hours.\n\nPayment Information:\n\nM-Pesa:\n- Paybill: 522533\n- Account: 8091774\n\nBank Transfer:\n- Bank: KCB Bank of Kenya\n- Account Name: MAOGAST SOFTWORKS LIMITED\n- Account Number: 1352136236\n- Branch: Moi Avenue, Nairobi\n\nA 65% deposit is required to start work. Balance due upon completion.\n\nVisit us: ${websiteUrl}\n\nBest regards,\nThe Maogast Softworks Team\n\n${websiteUrl} | +254 768 564 533 | info@${fromDomain}`;
 
     let adminSent = false;
     let clientSent = false;
