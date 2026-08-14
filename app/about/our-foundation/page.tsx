@@ -4,13 +4,13 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Our Foundation – Built on Code, Grounded in Faith | Mgst (Maogast Softworks)',
-  description: 'Discover the motto, vision, mission, and values driving Mgst (Maogast Softworks) in Nairobi, Kenya: Code, Faith, Innovation, and Community. We are grounded in faith and built for the future.',
+  description: 'Discover the motto, vision, mission, and values driving Mgst (Maogast Softworks) in Nairobi, Kenya: Code, Faith, Innovation, and Community. We provide software, 3D signage, printing, and AI design rooted in integrity.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/about/our-foundation',
   },
   openGraph: {
     title: 'Our Foundation | Built on Code, Grounded in Faith | Mgst',
-    description: 'Discover the 4 pillars of Mgst Softworks: Code, Faith, Innovation, and Community. Serving Kenya with purpose.',
+    description: 'Discover the 4 pillars of Mgst Softworks: Code, Faith, Innovation, and Community. Serving Kenya with purpose across software, 3D signage, and design.',
     url: 'https://maogastsoftworks.com/about/our-foundation',
     siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-our-foundation.jpg', width: 1200, height: 630 }],
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function OurFoundationPage() {
+  // ... (JSX remains exactly as you provided it, keeping your highlighted Link block untouched)
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -71,7 +72,6 @@ export default function OurFoundationPage() {
             <p className="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Where technical precision meets moral direction. Our foundation bridges the gap between complex technology and uncompromising integrity.
             </p>
-            {/* Added location badge */}
             <div className="inline-flex items-center gap-2 bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-1 mt-6">
               <span className="text-sm font-medium text-orange-700 dark:text-orange-300">📍 Based in Nairobi, Kenya – Serving African businesses</span>
             </div>

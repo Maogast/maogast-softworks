@@ -1,17 +1,21 @@
 import TeamSection from '@/components/TeamSection';
 import Script from 'next/script';
 import type { Metadata } from 'next';
-import { Award, Heart, Zap, Eye, Sparkles, Globe } from 'lucide-react';
+import { 
+  Award, Heart, Zap, Eye, Sparkles, Globe, 
+  Code, Printer, Cuboid, Palette, FileText, Gift 
+} from 'lucide-react';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About Mgst (Maogast Softworks) – Software, Printing & AI Design in Nairobi',
-  description: 'Meet Mgst (Maogast Softworks), a registered Kenyan company in Nairobi specializing in custom software, premium printing, and AI-powered design. We are a team of developers and creatives dedicated to helping Kenyan businesses grow.',
+  title: 'About Mgst (Maogast Softworks) – Software, 3D Signage, Printing & AI Design in Nairobi',
+  description: 'Meet Mgst (Maogast Softworks), a registered Kenyan company in Nairobi specializing in custom software, premium printing, 3D signage (MGST~Works), AI-powered design, content management, and training.',
   alternates: {
     canonical: 'https://maogastsoftworks.com/about',
   },
   openGraph: {
     title: 'About Mgst (Maogast Softworks) | Nairobi, Kenya',
-    description: 'A Kenyan team of developers, designers, and creatives dedicated to exceptional software, printing, and AI solutions for local businesses.',
+    description: 'A Kenyan team of developers, designers, and creatives dedicated to exceptional software, 3D signage, printing, and AI solutions for local businesses.',
     url: 'https://maogastsoftworks.com/about',
     siteName: 'Maogast Softworks (MGST~Works)',
     images: [{ url: 'https://maogastsoftworks.com/og-about.jpg', width: 1200, height: 630 }],
@@ -19,10 +23,11 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Mgst | Maogast Softworks Nairobi',
-    description: 'Meet the local team behind the code, prints, and AI-powered designs in Kenya.',
+    description: 'Meet the local team behind the code, 3D signage, prints, and AI-powered designs in Kenya.',
     images: ['https://maogastsoftworks.com/og-about.jpg'],
   },
 };
+
 export default function AboutPage() {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -59,7 +64,7 @@ export default function AboutPage() {
       <Script id="about-breadcrumb" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="organization-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
 
-      {/* Hero section – added visual illustration */}
+      {/* Hero section */}
       <section className="py-16 bg-white dark:bg-gray-950 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -69,7 +74,7 @@ export default function AboutPage() {
               </div>
               <h1 className="text-4xl font-bold">About Maogast Softworks</h1>
               <p className="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-xl">
-                We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, and AI-powered design.
+                We are a team of developers, designers, and creatives dedicated to delivering exceptional software, printing, 3D signage, and AI-powered design under one roof.
               </p>
             </div>
             {/* Hero Illustration – SVG */}
@@ -81,7 +86,6 @@ export default function AboutPage() {
                   {/* Code symbol */}
                   <path d="M70 85 L85 100 L70 115" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
                   <path d="M130 85 L115 100 L130 115" stroke="#F97316" strokeWidth="3" fill="none" strokeLinecap="round" />
-                  {/* Gear / Print symbol */}
                   <circle cx="100" cy="100" r="15" stroke="#F97316" strokeWidth="3" fill="none" />
                   <circle cx="100" cy="100" r="8" fill="#F97316" fillOpacity="0.5" />
                   {/* AI star */}
@@ -99,7 +103,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Story section – added subtle background pattern */}
+      {/* Our Story section */}
       <section className="py-16 bg-gray-50 dark:bg-gray-900 relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +123,7 @@ export default function AboutPage() {
           <div className="space-y-4 text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
             <p>
               Founded in <strong>Nairobi, Kenya</strong>, <strong>Maogast Softworks</strong> started with a simple belief: businesses shouldn’t have to juggle multiple vendors for their digital and physical branding needs. 
-              We bring together <strong>custom software development, premium printing, and AI‑powered design</strong> under one roof – saving you time, money, and headaches.
+              We bring together <strong>custom software development, premium printing, 3D signage (MGST~Works), and AI‑powered design</strong> under one roof – saving you time, money, and headaches.
             </p>
             <p>
               What makes us different? We don’t just build; we partner. From the first wireframe to the final printed t‑shirt, our team stays obsessed with quality, speed, and your unique vision. 
@@ -132,8 +136,41 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Our Values section – with distinct icons */}
+      {/* ✨ NEW: Services at a Glance Section (Added to include 3D Signage, etc.) */}
       <section className="py-16 bg-white dark:bg-gray-950">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Services at a Glance</h2>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              From complex software architecture to physical 3D branding—we handle it all for Kenyan businesses.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: 'Software Development', desc: 'Custom web & mobile apps, ERPs, and CMS systems.', icon: Code },
+              { title: 'Printing & Branding', desc: 'T‑shirts, mugs, banners, and professional stationery.', icon: Printer },
+              { title: '3D Signage (MGST~Works)', desc: 'Premium 3D acrylic, metal, and LED backlit signage.', icon: Cuboid },
+              { title: 'AI-Powered Design', desc: 'Church branding, social media graphics, and poster design.', icon: Palette },
+              { title: 'Content Management', desc: 'Website updates, social media, and digital strategy.', icon: FileText },
+              { title: 'Training & Corporate Gifts', desc: 'Tech bootcamps, workshops, and custom branded products.', icon: Gift },
+            ].map((service, idx) => (
+              <div 
+                key={idx} 
+                className="group bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 duration-300 border border-gray-100 dark:border-gray-700"
+              >
+                <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors">
+                  <service.icon className="w-7 h-7 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Values section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What Drives Us</h2>
@@ -150,7 +187,7 @@ export default function AboutPage() {
               { icon: <Sparkles className="w-6 h-6 text-orange-600" />, title: 'Innovation', desc: 'AI, modern frameworks, eco‑friendly inks – we constantly upgrade our tools.' },
               { icon: <Globe className="w-6 h-6 text-orange-600" />, title: 'Local Roots, Global Reach', desc: 'Proudly Kenyan, but our work speaks worldwide.' },
             ].map((value, idx) => (
-              <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 duration-300">
+              <div key={idx} className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 duration-300">
                 <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
                   {value.icon}
                 </div>
@@ -162,7 +199,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Stats bar – unchanged */}
+      {/* Stats bar */}
       <section className="py-16 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -180,7 +217,7 @@ export default function AboutPage() {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Ready to work together?</h3>
           <p className="mt-2 text-gray-600 dark:text-gray-400">Let’s turn your ideas into reality.</p>
           <div className="mt-6">
-            <a href="/quote" className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">Request a Quote →</a>
+            <Link href="/quote" className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition">Request a Quote →</Link>
           </div>
         </div>
       </section>
