@@ -1,11 +1,10 @@
-// app/product/[id]/page.tsx
 import { products } from '@/data/products';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import type { Metadata } from 'next';
+import WatermarkImage from '@/components/WatermarkImage';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -14,9 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find(p => p.id === resolvedParams.id);
   
   if (!product) {
-    return {
-      title: 'Product Not Found',
-    };
+    return { title: 'Product Not Found' };
   }
 
   const baseUrl = 'https://maogastsoftworks.com';
@@ -27,13 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${product.name} - Ksh ${product.price.toLocaleString()} - Mgst Softworks`,
       description: product.description,
-      images: [
-        {
-          url: `${baseUrl}${product.image}`,
-          width: 1200,
-          height: 630,
-        },
-      ],
+      images: [{ url: `${baseUrl}${product.image}`, width: 1200, height: 630 }],
       siteName: 'Maogast Softworks (MGST~Works)',
       type: 'website',
     },
@@ -57,9 +48,7 @@ export default async function ProductPage({ params }: Props) {
   const resolvedParams = await params;
   const product = products.find(p => p.id === resolvedParams.id);
 
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
   const categoryName = {
     mugs: 'Mugs',
@@ -82,8 +71,9 @@ export default async function ProductPage({ params }: Props) {
 
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
         <div className="grid md:grid-cols-2 gap-8">
+          {/* Watermarked Image */}
           <div className="relative aspect-square md:aspect-auto md:h-[600px] bg-gray-100 dark:bg-gray-700">
-            <Image
+            <WatermarkImage
               src={product.image}
               alt={product.name}
               fill
@@ -92,6 +82,7 @@ export default async function ProductPage({ params }: Props) {
               priority
             />
           </div>
+          
           <div className="p-6 md:p-8 flex flex-col">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {product.name}

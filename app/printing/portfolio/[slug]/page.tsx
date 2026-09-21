@@ -1,10 +1,12 @@
 import { printingProjects } from '@/data/printing-portfolio';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import type { Metadata } from 'next';
+// Import the new watermark components
+import WatermarkVideo from '@/components/WatermarkVideo';
+import WatermarkImage from '@/components/WatermarkImage';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -21,7 +23,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${project.title} - Mgst Softworks`,
       description: project.description,
-      // WhatsApp previews require an image. We use `project.image` for this.
       images: [{ url: `${baseUrl}${project.image}`, width: 1200, height: 630 }],
       siteName: 'Maogast Softworks (MGST~Works)',
     },
@@ -34,7 +35,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Pre-render all project pages for ultra-fast loading
 export async function generateStaticParams() {
   return printingProjects.map((project) => ({
     slug: project.id,
@@ -52,7 +52,6 @@ export default async function PrintingPortfolioPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-4 py-16 max-w-6xl">
-      {/* Back Button */}
       <Link 
         href="/printing"
         className="inline-flex items-center text-orange-600 hover:text-orange-700 mb-6 transition-colors"
@@ -60,20 +59,19 @@ export default async function PrintingPortfolioPage({ params }: Props) {
         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Printing Services
       </Link>
 
-      {/* Project Detail View */}
       <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
         <div className="grid md:grid-cols-2 gap-8">
           
-          {/* Media Section (Image or Video) */}
+          {/* Media Section (Image or Video) - Now Watermarked */}
           <div className="relative aspect-square md:aspect-auto md:h-[600px] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
             {project.video ? (
-              <video
+              <WatermarkVideo
                 src={project.video}
-                controls
+                poster={project.image}
                 className="w-full h-full object-contain"
               />
             ) : (
-              <Image
+              <WatermarkImage
                 src={project.image}
                 alt={project.title}
                 fill

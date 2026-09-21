@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
-import Image from "next/image";
+import Image from "next/image"; // Keep for icons
 import {
   Shirt,
   Coffee,
@@ -24,7 +24,10 @@ import {
   Briefcase,
 } from "lucide-react";
 import type { Metadata } from "next";
-import { printingProjects } from "@/data/printing-portfolio"; // <-- ADDED THIS
+import { printingProjects } from "@/data/printing-portfolio";
+// Import Watermark Components
+import WatermarkVideo from '@/components/WatermarkVideo';
+import WatermarkImage from '@/components/WatermarkImage';
 
 export const metadata: Metadata = {
   title:
@@ -628,16 +631,14 @@ export default function PrintingPage() {
                 href={`/printing/portfolio/${project.id}`}
                 className="group relative aspect-square bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                {/* Video or Image Preview */}
+                {/* Replaced with Watermark components */}
                 {project.video ? (
-                  <video
+                  <WatermarkVideo
                     src={project.video}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    muted
-                    loop
                   />
                 ) : (
-                  <Image
+                  <WatermarkImage
                     src={project.image}
                     alt={project.title}
                     fill

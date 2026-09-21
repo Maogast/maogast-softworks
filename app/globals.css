@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ========== BASE & FONTS ========== */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -9,18 +10,60 @@
     --primary: 24.6 95% 53%;
     --primary-foreground: 0 0% 100%;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
   }
+
+  html {
+    font-family: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Headings default to display font (Space Grotesk) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  /* Code blocks default to JetBrains Mono */
+  code, pre, kbd, samp {
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
 }
 
-body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
+/* ========== UTILITY FONT CLASSES ========== */
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+.font-body {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* Smooth floating with slight rotation */
+/* ========== IMAGE / VIDEO PROTECTION ========== */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+video {
+  -webkit-user-drag: none;
+}
+
+/* ========== 3D FLOATING HERO ICONS ========== */
 @keyframes float3d {
   0% {
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
@@ -33,7 +76,6 @@ body {
   }
 }
 
-/* Staggered variant for middle icon */
 @keyframes float3d-delayed {
   0% {
     transform: translateY(0px) rotateX(0deg) rotateY(0deg);
@@ -46,7 +88,6 @@ body {
   }
 }
 
-/* Glowing pulse with shadow and scale */
 @keyframes glow-pulse {
   0% {
     opacity: 0.8;
@@ -65,30 +106,25 @@ body {
   }
 }
 
-/* Subtle hover effect for each icon container */
 .hero-icon {
   transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .hero-icon:hover {
   transform: translateY(-6px) scale(1.02);
   filter: drop-shadow(0 8px 12px rgba(0,0,0,0.2));
 }
 
-/* Apply animations */
 .animate-float-3d {
   animation: float3d 5s ease-in-out infinite;
 }
-
 .animate-float-3d-delayed {
   animation: float3d-delayed 5s ease-in-out infinite 0.7s;
 }
-
 .animate-glow-pulse {
   animation: glow-pulse 4s ease-in-out infinite;
 }
 
-/* 3D tilt effect + float for gallery items */
+/* ========== GALLERY 3D TILT ========== */
 .gallery-item {
   transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s ease;
   transform-style: preserve-3d;
@@ -105,12 +141,10 @@ body {
 .gallery-image {
   transition: transform 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
 }
-
 .gallery-item:hover .gallery-image {
   transform: scale(1.05);
 }
 
-/* Subtle floating animation for gallery items (staggered) */
 @keyframes gentle-float {
   0% {
     transform: translateY(0px);
@@ -123,7 +157,7 @@ body {
   }
 }
 
-/* Fade-in-up animation */
+/* ========== FADE-IN-UP ========== */
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -138,22 +172,18 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease forwards;
 }
-
 .animation-delay-200 {
   animation-delay: 0.2s;
 }
-
 .animation-delay-400 {
   animation-delay: 0.4s;
 }
 
-/* ========== BLOG CONTENT STYLES (Tables & Prose) ========== */
-/* Apply to any element with class "prose" (from @tailwindcss/typography) */
+/* ========== BLOG CONTENT STYLES (Prose & Tables) ========== */
 .prose {
   max-width: 100%;
 }
 
-/* Table styling for markdown tables inside prose */
 .prose table {
   width: 100%;
   margin: 1.5rem 0;
@@ -178,8 +208,6 @@ body {
 .prose tbody tr:hover {
   @apply bg-gray-50 dark:bg-gray-800/50 transition-colors;
 }
-
-/* Optional: Add spacing for images inside prose */
 .prose img {
   @apply rounded-lg shadow-md my-4;
 }

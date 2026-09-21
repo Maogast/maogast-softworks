@@ -1,21 +1,25 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/data/products';
 import { ExternalLink } from 'lucide-react';
+// Import the watermark component
+import WatermarkImage from '@/components/WatermarkImage';
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group">
       <Link href={`/product/${product.id}`}>
         <div className="relative aspect-square overflow-hidden rounded-t-xl bg-gray-100 dark:bg-gray-700">
-          <Image
+          {/* Replaced standard Image with WatermarkImage */}
+          <WatermarkImage
             src={product.image}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
+            watermarkSize={50}
+            watermarkPosition="bottom-right"
           />
         </div>
         <div className="p-4">
