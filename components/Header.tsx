@@ -113,21 +113,22 @@ export default function Header() {
   return (
     <>
       {/* =================================================== */}
-      {/* TOP UTILITY BAR — Global trust + WhatsApp CTA       */}
+      {/* TOP UTILITY BAR — visible on ALL screens             */}
       {/* =================================================== */}
-      <div className="bg-[#0A192F] text-white text-xs sm:text-sm border-b border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9">
-          {/* Left: global trust message */}
-          <div className="hidden sm:flex items-center gap-2 text-gray-400">
-            <span className="text-orange-400">★</span>
-            <span className="tracking-wide">
-              Trusted worldwide
-              <span className="text-gray-500 mx-1.5">·</span>
+      <div className="bg-[#0A192F] text-white text-[11px] sm:text-sm border-b border-gray-800">
+        <div className="w-full px-3 sm:px-6 lg:px-10 flex items-center justify-between h-9 gap-2">
+          {/* Left: global trust message — shown on mobile too */}
+          <div className="flex items-center gap-1.5 sm:gap-2 text-gray-400 min-w-0">
+            <span className="text-orange-400 shrink-0">★</span>
+            <span className="tracking-wide truncate">
+              <span className="hidden xs:inline sm:inline">Trusted </span>
+              <span>worldwide</span>
+              <span className="text-gray-500 mx-1">·</span>
               <span className="text-gray-300">Kenya</span>
               <span className="text-gray-500 mx-1">·</span>
               <span className="text-gray-300">Romania</span>
-              <span className="text-gray-500 mx-1">·</span>
-              <span className="text-gray-300">USA</span>
+              <span className="text-gray-500 mx-1 hidden sm:inline">·</span>
+              <span className="text-gray-300 hidden sm:inline">USA</span>
             </span>
           </div>
 
@@ -137,29 +138,36 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             title="Chat on WhatsApp · +254 768 564 533"
-            className="group flex items-center gap-2 hover:text-green-400 transition-all duration-200"
+            className="group flex items-center gap-1.5 sm:gap-2 hover:text-green-400 transition-all duration-200 shrink-0"
           >
-            <span className="relative flex items-center justify-center w-2.5 h-2.5" aria-hidden="true">
+            {/* Live pulse */}
+            <span className="relative flex items-center justify-center w-2 h-2 sm:w-2.5 sm:h-2.5" aria-hidden="true">
               <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500" />
+              <span className="relative inline-flex w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-green-500" />
             </span>
-            <FaWhatsapp className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
-            <span className="font-medium text-white group-hover:text-green-400">
+
+            <FaWhatsapp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
+
+            <span className="font-medium text-white group-hover:text-green-400 whitespace-nowrap">
               Chat with us
             </span>
-            <span className="hidden sm:inline text-gray-500 group-hover:text-green-400">·</span>
-            <span className="hidden sm:inline text-gray-400 group-hover:text-green-400">
+            <span className="hidden md:inline text-gray-500 group-hover:text-green-400">·</span>
+            <span className="hidden md:inline text-gray-400 group-hover:text-green-400 whitespace-nowrap">
               Reply in minutes
             </span>
           </a>
         </div>
       </div>
 
-      {/* Main header */}
+      {/* =================================================== */}
+      {/* MAIN HEADER — logo pinned to far left                */}
+      {/* =================================================== */}
       <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#0A192F]/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ✅ Changed from container mx-auto → w-full + padding */}
+        <div className="w-full px-3 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
+            {/* Logo — now truly at the far left */}
+            <Link href="/" className="flex items-center gap-2 shrink-0">
               <Image
                 src="/logo3.jpg"
                 alt="Maogast Softworks"
@@ -168,9 +176,12 @@ export default function Header() {
                 className="h-10 w-auto object-contain"
                 style={{ width: 'auto', height: 'auto' }}
               />
-              <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
+              <span className="font-bold text-xl text-gray-900 dark:text-white">
+                Maogast
+              </span>
             </Link>
 
+            {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => {
                 const active = isGroupActive(item);
@@ -265,6 +276,7 @@ export default function Header() {
               </Link>
             </nav>
 
+            {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
