@@ -3,11 +3,14 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import WhatsAppFloat from '@/components/WhatsAppFloat'; // ✅ NEW
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 
-// ✅ Fonts — self-hosted, no layout shift
+/* ============================================================ */
+/* ✅ Fonts — self-hosted, no layout shift                      */
+/* ============================================================ */
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
@@ -29,6 +32,9 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600'],
 });
 
+/* ============================================================ */
+/* ✅ Site-wide SEO Metadata                                    */
+/* ============================================================ */
 export const metadata: Metadata = {
   metadataBase: new URL('https://maogastsoftworks.com'),
   title: {
@@ -62,7 +68,11 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
 };
 
+/* ============================================================ */
+/* ✅ Root Layout                                                */
+/* ============================================================ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  /* ---------- Local Business Schema ---------- */
   const localBusinessJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -96,6 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
   };
 
+  /* ---------- Breadcrumb Schema ---------- */
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -110,6 +121,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-body antialiased">
+        {/* ---------- JSON-LD Structured Data ---------- */}
         <Script
           id="local-business-structured-data"
           type="application/ld+json"
@@ -120,9 +132,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
+
+        {/* ---------- Page Chrome ---------- */}
         <Header />
         <main>{children}</main>
         <Footer />
+
+        {/* ✅ NEW: Global floating WhatsApp button — visible on every page */}
+        <WhatsAppFloat />
+
+        {/* ---------- Analytics ---------- */}
         <Analytics />
         <SpeedInsights />
       </body>

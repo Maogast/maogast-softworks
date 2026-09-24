@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { JSX, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { FaWhatsapp } from 'react-icons/fa';
 
 /* ---------- Inline SVG icons ---------- */
 const NavIcon = ({ name }: { name: string }) => {
@@ -52,14 +53,9 @@ interface DropdownItem {
   description?: string;
 }
 
-/* ---------- NAV STRUCTURE — Software is TOP-LEVEL ---------- */
 const navItems = [
   { name: 'Home', href: '/' },
-
-  // ⭐ SOFTWARE — direct top-level link (always visible)
   { name: 'Software', href: '/software' },
-
-  // Services dropdown — the remaining complementary services
   {
     name: 'Services',
     href: '#',
@@ -70,8 +66,6 @@ const navItems = [
       { name: 'Training & Webinars', href: '/training', description: 'Team upskilling' },
     ] as DropdownItem[],
   },
-
-  // Products dropdown
   {
     name: 'Products',
     href: '/products',
@@ -83,10 +77,7 @@ const navItems = [
       { name: 'Awards', href: '/products/awards' },
     ] as DropdownItem[],
   },
-
   { name: 'Portfolio', href: '/portfolio' },
-
-  // About dropdown
   {
     name: 'About',
     href: '/about',
@@ -110,9 +101,7 @@ export default function Header() {
   };
 
   const isGroupActive = (item: (typeof navItems)[number]) => {
-    if (item.dropdown) {
-      return item.dropdown.some((sub) => isActive(sub.href));
-    }
+    if (item.dropdown) return item.dropdown.some((sub) => isActive(sub.href));
     return isActive(item.href);
   };
 
@@ -123,19 +112,45 @@ export default function Header() {
 
   return (
     <>
-      {/* Top utility bar */}
-      <div className="bg-[#0A192F] text-white text-sm py-2 px-4 border-b border-gray-800">
-        <div className="container mx-auto flex justify-end items-center">
+      {/* =================================================== */}
+      {/* TOP UTILITY BAR — Global trust + WhatsApp CTA       */}
+      {/* =================================================== */}
+      <div className="bg-[#0A192F] text-white text-xs sm:text-sm border-b border-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9">
+          {/* Left: global trust message */}
+          <div className="hidden sm:flex items-center gap-2 text-gray-400">
+            <span className="text-orange-400">★</span>
+            <span className="tracking-wide">
+              Trusted worldwide
+              <span className="text-gray-500 mx-1.5">·</span>
+              <span className="text-gray-300">Kenya</span>
+              <span className="text-gray-500 mx-1">·</span>
+              <span className="text-gray-300">Romania</span>
+              <span className="text-gray-500 mx-1">·</span>
+              <span className="text-gray-300">USA</span>
+            </span>
+          </div>
+
+          {/* Right: WhatsApp chat CTA */}
           <a
-            href="https://wa.me/254768564533?text=Hello%20Maogast%20Softworks%2C%20I%20have%20a%20project%20in%20mind."
+            href="https://wa.me/254768564533?text=Hello%20Maogast%20Softworks%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20discuss%20a%20project%2C%20please."
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-orange-400 transition flex items-center gap-1"
+            title="Chat on WhatsApp · +254 768 564 533"
+            className="group flex items-center gap-2 hover:text-green-400 transition-all duration-200"
           >
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.297.298-.495.099-.198.05-.371-.025-.52-.074-.149-.67-1.614-.918-2.21-.242-.58-.488-.5-.67-.51-.173-.01-.371-.01-.57-.01-.198 0-.52.074-.792.371-.273.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.095 3.2 5.075 4.487.708.306 1.26.489 1.69.625.71.227 1.357.195 1.868.118.57-.086 1.758-.72 2.006-1.415.247-.695.247-1.29.173-1.414-.074-.124-.272-.198-.57-.347Z" />
-            </svg>
-            +254 768 564 533
+            <span className="relative flex items-center justify-center w-2.5 h-2.5" aria-hidden="true">
+              <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500" />
+            </span>
+            <FaWhatsapp className="w-4 h-4 text-[#25D366] group-hover:scale-110 transition-transform duration-200" />
+            <span className="font-medium text-white group-hover:text-green-400">
+              Chat with us
+            </span>
+            <span className="hidden sm:inline text-gray-500 group-hover:text-green-400">·</span>
+            <span className="hidden sm:inline text-gray-400 group-hover:text-green-400">
+              Reply in minutes
+            </span>
           </a>
         </div>
       </div>
@@ -144,7 +159,6 @@ export default function Header() {
       <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#0A192F]/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
               <Image
                 src="/logo3.jpg"
@@ -157,7 +171,6 @@ export default function Header() {
               <span className="font-bold text-xl text-gray-900 dark:text-white">Maogast</span>
             </Link>
 
-            {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => {
                 const active = isGroupActive(item);
@@ -243,7 +256,6 @@ export default function Header() {
                 );
               })}
 
-              {/* CTA button */}
               <Link
                 href="/contact"
                 className="ml-3 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-600 hover:bg-orange-700 text-white text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/30 transform hover:scale-105"
@@ -253,7 +265,6 @@ export default function Header() {
               </Link>
             </nav>
 
-            {/* Mobile menu button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -267,15 +278,11 @@ export default function Header() {
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div
-          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden"
-          onClick={closeMobileNav}
-        >
+        <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden" onClick={closeMobileNav}>
           <div
             className="fixed top-0 right-0 h-full w-full max-w-[85%] sm:max-w-sm bg-white dark:bg-[#0A192F] shadow-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
             <div className="flex items-center justify-between px-6 pt-6 pb-4 border-b border-gray-200 dark:border-gray-800">
               <Link href="/" className="flex items-center gap-2" onClick={closeMobileNav}>
                 <Image
@@ -299,7 +306,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Nav */}
             <nav className="px-4 py-4 space-y-1">
               {navItems.map((item) => {
                 const active = isGroupActive(item);
@@ -364,8 +370,7 @@ export default function Header() {
                 );
               })}
 
-              {/* CTA */}
-              <div className="pt-3">
+              <div className="pt-3 space-y-2">
                 <Link
                   href="/contact"
                   onClick={closeMobileNav}
@@ -374,6 +379,17 @@ export default function Header() {
                   <NavIcon name="Contact" />
                   Contact Us
                 </Link>
+
+                <a
+                  href="https://wa.me/254768564533?text=Hello%20Maogast%20Softworks%20%F0%9F%91%8B%0A%0AI%27d%20like%20to%20discuss%20a%20project."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMobileNav}
+                  className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white text-sm font-semibold transition"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  Chat on WhatsApp
+                </a>
               </div>
             </nav>
           </div>

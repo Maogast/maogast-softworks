@@ -1,207 +1,125 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { Resend } from "resend";
-import nodemailer from "nodemailer";
+import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
-// ---------- Gmail SMTP Configuration (Fallback) – only if credentials exist ----------
-const gmailTransporter = (() => {
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.warn("Gmail credentials missing – fallback disabled");
-    return null;
-  }
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD,
-    },
-  });
-})();
-
-async function sendViaGmail({
-  to,
-  subject,
-  html,
-  text,
-}: {
-  to: string;
-  subject: string;
-  html: string;
-  text: string;
-}) {
-  if (!gmailTransporter) throw new Error("Gmail not configured");
-  return gmailTransporter.sendMail({
-    from: `"Maogast Softworks" <${process.env.GMAIL_USER}>`,
-    to,
-    subject,
-    text,
-    html,
-  });
-}
-
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    // ✅ Added 'contact' to destructuring
-    const { name, email, contact, service, message } = await request.json();
+    const body = await request.json();
 
-    // ✅ Added 'contact' to required fields validation
-    if (!name || !email || !contact || !service) {
+    const {
+      name,
+      email,
+      contact,
+      service,
+      message,
+      // Optional — used by the Quote form
+      projectType,
+      budget,
+      deadline,
+      location,
+    } = body;
+
+    /* ---------- 1. Validate required fields ---------- */
+    if (!name || !email || !service || !message) {
       return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 },
+        { error: 'Missing required fields: name, email, service, message' },
+        { status: 400 }
       );
     }
 
-    // ---------- Initialize Resend only at runtime (fixes build error) ----------
+    /* ---------- 2. Config check ---------- */
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error("RESEND_API_KEY is missing");
-      return NextResponse.json(
-        { error: "Email service not configured" },
-        { status: 500 },
-      );
+      console.error('❌ RESEND_API_KEY is missing');
+      return NextResponse.json({ error: 'Email service config missing' }, { status: 500 });
     }
+
     const resend = new Resend(apiKey);
-    const fromDomain = process.env.FROM_DOMAIN || "maogastsoftworks.com";
-    const fromEmail = `Maogast Softworks <info@${fromDomain}>`;
-    const toEmail = process.env.TO_EMAIL || "maogastdevhub@gmail.com";
-    const websiteUrl = `https://${fromDomain}`;
+    const fromDomain = process.env.FROM_DOMAIN || 'maogastsoftworks.com';
+    const toEmail = process.env.CONTACT_INBOX || 'maogastdevhub@gmail.com';
 
-    const messageText = message || "No message provided";
-    const messageHtml = message
-      ? message.replace(/\n/g, "<br/>")
-      : "No message provided";
+    const isQuote = Boolean(projectType);
 
-    // 1. Admin email (to you) - Updated with Contact and 65% deposit
-    const adminSubject = `New Quote Request: ${service} from ${name}`;
-    const adminHtml = `
-      <h2>New Quote Request</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Contact:</strong> ${contact}</p>
-      <p><strong>Service:</strong> ${service}</p>
-      <p><strong>Message:</strong></p>
-      <p>${messageHtml}</p>
-    `;
-    const adminText = `Name: ${name}\nEmail: ${email}\nContact: ${contact}\nService: ${service}\nMessage: ${messageText}`;
-
-    // 2. Client auto‑reply email – includes payment options (M-Pesa first, 65% deposit)
-    const clientSubject = `Your quote request – Maogast Softworks`;
-    const clientHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #F97316;">Hello ${name},</h2>
-        <p>Thank you for reaching out to <strong>Maogast Softworks</strong>. We have received your request for <strong>${service}</strong>.</p>
-        <p>Our team will review your inquiry and get back to you within <strong>24 hours</strong>.</p>
-        
-           <div style="margin: 20px 0; padding: 16px; background: #f8f9fa; border-radius: 8px;">
-          <h4 style="margin-top: 0; color: #0A192F;">💳 Payment Information</h4>
-          
-          <p><strong>M‑Pesa</strong></p>
-          <p style="margin-left: 8px;">
-            Paybill: <strong>522533</strong><br/>
-            Account: <strong>8091774</strong>
-          </p>
-          
-          <p style="margin-top: 12px;"><strong>Bank Transfer</strong></p>
-          <p style="margin-left: 8px;">
-            <strong>Bank:</strong> KCB Bank of Kenya<br/>
-            <strong>Account Name:</strong> MAOGAST SOFTWORKS LIMITED<br/>
-            <strong>Account Number:</strong> 1352136236<br/>
-            <strong>Branch:</strong> Moi Avenue, Nairobi
-          </p>
+    /* ---------- 3. Build a clean HTML email ---------- */
+    const htmlBody = `
+      <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; color: #1f2937;">
+        <div style="background: #0A192F; color: #fff; padding: 22px; border-radius: 10px 10px 0 0;">
+          <h2 style="margin: 0; font-size: 20px;">
+            ${isQuote ? '📋 New Quote Request' : '✉️ New Contact Message'}
+          </h2>
+          <p style="margin: 6px 0 0; font-size: 13px; color: #9ca3af;">maogastsoftworks.com</p>
         </div>
 
-        <p>A <strong>65% deposit</strong> is required to start work. Balance due upon completion.</p>
-        
-        <div style="text-align: center; margin: 25px 0;">
-          <a href="${websiteUrl}" style="background-color: #F97316; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; display: inline-block;">Visit Maogast Softworks →</a>
+        <div style="background: #f9fafb; padding: 26px; border-radius: 0 0 10px 10px; border: 1px solid #e5e7eb; border-top: none;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+            <tr><td style="padding: 8px 0; font-weight: 700; width: 140px; color: #374151;">Name:</td><td style="color: #111827;">${escapeHtml(name)}</td></tr>
+            <tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Email:</td><td><a href="mailto:${escapeHtml(email)}" style="color: #F97316; text-decoration: none;">${escapeHtml(email)}</a></td></tr>
+            ${contact ? `<tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Phone:</td><td>${escapeHtml(contact)}</td></tr>` : ''}
+            <tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Service:</td><td>${escapeHtml(service)}</td></tr>
+            ${projectType ? `<tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Project Type:</td><td>${escapeHtml(projectType)}</td></tr>` : ''}
+            ${budget ? `<tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Budget:</td><td>${escapeHtml(budget)}</td></tr>` : ''}
+            ${deadline ? `<tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Deadline:</td><td>${escapeHtml(deadline)}</td></tr>` : ''}
+            ${location ? `<tr><td style="padding: 8px 0; font-weight: 700; color: #374151;">Location:</td><td>${escapeHtml(location)}</td></tr>` : ''}
+          </table>
+
+          <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 22px 0;">
+
+          <h3 style="margin: 0 0 10px; font-size: 15px; color: #0A192F;">Message</h3>
+          <div style="white-space: pre-wrap; line-height: 1.65; background: #fff; padding: 16px; border-radius: 8px; border-left: 4px solid #F97316; color: #1f2937; font-size: 14px;">
+            ${escapeHtml(message)}
+          </div>
+
+          <p style="font-size: 12px; color: #9ca3af; margin-top: 26px; text-align: center;">
+            Sent via maogastsoftworks.com
+          </p>
         </div>
-        
-        <p>Best regards,<br/><strong>The Maogast Softworks Team</strong></p>
-        <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-        <p style="font-size: 12px; color: #888;">${websiteUrl} | +254 768 564 533 | info@${fromDomain}</p>
       </div>
     `;
-    const clientText = `Hello ${name},\n\nThank you for reaching out to Maogast Softworks. We have received your request for ${service}.\n\nOur team will get back to you within 24 hours.\n\nPayment Information:\n\nM-Pesa:\n- Paybill: 522533\n- Account: 8091774\n\nBank Transfer:\n- Bank: KCB Bank of Kenya\n- Account Name: MAOGAST SOFTWORKS LIMITED\n- Account Number: 1352136236\n- Branch: Moi Avenue, Nairobi\n\nA 65% deposit is required to start work. Balance due upon completion.\n\nVisit us: ${websiteUrl}\n\nBest regards,\nThe Maogast Softworks Team\n\n${websiteUrl} | +254 768 564 533 | info@${fromDomain}`;
 
-    let adminSent = false;
-    let clientSent = false;
-    let errorDetails = null;
+    const plainText = `
+${isQuote ? 'NEW QUOTE REQUEST' : 'NEW CONTACT MESSAGE'} — maogastsoftworks.com
 
-    // ---------- Try sending with Resend first ----------
-    try {
-      await resend.emails.send({
-        from: fromEmail,
-        to: toEmail,
-        subject: adminSubject,
-        html: adminHtml,
-        text: adminText,
-      });
-      adminSent = true;
-    } catch (error) {
-      console.error("Resend (admin) failed:", error);
-      errorDetails = error;
-    }
+Name: ${name}
+Email: ${email}
+${contact ? `Phone: ${contact}\n` : ''}Service: ${service}
+${projectType ? `Project Type: ${projectType}\n` : ''}${budget ? `Budget: ${budget}\n` : ''}${deadline ? `Deadline: ${deadline}\n` : ''}${location ? `Location: ${location}\n` : ''}
+Message:
+${message}
 
-    try {
-      await resend.emails.send({
-        from: fromEmail,
-        to: email,
-        subject: clientSubject,
-        html: clientHtml,
-        text: clientText,
-      });
-      clientSent = true;
-    } catch (error) {
-      console.error("Resend (client) failed:", error);
-      errorDetails = error;
-    }
+---
+Reply directly to this email to reach the customer.
+    `.trim();
 
-    // ---------- Fallback to Gmail if either email failed and Gmail is configured ----------
-    if ((!adminSent || !clientSent) && gmailTransporter) {
-      console.log("Falling back to Gmail SMTP...");
-      try {
-        if (!adminSent) {
-          await sendViaGmail({
-            to: toEmail,
-            subject: adminSubject,
-            html: adminHtml,
-            text: adminText,
-          });
-          adminSent = true;
-        }
-        if (!clientSent) {
-          await sendViaGmail({
-            to: email,
-            subject: clientSubject,
-            html: clientHtml,
-            text: clientText,
-          });
-          clientSent = true;
-        }
-      } catch (gmailError) {
-        console.error("Gmail fallback also failed:", gmailError);
-        return NextResponse.json(
-          { error: "All email providers failed", details: errorDetails },
-          { status: 500 },
-        );
-      }
-    }
+    /* ---------- 4. Send via Resend ---------- */
+    const result = await resend.emails.send({
+      from: `"Maogast Website" <noreply@${fromDomain}>`,
+      to: [toEmail],
+      replyTo: email, // ✅ Replies go straight to the customer
+      subject: isQuote
+        ? `📋 Quote Request — ${name} (${service})`
+        : `✉️ New Message — ${name} (${service})`,
+      text: plainText,
+      html: htmlBody,
+    });
 
-    if (!adminSent || !clientSent) {
-      return NextResponse.json(
-        { error: "Failed to send one or more emails", details: errorDetails },
-        { status: 500 },
-      );
-    }
+    const emailId = result.data?.id || 'unknown';
+    console.log(`✅ ${isQuote ? 'Quote' : 'Contact'} email sent:`, emailId);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, emailId }, { status: 200 });
   } catch (error) {
-    console.error("Email error:", error);
+    console.error('❌ send-email error:', error);
     return NextResponse.json(
-      { error: "Failed to send email" },
-      { status: 500 },
+      { error: 'Internal server error', details: String(error) },
+      { status: 500 }
     );
   }
+}
+
+/* Small helper to prevent HTML injection in emails */
+function escapeHtml(str: string): string {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

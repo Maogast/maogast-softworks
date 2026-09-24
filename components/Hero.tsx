@@ -29,7 +29,7 @@ export default function Hero() {
     <section className="bg-[#0A192F] min-h-[90vh] flex items-center relative overflow-hidden">
       {/* SEO H1 (visually hidden) */}
       <h1 className="sr-only">
-        Maogast Softworks – Software Development, Printing & AI Design in Nairobi, Kenya
+        Maogast Softworks – Software Development, Printing & AI Design in Nairobi, Kenya – Serving Clients Worldwide
       </h1>
 
       {/* Grid background */}
@@ -62,8 +62,14 @@ export default function Hero() {
             <p className="mt-4 text-lg text-gray-300 max-w-lg">
               Custom software, premium printing, AI‑powered design, 3D signage, corporate
               gifts, content strategy, and expert training — all under one roof in{' '}
-              <strong className="text-orange-400">Nairobi, Kenya</strong>.
+              <strong className="text-orange-400">Nairobi</strong> and{' '}
+              <strong className="text-orange-400">delivered worldwide</strong>.
             </p>
+            <div className="mt-3 flex items-center gap-2 text-xs text-gray-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
+              Recently served clients in{' '}
+              <span className="text-gray-300">Kenya · Romania · USA</span>
+            </div>
             <div className="mt-8 flex gap-4 items-center">
               <Link
                 href="/quote"

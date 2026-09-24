@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Banknote, Landmark, CreditCard } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import BankDetails from '@/components/BankDetails';
 import MpesaDetails from '@/components/MpesaDetails';
 
@@ -11,12 +12,15 @@ export default function QuotePage() {
   const [selectedService, setSelectedService] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [contact, setContact] = useState(''); // NEW STATE
+  const [contact, setContact] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'error' | 'success'; message: string } | null>(null);
 
+  /* ---------- Send via Email (API) ---------- */
   const handleServiceSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Added validation for contact
+    setStatus(null);
+
     if (!selectedService || !name || !email || !contact) return;
 
     setIsSubmitting(true);
@@ -24,31 +28,68 @@ export default function QuotePage() {
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // Added contact to the body
-        body: JSON.stringify({ name, email, contact, service: selectedService, message: 'Quote request from website' }),
+        body: JSON.stringify({
+          name,
+          email,
+          contact,
+          service: selectedService,
+          projectType: 'Quote Request',
+          message: `Quote request for: ${selectedService}`,
+        }),
       });
 
       if (response.ok) {
         setStep('details');
       } else {
         const error = await response.json();
-        alert(error.error || 'Something went wrong. Please try again.');
+        setStatus({
+          type: 'error',
+          message: error.error || 'Something went wrong. Please try WhatsApp below.',
+        });
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      alert('Network error. Please try again later.');
+    } catch {
+      setStatus({
+        type: 'error',
+        message: 'Network error. Please try WhatsApp below instead.',
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  /* ---------- Send via WhatsApp ---------- */
+  const handleWhatsAppSend = () => {
+    if (!selectedService || !name || !contact) {
+      setStatus({
+        type: 'error',
+        message: 'Please fill in Name, Phone, and Service before sending via WhatsApp.',
+      });
+      return;
+    }
+
+    const lines = [
+      '*🚀 New Quote Request — Maogast Softworks*',
+      '',
+      `*Name:* ${name}`,
+      email ? `*Email:* ${email}` : '',
+      `*Phone:* ${contact}`,
+      `*Service:* ${selectedService}`,
+      '',
+      'Please share pricing and lead time. Thanks!',
+    ].filter(Boolean);
+
+    const url = `https://wa.me/254768564533?text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <>
+      {/* HERO */}
       <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4">Request a Quote in Nairobi</h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Tell us what you need, and we’ll get back to you with a custom quote tailored for the Kenyan market.
+            Tell us what you need, and we&apos;ll get back to you with a custom quote tailored for the Kenyan market.
           </p>
         </div>
       </section>
@@ -56,47 +97,79 @@ export default function QuotePage() {
       <div className="container mx-auto px-4 py-16 max-w-3xl">
         {step === 'select' ? (
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">What service do you need?</h2>
+            <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                What service do you need?
+              </h2>
+              <span className="text-xs font-semibold bg-[#25D366]/10 text-[#25D366] px-3 py-1 rounded-full flex items-center gap-1">
+                <FaWhatsapp className="w-3 h-3" /> WhatsApp available
+              </span>
+            </div>
+
+            {status && (
+              <div
+                className={`mb-5 p-3 rounded-lg text-sm border ${
+                  status.type === 'success'
+                    ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border-green-200 dark:border-green-800'
+                    : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border-red-200 dark:border-red-800'
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+
             <form onSubmit={handleServiceSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Full Name *
+                </label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white transition"
+                  placeholder="Sylvester Okeno"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Email Address *
+                </label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white transition"
+                  placeholder="you@example.com"
                 />
               </div>
-              {/* NEW CONTACT FIELD */}
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Phone Number *
+                </label>
                 <input
                   type="tel"
                   value={contact}
                   onChange={(e) => setContact(e.target.value)}
                   required
                   placeholder="e.g. 0768 564 533"
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white transition"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Service *</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Service *
+                </label>
                 <select
                   value={selectedService}
                   onChange={(e) => setSelectedService(e.target.value)}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 dark:bg-gray-700 dark:text-white"
                 >
                   <option value="">Select a service</option>
                   <option value="Software Development">Software Development</option>
@@ -112,13 +185,31 @@ export default function QuotePage() {
                   <option value="Other">Other / Not sure</option>
                 </select>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Submitting...' : 'Continue'}
-              </button>
+
+              {/* Dual-send buttons */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Submitting...' : '📩 Send via Email'}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleWhatsAppSend}
+                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02]"
+                >
+                  <FaWhatsapp className="w-5 h-5" />
+                  Send via WhatsApp
+                </button>
+              </div>
+
+              <p className="text-xs text-gray-500 dark:text-gray-400 text-center pt-1">
+                💬 Prefer WhatsApp? We usually reply in{' '}
+                <span className="font-semibold text-[#25D366]">under 5 minutes</span>.
+              </p>
             </form>
           </div>
         ) : (
@@ -127,9 +218,11 @@ export default function QuotePage() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full mb-4">
                 <Banknote className="w-8 h-8 text-green-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Thank you, {name}!</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Thank you, {name}!
+              </h2>
               <p className="text-gray-600 dark:text-gray-400 mt-2">
-                We’ve received your request for <strong>{selectedService}</strong>. Our team will contact you within 24 hours.
+                We&apos;ve received your request for <strong>{selectedService}</strong>. Our team will contact you within 24 hours.
               </p>
             </div>
 
@@ -138,7 +231,7 @@ export default function QuotePage() {
                 <Landmark className="w-5 h-5 text-orange-600" /> Payment Information
               </h3>
               <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                If you’re ready to proceed, you can make a deposit using either of the methods below:
+                If you&apos;re ready to proceed, you can make a deposit using either of the methods below:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -151,8 +244,24 @@ export default function QuotePage() {
               </p>
             </div>
 
-            <div className="mt-6 text-center">
-              <Link href="/" className="text-orange-600 hover:underline">← Back to Home</Link>
+            {/* Optional: also offer WhatsApp on the success page */}
+            <div className="mt-6 text-center space-y-3">
+              <a
+                href={`https://wa.me/254768564533?text=${encodeURIComponent(
+                  `Hi Maogast, I just submitted a quote request for "${selectedService}". My name is ${name}. Looking forward to your response!`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-2.5 px-5 rounded-full transition"
+              >
+                <FaWhatsapp className="w-4 h-4" />
+                Follow up on WhatsApp
+              </a>
+              <div>
+                <Link href="/" className="text-orange-600 hover:underline text-sm">
+                  ← Back to Home
+                </Link>
+              </div>
             </div>
           </div>
         )}

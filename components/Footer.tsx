@@ -1,99 +1,281 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaTwitter, FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaTiktok,
+  FaWhatsapp,
+} from 'react-icons/fa';
+import { ChevronDown, ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 import FooterQuoteRotator from './FooterQuoteRotator';
 
+type SectionKey = 'services' | 'company' | 'contact';
+
+/* ---------- Link Data ---------- */
+const services = [
+  { label: 'Software', href: '/software' },
+  { label: 'Printing & Branding', href: '/printing' },
+  { label: 'AI Design', href: '/ai-design' },
+  { label: 'Content Management', href: '/content-management' },
+  { label: 'Training & Webinars', href: '/training' },
+  { label: 'Products', href: '/products' },
+];
+
+const company = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Foundation', href: '/about/our-foundation' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'Terms & Conditions', href: '/terms' },
+];
+
+const socials = [
+  { href: 'https://wa.me/254768564533', label: 'WhatsApp', Icon: FaWhatsapp },
+  { href: 'https://vt.tiktok.com/ZS9KyRwBw/', label: 'TikTok', Icon: FaTiktok },
+  { href: 'https://www.facebook.com/share/1CXxFEVetp/', label: 'Facebook', Icon: FaFacebook },
+  { href: 'https://x.com/MaogastSoftwork', label: 'Twitter / X', Icon: FaTwitter },
+  { href: 'https://www.instagram.com/maogastsoftworks', label: 'Instagram', Icon: FaInstagram },
+];
+
 export default function Footer() {
+  /* Allow multiple open at once on desktop; users can collapse all */
+  const [open, setOpen] = useState<Record<SectionKey, boolean>>({
+    services: false,
+    company: false,
+    contact: false,
+  });
+
+  const toggle = (key: SectionKey) =>
+    setOpen((prev) => ({ ...prev, [key]: !prev[key] }));
+
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#0A192F] text-gray-300 py-12">
+    <footer className="relative bg-[#0A192F] text-gray-300">
+      {/* Subtle top glow */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Column 1: Brand & Social */}
-          <div>
-            <h3 className="text-white font-semibold text-lg">Maogast Softworks</h3>
-            <p className="mt-2 text-sm">Software, Printing & AI Design</p>
-            <p className="mt-1 text-xs text-orange-400/80 flex items-center gap-1">
-              <span className="text-orange-500">✦</span> Built on Code, Grounded in Faith
-            </p>
-            <div className="mt-4 flex gap-4 flex-wrap">
-              <a href="https://wa.me/254768564533" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
-                <FaWhatsapp className="w-5 h-5" />
-              </a>
-              <a href="https://vt.tiktok.com/ZS9KyRwBw/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
-                <FaTiktok className="w-5 h-5" />
-              </a>
-              <a href="https://www.facebook.com/share/1CXxFEVetp/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
-                <FaFacebook className="w-5 h-5" />
-              </a>
-              <a href="https://x.com/MaogastSoftwork" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
-                <FaTwitter className="w-5 h-5" />
-              </a>
-              <a href="https://www.instagram.com/maogastsoftworks" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-orange-400 transition">
-                <FaInstagram className="w-5 h-5" />
-              </a>
+        {/* ========================================================= */}
+        {/* ROW 1 — Brand + Status + Socials                           */}
+        {/* ========================================================= */}
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-5 border-b border-gray-800">
+          {/* Brand */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image
+              src="/logo3.jpg"
+              alt="Maogast Softworks"
+              width={36}
+              height={36}
+              className="h-9 w-9 object-contain rounded-md group-hover:scale-105 transition-transform"
+              style={{ width: 'auto', height: 'auto' }}
+            />
+            <div>
+              <div className="font-bold text-white text-base leading-tight">
+                Maogast Softworks
+              </div>
+              <div className="text-[11px] text-gray-400 leading-tight">
+                Software · Printing · AI Design
+              </div>
             </div>
-          </div>
+          </Link>
 
-          {/* Column 2: Services */}
-          <div>
-            <h4 className="font-medium text-white">Services</h4>
-            <ul className="grid grid-cols-2 gap-x-4 mt-2 text-sm">
-              <li><Link href="/software" className="hover:text-orange-400">Software</Link></li>
-              <li><Link href="/printing" className="hover:text-orange-400">Printing</Link></li>
-              <li><Link href="/ai-design" className="hover:text-orange-400">AI Design</Link></li>
-              <li><Link href="/content-management" className="hover:text-orange-400">Content Management</Link></li>
-              <li><Link href="/products" className="hover:text-orange-400">Products</Link></li>
-              <li><Link href="/training" className="hover:text-orange-400">Training</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Company */}
-          <div>
-            <h4 className="font-medium text-white">Company</h4>
-            <ul className="mt-2 space-y-1 text-sm">
-              <li><Link href="/about" className="hover:text-orange-400">About</Link></li>
-              <li><Link href="/about/our-foundation" className="hover:text-orange-400">Our Foundation</Link></li>
-              <li><Link href="/portfolio" className="hover:text-orange-400">Portfolio</Link></li>
-              <li><Link href="/contact" className="hover:text-orange-400">Contact</Link></li>
-              <li><Link href="/blog" className="hover:text-orange-400">Blog</Link></li>
-              <li><Link href="/terms" className="hover:text-orange-400">Terms & Conditions</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact Details */}
-          <div>
-            <h4 className="font-medium text-white">Contact</h4>
-            <p className="mt-2 text-sm">📞 +254 768 564 533</p>
-            <a 
-              href="mailto:info@maogastsoftworks.com?subject=Project Inquiry - Maogast Softworks&body=Greetings Maogast Softworks,%0A%0AMy Name: [Enter Your Name]%0AService I need: [e.g., Software Development, Printing, AI Design, Training]%0ADetails of my request: [Describe your needs]%0ABudget (Optional): [Enter budget]%0A%0AThank you."
-              className="text-sm hover:text-orange-400 transition inline-block mt-1"
+          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
+            {/* Status pill */}
+            <div
+              className="flex items-center gap-2 bg-green-500/10 border border-green-500/25 rounded-full px-3 py-1"
+              title="All services online"
             >
-              ✉️ info@maogastsoftworks.com
-            </a>
-            <p className="mt-2 text-sm">📍 Nairobi, Kenya</p>
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex rounded-full w-2 h-2 bg-green-500" />
+              </span>
+              <span className="text-[11px] font-medium text-green-400 whitespace-nowrap">
+                All systems operational
+              </span>
+            </div>
+
+            {/* Socials */}
+            <div className="flex items-center gap-1.5">
+              {socials.map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:text-white hover:bg-orange-600/90 transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* ✨ Rotating Quote Component */}
+        {/* ========================================================= */}
+        {/* ROW 2 — Collapsible sections (ALL screen sizes)            */}
+        {/* ========================================================= */}
+        <div className="grid md:grid-cols-3 gap-0 md:gap-8 divide-y md:divide-y-0 divide-gray-800">
+          {/* SERVICES */}
+          <FooterSection
+            title="Services"
+            isOpen={open.services}
+            onToggle={() => toggle('services')}
+          >
+            <ul className="space-y-2 pb-4 md:pb-0">
+              {services.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-gray-400 hover:text-orange-400 transition-colors inline-flex items-center gap-1.5 group"
+                  >
+                    <span className="text-orange-500/60 text-[10px] group-hover:translate-x-0.5 transition-transform">
+                      ▸
+                    </span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </FooterSection>
+
+          {/* COMPANY */}
+          <FooterSection
+            title="Company"
+            isOpen={open.company}
+            onToggle={() => toggle('company')}
+          >
+            <ul className="space-y-2 pb-4 md:pb-0">
+              {company.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-gray-400 hover:text-orange-400 transition-colors inline-flex items-center gap-1.5 group"
+                  >
+                    <span className="text-orange-500/60 text-[10px] group-hover:translate-x-0.5 transition-transform">
+                      ▸
+                    </span>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </FooterSection>
+
+          {/* GET IN TOUCH */}
+          <FooterSection
+            title="Get in Touch"
+            isOpen={open.contact}
+            onToggle={() => toggle('contact')}
+          >
+            <ul className="space-y-3 pb-4 md:pb-0">
+              <li>
+                <a
+                  href="https://wa.me/254768564533"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-orange-400 transition-colors group"
+                >
+                  <Phone className="w-4 h-4 text-orange-500/80 group-hover:text-orange-400" />
+                  +254 768 564 533
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@maogastsoftworks.com"
+                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-orange-400 transition-colors group"
+                >
+                  <Mail className="w-4 h-4 text-orange-500/80 group-hover:text-orange-400" />
+                  info@maogastsoftworks.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-gray-400">
+                <MapPin className="w-4 h-4 text-orange-500/80 mt-0.5 shrink-0" />
+                <span>
+                  Nairobi, Kenya
+                  <br />
+                  <span className="text-xs text-gray-500">
+                    Serving clients worldwide 🌍
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </FooterSection>
+        </div>
+
+        {/* ========================================================= */}
+        {/* ROW 3 — Rotating Scripture                                 */}
+        {/* ========================================================= */}
         <FooterQuoteRotator />
 
-        {/* ✨ Bottom Row: Copyright Left, Image Right (BEAUTIFULLY DISPLAYED) */}
-        <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-800 mt-2 pt-4 text-sm">
-          <div className="text-center md:text-left mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Maogast Softworks Limited. All rights reserved.
+        {/* ========================================================= */}
+        {/* ROW 4 — Bottom bar                                         */}
+        {/* ========================================================= */}
+        <div className="border-t border-gray-800 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+          <div className="text-gray-500 text-center md:text-left">
+            © {year} Maogast Softworks Limited. All rights reserved.
           </div>
-          {/* Increased size slightly, added a subtle branded border, and changed to object-cover for a polished look */}
-          <div className="relative w-16 md:w-20 h-auto shadow-md rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm p-0.5 border border-orange-500/30">
-            <Image 
-              src="/images/footer/logophoto.jpg" 
-              alt="Mgst (Maogast Softworks) 3D Signage Installation" 
-              width={200} 
-              height={300}
-              className="w-full h-auto object-cover rounded-sm"
-            />
-          </div>
+
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="group flex items-center gap-1.5 text-gray-500 hover:text-orange-400 transition-colors"
+            aria-label="Back to top"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
+          </button>
         </div>
       </div>
     </footer>
+  );
+}
+
+/* ============================================================ */
+/* Collapsible section — used for all screen sizes              */
+/* ============================================================ */
+function FooterSection({
+  title,
+  isOpen,
+  onToggle,
+  children,
+}: {
+  title: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="py-3 md:py-6">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between text-left group"
+        aria-expanded={isOpen}
+      >
+        <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white">
+          <span className="w-1 h-3 bg-orange-500 rounded-full" />
+          {title}
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 text-gray-500 group-hover:text-orange-400 transition-transform duration-300 ${
+            isOpen ? 'rotate-180 text-orange-400' : ''
+          }`}
+        />
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-[500px] opacity-100 mt-3' : 'max-h-0 opacity-0'
+        }`}
+      >
+        {children}
+      </div>
+    </div>
   );
 }

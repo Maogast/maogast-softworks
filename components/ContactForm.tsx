@@ -1,11 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { FaWhatsapp } from 'react-icons/fa';
 
 interface FormData {
   name: string;
   email: string;
-  contact: string; // Added contact
+  contact: string;
   service: string;
   message: string;
 }
@@ -14,24 +15,26 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    contact: '', // Initialized contact
+    contact: '',
     service: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  /* ---------- Send via Email (API) ---------- */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus(null);
 
     try {
-      // ✅ Use the same API endpoint as the quote page
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,19 +48,52 @@ export default function ContactForm() {
       } else {
         setStatus({ type: 'error', message: data.error || 'Something went wrong. Please try again.' });
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+    } catch {
       setStatus({ type: 'error', message: 'Network error. Please try again later.' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  /* ---------- NEW: Send via WhatsApp ---------- */
+  const handleWhatsAppSend = () => {
+    // Basic required-field check
+    if (!formData.name || !formData.service || !formData.message) {
+      setStatus({
+        type: 'error',
+        message: 'Please fill in Name, Service, and Message before sending via WhatsApp.',
+      });
+      return;
+    }
+
+    const lines = [
+      'Hello Maogast Softworks 👋',
+      '',
+      `*Name:* ${formData.name}`,
+      formData.email ? `*Email:* ${formData.email}` : '',
+      formData.contact ? `*Phone:* ${formData.contact}` : '',
+      `*Service:* ${formData.service}`,
+      '',
+      '*Message / Project Details:*',
+      formData.message,
+    ].filter(Boolean);
+
+    const text = encodeURIComponent(lines.join('\n'));
+    const url = `https://wa.me/254768564533?text=${text}`;
+
+    setStatus({
+      type: 'success',
+      message: 'Opening WhatsApp with your details — just hit send!',
+    });
+
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8 border border-gray-100 dark:border-gray-700">
       <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Send a Message</h3>
       <p className="text-gray-600 dark:text-gray-400 mb-6">
-        Tell us about your project – we’ll reply within 24 hours.
+        Tell us about your project — reply within 24 hours, or chat instantly on WhatsApp.
       </p>
 
       {status && (
@@ -105,7 +141,6 @@ export default function ContactForm() {
           />
         </div>
 
-        {/* NEW: Phone Number Field */}
         <div>
           <label htmlFor="contact" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Phone Number *
@@ -139,7 +174,6 @@ export default function ContactForm() {
             <option value="Printing & Branding">Printing & Branding</option>
             <option value="AI Design">AI‑Powered Design</option>
             <option value="Content Management">Content Management</option>
-            {/* NEW: 3D Signage & Products */}
             <option value="3D Signage & Lettering">3D Signage & Lettering (MGST~Works)</option>
             <option value="Products (Catalogue & Branding)">Products (Catalogue & Branding)</option>
             <option value="Training & Webinars">Training & Webinars</option>
@@ -166,13 +200,29 @@ export default function ContactForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
+        {/* Dual send options */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleWhatsAppSend}
+            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02]"
+          >
+            <FaWhatsapp className="w-5 h-5" />
+            Send via WhatsApp
+          </button>
+        </div>
+
+        <p className="text-xs text-gray-500 dark:text-gray-400 text-center pt-1">
+          💬 Prefer WhatsApp? We usually reply in <span className="font-semibold text-[#25D366]">under 5 minutes</span>.
+        </p>
       </form>
     </div>
   );
