@@ -61,6 +61,8 @@ const navItems = [
     href: '#',
     dropdown: [
       { name: 'Printing & Branding', href: '/printing', description: 'Apparel, signage & uniforms' },
+      // ✅ NEW: 3D Signage added right after Printing
+      { name: '3D Signage', href: '/3d-signage', description: 'Acrylic, LED & box-up signage' },
       { name: 'AI Design', href: '/ai-design', description: 'AI-powered creative work' },
       { name: 'Content Management', href: '/content-management', description: 'Strategy & publishing' },
       { name: 'Training & Webinars', href: '/training', description: 'Team upskilling' },
@@ -163,10 +165,9 @@ export default function Header() {
       {/* MAIN HEADER — logo pinned to far left                */}
       {/* =================================================== */}
       <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#0A192F]/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800">
-        {/* ✅ Changed from container mx-auto → w-full + padding */}
         <div className="w-full px-3 sm:px-6 lg:px-10">
           <div className="flex items-center justify-between h-16">
-            {/* Logo — now truly at the far left */}
+            {/* Logo — truly at the far left */}
             <Link href="/" className="flex items-center gap-2 shrink-0">
               <Image
                 src="/logo3.jpg"

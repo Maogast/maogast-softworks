@@ -19,6 +19,7 @@ type SectionKey = 'services' | 'company' | 'contact';
 const services = [
   { label: 'Software', href: '/software' },
   { label: 'Printing & Branding', href: '/printing' },
+  { label: '3D Signage', href: '/3d-signage' },       // ✅ NEW
   { label: 'AI Design', href: '/ai-design' },
   { label: 'Content Management', href: '/content-management' },
   { label: 'Training & Webinars', href: '/training' },
@@ -43,9 +44,9 @@ const socials = [
 ];
 
 export default function Footer() {
-  /* Allow multiple open at once on desktop; users can collapse all */
+  /* ✅ Services open by default so users see them immediately */
   const [open, setOpen] = useState<Record<SectionKey, boolean>>({
-    services: false,
+    services: true,
     company: false,
     contact: false,
   });
@@ -57,7 +58,6 @@ export default function Footer() {
 
   return (
     <footer className="relative bg-[#0A192F] text-gray-300">
-      {/* Subtle top glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,6 @@ export default function Footer() {
         {/* ROW 1 — Brand + Status + Socials                           */}
         {/* ========================================================= */}
         <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-5 border-b border-gray-800">
-          {/* Brand */}
           <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo3.jpg"
@@ -86,7 +85,6 @@ export default function Footer() {
           </Link>
 
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
-            {/* Status pill */}
             <div
               className="flex items-center gap-2 bg-green-500/10 border border-green-500/25 rounded-full px-3 py-1"
               title="All services online"
@@ -100,7 +98,6 @@ export default function Footer() {
               </span>
             </div>
 
-            {/* Socials */}
             <div className="flex items-center gap-1.5">
               {socials.map(({ href, label, Icon }) => (
                 <a
@@ -120,14 +117,15 @@ export default function Footer() {
         </div>
 
         {/* ========================================================= */}
-        {/* ROW 2 — Collapsible sections (ALL screen sizes)            */}
+        {/* ROW 2 — Collapsible sections with preview when closed      */}
         {/* ========================================================= */}
         <div className="grid md:grid-cols-3 gap-0 md:gap-8 divide-y md:divide-y-0 divide-gray-800">
-          {/* SERVICES */}
+          {/* SERVICES — open by default */}
           <FooterSection
             title="Services"
             isOpen={open.services}
             onToggle={() => toggle('services')}
+            preview={services.slice(0, 4).map((s) => s.label).join(' · ')}
           >
             <ul className="space-y-2 pb-4 md:pb-0">
               {services.map((item) => (
@@ -151,6 +149,7 @@ export default function Footer() {
             title="Company"
             isOpen={open.company}
             onToggle={() => toggle('company')}
+            preview={company.slice(0, 4).map((c) => c.label).join(' · ')}
           >
             <ul className="space-y-2 pb-4 md:pb-0">
               {company.map((item) => (
@@ -174,6 +173,7 @@ export default function Footer() {
             title="Get in Touch"
             isOpen={open.contact}
             onToggle={() => toggle('contact')}
+            preview="+254 768 564 533 · info@maogastsoftworks.com"
           >
             <ul className="space-y-3 pb-4 md:pb-0">
               <li>
@@ -238,17 +238,19 @@ export default function Footer() {
 }
 
 /* ============================================================ */
-/* Collapsible section — used for all screen sizes              */
+/* Collapsible section — shows preview when closed              */
 /* ============================================================ */
 function FooterSection({
   title,
   isOpen,
   onToggle,
+  preview,
   children,
 }: {
   title: string;
   isOpen: boolean;
   onToggle: () => void;
+  preview?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -268,6 +270,13 @@ function FooterSection({
           }`}
         />
       </button>
+
+      {/* Preview hint when collapsed */}
+      {!isOpen && preview && (
+        <p className="mt-2 text-xs text-gray-500 leading-relaxed line-clamp-2">
+          {preview} <span className="text-orange-400/70">…</span>
+        </p>
+      )}
 
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
