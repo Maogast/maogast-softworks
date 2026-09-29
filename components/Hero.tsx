@@ -44,7 +44,24 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* ✅ Developer silhouette — brighter (0.15) for more presence */}
+      {/* ============================================================ */}
+      {/* ✅ Developer silhouette — VISIBLE ON ALL SCREENS              */}
+      {/* Mobile: lower opacity, top-right anchor                        */}
+      {/* Desktop: full opacity, right anchor                            */}
+      {/* ============================================================ */}
+
+      {/* Mobile + tablet layer (< lg) */}
+      <div
+        className="absolute inset-0 pointer-events-none bg-cover bg-top bg-no-repeat lg:hidden"
+        style={{
+          backgroundImage: 'url(/images/home/hero-developer-shadow.webp)',
+          opacity: 0.1,
+          mixBlendMode: 'screen',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Desktop layer (lg and up) */}
       <div
         className="absolute inset-0 pointer-events-none bg-cover bg-right bg-no-repeat hidden lg:block"
         style={{
