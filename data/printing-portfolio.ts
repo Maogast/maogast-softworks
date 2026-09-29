@@ -366,4 +366,12 @@ export const printingProjects: PrintingProject[] = [
     image: '/images/printing-branding/custom-birthday-water-bottle-gift.jpg',
     video: '/videos/printing-branding/custom-birthday-water-bottle-gift.mp4',
   },
+  {
+    id: 'one-voice-27-mission-hoodie',
+    title: 'One Voice 27 Mission Hoodie',
+    client: 'Ryan',
+    category: 'Promotional Products',
+    description: 'White hoodie with custom printed One Voice 27 logo and "Mission For All" slogan.',
+    image: '/images/printing-branding/one-voice-27.jpg',
+}
 ];

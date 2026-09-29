@@ -7,6 +7,7 @@ interface WatermarkVideoProps {
   className?: string;
   watermarkText?: string;
   watermarkOpacity?: number;
+  muted?: boolean; // 1. Add muted to the interface
 }
 
 export default function WatermarkVideo({
@@ -15,6 +16,7 @@ export default function WatermarkVideo({
   className = '',
   watermarkText = 'MAOGAST SOFTWORKS',
   watermarkOpacity = 0.6,
+  muted = true, // 2. Default to true so autoplay works properly
 }: WatermarkVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -31,7 +33,7 @@ export default function WatermarkVideo({
         controls
         controlsList="nodownload"
         disablePictureInPicture
-        muted={false}
+        muted={muted} // 3. Pass the prop here instead of hardcoding false
         onContextMenu={(e) => e.preventDefault()}
       />
       {/* Dynamic Watermark */}
