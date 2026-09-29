@@ -8,8 +8,8 @@ import { Mail, X } from 'lucide-react';
 const team = [
   {
     name: 'Stephen Magare',
-    role: 'Full‑Stack Developer & AI Prompt Engineer',
-    description: 'Architect of this website – built with Next.js, TypeScript, Tailwind CSS, and Resend. Expert in full‑stack development (Next.js, React, Node.js, Firebase, Supabase), AI prompt engineering, and poster design. Passionate about delivering high‑performance, user‑centric solutions.',
+    role: 'Full-Stack Developer & AI Prompt Engineer',
+    description: 'Full-stack developer specialising in Angular (with SSR), Python backends, and modern JavaScript frameworks. Experienced in deploying production systems on shared hosting (cPanel/CloudLinux) and configuring DNS, SSL, and email deliverability (SPF, DKIM, DMARC). Skilled in AI prompt engineering, API integrations (WhatsApp Cloud API, M-Pesa/Daraja), and performance optimisation. Passionate about building fast, reliable, and user-centric solutions.',
     image: '/team/stephen.jpeg',
     email: 'stephen@maogastsoftworks.com',
     social: {
@@ -21,7 +21,7 @@ const team = [
   {
     name: 'Sacalivin Mocha',
     role: 'Senior Software Developer & DevOps Specialist',
-    description: 'Senior developer with deep expertise in C#, Microsoft PowerApps, and Azure DevOps. Has successfully delivered numerous enterprise‑scale projects. Specialises in backend systems, REST APIs, cloud integration, and CI/CD pipelines. Committed to writing clean, maintainable, and scalable code.',
+    description: 'Senior developer and DevOps specialist with deep expertise in C#, Microsoft PowerApps, and Azure DevOps. Has successfully delivered numerous enterprise-scale projects. Experienced in deploying and maintaining Node.js and Angular applications on CloudLinux shared hosting, configuring CI/CD pipelines from GitHub, and troubleshooting server-level resource limits. Specialises in backend systems, REST APIs, cloud integration, and email infrastructure. Committed to writing clean, maintainable, and scalable code.',
     image: '/team/sacalivin.jpeg',
     email: 'sacalivin@maogastsoftworks.com',
     social: {
