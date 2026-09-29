@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
+import Image from "next/image";
 import {
   Code,
   Database,
@@ -18,6 +19,7 @@ import {
   FileText,
   Wrench,
   PenTool,
+  Sparkles,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -157,17 +159,31 @@ export default function SoftwarePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="codeGrid" width="30" height="30" patternUnits="userSpaceOnUse">
-                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#F97316" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#codeGrid)" />
-          </svg>
-        </div>
+      {/* ============================================================ */}
+      {/* HERO — softened background + strong navy gradient            */}
+      {/* ============================================================ */}
+      <section className="relative bg-[#0A192F] text-white py-20 overflow-hidden">
+        {/* Background image — soft, desaturated, blurred */}
+        <div
+          className="absolute inset-0 pointer-events-none bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/images/software/software-hero-city.webp)',
+            opacity: 0.90,
+            filter: 'blur(0px) saturate(0.70)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Strong navy gradient — guarantees text readability */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(10,25,47,0.92) 0%, rgba(10,25,47,0.75) 50%, rgba(10,25,47,1) 100%)',
+          }}
+          aria-hidden="true"
+        />
+
         <div className="container mx-auto px-4 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
             Software Development in Nairobi
@@ -186,7 +202,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Why Choose Local Software Development in Nairobi section */}
+      {/* Why Choose Local Software Development in Nairobi */}
       <section className="py-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-10">
@@ -223,7 +239,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Services Grid – expanded with more services */}
+      {/* Services Grid */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -236,66 +252,18 @@ export default function SoftwarePage() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                icon: <Code className="w-8 h-8 text-orange-600" />,
-                title: "Custom Web Applications",
-                desc: "Responsive, fast, and scalable web apps using Next.js, React, and modern frameworks.",
-              },
-              {
-                icon: <MonitorSmartphone className="w-8 h-8 text-orange-600" />,
-                title: "Mobile Apps",
-                desc: "Cross‑platform mobile apps (iOS & Android) built with React Native and Expo.",
-              },
-              {
-                icon: <Globe className="w-8 h-8 text-orange-600" />,
-                title: "CMS & WordPress Development",
-                desc: "Custom WordPress themes, plugins, and headless CMS solutions for blogs, corporate sites, and media platforms.",
-              },
-              {
-                icon: <ShoppingCart className="w-8 h-8 text-orange-600" />,
-                title: "E‑commerce & Shopify Stores",
-                desc: "Full‑featured online stores with Shopify, WooCommerce, and custom checkout integrations – including M‑Pesa Paybill.",
-              },
-              {
-                icon: <FileText className="w-8 h-8 text-orange-600" />,
-                title: "Content Management Systems",
-                desc: "Build custom CMS platforms for managing digital content, news, and media – tailored to your workflow.",
-              },
-              {
-                icon: <Database className="w-8 h-8 text-orange-600" />,
-                title: "Enterprise Systems",
-                desc: "Custom dashboards, inventory systems (ERPs), and internal tools to streamline operations.",
-              },
-              {
-                icon: <Cloud className="w-8 h-8 text-orange-600" />,
-                title: "Cloud Integration",
-                desc: "Seamless integration with Supabase, AWS, Firebase, and third‑party APIs.",
-              },
-              {
-                icon: <Shield className="w-8 h-8 text-orange-600" />,
-                title: "Security & Compliance",
-                desc: "Secure authentication, role‑based access, and data protection best practices.",
-              },
-              {
-                icon: <Rocket className="w-8 h-8 text-orange-600" />,
-                title: "IT Consulting",
-                desc: "Technology audits, stack recommendations, and project planning for Nairobi startups.",
-              },
-              {
-                icon: <GraduationCap className="w-8 h-8 text-orange-600" />,
-                title: "Academic & Research Projects",
-                desc: "Custom software solutions for undergraduate, master's, and PhD students – system design, development, and documentation support.",
-              },
-              {
-                icon: <PenTool className="w-8 h-8 text-orange-600" />,
-                title: "UI/UX Design & Prototyping",
-                desc: "User‑centred design, wireframing, and interactive prototypes before development begins.",
-              },
-              {
-                icon: <Wrench className="w-8 h-8 text-orange-600" />,
-                title: "Software Maintenance & Support",
-                desc: "Ongoing maintenance, bug fixes, performance optimisation, and 24/7 support for your software systems.",
-              },
+              { icon: <Code className="w-8 h-8 text-orange-600" />, title: "Custom Web Applications", desc: "Responsive, fast, and scalable web apps using Next.js, React, and modern frameworks." },
+              { icon: <MonitorSmartphone className="w-8 h-8 text-orange-600" />, title: "Mobile Apps", desc: "Cross‑platform mobile apps (iOS & Android) built with React Native and Expo." },
+              { icon: <Globe className="w-8 h-8 text-orange-600" />, title: "CMS & WordPress Development", desc: "Custom WordPress themes, plugins, and headless CMS solutions for blogs, corporate sites, and media platforms." },
+              { icon: <ShoppingCart className="w-8 h-8 text-orange-600" />, title: "E‑commerce & Shopify Stores", desc: "Full‑featured online stores with Shopify, WooCommerce, and custom checkout integrations – including M‑Pesa Paybill." },
+              { icon: <FileText className="w-8 h-8 text-orange-600" />, title: "Content Management Systems", desc: "Build custom CMS platforms for managing digital content, news, and media – tailored to your workflow." },
+              { icon: <Database className="w-8 h-8 text-orange-600" />, title: "Enterprise Systems", desc: "Custom dashboards, inventory systems (ERPs), and internal tools to streamline operations." },
+              { icon: <Cloud className="w-8 h-8 text-orange-600" />, title: "Cloud Integration", desc: "Seamless integration with Supabase, AWS, Firebase, and third‑party APIs." },
+              { icon: <Shield className="w-8 h-8 text-orange-600" />, title: "Security & Compliance", desc: "Secure authentication, role‑based access, and data protection best practices." },
+              { icon: <Rocket className="w-8 h-8 text-orange-600" />, title: "IT Consulting", desc: "Technology audits, stack recommendations, and project planning for Nairobi startups." },
+              { icon: <GraduationCap className="w-8 h-8 text-orange-600" />, title: "Academic & Research Projects", desc: "Custom software solutions for undergraduate, master's, and PhD students – system design, development, and documentation support." },
+              { icon: <PenTool className="w-8 h-8 text-orange-600" />, title: "UI/UX Design & Prototyping", desc: "User‑centred design, wireframing, and interactive prototypes before development begins." },
+              { icon: <Wrench className="w-8 h-8 text-orange-600" />, title: "Software Maintenance & Support", desc: "Ongoing maintenance, bug fixes, performance optimisation, and 24/7 support for your software systems." },
             ].map((service, idx) => (
               <div
                 key={idx}
@@ -316,7 +284,7 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Technologies We Master – expanded */}
+      {/* Technologies We Master */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
@@ -326,11 +294,10 @@ export default function SoftwarePage() {
             Modern, battle‑tested tools to deliver high‑quality software.
           </p>
 
-          {/* Frontend & Mobile */}
           <div className="mt-8">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Frontend & Mobile</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Next.js", "React", "TypeScript", "Tailwind CSS", "React Native", "Expo", "Vite", "Redux Toolkit"].map((tech) => (
+              {["Next.js", "React", "Angular", "Vue.js", "Svelte", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "React Native", "Expo", "Flutter", "Vite", "Redux Toolkit"].map((tech) => (
                 <span key={tech} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors cursor-default">
                   {tech}
                 </span>
@@ -338,11 +305,10 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* Backend & Databases */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Backend & Databases</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Node.js", "Django", "Firebase", "Supabase", "PostgreSQL", "MongoDB", "Express.js", "Prisma", "REST APIs", "GraphQL"].map((tech) => (
+              {["Node.js", "Django", "Laravel", "FastAPI", "Express.js", "NestJS", "Supabase", "Firebase", "PostgreSQL", "MongoDB", "MySQL", "Redis", "Prisma", "REST APIs", "GraphQL", "tRPC"].map((tech) => (
                 <span key={tech} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors cursor-default">
                   {tech}
                 </span>
@@ -350,7 +316,6 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* CMS & E‑commerce */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">CMS & E‑commerce</h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -362,11 +327,10 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* DevOps & Cloud */}
           <div className="mt-6">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">DevOps & Cloud</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Docker", "Kubernetes", "GitHub Actions", "AWS (EC2, S3, RDS)", "Vercel", "Netlify", "Firebase Hosting", "CI/CD Pipelines", "Terraform"].map((tech) => (
+              {["Docker", "Kubernetes", "GitHub Actions", "AWS (EC2, S3, RDS, Lambda)", "Google Cloud", "Microsoft Azure", "Vercel", "Netlify", "Firebase Hosting", "CI/CD Pipelines", "Terraform", "Nginx"].map((tech) => (
                 <span key={tech} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors cursor-default">
                   {tech}
                 </span>
@@ -374,11 +338,32 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* Other Essentials */}
           <div className="mt-6">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Other Essentials</h3>
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">AI & Modern Tooling</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {["Git", "GitHub", "Postman", "Figma", "Jest", "Cypress", "ESLint", "Prettier"].map((tech) => (
+              {["OpenAI API", "Claude API", "LangChain", "Hugging Face", "Cursor", "GitHub Copilot", "Claude Code", "ChatGPT", "Antigravity"].map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/40 transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Payments & Integrations</h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["M-Pesa (Daraja API)", "Stripe", "PayPal", "Flutterwave", "Twilio", "SendGrid", "Resend", "WhatsApp Business API"].map((tech) => (
+                <span key={tech} className="px-4 py-2 bg-orange-50 dark:bg-orange-900/20 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/40 transition-colors cursor-default">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">Testing & Quality</h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {["Jest", "Cypress", "Playwright", "Vitest", "ESLint", "Prettier", "Postman"].map((tech) => (
                 <span key={tech} className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-colors cursor-default">
                   {tech}
                 </span>
@@ -388,60 +373,150 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Our Process – unchanged */}
+      {/* Our Process — Split layout with design-to-code image */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Process</h2>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">From idea to launch – we keep you in the loop.</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { step: "1", title: "Discovery", icon: <Search className="w-6 h-6" />, desc: "Understand your goals, users, and requirements." },
-              { step: "2", title: "Design & Prototype", icon: <Layout className="w-6 h-6" />, desc: "Wireframes and interactive prototypes for feedback." },
-              { step: "3", title: "Development", icon: <Code className="w-6 h-6" />, desc: "Agile sprints, regular updates, and quality assurance." },
-              { step: "4", title: "Launch & Support", icon: <Rocket className="w-6 h-6" />, desc: "Deployment, training, and ongoing maintenance." },
-            ].map((step) => (
-              <div key={step.step} className="text-center group">
-                <div className="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-md">
-                  {step.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{step.title}</h3>
-                <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm">{step.desc}</p>
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="mb-8">
+                <span className="text-sm font-semibold text-orange-600 uppercase tracking-wider">
+                  How We Work
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">
+                  Our Process
+                </h2>
+                <p className="mt-3 text-gray-600 dark:text-gray-400">
+                  From idea to launch — we keep you in the loop at every step.
+                </p>
               </div>
-            ))}
+
+              <div className="relative">
+                <div
+                  className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-500/20"
+                  aria-hidden="true"
+                />
+
+                <div className="space-y-6">
+                  {[
+                    { step: "01", title: "Discovery", icon: <Search className="w-5 h-5" />, desc: "Understand your goals, users, and requirements." },
+                    { step: "02", title: "Design & Prototype", icon: <Layout className="w-5 h-5" />, desc: "Wireframes and interactive prototypes for feedback." },
+                    { step: "03", title: "Development", icon: <Code className="w-5 h-5" />, desc: "Agile sprints, regular updates, and quality assurance." },
+                    { step: "04", title: "Launch & Support", icon: <Rocket className="w-5 h-5" />, desc: "Deployment, training, and ongoing maintenance." },
+                  ].map((step) => (
+                    <div key={step.step} className="relative flex items-start gap-5 group">
+                      <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        {step.icon}
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-xs font-mono font-bold text-orange-500">
+                            {step.step}
+                          </span>
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square group">
+                <Image
+                  src="/images/software/design-to-code.webp"
+  alt="From design wireframes to production code — Maogast Softworks development process"
+  fill
+  sizes="(max-width: 1024px) 100vw, 50vw"
+  className="object-cover object-bottom group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/85 via-transparent to-transparent" />
+
+                <div className="absolute top-5 left-5 flex items-center gap-2 bg-white/95 dark:bg-[#0A192F]/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                  <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+                  <span className="text-xs font-semibold text-gray-900 dark:text-white">
+                    Design → Code
+                  </span>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white text-sm font-medium leading-relaxed">
+                    Every project starts on paper — then becomes production-grade code.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Case Study – unchanged */}
+      {/* Case Study — with M-Pesa integration image */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Recent Success in Nairobi</h2>
-            <p className="text-gray-600 dark:text-gray-400">A quick look at what we’ve delivered locally</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Recent Success in Nairobi
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              A quick look at what we&apos;ve delivered locally
+            </p>
           </div>
-          <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
-            <div className="flex-1">
-              <span className="text-sm font-mono text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full">Case Study</span>
-              <h3 className="text-xl font-bold mt-2 text-gray-900 dark:text-white">Inventory Management System</h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-2">
-                Built a real‑time dashboard for a Nairobi retailer, reducing stockouts by 40% and cutting manual work by 6 hours/week.
+
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg grid md:grid-cols-2 gap-0">
+            <div className="p-8 flex flex-col justify-center">
+              <span className="text-sm font-mono text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full self-start">
+                Case Study
+              </span>
+              <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-white">
+                Inventory Management System
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">
+                Built a real-time dashboard for a Nairobi retailer, reducing stockouts by 40% and cutting manual work by 6 hours/week. Integrated M-Pesa Paybill for instant payments.
               </p>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {["Next.js", "Supabase", "Tailwind", "Chart.js"].map((tech) => (
-                  <span key={tech} className="text-xs bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">{tech}</span>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {["Next.js", "Supabase", "Tailwind", "M-Pesa API", "Chart.js"].map((tech) => (
+                  <span key={tech} className="text-xs bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2.5 py-1 rounded-full border border-gray-200 dark:border-gray-600">
+                    {tech}
+                  </span>
                 ))}
               </div>
+
+              <div className="mt-6 flex items-center gap-3">
+                <div className="flex items-center justify-center w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                </div>
+                <div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Impact</div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">40% fewer stockouts</div>
+                </div>
+              </div>
             </div>
-            <div className="w-32 h-32 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center">
-              <CheckCircle className="w-12 h-12 text-white" />
+
+            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[360px] overflow-hidden">
+              <Image
+                src="/images/software/mpesa-integration.webp"
+                alt="M-Pesa Paybill integration for Maogast Softworks client project"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 via-transparent to-transparent" />
+              <div className="absolute top-4 right-4 bg-white/95 dark:bg-[#0A192F]/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
+                <span className="text-xs font-semibold text-orange-600 dark:text-orange-400">
+                  M-Pesa Integrated
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section – added one more Q&A */}
+      {/* FAQ */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
@@ -497,12 +572,12 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-      {/* Final CTA – unchanged */}
+      {/* Final CTA */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to build your next software project?</h2>
           <p className="mt-4 text-orange-100 max-w-xl mx-auto">
-            Let’s talk about your idea. We’ll help you choose the right technology and deliver on time.
+            Let&apos;s talk about your idea. We&apos;ll help you choose the right technology and deliver on time.
           </p>
           <div className="mt-8">
             <Link

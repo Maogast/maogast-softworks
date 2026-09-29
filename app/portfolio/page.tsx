@@ -176,10 +176,32 @@ export default function PortfolioPage() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
         {/* ==================================================== */}
-        {/* HERO                                                  */}
+        {/* ✅ HERO — softer vault background, no redundant chip  */}
         {/* ==================================================== */}
-        <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-16 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
+        <section className="relative text-white py-24 md:py-32 overflow-hidden bg-[#0A192F]">
+          {/* Background image — soft, desaturated, blurred */}
+          <div
+            className="absolute inset-0 pointer-events-none bg-cover bg-center"
+            style={{
+              backgroundImage: 'url(/images/portfolio/case-study-vault.webp)',
+              opacity: 0.22,
+              filter: 'blur(1px) saturate(0.7)',
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Navy gradient overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.7) 45%, rgba(10,25,47,1) 100%)',
+            }}
+            aria-hidden="true"
+          />
+
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.05]" aria-hidden="true">
             <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern
@@ -200,23 +222,15 @@ export default function PortfolioPage() {
             </svg>
           </div>
 
+          {/* Content */}
           <div className="container mx-auto px-4 text-center relative z-10">
-            <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up">
-              <Globe className="w-3.5 h-3.5 text-orange-400" />
-              <span className="text-xs font-medium text-orange-300 tracking-wide">
-                Trusted worldwide · Kenya · Romania · USA
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">
               Our Work
             </h1>
-
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
               A collection of projects we&apos;ve built from{' '}
               <strong className="text-orange-400">Nairobi</strong> for clients{' '}
-              <strong className="text-orange-400">around the world</strong> —
-              real solutions that deliver real results.
+              <strong className="text-orange-400">around the world</strong> — real solutions that deliver real results.
             </p>
           </div>
         </section>
@@ -275,7 +289,6 @@ export default function PortfolioPage() {
                     </div>
                   )}
 
-                  {/* Location chip */}
                   {project.location && (
                     <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-sm text-white text-[10px] font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
                       <MapPin className="w-3 h-3" />
@@ -362,7 +375,6 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Coming soon badge */}
           <div className="text-center mt-16">
             <div className="inline-block bg-orange-100 dark:bg-orange-900/30 rounded-full px-4 py-2">
               <span className="text-orange-700 dark:text-orange-300 text-sm font-medium">
@@ -371,7 +383,6 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="text-center mt-12 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/"

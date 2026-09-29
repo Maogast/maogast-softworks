@@ -138,9 +138,43 @@ export default function ThreeDSignagePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#0A192F] to-[#0F2A3F] text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      {/* ============================================================ */}
+      {/* ✅ HERO — directional gradient hides "CRAFTED", keeps craft  */}
+      {/* ============================================================ */}
+      <section className="relative text-white py-24 md:py-32 overflow-hidden bg-[#0A192F]">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 pointer-events-none bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(/images/3d-signage/signage-craft.webp)',
+            opacity: 0.99,
+            filter: 'saturate(0.99) ',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* ✅ Directional gradient — darkens left (hides "CRAFTED"), keeps right airy */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(10,25,47,1) 0%, rgba(10,25,47,0.92) 25%, rgba(10,25,47,0.75) 55%, rgba(10,25,47,0.6) 100%)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Vertical gradient for top/bottom text readability */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(10,25,47,0.6) 0%, transparent 30%, transparent 70%, rgba(10,25,47,0.9) 100%)',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Subtle grid */}
+        <div className="absolute inset-0 opacity-[0.05]" aria-hidden="true">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="signGrid" width="30" height="30" patternUnits="userSpaceOnUse">
@@ -150,13 +184,24 @@ export default function ThreeDSignagePage() {
             <rect width="100%" height="100%" fill="url(#signGrid)" />
           </svg>
         </div>
+
+        {/* Content */}
         <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">
-            Premium 3D Signage & Lettering
+          <div className="inline-flex items-center gap-2 bg-orange-600/20 border border-orange-400/30 rounded-full px-4 py-1 mb-6 animate-fade-in-up backdrop-blur-sm">
+            <Cuboid className="w-3.5 h-3.5 text-orange-400" />
+            <span className="text-xs font-medium text-orange-300 tracking-wide uppercase">
+              MGST~Works · 3D Signage Division
+            </span>
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate-fade-in-up">
+            Premium 3D Signage &amp; Lettering
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
             <span className="text-orange-500 font-semibold">MGST~Works</span> — Bringing your physical brand to life with custom-cut acrylic, metal, wood, and LED backlit letters in Nairobi, Kenya.
           </p>
+
           <div className="mt-8 animate-fade-in-up animation-delay-400">
             <Link
               href="/quote"
@@ -302,13 +347,13 @@ export default function ThreeDSignagePage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {[
-              "Premium Acrylic", 
-              "Brushed Aluminum", 
-              "Stainless Steel", 
-              "Solid Wood", 
-              "MDF / HDF Boards", 
-              "LED Neon Flex", 
-              "PVC Foam Board", 
+              "Premium Acrylic",
+              "Brushed Aluminum",
+              "Stainless Steel",
+              "Solid Wood",
+              "MDF / HDF Boards",
+              "LED Neon Flex",
+              "PVC Foam Board",
               "Glass & Mirror Finish",
               "Gold & Silver Leaf"
             ].map((material) => (
@@ -320,18 +365,17 @@ export default function ThreeDSignagePage() {
         </div>
       </section>
 
-      {/* Projects Gallery - Using the Client Component */}
+      {/* Projects Gallery */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Recent & In-Progress Installations
+              Recent &amp; In-Progress Installations
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
               Fresh from our workshop. Tap any image or video to preview it in full resolution — perfect for sharing on social media.
             </p>
           </div>
-          {/* Component imported and rendered here */}
           <ProjectsGallery />
         </div>
       </section>
@@ -415,7 +459,7 @@ export default function ThreeDSignagePage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white">Ready to elevate your physical brand?</h2>
           <p className="mt-4 text-orange-100 max-w-xl mx-auto">
-            Let’s create a stunning 3D masterpiece for your office, lobby, or storefront. We design, fabricate, and install.
+            Let&apos;s create a stunning 3D masterpiece for your office, lobby, or storefront. We design, fabricate, and install.
           </p>
           <div className="mt-8">
             <Link

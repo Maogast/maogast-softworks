@@ -49,16 +49,29 @@ const services = [
 export default function ServicesSection() {
   return (
     <section
-      id="services"                      // 👈 makes the Explore button scroll to this section
-      className="py-20 bg-gray-50 dark:bg-gray-900 scroll-mt-16"   // scroll-mt-16 avoids hiding under fixed header
+      id="services"
+      className="relative py-20 bg-gray-50 dark:bg-gray-900 scroll-mt-16 overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ✅ Ambient tech constellation — now truly subtle */}
+<div
+  className="absolute inset-0 pointer-events-none bg-cover bg-center"
+  style={{
+    backgroundImage: 'url(/images/home/tech-constellation.webp)',
+    opacity: 0.02,
+    filter: 'grayscale(75%) brightness(0.55) contrast(0.85)',
+  }}
+  aria-hidden="true"
+/>
+
+      {/* ✅ relative + z-10 so content sits above the background */}
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What We Do</h2>
           <p className="mt-4 text-gray-600 dark:text-gray-400">
             End‑to‑end solutions for your business and company needs.
           </p>
         </div>
+
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service) => (
             <div
