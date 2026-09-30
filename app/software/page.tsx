@@ -163,15 +163,15 @@ export default function SoftwarePage() {
       <Script id="software-breadcrumb-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Script id="software-faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      {/* ============================================================ */}
-      {/* HERO                                                          */}
+            {/* ============================================================ */}
+      {/* HERO — Image fully visible (restored to previous setting)     */}
       {/* ============================================================ */}
       <section className="relative bg-[#0A192F] text-white py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
             backgroundImage: "url(/images/software/software-hero-city.webp)",
-            opacity: 0.11,
+            opacity: 1,
             filter: "blur(0.5px) saturate(0.9)",
           }}
           aria-hidden="true"
