@@ -171,7 +171,7 @@ export default function SoftwarePage() {
           className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
             backgroundImage: "url(/images/software/software-hero-city.webp)",
-            opacity: 10,
+            opacity: 0.11,
             filter: "blur(0.5px) saturate(0.9)",
           }}
           aria-hidden="true"
@@ -356,58 +356,67 @@ export default function SoftwarePage() {
         </div>
       </section>
 
+            {/* ============================================================ */}
+      {/* FRAGMENTED → CONNECTED — SHRUNK + BACKGROUND FULLY VISIBLE   */}
       {/* ============================================================ */}
-      {/* FRAGMENTED → CONNECTED — only sizing changed below             */}
-      {/* ============================================================ */}
-      <section className="py-24 bg-gradient-to-b from-[#0A192F] via-[#0F2A3F] to-[#0A192F] text-white relative overflow-hidden">
+      <section className="py-10 md:py-14 text-white relative overflow-hidden">
+        {/* ✅ Background — fully visible (as you originally had it) */}
         <div
-          className="absolute inset-0 opacity-11 pointer-events-none"
+          className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
             backgroundImage: "url(/images/software/connected-systems-hero.webp)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
           }}
           aria-hidden="true"
         />
 
-        <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="text-center mb-14 max-w-3xl mx-auto">
-            <span className="inline-block text-sm font-semibold text-orange-400 uppercase tracking-wider mb-3">
+        {/* ✅ Thin dark gradient — top & bottom fade only, keeps middle visible */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.35) 30%, rgba(10,25,47,0.35) 70%, rgba(10,25,47,0.95) 100%)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-4 max-w-5xl relative z-10">
+          <div className="text-center mb-6 md:mb-8 max-w-2xl mx-auto">
+            <span className="inline-block text-xs font-semibold text-orange-400 uppercase tracking-wider mb-2">
               The Transformation
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold mb-2">
               From Fragmented to <span className="text-orange-500">Connected</span>
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-300 text-sm md:text-base">
               We don&apos;t just write code — we unify your business systems so people, processes, and data flow together.
             </p>
           </div>
 
-          {/* ✅ Central transformation image — responsive aspect ratio */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-orange-500/20 mb-14 mx-auto w-full max-w-5xl">
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]">
+          {/* ✅ Central image — MUCH smaller */}
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 mb-6 md:mb-8 mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9]">
               <Image
                 src="/images/software/fragmented-to-connected.webp"
                 alt="From fragmented systems to connected business systems — Maogast Softworks transformation"
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 448px, 512px"
                 className="object-cover object-center"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/60 via-transparent to-[#0A192F]/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/50 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* Before / After columns */}
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          {/* Before / After columns — tighter */}
+          <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
             {/* FROM — Fragmented */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-full px-4 py-1.5 mb-6">
-                <span className="w-2 h-2 rounded-full bg-red-500" />
-                <span className="text-xs font-semibold text-red-300 uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 rounded-full px-3 py-1 mb-3 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <span className="text-[10px] font-semibold text-red-300 uppercase tracking-wider">
                   From · Fragmented
                 </span>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-2">
                 {[
                   { icon: Clock, title: "Slow & Manual", desc: "Paperwork, spreadsheets, and manual handoffs cause delays." },
                   { icon: Layers, title: "Siloed Information", desc: "Data lives in different systems with little visibility." },
@@ -418,13 +427,13 @@ export default function SoftwarePage() {
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <li key={idx} className="flex items-start gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/5">
-                      <div className="w-10 h-10 rounded-lg bg-red-500/15 flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-red-400" />
+                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/70 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                      <div className="w-8 h-8 rounded-md bg-red-500/20 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-red-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-white text-sm">{item.title}</h4>
-                        <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.desc}</p>
+                        <h4 className="font-semibold text-white text-xs">{item.title}</h4>
+                        <p className="text-[11px] text-gray-400 mt-0.5 leading-snug">{item.desc}</p>
                       </div>
                     </li>
                   );
@@ -434,13 +443,13 @@ export default function SoftwarePage() {
 
             {/* TO — Connected */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-4 py-1.5 mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-500" />
-                <span className="text-xs font-semibold text-green-300 uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1 mb-3 backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                <span className="text-[10px] font-semibold text-green-300 uppercase tracking-wider">
                   To · Connected
                 </span>
               </div>
-              <ul className="space-y-4">
+              <ul className="space-y-2">
                 {[
                   { icon: Zap, title: "Faster Onboarding", desc: "Customer onboarding takes hours instead of days." },
                   { icon: Users, title: "360° Customer View", desc: "Your team sees every customer, every interaction, everywhere." },
@@ -451,13 +460,13 @@ export default function SoftwarePage() {
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <li key={idx} className="flex items-start gap-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/5">
-                      <div className="w-10 h-10 rounded-lg bg-green-500/15 flex items-center justify-center shrink-0">
-                        <Icon className="w-5 h-5 text-green-400" />
+                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/70 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                      <div className="w-8 h-8 rounded-md bg-green-500/20 flex items-center justify-center shrink-0">
+                        <Icon className="w-4 h-4 text-green-400" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-white text-sm">{item.title}</h4>
-                        <p className="text-xs text-gray-400 mt-0.5 leading-relaxed">{item.desc}</p>
+                        <h4 className="font-semibold text-white text-xs">{item.title}</h4>
+                        <p className="text-[11px] text-gray-400 mt-0.5 leading-snug">{item.desc}</p>
                       </div>
                     </li>
                   );
@@ -466,18 +475,18 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* Footer statement */}
-          <div className="mt-14 bg-gradient-to-r from-orange-500/10 via-orange-500/5 to-transparent border border-orange-500/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
-            <div className="w-14 h-14 rounded-2xl bg-orange-500 flex items-center justify-center shrink-0">
-              <Target className="w-7 h-7 text-white" />
+          {/* Footer statement — tighter */}
+          <div className="mt-6 md:mt-8 bg-[#0A192F]/80 backdrop-blur-md border border-orange-500/30 rounded-xl p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-5">
+            <div className="w-11 h-11 rounded-xl bg-orange-500 flex items-center justify-center shrink-0">
+              <Target className="w-5 h-5 text-white" />
             </div>
-            <p className="text-white text-lg md:text-xl font-medium leading-relaxed text-center md:text-left">
+            <p className="text-white text-sm md:text-base font-medium leading-snug text-center md:text-left">
               A modern business is{" "}
               <span className="text-orange-400 font-bold">
                 connected, agile, and ready for what&apos;s next.
               </span>
             </p>
-            <div className="flex flex-wrap items-center gap-4 md:ml-auto">
+            <div className="flex flex-wrap items-center gap-3 md:ml-auto">
               {[
                 { icon: Users, label: "Happier customers" },
                 { icon: TrendingUp, label: "Stronger performance" },
@@ -486,8 +495,8 @@ export default function SoftwarePage() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.label} className="flex items-center gap-2 text-xs text-gray-300">
-                    <Icon className="w-4 h-4 text-orange-400" />
+                  <div key={item.label} className="flex items-center gap-1.5 text-[10px] text-gray-300">
+                    <Icon className="w-3 h-3 text-orange-400" />
                     <span>{item.label}</span>
                   </div>
                 );
