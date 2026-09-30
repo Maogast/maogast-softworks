@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Cuboid, Gift } from 'lucide-react';
+import { Cuboid, Gift, ArrowRight } from 'lucide-react';
 
 const services = [
   'Software',
@@ -32,7 +32,9 @@ export default function Hero() {
         Maogast Softworks – Software Development, Printing & AI Design in Nairobi, Kenya – Serving Clients Worldwide
       </h1>
 
-      {/* Grid background */}
+      {/* ============================================================ */}
+      {/* LAYER 1 — Grid background                                    */}
+      {/* ============================================================ */}
       <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -44,10 +46,10 @@ export default function Hero() {
         </svg>
       </div>
 
+    
+
       {/* ============================================================ */}
-      {/* ✅ Developer silhouette — VISIBLE ON ALL SCREENS              */}
-      {/* Mobile: lower opacity, top-right anchor                        */}
-      {/* Desktop: full opacity, right anchor                            */}
+      {/* LAYER 3 — Developer silhouette (visible on all screens)      */}
       {/* ============================================================ */}
 
       {/* Mobile + tablet layer (< lg) */}
@@ -55,7 +57,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none bg-cover bg-top bg-no-repeat lg:hidden"
         style={{
           backgroundImage: 'url(/images/home/hero-developer-shadow.webp)',
-          opacity: 0.1,
+          opacity: 0.40,
           mixBlendMode: 'screen',
         }}
         aria-hidden="true"
@@ -66,19 +68,32 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none bg-cover bg-right bg-no-repeat hidden lg:block"
         style={{
           backgroundImage: 'url(/images/home/hero-developer-shadow.webp)',
-          opacity: 0.18,
+          opacity: 0.40,
           mixBlendMode: 'screen',
         }}
         aria-hidden="true"
       />
 
-      {/* Animated glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl animate-pulse pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000 pointer-events-none" aria-hidden="true" />
+      {/* ============================================================ */}
+      {/* LAYER 4 — Animated glow orbs                                 */}
+      {/* ============================================================ */}
+      <div
+        className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl animate-pulse pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000 pointer-events-none"
+        aria-hidden="true"
+      />
 
+      {/* ============================================================ */}
+      {/* CONTENT                                                       */}
+      {/* ============================================================ */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* LEFT */}
+          {/* ========================================== */}
+          {/* LEFT — Text + CTA                          */}
+          {/* ========================================== */}
           <div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Build. Print. Create.
@@ -120,56 +135,114 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — clean icon grid with light backdrops */}
-          <div className="grid grid-cols-4 gap-3 md:gap-4">
-            {[
-              { name: 'Software', src: '/images/code-icon.webp', alt: 'Software Development in Nairobi', style: 'float' },
-              { name: 'Printing', src: '/images/printing-icon.webp', alt: 'Printing & Branding Services', style: 'float-delayed' },
-              { name: 'AI Design', src: '/images/ai-icon.webp', alt: 'AI-Powered Design Kenya', style: 'glow' },
-              { name: 'Content', src: '/images/content-icon.webp', alt: 'Content Management Nairobi', style: 'plain' },
-              { name: 'Training', src: '/images/training-icon.webp', alt: 'Tech Training & Webinars Kenya', style: 'plain' },
-              { name: '3D Signage', icon: 'cuboid', alt: '3D Signage Nairobi', style: 'plain' },
-              { name: 'Custom Gifts', icon: 'gift', alt: 'Custom Corporate Gifts', style: 'plain' },
-              { name: 'Portfolio', src: '/images/portfolio-icon.webp', alt: 'Maogast Softworks Portfolio', style: 'plain' },
-            ].map((item, idx) => {
-              const animClass =
-                item.style === 'float'
-                  ? 'animate-float-3d'
-                  : item.style === 'float-delayed'
-                  ? 'animate-float-3d-delayed'
-                  : item.style === 'glow'
-                  ? 'animate-glow-pulse relative'
-                  : '';
+          {/* ========================================== */}
+          {/* RIGHT — Icon grid + Preview cards          */}
+          {/* ========================================== */}
+          <div className="flex flex-col gap-5 md:gap-6">
+            {/* Icon grid (4×2) */}
+            <div className="grid grid-cols-4 gap-3 md:gap-4">
+              {[
+                { name: 'Software', src: '/images/code-icon.webp', alt: 'Software Development in Nairobi', style: 'float' },
+                { name: 'Printing', src: '/images/printing-icon.webp', alt: 'Printing & Branding Services', style: 'float-delayed' },
+                { name: 'AI Design', src: '/images/ai-icon.webp', alt: 'AI-Powered Design Kenya', style: 'glow' },
+                { name: 'Content', src: '/images/content-icon.webp', alt: 'Content Management Nairobi', style: 'plain' },
+                { name: 'Training', src: '/images/training-icon.webp', alt: 'Tech Training & Webinars Kenya', style: 'plain' },
+                { name: '3D Signage', icon: 'cuboid', alt: '3D Signage Nairobi', style: 'plain' },
+                { name: 'Custom Gifts', icon: 'gift', alt: 'Custom Corporate Gifts', style: 'plain' },
+                { name: 'Portfolio', src: '/images/portfolio-icon.webp', alt: 'Maogast Softworks Portfolio', style: 'plain' },
+              ].map((item, idx) => {
+                const animClass =
+                  item.style === 'float'
+                    ? 'animate-float-3d'
+                    : item.style === 'float-delayed'
+                    ? 'animate-float-3d-delayed'
+                    : item.style === 'glow'
+                    ? 'animate-glow-pulse relative'
+                    : '';
 
-              return (
-                <div
-                  key={idx}
-                  className={`hero-icon group relative bg-white/10 backdrop-blur-sm rounded-2xl p-2.5 flex flex-col items-center justify-center border border-white/10 shadow-lg hover:border-orange-400/50 transition-all duration-300 ${animClass}`}
-                >
-                  {/* ✅ Light backdrop behind each icon — guarantees visibility */}
-                  <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-inner">
-                    {item.icon === 'cuboid' ? (
-                      <Cuboid className="w-8 h-8 md:w-9 md:h-9 text-orange-500" />
-                    ) : item.icon === 'gift' ? (
-                      <Gift className="w-8 h-8 md:w-9 md:h-9 text-orange-500" />
-                    ) : (
-                      <Image
-                        src={item.src as string}
-                        alt={item.alt as string}
-                        width={80}
-                        height={80}
-                        className="w-11 h-11 md:w-12 md:h-12 object-contain"
-                      />
-                    )}
+                return (
+                  <div
+                    key={idx}
+                    className={`hero-icon group relative bg-white/10 backdrop-blur-sm rounded-2xl p-2.5 flex flex-col items-center justify-center border border-white/10 shadow-lg hover:border-orange-400/50 transition-all duration-300 ${animClass}`}
+                  >
+                    <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-inner">
+                      {item.icon === 'cuboid' ? (
+                        <Cuboid className="w-8 h-8 md:w-9 md:h-9 text-orange-500" />
+                      ) : item.icon === 'gift' ? (
+                        <Gift className="w-8 h-8 md:w-9 md:h-9 text-orange-500" />
+                      ) : (
+                        <Image
+                          src={item.src as string}
+                          alt={item.alt as string}
+                          width={80}
+                          height={80}
+                          className="w-11 h-11 md:w-12 md:h-12 object-contain"
+                        />
+                      )}
+                    </div>
+                    <span className="text-[10px] md:text-xs text-gray-200 group-hover:text-white mt-2 text-center font-medium leading-tight transition-colors">
+                      {item.name}
+                    </span>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Label */}
-                  <span className="text-[10px] md:text-xs text-gray-200 group-hover:text-white mt-2 text-center font-medium leading-tight transition-colors">
-                    {item.name}
+            {/* ========================================== */}
+            {/* NEW — Preview strip (2 cards)              */}
+            {/* Both link to /software                     */}
+            {/* ========================================== */}
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              {/* Card 1 — Problems We Solve */}
+              <Link
+                href="/software"
+                className="group relative rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 hover:border-orange-400/60 transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
+              >
+                <Image
+                  src="/images/software/challenges-grid.webp"
+                  alt="Business challenges Maogast Softworks solves"
+                  fill
+                  sizes="(max-width: 768px) 40vw, 20vw"
+                  className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                />
+                {/* Dark gradient overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/50 to-transparent" />
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end p-3 md:p-4">
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-orange-400 font-bold mb-1">
+                    Problems We Solve
                   </span>
+                  <div className="flex items-center gap-1 text-white text-xs md:text-sm font-semibold">
+                    <span>See how</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
-              );
-            })}
+              </Link>
+
+              {/* Card 2 — Who We Serve */}
+              <Link
+                href="/software"
+                className="group relative rounded-2xl overflow-hidden aspect-[16/10] border border-white/10 hover:border-orange-400/60 transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
+              >
+                <Image
+                  src="/images/software/outcomes-by-role.webp"
+                  alt="Types of clients Maogast Softworks serves — startups, SMEs, enterprises, academic"
+                  fill
+                  sizes="(max-width: 768px) 40vw, 20vw"
+                  className="object-cover opacity-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/50 to-transparent" />
+                <div className="absolute inset-0 flex flex-col justify-end p-3 md:p-4">
+                  <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-orange-400 font-bold mb-1">
+                    Who We Serve
+                  </span>
+                  <div className="flex items-center gap-1 text-white text-xs md:text-sm font-semibold">
+                    <span>Meet clients</span>
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

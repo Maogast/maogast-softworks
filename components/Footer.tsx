@@ -19,7 +19,7 @@ type SectionKey = 'services' | 'company' | 'contact';
 const services = [
   { label: 'Software', href: '/software' },
   { label: 'Printing & Branding', href: '/printing' },
-  { label: '3D Signage', href: '/3d-signage' },       // ✅ NEW
+  { label: '3D Signage', href: '/3d-signage' },
   { label: 'AI Design', href: '/ai-design' },
   { label: 'Content Management', href: '/content-management' },
   { label: 'Training & Webinars', href: '/training' },
@@ -44,7 +44,7 @@ const socials = [
 ];
 
 export default function Footer() {
-  /* ✅ Services open by default so users see them immediately */
+  /* Services open by default so users see them immediately */
   const [open, setOpen] = useState<Record<SectionKey, boolean>>({
     services: true,
     company: false,
@@ -57,14 +57,46 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-[#0A192F] text-gray-300">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
+    <footer className="relative bg-[#0A192F] text-gray-300 overflow-hidden">
+      {/* ============================================================ */}
+      {/* BACKGROUND LAYER 1 — Software hero city skyline               */}
+      {/* Visible behind the top of the footer, blends into navy below  */}
+      {/* ============================================================ */}
+      <div
+        className="absolute inset-0 pointer-events-none bg-cover bg-center"
+        style={{
+          backgroundImage: 'url(/images/software/software-hero-city.webp)',
+          opacity: 0.99,
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ============================================================ */}
+      {/* BACKGROUND LAYER 2 — Navy gradient overlay                    */}
+      {/* Lighter at top (city visible) → solid navy at bottom          */}
+      {/* ============================================================ */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(10,25,47,0.55) 0%, rgba(10,25,47,0.85) 30%, rgba(10,25,47,0.96) 55%, rgba(10,25,47,1) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ============================================================ */}
+      {/* Top accent line — orange glow                                 */}
+      {/* ============================================================ */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent z-10" />
+
+      {/* ============================================================ */}
+      {/* CONTENT — relative + z-10 so it sits above the background     */}
+      {/* ============================================================ */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* ========================================================= */}
         {/* ROW 1 — Brand + Status + Socials                           */}
         {/* ========================================================= */}
-        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-5 border-b border-gray-800">
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between gap-5 border-b border-gray-800/60">
           <Link href="/" className="flex items-center gap-3 group">
             <Image
               src="/logo3.jpg"
@@ -86,7 +118,7 @@ export default function Footer() {
 
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
             <div
-              className="flex items-center gap-2 bg-green-500/10 border border-green-500/25 rounded-full px-3 py-1"
+              className="flex items-center gap-2 bg-green-500/10 border border-green-500/25 rounded-full px-3 py-1 backdrop-blur-sm"
               title="All services online"
             >
               <span className="relative flex w-2 h-2">
@@ -119,7 +151,7 @@ export default function Footer() {
         {/* ========================================================= */}
         {/* ROW 2 — Collapsible sections with preview when closed      */}
         {/* ========================================================= */}
-        <div className="grid md:grid-cols-3 gap-0 md:gap-8 divide-y md:divide-y-0 divide-gray-800">
+        <div className="grid md:grid-cols-3 gap-0 md:gap-8 divide-y md:divide-y-0 divide-gray-800/60">
           {/* SERVICES — open by default */}
           <FooterSection
             title="Services"
@@ -218,7 +250,7 @@ export default function Footer() {
         {/* ========================================================= */}
         {/* ROW 4 — Bottom bar                                         */}
         {/* ========================================================= */}
-        <div className="border-t border-gray-800 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+        <div className="border-t border-gray-800/60 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
           <div className="text-gray-500 text-center md:text-left">
             © {year} Maogast Softworks Limited. All rights reserved.
           </div>

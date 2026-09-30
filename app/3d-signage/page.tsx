@@ -147,8 +147,8 @@ export default function ThreeDSignagePage() {
           className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
             backgroundImage: 'url(/images/3d-signage/signage-craft.webp)',
-            opacity: 0.99,
-            filter: 'saturate(0.99) ',
+            opacity: 30,
+            filter: 'saturate(3) ',
           }}
           aria-hidden="true"
         />
