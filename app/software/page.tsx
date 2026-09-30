@@ -171,7 +171,7 @@ export default function SoftwarePage() {
           className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
             backgroundImage: "url(/images/software/software-hero-city.webp)",
-            opacity: 11,
+            opacity: 10,
             filter: "blur(0.5px) saturate(0.9)",
           }}
           aria-hidden="true"
@@ -203,7 +203,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* NEW: BUSINESS CHALLENGES WE SOLVE                             */}
+      {/* BUSINESS CHALLENGES WE SOLVE                                  */}
       {/* ============================================================ */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -265,7 +265,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* WHY CHOOSE (existing)                                         */}
+      {/* WHY CHOOSE                                                    */}
       {/* ============================================================ */}
       <section className="py-16 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-5xl">
@@ -310,7 +310,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* WHAT WE BUILD (existing)                                      */}
+      {/* WHAT WE BUILD                                                 */}
       {/* ============================================================ */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
@@ -357,7 +357,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* NEW: FRAGMENTED → CONNECTED                                   */}
+      {/* FRAGMENTED → CONNECTED — only sizing changed below             */}
       {/* ============================================================ */}
       <section className="py-24 bg-gradient-to-b from-[#0A192F] via-[#0F2A3F] to-[#0A192F] text-white relative overflow-hidden">
         <div
@@ -383,16 +383,18 @@ export default function SoftwarePage() {
             </p>
           </div>
 
-          {/* Central transformation image */}
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-orange-500/20 mb-14 aspect-[16/9] max-w-4xl mx-auto">
-            <Image
-              src="/images/software/fragmented-to-connected.webp"
-              alt="From fragmented systems to connected business systems — Maogast Softworks transformation"
-              fill
-              sizes="(max-width: 1024px) 100vw, 80vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/60 via-transparent to-[#0A192F]/40" />
+          {/* ✅ Central transformation image — responsive aspect ratio */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-orange-500/20 mb-14 mx-auto w-full max-w-5xl">
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]">
+              <Image
+                src="/images/software/fragmented-to-connected.webp"
+                alt="From fragmented systems to connected business systems — Maogast Softworks transformation"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1024px"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/60 via-transparent to-[#0A192F]/40 pointer-events-none" />
           </div>
 
           {/* Before / After columns */}
@@ -496,7 +498,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* NEW: TECHNOLOGY OUTCOMES BY ROLE                              */}
+      {/* TECHNOLOGY OUTCOMES BY ROLE                                   */}
       {/* ============================================================ */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -514,94 +516,31 @@ export default function SoftwarePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              {
-                role: "Startups & Founders",
-                icon: Rocket,
-                color: "blue",
-                headline: "Ship fast. Scale confidently.",
-                body: "We help founders go from idea to production in weeks — not months. Clean architecture, modern stack, ready to raise funding.",
-                points: ["MVP in 4–6 weeks", "Investor-ready codebase", "Scalable from day one", "Full IP ownership"],
-              },
-              {
-                role: "SMEs & Operations",
-                icon: Briefcase,
-                color: "orange",
-                headline: "Automate. Gain control.",
-                body: "From inventory to invoicing, we replace manual processes with systems that save hours and reduce costly errors.",
-                points: ["Custom ERP systems", "M-Pesa integrations", "Inventory & POS", "Real-time reporting"],
-              },
-              {
-                role: "Enterprise & IT Leaders",
-                icon: Building2,
-                color: "purple",
-                headline: "Integrate. Reduce risk.",
-                body: "We connect legacy systems, modernise infrastructure, and give your IT team the tools to drive innovation.",
-                points: ["System integration", "Cloud migration", "Security & compliance", "Legacy modernisation"],
-              },
-              {
-                role: "Academic & Research",
-                icon: GraduationCap,
-                color: "green",
-                headline: "Build. Publish. Defend.",
-                body: "Custom software for undergraduate, master's, and PhD projects — designed, developed, and documented to academic standards.",
-                points: ["System design support", "Full implementation", "Documentation", "Defense-ready demos"],
-              },
+              { role: "Startups & Founders", icon: Rocket, color: "blue", headline: "Ship fast. Scale confidently.", body: "We help founders go from idea to production in weeks — not months. Clean architecture, modern stack, ready to raise funding.", points: ["MVP in 4–6 weeks", "Investor-ready codebase", "Scalable from day one", "Full IP ownership"] },
+              { role: "SMEs & Operations", icon: Briefcase, color: "orange", headline: "Automate. Gain control.", body: "From inventory to invoicing, we replace manual processes with systems that save hours and reduce costly errors.", points: ["Custom ERP systems", "M-Pesa integrations", "Inventory & POS", "Real-time reporting"] },
+              { role: "Enterprise & IT Leaders", icon: Building2, color: "purple", headline: "Integrate. Reduce risk.", body: "We connect legacy systems, modernise infrastructure, and give your IT team the tools to drive innovation.", points: ["System integration", "Cloud migration", "Security & compliance", "Legacy modernisation"] },
+              { role: "Academic & Research", icon: GraduationCap, color: "green", headline: "Build. Publish. Defend.", body: "Custom software for undergraduate, master's, and PhD projects — designed, developed, and documented to academic standards.", points: ["System design support", "Full implementation", "Documentation", "Defense-ready demos"] },
             ].map((item, idx) => {
               const Icon = item.icon;
-              const colorMap: Record<
-                string,
-                { bg: string; text: string; border: string; accent: string }
-              > = {
-                blue: {
-                  bg: "bg-blue-100 dark:bg-blue-900/30",
-                  text: "text-blue-600 dark:text-blue-400",
-                  border: "border-blue-200 dark:border-blue-900",
-                  accent: "bg-blue-500",
-                },
-                orange: {
-                  bg: "bg-orange-100 dark:bg-orange-900/30",
-                  text: "text-orange-600 dark:text-orange-400",
-                  border: "border-orange-200 dark:border-orange-900",
-                  accent: "bg-orange-500",
-                },
-                purple: {
-                  bg: "bg-purple-100 dark:bg-purple-900/30",
-                  text: "text-purple-600 dark:text-purple-400",
-                  border: "border-purple-200 dark:border-purple-900",
-                  accent: "bg-purple-500",
-                },
-                green: {
-                  bg: "bg-green-100 dark:bg-green-900/30",
-                  text: "text-green-600 dark:text-green-400",
-                  border: "border-green-200 dark:border-green-900",
-                  accent: "bg-green-500",
-                },
+              const colorMap: Record<string, { bg: string; text: string; border: string; accent: string }> = {
+                blue: { bg: "bg-blue-100 dark:bg-blue-900/30", text: "text-blue-600 dark:text-blue-400", border: "border-blue-200 dark:border-blue-900", accent: "bg-blue-500" },
+                orange: { bg: "bg-orange-100 dark:bg-orange-900/30", text: "text-orange-600 dark:text-orange-400", border: "border-orange-200 dark:border-orange-900", accent: "bg-orange-500" },
+                purple: { bg: "bg-purple-100 dark:bg-purple-900/30", text: "text-purple-600 dark:text-purple-400", border: "border-purple-200 dark:border-purple-900", accent: "bg-purple-500" },
+                green: { bg: "bg-green-100 dark:bg-green-900/30", text: "text-green-600 dark:text-green-400", border: "border-green-200 dark:border-green-900", accent: "bg-green-500" },
               };
               const c = colorMap[item.color];
               return (
-                <div
-                  key={idx}
-                  className={`bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border ${c.border} hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col`}
-                >
+                <div key={idx} className={`bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border ${c.border} hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col`}>
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 ${c.bg}`}>
                     <Icon className={`w-7 h-7 ${c.text}`} />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
-                    {item.role}
-                  </h3>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{item.role}</h3>
                   <div className={`w-10 h-0.5 ${c.accent} rounded-full mb-4`} />
-                  <p className={`text-sm font-semibold ${c.text} mb-3`}>
-                    {item.headline}
-                  </p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">
-                    {item.body}
-                  </p>
+                  <p className={`text-sm font-semibold ${c.text} mb-3`}>{item.headline}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 flex-grow">{item.body}</p>
                   <ul className="space-y-2 pt-4 border-t border-gray-200 dark:border-gray-700">
                     {item.points.map((point) => (
-                      <li
-                        key={point}
-                        className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400"
-                      >
+                      <li key={point} className="flex items-center gap-2 text-xs text-gray-600 dark:text-gray-400">
                         <CheckCircle className={`w-3.5 h-3.5 ${c.text} shrink-0`} />
                         {point}
                       </li>
@@ -615,7 +554,7 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* NEW: DIGITAL TRANSFORMATION IN KENYA                          */}
+      {/* DIGITAL TRANSFORMATION IN KENYA                               */}
       {/* ============================================================ */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-6xl">
@@ -648,10 +587,7 @@ export default function SoftwarePage() {
                   );
                 })}
               </ul>
-              <Link
-                href="/quote"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition transform hover:scale-105"
-              >
+              <Link href="/quote" className="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-lg transition transform hover:scale-105">
                 Talk to Our Team <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -673,12 +609,8 @@ export default function SoftwarePage() {
                     <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                      Avg. delivery
-                    </div>
-                    <div className="text-base font-bold text-gray-900 dark:text-white">
-                      4–12 weeks
-                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Avg. delivery</div>
+                    <div className="text-base font-bold text-gray-900 dark:text-white">4–12 weeks</div>
                   </div>
                 </div>
               </div>
@@ -688,84 +620,24 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* TECHNOLOGIES WE MASTER (existing)                             */}
+      {/* TECHNOLOGIES WE MASTER                                        */}
       {/* ============================================================ */}
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Technologies We Master
-          </h2>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Modern, battle‑tested tools to deliver high‑quality software.
-          </p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Technologies We Master</h2>
+          <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Modern, battle‑tested tools to deliver high‑quality software.</p>
 
           {[
-            {
-              title: "Frontend & Mobile",
-              items: [
-                "Next.js", "React", "Angular", "Vue.js", "Svelte", "TypeScript",
-                "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "React Native",
-                "Expo", "Flutter", "Vite", "Redux Toolkit",
-              ],
-              highlight: false,
-            },
-            {
-              title: "Backend & Databases",
-              items: [
-                "Node.js", "Django", "Laravel", "FastAPI", "Express.js",
-                "NestJS", "Supabase", "Firebase", "PostgreSQL", "MongoDB",
-                "MySQL", "Redis", "Prisma", "REST APIs", "GraphQL", "tRPC",
-              ],
-              highlight: false,
-            },
-            {
-              title: "CMS & E‑commerce",
-              items: [
-                "WordPress", "Shopify", "WooCommerce", "Contentful",
-                "Strapi", "Sanity", "BigCommerce",
-              ],
-              highlight: false,
-            },
-            {
-              title: "DevOps & Cloud",
-              items: [
-                "Docker", "Kubernetes", "GitHub Actions",
-                "AWS (EC2, S3, RDS, Lambda)", "Google Cloud", "Microsoft Azure",
-                "Vercel", "Netlify", "Firebase Hosting", "CI/CD Pipelines",
-                "Terraform", "Nginx",
-              ],
-              highlight: false,
-            },
-            {
-              title: "AI & Modern Tooling",
-              items: [
-                "OpenAI API", "Claude API", "LangChain", "Hugging Face",
-                "Cursor", "GitHub Copilot", "Claude Code", "ChatGPT",
-                "Antigravity",
-              ],
-              highlight: true,
-            },
-            {
-              title: "Payments & Integrations",
-              items: [
-                "M-Pesa (Daraja API)", "Stripe", "PayPal", "Flutterwave",
-                "Twilio", "SendGrid", "Resend", "WhatsApp Business API",
-              ],
-              highlight: true,
-            },
-            {
-              title: "Testing & Quality",
-              items: [
-                "Jest", "Cypress", "Playwright", "Vitest", "ESLint",
-                "Prettier", "Postman",
-              ],
-              highlight: false,
-            },
+            { title: "Frontend & Mobile", items: ["Next.js", "React", "Angular", "Vue.js", "Svelte", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3", "React Native", "Expo", "Flutter", "Vite", "Redux Toolkit"], highlight: false },
+            { title: "Backend & Databases", items: ["Node.js", "Django", "Laravel", "FastAPI", "Express.js", "NestJS", "Supabase", "Firebase", "PostgreSQL", "MongoDB", "MySQL", "Redis", "Prisma", "REST APIs", "GraphQL", "tRPC"], highlight: false },
+            { title: "CMS & E‑commerce", items: ["WordPress", "Shopify", "WooCommerce", "Contentful", "Strapi", "Sanity", "BigCommerce"], highlight: false },
+            { title: "DevOps & Cloud", items: ["Docker", "Kubernetes", "GitHub Actions", "AWS (EC2, S3, RDS, Lambda)", "Google Cloud", "Microsoft Azure", "Vercel", "Netlify", "Firebase Hosting", "CI/CD Pipelines", "Terraform", "Nginx"], highlight: false },
+            { title: "AI & Modern Tooling", items: ["OpenAI API", "Claude API", "LangChain", "Hugging Face", "Cursor", "GitHub Copilot", "Claude Code", "ChatGPT", "Antigravity"], highlight: true },
+            { title: "Payments & Integrations", items: ["M-Pesa (Daraja API)", "Stripe", "PayPal", "Flutterwave", "Twilio", "SendGrid", "Resend", "WhatsApp Business API"], highlight: true },
+            { title: "Testing & Quality", items: ["Jest", "Cypress", "Playwright", "Vitest", "ESLint", "Prettier", "Postman"], highlight: false },
           ].map((section) => (
             <div key={section.title} className="mt-8">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                {section.title}
-              </h3>
+              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-3">{section.title}</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {section.items.map((tech) => (
                   <span
@@ -786,30 +658,19 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* OUR PROCESS (existing)                                        */}
+      {/* OUR PROCESS                                                   */}
       {/* ============================================================ */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="mb-8">
-                <span className="text-sm font-semibold text-orange-600 uppercase tracking-wider">
-                  How We Work
-                </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">
-                  Our Process
-                </h2>
-                <p className="mt-3 text-gray-600 dark:text-gray-400">
-                  From idea to launch — we keep you in the loop at every step.
-                </p>
+                <span className="text-sm font-semibold text-orange-600 uppercase tracking-wider">How We Work</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2">Our Process</h2>
+                <p className="mt-3 text-gray-600 dark:text-gray-400">From idea to launch — we keep you in the loop at every step.</p>
               </div>
-
               <div className="relative">
-                <div
-                  className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-500/20"
-                  aria-hidden="true"
-                />
-
+                <div className="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-orange-500 via-orange-400 to-orange-500/20" aria-hidden="true" />
                 <div className="space-y-6">
                   {[
                     { step: "01", title: "Discovery", icon: <Search className="w-5 h-5" />, desc: "Understand your goals, users, and requirements." },
@@ -818,50 +679,29 @@ export default function SoftwarePage() {
                     { step: "04", title: "Launch & Support", icon: <Rocket className="w-5 h-5" />, desc: "Deployment, training, and ongoing maintenance." },
                   ].map((step) => (
                     <div key={step.step} className="relative flex items-start gap-5 group">
-                      <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                        {step.icon}
-                      </div>
+                      <div className="relative z-10 flex-shrink-0 w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">{step.icon}</div>
                       <div className="flex-1 pt-1">
                         <div className="flex items-baseline gap-3">
-                          <span className="text-xs font-mono font-bold text-orange-500">
-                            {step.step}
-                          </span>
-                          <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                            {step.title}
-                          </h3>
+                          <span className="text-xs font-mono font-bold text-orange-500">{step.step}</span>
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white">{step.title}</h3>
                         </div>
-                        <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                          {step.desc}
-                        </p>
+                        <p className="mt-1 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{step.desc}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square group">
-                <Image
-                  src="/images/software/design-to-code.webp"
-                  alt="From design wireframes to production code — Maogast Softworks development process"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-bottom group-hover:scale-105 transition-transform duration-700"
-                />
+                <Image src="/images/software/design-to-code.webp" alt="From design wireframes to production code — Maogast Softworks development process" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover object-bottom group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/85 via-transparent to-transparent" />
-
                 <div className="absolute top-5 left-5 flex items-center gap-2 bg-white/95 dark:bg-[#0A192F]/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
                   <Sparkles className="w-3.5 h-3.5 text-orange-500" />
-                  <span className="text-xs font-semibold text-gray-900 dark:text-white">
-                    Design → Code
-                  </span>
+                  <span className="text-xs font-semibold text-gray-900 dark:text-white">Design → Code</span>
                 </div>
-
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white text-sm font-medium leading-relaxed">
-                    Every project starts on paper — then becomes production-grade code.
-                  </p>
+                  <p className="text-white text-sm font-medium leading-relaxed">Every project starts on paper — then becomes production-grade code.</p>
                 </div>
               </div>
             </div>
@@ -870,69 +710,37 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* CASE STUDY (existing)                                         */}
+      {/* CASE STUDY                                                    */}
       {/* ============================================================ */}
       <section className="py-16 bg-white dark:bg-gray-900 border-t border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Recent Success in Nairobi
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              A quick look at what we&apos;ve delivered locally
-            </p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Recent Success in Nairobi</h2>
+            <p className="text-gray-600 dark:text-gray-400">A quick look at what we&apos;ve delivered locally</p>
           </div>
-
           <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg grid md:grid-cols-2 gap-0">
             <div className="p-8 flex flex-col justify-center">
-              <span className="text-sm font-mono text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full self-start">
-                Case Study
-              </span>
-              <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-white">
-                Inventory Management System
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">
-                Built a real-time dashboard for a Nairobi retailer, reducing stockouts by 40% and cutting manual work by 6 hours/week. Integrated M-Pesa Paybill for instant payments.
-              </p>
+              <span className="text-sm font-mono text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-3 py-1 rounded-full self-start">Case Study</span>
+              <h3 className="text-2xl font-bold mt-4 text-gray-900 dark:text-white">Inventory Management System</h3>
+              <p className="text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">Built a real-time dashboard for a Nairobi retailer, reducing stockouts by 40% and cutting manual work by 6 hours/week. Integrated M-Pesa Paybill for instant payments.</p>
               <div className="flex flex-wrap gap-2 mt-4">
                 {["Next.js", "Supabase", "Tailwind", "M-Pesa API", "Chart.js"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2.5 py-1 rounded-full border border-gray-200 dark:border-gray-600"
-                  >
-                    {tech}
-                  </span>
+                  <span key={tech} className="text-xs bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2.5 py-1 rounded-full border border-gray-200 dark:border-gray-600">{tech}</span>
                 ))}
               </div>
-
               <div className="mt-6 flex items-center gap-3">
-                <div className="flex items-center justify-center w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                </div>
+                <div className="flex items-center justify-center w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full"><CheckCircle className="w-5 h-5 text-green-600" /></div>
                 <div>
-                  <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">
-                    Impact
-                  </div>
-                  <div className="text-sm font-bold text-gray-900 dark:text-white">
-                    40% fewer stockouts
-                  </div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide">Impact</div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">40% fewer stockouts</div>
                 </div>
               </div>
             </div>
-
             <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[360px] overflow-hidden">
-              <Image
-                src="/images/software/mpesa-integration.webp"
-                alt="M-Pesa Paybill integration for Maogast Softworks client project"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-              />
+              <Image src="/images/software/mpesa-integration.webp" alt="M-Pesa Paybill integration for Maogast Softworks client project" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0A192F]/40 via-transparent to-transparent" />
               <div className="absolute top-4 right-4 bg-white/95 dark:bg-[#0A192F]/90 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-lg">
-                <span className="text-xs font-semibold text-orange-600 dark:text-orange-400">
-                  M-Pesa Integrated
-                </span>
+                <span className="text-xs font-semibold text-orange-600 dark:text-orange-400">M-Pesa Integrated</span>
               </div>
             </div>
           </div>
@@ -940,44 +748,22 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* FAQ (existing)                                                */}
+      {/* FAQ                                                           */}
       {/* ============================================================ */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Frequently Asked Questions</h2>
           <div className="space-y-4">
             {[
-              {
-                q: "How long does it take to build a custom software application?",
-                a: "Timelines vary depending on complexity. A typical MVP takes 4–8 weeks, while larger enterprise systems may take 3–6 months. We work in agile sprints to deliver value quickly.",
-              },
-              {
-                q: "Do you only work with clients in Nairobi?",
-                a: "We are based in Nairobi, Kenya, but we serve clients nationwide and remotely. We have successfully delivered projects for businesses in Mombasa, Kisumu, and other regions.",
-              },
-              {
-                q: "What technologies do you specialize in?",
-                a: "Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, WordPress, Shopify, and cloud platforms like AWS and Vercel.",
-              },
-              {
-                q: "Can you help me with my university or postgraduate software project?",
-                a: "Absolutely. We assist undergraduate, master's, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support.",
-              },
-              {
-                q: "Do you build WordPress or Shopify websites?",
-                a: "Yes. We develop custom WordPress themes and plugins, and build Shopify stores with custom integrations. We can also migrate existing sites to modern platforms.",
-              },
+              { q: "How long does it take to build a custom software application?", a: "Timelines vary depending on complexity. A typical MVP takes 4–8 weeks, while larger enterprise systems may take 3–6 months. We work in agile sprints to deliver value quickly." },
+              { q: "Do you only work with clients in Nairobi?", a: "We are based in Nairobi, Kenya, but we serve clients nationwide and remotely. We have successfully delivered projects for businesses in Mombasa, Kisumu, and other regions." },
+              { q: "What technologies do you specialize in?", a: "Our primary stack includes Next.js, React, Node.js, Supabase, PostgreSQL, and Tailwind CSS. We also work with Django, Firebase, MongoDB, WordPress, Shopify, and cloud platforms like AWS and Vercel." },
+              { q: "Can you help me with my university or postgraduate software project?", a: "Absolutely. We assist undergraduate, master's, and PhD students with custom software projects – from system design to full implementation. We ensure the work meets academic standards and can provide documentation support." },
+              { q: "Do you build WordPress or Shopify websites?", a: "Yes. We develop custom WordPress themes and plugins, and build Shopify stores with custom integrations. We can also migrate existing sites to modern platforms." },
             ].map((faq, i) => (
-              <details
-                key={i}
-                className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition"
-              >
+              <details key={i} className="group bg-white dark:bg-gray-800 rounded-xl shadow-sm p-5 open:shadow-md transition">
                 <summary className="flex justify-between items-center cursor-pointer list-none">
-                  <span className="font-semibold text-gray-900 dark:text-white">
-                    {faq.q}
-                  </span>
+                  <span className="font-semibold text-gray-900 dark:text-white">{faq.q}</span>
                   <ChevronDown className="w-5 h-5 text-orange-600 group-open:rotate-180 transition-transform" />
                 </summary>
                 <p className="mt-3 text-gray-600 dark:text-gray-400">{faq.a}</p>
@@ -988,21 +774,14 @@ export default function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* FINAL CTA (existing)                                          */}
+      {/* FINAL CTA                                                     */}
       {/* ============================================================ */}
       <section className="py-20 bg-orange-600">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white">
-            Ready to build your next software project?
-          </h2>
-          <p className="mt-4 text-orange-100 max-w-xl mx-auto">
-            Let&apos;s talk about your idea. We&apos;ll help you choose the right technology and deliver on time.
-          </p>
+          <h2 className="text-3xl font-bold text-white">Ready to build your next software project?</h2>
+          <p className="mt-4 text-orange-100 max-w-xl mx-auto">Let&apos;s talk about your idea. We&apos;ll help you choose the right technology and deliver on time.</p>
           <div className="mt-8">
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105"
-            >
+            <Link href="/quote" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-orange-600 bg-white hover:bg-gray-100 transition transform hover:scale-105">
               Get a Free Consultation
             </Link>
           </div>
