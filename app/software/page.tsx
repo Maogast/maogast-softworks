@@ -356,11 +356,11 @@ export default function SoftwarePage() {
         </div>
       </section>
 
-            {/* ============================================================ */}
-      {/* FRAGMENTED → CONNECTED — SHRUNK + BACKGROUND FULLY VISIBLE   */}
+                  {/* ============================================================ */}
+      {/* FRAGMENTED → CONNECTED — background visible, content pushed   */}
       {/* ============================================================ */}
-      <section className="py-10 md:py-14 text-white relative overflow-hidden">
-        {/* ✅ Background — fully visible (as you originally had it) */}
+      <section className="relative text-white overflow-hidden pt-32 md:pt-48 pb-12 md:pb-16">
+        {/* ✅ Background — FULLY visible (no dark overlay at top) */}
         <div
           className="absolute inset-0 pointer-events-none bg-cover bg-center"
           style={{
@@ -369,12 +369,12 @@ export default function SoftwarePage() {
           aria-hidden="true"
         />
 
-        {/* ✅ Thin dark gradient — top & bottom fade only, keeps middle visible */}
+        {/* ✅ Gradient — ONLY darkens the bottom half for card readability */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,25,47,0.85) 0%, rgba(10,25,47,0.35) 30%, rgba(10,25,47,0.35) 70%, rgba(10,25,47,0.95) 100%)",
+              "linear-gradient(to bottom, transparent 0%, transparent 25%, rgba(10,25,47,0.5) 55%, rgba(10,25,47,0.95) 100%)",
           }}
           aria-hidden="true"
         />
@@ -392,7 +392,7 @@ export default function SoftwarePage() {
             </p>
           </div>
 
-          {/* ✅ Central image — MUCH smaller */}
+          {/* ✅ Central image — smaller, self-contained */}
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-orange-500/20 mb-6 md:mb-8 mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
             <div className="relative w-full aspect-[16/10] sm:aspect-[16/9]">
               <Image
@@ -406,7 +406,7 @@ export default function SoftwarePage() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F]/50 via-transparent to-transparent pointer-events-none" />
           </div>
 
-          {/* Before / After columns — tighter */}
+          {/* Before / After columns */}
           <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
             {/* FROM — Fragmented */}
             <div>
@@ -427,7 +427,7 @@ export default function SoftwarePage() {
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/70 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/85 backdrop-blur-md rounded-lg p-3 border border-white/10">
                       <div className="w-8 h-8 rounded-md bg-red-500/20 flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 text-red-400" />
                       </div>
@@ -460,7 +460,7 @@ export default function SoftwarePage() {
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/70 backdrop-blur-sm rounded-lg p-3 border border-white/10">
+                    <li key={idx} className="flex items-start gap-3 bg-[#0A192F]/85 backdrop-blur-md rounded-lg p-3 border border-white/10">
                       <div className="w-8 h-8 rounded-md bg-green-500/20 flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 text-green-400" />
                       </div>
@@ -475,8 +475,8 @@ export default function SoftwarePage() {
             </div>
           </div>
 
-          {/* Footer statement — tighter */}
-          <div className="mt-6 md:mt-8 bg-[#0A192F]/80 backdrop-blur-md border border-orange-500/30 rounded-xl p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-5">
+          {/* Footer statement */}
+          <div className="mt-6 md:mt-8 bg-[#0A192F]/85 backdrop-blur-md border border-orange-500/30 rounded-xl p-4 md:p-6 flex flex-col md:flex-row items-center gap-4 md:gap-5">
             <div className="w-11 h-11 rounded-xl bg-orange-500 flex items-center justify-center shrink-0">
               <Target className="w-5 h-5 text-white" />
             </div>
