@@ -1,7 +1,7 @@
 import { printingProjects } from '@/data/printing-portfolio';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import type { Metadata } from 'next';
 import WatermarkVideo from '@/components/WatermarkVideo';
@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${project.title} - Mgst Softworks`,
       description: project.description,
+      // ✅ ALWAYS uses image — even when video exists
       images: [{ url: `${baseUrl}${project.image}`, width: 1200, height: 630 }],
       siteName: 'Maogast Softworks (MGST~Works)',
     },
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: `${project.title} | Mgst`,
       description: project.description,
+      // ✅ ALWAYS uses image
       images: [`${baseUrl}${project.image}`],
     },
   };
@@ -81,23 +83,23 @@ export default async function PrintingPortfolioPage({ params }: Props) {
       <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-8">
 
-          {/* Media — full width on mobile, half on desktop */}
+          {/* ✅ Media — ALWAYS shows image (even if video exists) */}
           <div className="relative w-full aspect-square sm:aspect-[4/3] md:aspect-auto md:h-[600px] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-            {project.video ? (
-              <WatermarkVideo
-                src={project.video}
-                poster={project.image}
-                className="w-full h-full object-contain"
-              />
-            ) : (
-              <WatermarkImage
-                src={project.image}
-                alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-contain"
-                priority
-              />
+            <WatermarkImage
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-contain"
+              priority
+            />
+
+            {/* ✅ Small "▶ Video" badge if this project has a video below */}
+            {project.video && (
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 bg-orange-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                <Play className="w-3 h-3 fill-white" />
+                <span>Video Below</span>
+              </div>
             )}
           </div>
 
@@ -156,6 +158,43 @@ export default async function PrintingPortfolioPage({ params }: Props) {
       </div>
 
       {/* ============================================================ */}
+      {/* ✅ NEW: Video Showcase — only if a video exists                */}
+      {/* ============================================================ */}
+      {project.video && (
+        <section className="mt-6 sm:mt-8 md:mt-12" aria-label="Behind the scenes video">
+          {/* Divider + label */}
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+            <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold text-center">
+              <Play className="w-3 h-3 fill-orange-500 text-orange-500" />
+              Behind the Scenes
+            </span>
+            <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+          </div>
+
+          {/* Video player */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden">
+            <div className="relative w-full aspect-video bg-black">
+              <WatermarkVideo
+                src={project.video}
+                poster={project.image}
+                className="w-full h-full"
+                watermarkText="MAOGAST SOFTWORKS"
+              />
+            </div>
+
+            {/* Optional caption strip below the video */}
+            <div className="p-4 sm:p-5 md:p-6">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                Watch the making of <strong className="text-gray-900 dark:text-white">{project.title}</strong> — from
+                design concept to finished product in our Nairobi studio.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ============================================================ */}
       {/* Previous / Next Navigation — mobile-first layout              */}
       {/* ============================================================ */}
       <section className="mt-6 sm:mt-8 md:mt-12" aria-label="Project navigation">
@@ -177,7 +216,6 @@ export default async function PrintingPortfolioPage({ params }: Props) {
             className="group relative flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 hover:shadow-xl active:scale-[0.98] active:border-orange-500 transition-all duration-300 md:hover:-translate-y-1 min-h-[80px]"
             aria-label={`Previous project: ${prevProject.title}`}
           >
-            {/* Thumbnail */}
             <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl overflow-hidden shrink-0 bg-gray-100 dark:bg-gray-700">
               <WatermarkImage
                 src={prevProject.image}
@@ -188,9 +226,14 @@ export default async function PrintingPortfolioPage({ params }: Props) {
                 watermarkSize={16}
                 watermarkPosition="bottom-right"
               />
+              {/* Small "video" badge on prev thumbnail */}
+              {prevProject.video && (
+                <div className="absolute top-1 right-1 z-10 bg-orange-600 text-white text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">
+                  ▶
+                </div>
+              )}
             </div>
 
-            {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1 sm:gap-1.5 mb-0.5 sm:mb-1">
                 <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-orange-600 group-hover:-translate-x-1 transition-transform shrink-0" />
@@ -208,7 +251,6 @@ export default async function PrintingPortfolioPage({ params }: Props) {
               )}
             </div>
 
-            {/* Desktop hover arrow */}
             <div className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
               <ChevronLeft className="w-4 h-4" />
             </div>
@@ -220,7 +262,6 @@ export default async function PrintingPortfolioPage({ params }: Props) {
             className="group relative flex items-center gap-3 sm:gap-4 md:flex-row-reverse md:text-right p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500 hover:shadow-xl active:scale-[0.98] active:border-orange-500 transition-all duration-300 md:hover:-translate-y-1 min-h-[80px]"
             aria-label={`Next project: ${nextProject.title}`}
           >
-            {/* Thumbnail */}
             <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl overflow-hidden shrink-0 bg-gray-100 dark:bg-gray-700">
               <WatermarkImage
                 src={nextProject.image}
@@ -231,9 +272,13 @@ export default async function PrintingPortfolioPage({ params }: Props) {
                 watermarkSize={16}
                 watermarkPosition="bottom-right"
               />
+              {nextProject.video && (
+                <div className="absolute top-1 right-1 z-10 bg-orange-600 text-white text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full">
+                  ▶
+                </div>
+              )}
             </div>
 
-            {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-1 sm:gap-1.5 mb-0.5 sm:mb-1 md:justify-end">
                 <span className="text-[10px] uppercase tracking-wider font-bold text-orange-600 dark:text-orange-400">
@@ -251,7 +296,6 @@ export default async function PrintingPortfolioPage({ params }: Props) {
               )}
             </div>
 
-            {/* Desktop hover arrow */}
             <div className="hidden md:flex items-center justify-center w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 text-orange-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
               <ChevronRight className="w-4 h-4" />
             </div>
