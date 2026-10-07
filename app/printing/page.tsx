@@ -26,8 +26,11 @@ import {
 import type { Metadata } from "next";
 import { printingProjects } from "@/data/printing-portfolio";
 // Import Watermark Components
-import WatermarkVideo from '@/components/WatermarkVideo';
-import WatermarkImage from '@/components/WatermarkImage';
+import WatermarkVideo from "@/components/WatermarkVideo";
+import WatermarkImage from "@/components/WatermarkImage";
+//Replace your existing Recent Work section with the new <PortfolioGallery />. Also swap out the flat grid.
+import PortfolioGallery from "@/components/printing/PortfolioGallery";
+import { Clock, Award, Repeat, ThumbsUp } from "lucide-react";
 
 export const metadata: Metadata = {
   title:
@@ -173,10 +176,10 @@ export default function PrintingPage() {
   };
 
   const priceTiers = [
-    { range: "1 – 4 (Standard)", discount: "0%", round: 650, polo: 800 },
-    { range: "5 – 10", discount: "5%", round: 617.5, polo: 760 },
-    { range: "11 – 20", discount: "10%", round: 585, polo: 720 },
-    { range: "21 – 300+", discount: "15%", round: 552.5, polo: 680 },
+    { range: "1 – 4 (Standard)", discount: "0%", round: 750, polo: 950},
+    { range: "5 – 10", discount: "5%", round: 700, polo: 850 },
+    { range: "11 – 20", discount: "10%", round: 650, polo: 800 },
+    { range: "21 – 300+", discount: "15%", round: 600, polo: 750 },
   ];
 
   return (
@@ -242,6 +245,46 @@ export default function PrintingPage() {
             >
               Get a Quote
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* ✅ NEW: Printing Stats Bar                                    */}
+      {/* ============================================================ */}
+      <section className="relative bg-[#0A192F] text-white py-10 md:py-14 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent" />
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { icon: Package, value: "500+", label: "Orders Delivered" },
+              { icon: Clock, value: "48h", label: "Standard Turnaround" },
+              { icon: Repeat, value: "90%", label: "Repeat Clients" },
+              { icon: Award, value: "100%", label: "Quality Guarantee" },
+            ].map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={stat.label}
+                  className="text-center group transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-500/15 border border-orange-500/25 flex items-center justify-center group-hover:bg-orange-500/25 group-hover:scale-110 transition-all">
+                    <Icon className="w-6 h-6 text-orange-400" />
+                  </div>
+                  <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-1 tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-[11px] sm:text-xs md:text-sm uppercase tracking-wider text-gray-400 group-hover:text-orange-400 transition-colors">
+                    {stat.label}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -504,6 +547,122 @@ export default function PrintingPage() {
         </div>
       </section>
 
+      {/* ============================================================ */}
+      {/* ✅ NEW: Materials & Techniques                                */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+            <span className="text-orange-600 dark:text-orange-400 font-semibold uppercase text-xs tracking-wider">
+              Our Craft
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-3">
+              Materials & Printing Techniques We Master
+            </h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">
+              Not all print methods are equal. We choose the right technique for
+              your fabric, design, and budget.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: "DTF Transfer",
+                desc: "Full-color prints on any fabric — cotton, polyester, blends. Perfect for small runs and complex designs.",
+                best: "Custom apparel",
+                color: "orange",
+              },
+              {
+                name: "Sublimation",
+                desc: "Ink becomes part of the fabric. Vibrant, permanent, never cracks or fades. Ideal for jerseys and sportswear.",
+                best: "Jerseys & teamwear",
+                color: "blue",
+              },
+              {
+                name: "Screen Printing",
+                desc: "Classic, durable, cost-effective for bulk orders. Best for 1–3 color designs on large quantities.",
+                best: "Bulk t-shirts",
+                color: "purple",
+              },
+              {
+                name: "Heat Press Vinyl",
+                desc: "Precision-cut vinyl for names, numbers, and logos. Crisp edges, professional finish.",
+                best: "Names & numbers",
+                color: "green",
+              },
+              {
+                name: "Embroidery",
+                desc: "Stitched logos for a premium, timeless look. Adds texture and durability to uniforms and caps.",
+                best: "Corporate uniforms",
+                color: "rose",
+              },
+              {
+                name: "UV & DTF on Rigid",
+                desc: "Direct printing on mugs, flasks, awards, and signage. Scratch-resistant and dishwasher-safe.",
+                best: "Mugs & awards",
+                color: "amber",
+              },
+            ].map((mat, idx) => {
+              const colorMap: Record<
+                string,
+                { bg: string; text: string; border: string }
+              > = {
+                orange: {
+                  bg: "bg-orange-100 dark:bg-orange-900/30",
+                  text: "text-orange-600 dark:text-orange-400",
+                  border: "border-orange-200 dark:border-orange-900",
+                },
+                blue: {
+                  bg: "bg-blue-100 dark:bg-blue-900/30",
+                  text: "text-blue-600 dark:text-blue-400",
+                  border: "border-blue-200 dark:border-blue-900",
+                },
+                purple: {
+                  bg: "bg-purple-100 dark:bg-purple-900/30",
+                  text: "text-purple-600 dark:text-purple-400",
+                  border: "border-purple-200 dark:border-purple-900",
+                },
+                green: {
+                  bg: "bg-green-100 dark:bg-green-900/30",
+                  text: "text-green-600 dark:text-green-400",
+                  border: "border-green-200 dark:border-green-900",
+                },
+                rose: {
+                  bg: "bg-rose-100 dark:bg-rose-900/30",
+                  text: "text-rose-600 dark:text-rose-400",
+                  border: "border-rose-200 dark:border-rose-900",
+                },
+                amber: {
+                  bg: "bg-amber-100 dark:bg-amber-900/30",
+                  text: "text-amber-600 dark:text-amber-400",
+                  border: "border-amber-200 dark:border-amber-900",
+                },
+              };
+              const c = colorMap[mat.color];
+              return (
+                <div
+                  key={idx}
+                  className={`bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 border ${c.border} hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}
+                >
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
+                    {mat.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    {mat.desc}
+                  </p>
+                  <div
+                    className={`inline-flex items-center gap-1.5 text-xs font-semibold ${c.text} ${c.bg} px-2.5 py-1 rounded-full`}
+                  >
+                    Best for: {mat.best}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Simple Process */}
       <section className="py-20 bg-gray-50 dark:bg-gray-950">
         <div className="container mx-auto px-4">
@@ -611,57 +770,25 @@ export default function PrintingPage() {
         </div>
       </section>
 
-      {/* ✨ NEW SECTION: Recent Work Portfolio Gallery */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-950 border-t border-b border-gray-200 dark:border-gray-800">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+      {/* ============================================================ */}
+      {/* ✅ NEW: Filterable Portfolio Gallery                          */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-20 bg-gray-50 dark:bg-gray-950 border-t border-b border-gray-200 dark:border-gray-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-12">
+            <span className="text-orange-600 dark:text-orange-400 font-semibold uppercase text-xs tracking-wider">
+              Portfolio
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-3">
               Our Recent Work
             </h2>
             <p className="mt-4 text-gray-600 dark:text-gray-400">
-              Real projects crafted for real clients. Tap on any image to view
-              details and share on WhatsApp or social media.
+              Real projects crafted for real clients. Filter by category to see
+              what we do best.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {printingProjects.map((project) => (
-              <Link
-                key={project.id}
-                href={`/printing/portfolio/${project.id}`}
-                className="group relative aspect-square bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                {/* Replaced with Watermark components */}
-                {project.video ? (
-                  <WatermarkVideo
-                    src={project.video}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                ) : (
-                  <WatermarkImage
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                )}
-
-                {/* Hover Overlay details */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <span className="text-[10px] uppercase tracking-wider text-orange-400 font-semibold">
-                    {project.category}
-                  </span>
-                  <h4 className="text-white text-sm font-bold line-clamp-1">
-                    {project.title}
-                  </h4>
-                  {project.client && (
-                    <p className="text-gray-300 text-xs">{project.client}</p>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <PortfolioGallery />
         </div>
       </section>
 

@@ -373,5 +373,15 @@ export const printingProjects: PrintingProject[] = [
     category: 'Promotional Products',
     description: 'White hoodie with custom printed One Voice 27 logo and "Mission For All" slogan.',
     image: '/images/printing-branding/one-voice-27.jpg',
-}
+  },
+  // ✨ NEW PROJECT: KUPCA Conference 2026 Academic Poster
+  {
+    id: 'kupca-conference-2026-academic-poster',
+    title: 'KUPCA Conference 2026 Academic Poster',
+    client: 'Dr. Rhoda',
+    category: 'Large Format Printing',
+    description: 'Designed and printed a 1m x 1m academic poster for the KUPCA Conference 2026, Track 3: Culture and Spirituality in Mental Health. The poster presented research on "The Influence of Early Years Cultural Identity Development in Enhancing Mental Wellness among Children in Busia County, Kenya." Our team handled both the professional design and high-quality large format printing, delivering a conference-ready poster that the client was delighted with.',
+    image: '/images/printing-branding/kupca-conference-poster.jpg',
+    video: '/videos/printing-branding/kupca-conference-poster.mp4',
+  },
 ];
